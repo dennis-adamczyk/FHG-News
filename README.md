@@ -18,7 +18,7 @@ Die aktuelle Version der Website ist unter [duispaper.de](https://duispaper.de) 
 * [Waves](http://fian.my.id/Waves/) - JavaScript Libary zum Hinzufügen der [Ripple](https://material.io/design/motion/understanding-motion.html)-Effekts
 
 ## Versionierung
-Wir benutzen [SemVer](https://semver.org/) zur Versionierung. Die verfügbaren Versionen siehst du in den [Tags dieses Repositories](https://github.com/dennis-adamczyk/FHG9A/tags).
+Wir benutzen [SemVer](https://semver.org/) zur Versionierung. Die verfügbaren Versionen siehst du in den [Tags dieses Repositories](https://github.com/dennis-adamczyk/FHG-News/tags).
 
 ## Autoren
 * **Dennis Adamczyk** - *Gesamtes Projekt* - [dennis-adamczyk](https://github.com/dennis-adamczyk)
