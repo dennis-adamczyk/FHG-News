@@ -1,0 +1,38 @@
+@import "../../sass/_vars.sass"
+
+.content
+  div
+    max-width: 1000px
+    margin: 0 auto
+    padding: 0
+
+    @media screen and (max-width: 1020px)
+      margin: 0 16px
+
+    h1
+      font-size: 34px
+      font-weight: 400
+
+    h3
+      font-size: 20px
+      font-weight: 500
+
+    p
+      font-size: 13px
+      font-weight: 400
+
+      a
+        color: #2196F3
+        text-decoration: none
+
+        &:visited
+          color: #2196F3
+        &:hover
+          text-decoration: underline
+
+      @media screen and ($information-phone)
+        font-size: 14px
+
+
+    p.pre-text
+      font-weight: 500

@@ -1,0 +1,13 @@
+.content .second_header { position: relative; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26); left: 0; right: 0; top: 0; z-index: 9; background-color: #2196F3; height: 56px; }
+
+@media screen and (max-width: 799px) { .content .second_header { height: 49px; } }
+
+.content .second_header .close { color: #FFF; width: 24px; height: 24px; border-radius: 50%; position: absolute; top: 50%; transform: translateY(-50%); padding: 8px; margin-left: -8px; cursor: pointer; left: 24px; }
+
+@media screen and (max-width: 799px) { .content .second_header .close { left: 16px; } }
+
+.content .second_header .title { color: #FFF; margin: 0; padding: 0; position: absolute; top: 50%; transform: translateY(-50%); -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; -o-user-select: none; user-select: none; cursor: default; font-size: 18px; left: 80px; }
+
+.content .second_header .title i { position: relative; top: 6px; }
+
+@media screen and (max-width: 799px) { .content .second_header .title { left: 72px; } }

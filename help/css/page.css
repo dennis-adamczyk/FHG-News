@@ -1,0 +1,37 @@
+header { background-color: #2196F3 !important; box-shadow: none !important; }
+
+header .header-menu, header .header-title, header .header-notifications { color: #FFFFFF !important; }
+
+header .indeterminate::before, header .indeterminate::after { background-color: #FFFFFF !important; }
+
+.content .subheader { background-color: #2196F3; position: absolute; left: 0; top: 0; right: 0; height: 128px; width: 100%; }
+
+@media screen and (max-width: 799px) { .content .subheader { height: 112px; } }
+
+.content .main { width: 95%; max-width: 810px; background-color: #FFFFFF; box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26); position: relative; color: #212121; left: 50%; transform: translateX(-50%); top: 20px; z-index: 1; }
+
+.content .main h1 { display: block; font-size: 24px; font-weight: 400; line-height: 32px; margin: 0; padding: 16px 16px 16px 72px; }
+
+@media screen and (max-width: 799px) { .content .main h1 { padding: 16px 16px 16px 32px; } }
+
+.content .main section.favorite-article { position: relative; top: 0; left: 0; right: 0; width: 100%; height: auto; }
+
+.content .main section.favorite-article h3 { color: #424242; font-weight: bold; margin: 0 0 1px 0; font-size: 15px; line-height: 24px; padding: 12px 72px; }
+
+@media screen and (max-width: 799px) { .content .main section.favorite-article h3 { padding: 12px 16px; } }
+
+.content .main section.favorite-article ul { margin: 0; padding: 0 0 16px 0; outline: none; display: block; list-style: none; }
+
+.content .main section.favorite-article ul li { outline: none; display: block; font-size: 13px; color: #212121; line-height: 20px; position: relative; padding: 5px 0; }
+
+.content .main section.favorite-article ul li::after { content: ""; display: block; height: 1px; background-color: #FAFAFA; position: absolute; bottom: 0; left: 112px; right: 0; }
+
+@media screen and (max-width: 799px) { .content .main section.favorite-article ul li::after { left: 56px; } }
+
+.content .main section.favorite-article ul li i { color: #2196F3; font-size: 24px; line-height: 14px; padding: 9px 0 9px 72px; }
+
+@media screen and (max-width: 799px) { .content .main section.favorite-article ul li i { padding: 9px 0 9px 16px; } }
+
+.content .main section.favorite-article ul li p { margin: 0; position: absolute; left: 112px; top: 0; padding: 14px 0 14px 16px; text-decoration: none; line-height: 14px; font-size: 13px; }
+
+@media screen and (max-width: 799px) { .content .main section.favorite-article ul li p { left: 56px; } }

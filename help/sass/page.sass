@@ -1,0 +1,119 @@
+@import "../../sass/_vars.sass"
+
+$blue: #2196F3
+
+header
+  background-color: $blue !important
+  box-shadow: none !important
+
+  .header-menu, .header-title, .header-notifications
+    color: #FFFFFF !important
+
+  .indeterminate::before, .indeterminate::after
+    background-color: #FFFFFF !important
+
+.content
+
+  .subheader
+    background-color: $blue
+    position: absolute
+    left: 0
+    top: 0
+    right: 0
+    height: 128px
+    width: 100%
+
+    @media screen and ($information-phone)
+      height: 112px
+
+  .main
+    width: 95%
+    max-width: 810px
+    background-color: #FFFFFF
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .26)
+    position: relative
+    color: #212121
+    left: 50%
+    transform: translateX(-50%)
+    top: 20px
+    z-index: 1
+    h1
+      display: block
+      font-size: 24px
+      font-weight: 400
+      line-height: 32px
+      margin: 0
+      padding: 16px 16px 16px 72px
+
+      @media screen and ($information-phone)
+        padding: 16px 16px 16px 32px
+
+    section.favorite-article
+      position: relative
+      top: 0
+      left: 0
+      right: 0
+      width: 100%
+      height: auto
+
+      h3
+        color: #424242
+        font-weight: bold
+        margin: 0 0 1px 0
+        font-size: 15px
+        line-height: 24px
+        padding: 12px 72px
+
+        @media screen and ($information-phone)
+          padding: 12px 16px
+
+      ul
+        margin: 0
+        padding: 0 0 16px 0
+        outline: none
+        display: block
+        list-style: none
+
+        li
+          outline: none
+          display: block
+          font-size: 13px
+          color: #212121
+          line-height: 20px
+          position: relative
+          padding: 5px 0
+
+          &::after
+            content: ""
+            display: block
+            height: 1px
+            background-color: #FAFAFA
+            position: absolute
+            bottom: 0
+            left: 112px
+            right: 0
+
+            @media screen and ($information-phone)
+              left: 56px
+
+          i
+            color: $blue
+            font-size: 24px
+            line-height: 14px
+            padding: 9px 0 9px 72px
+
+            @media screen and ($information-phone)
+              padding: 9px 0 9px 16px
+
+          p
+            margin: 0
+            position: absolute
+            left: 112px
+            top: 0
+            padding: 14px 0 14px 16px
+            text-decoration: none
+            line-height: 14px
+            font-size: 13px
+
+            @media screen and ($information-phone)
+              left: 56px

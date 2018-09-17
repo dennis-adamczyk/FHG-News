@@ -1,0 +1,57 @@
+@import "../../../sass/_vars.sass"
+
+$blue: #2196F3
+
+.content
+  .second_header
+    position: relative
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .26)
+    left: 0
+    right: 0
+    top: 0
+    z-index: 9
+    background-color: $blue
+    height: 56px
+
+    @media screen and ($information-phone)
+      height: 49px
+
+    .close
+      color: $primary-color
+      width: 24px
+      height: 24px
+      border-radius: 50%
+      position: absolute
+      top: 50%
+      transform: translateY(-50%)
+      padding: 8px
+      margin-left: -8px
+      cursor: pointer
+      left: 24px
+
+      @media screen and ($information-phone)
+        left: 16px
+
+    .title
+      color: $primary-color
+      margin: 0
+      padding: 0
+      position: absolute
+      top: 50%
+      transform: translateY(-50%)
+      -webkit-user-select: none
+      -khtml-user-select: none
+      -moz-user-select: none
+      -ms-user-select: none
+      -o-user-select: none
+      user-select: none
+      cursor: default
+      font-size: 18px
+      left: 80px
+
+      i
+        position: relative
+        top: 6px
+
+      @media screen and ($information-phone)
+        left: 72px

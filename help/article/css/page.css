@@ -1,0 +1,35 @@
+header { background-color: #2196F3 !important; box-shadow: none !important; }
+
+header .header-menu, header .header-title, header .header-notifications { color: #FFFFFF !important; }
+
+header .indeterminate::before, header .indeterminate::after { background-color: #FFFFFF !important; }
+
+.content .subheader { background-color: #2196F3; position: absolute; left: 0; top: 0; right: 0; height: 128px; width: 100%; }
+
+@media screen and (max-width: 799px) { .content .subheader { height: 112px; } }
+
+.content .main { width: 88%; max-width: 682px; background-color: #FFFFFF; box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26); position: relative; left: 50%; transform: translateX(-50%); top: 20px; z-index: 1; padding: 64px; color: #212121; }
+
+@media screen and (max-width: 799px) { .content .main { padding: 16px; } }
+
+.content .main h1 { display: block; font-size: 34px; font-weight: 400; line-height: 40px; margin: 0 0 8px; }
+
+.content .main p { margin: 4px 0 12px; color: #212121; font-size: 13px; hyphens: auto; }
+
+.content .main p i { margin: 4px 0 12px; color: #212121; font-size: 13px; hyphens: auto; margin: 0; position: relative; top: 2px; }
+
+.content .main p a { text-decoration: none; color: #2196F3; }
+
+.content .main p a:hover { text-decoration: underline; }
+
+.content .main h2 { font-size: 24px; line-height: 32px; margin: 32px 0 8px; font-weight: 400; hyphens: auto; }
+
+.content .main ol, .content .main ul { margin: 4px 0 12px; outline: 0; padding: 0; vertical-align: baseline; }
+
+.content .main ol li, .content .main ul li { margin: 4px 0 4px 20px; font-size: 13px; color: #212121; }
+
+.content .main ol li i, .content .main ul li i { margin: 4px 0 12px; color: #212121; font-size: 13px; hyphens: auto; margin: 0; position: relative; top: 2px; }
+
+.content .main ol li a, .content .main ul li a { text-decoration: none; color: #2196F3; }
+
+.content .main ol li a:hover, .content .main ul li a:hover { text-decoration: underline; }

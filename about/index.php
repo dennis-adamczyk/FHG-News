@@ -1,63 +1,45 @@
-<?
-$root = realpath($_SERVER["DOCUMENT_ROOT"]);
-include "$root/core/init.php";
-
-$this_page = "Ueber-uns";
-?>
+<? $root = realpath($_SERVER["DOCUMENT_ROOT"]); include "$root/system/init.php"; ?>
+<script>
+  var short_title = 'Über uns';
+  var long_title = 'DuisPaper <i class="material-icons">keyboard_arrow_right</i> Über uns';
+  var page_title = 'DuisPaper - Über uns';
+</script>
 <!DOCTYPE html>
-<html>
+<html lang="de">
   <head>
-    <link type="text/css" rel="stylesheet" href="css/style.css" />
-    <title>Über uns</title>
-    <meta name="description" content="Über-Uns der Webseite DuisPaper DE • Hier stellen wir euch die kleveren Köpfe hinter der Schülerzeitung
-    FHG-News des Franz-Haniel-Gymnasiums vor." />
-    <meta name="keywords" content="DuisPaper, FHG, Schülerzeitung, Franz-Haniel-Gymnasium, FHG-News, News, FHG News, Über uns, About, Über">
     <? include "$root/includes/head.php"; ?>
-    <script src="js/script.js"></script>
+    <script>document.write('<title>' + page_title + '</title>');</script>
+    <link rel="stylesheet" href="css/page.css" />
   </head>
   <body>
 
-    <noscript><? include "$root/includes/noscript.php"; ?></noscript>
+    <? include "$root/includes/header.php"; ?>
+    <? include "$root/includes/nav.php"; ?>
 
-    <header>
-      <? include "$root/includes/header.php"; ?>
-    </header>
+    <div class="content">
 
-    <aside id="sidebar">
-      <? include "$root/includes/sidebar.php"; ?>
-    </aside>
+      <div class="about">
+        <h1>Über Uns</h1>
 
-    <div id="content">
-      <? include "$root/includes/popup.php"; ?>
+        <h3>Unsere Geschichte</h3>
+        <p>
+          Schon vor einem Jahr haben die heutigen Zeitungsgründer Melanie (hat die Redaktion verlassen), Paul, Vanessa und Dennis in ihrem Wirtschaftskurs eine Aufgabe bekommen, die letztendlich die Idee zur Zeitung hervorbrachte. Herr Junkers, der damalige Kurs-Lehrer, gab den Schülern nämlich die Aufgabe über ein Firmenkonzept nachzudenken, welches man auch wirklich realisieren könnte und das wollte er auch mit einer Idee machen, hat er den Schülern versprochen. Die Schüler*innen haben viele Ideen gesammelt und als Ergebnis kamen selbstgestaltbare Sportbeutel, selbstgemachte Schlüsselhakenleisten und unter anderem auch eine Schülerzeitungsfirma namens DuisPaper heraus. Einige Ideen waren wegen des enormen Aufwandes, wie z.B. bei den Schlüsselhackenleisten, nicht realisierbar, aber unsere Schülerzeitungsidee hat Herrn Junkers überzeugt.<br />
+          Noch im Sommer letzten Jahres hat die Produktion der ersten Ausgabe stattgefunden und wurde dann am 19. Juni 2017 veröffentlicht. Mittlerweile hat die Redaktion ein neunköpfiges Team und wir suchen natürlich stetig weitere Redakteure, Autoren und motivierte Leute, die anpacken. Bei Interesse würden wir uns freuen, wenn du uns entweder mithilfe des <a href="/contact/">Kontaktformulars</a> oder persönlich (jeden Donnerstag in der Mittagspause im Raum 011) kontaktierst.
+        </p>
 
-      <h1>Über uns</h1>
-      <div class="stroke"></div>
-      <p class="text">
-        Hallo,<br />
-        Wir, das FHG-News-Team, wollen uns hiermit gerne Vorstellen.<br />
-        Zuerst erzähle ich euch, wie wir auf die Idee gekommen sind die Schülerzeitung zu machen. An sich, gar keine spannende Geschichte:<br />
-        Wir sollten im Wirtschaftsunterricht, bei Herr Junkers, eine „eigene Firma“ gründen und nach vielem hin und her geplane, haben wir uns
-        dann dazu entschieden eine Schülerzeitung zu gründen. Also haben wir uns ein Konzept überlegt. Dieses war tatsächlich so überzeugend
-        und realistisch, dass wir uns mit Herr Junkers zusammengesetzt haben und es jetzt einfach mal ausprobieren wollen.<br />
-        Im Moment gibt es 7 Leute in unserer Redaktion, darunter 4 Autorinnen und Autoren: Johanna D. (9E), Anastasia S. (9E), Sefa K. (7E)
-        und Josef A. (8E) und die Gründer: Dennis A. (8A), Paul P. (8A) und Vanessa A. (8C).<br />
-        Dennis, der Chefredakteur, kümmert um diese Webseite und behält die Übersicht über alles. Der Chef-Autor ist Paul und Vanessa kümmert sich
-        um die Finanzen.
-      </p>
-      <div class="image">
-        <img src="img/redaktion.jpg" onload="imgReady()" />
-        <div class="loader">
-          <svg class="circular" viewBox="25 25 50 50">
-            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10"/>
-          </svg>
+        <h3>Unser Team</h3>
+        <div class="team">
+          <img src="img/Redaktionsfoto.png" />
+          <p>erste Reihe (v.l.n.r): Ebrar Özdemir (Redakteurin), Niko Vossmeyer (Redakteur), Irem Karatas (Redakteurin)
+            <br>zweite Reihe (v.l.n.r.): Paul Paschmann (Mitgründer), Dennis Adamczyk (Chefredakteur), Vanessa Adamczyk (Mitgründerin)
+            <br>dritte Reihe (v.l.n.r.): Jan Detka (Redakteur), Malina Straßburger (Redakteurin), Josef Ali (Senior-Redakteur)
+          </p>
         </div>
+
       </div>
 
-    </div>
-
-    <footer>
       <? include "$root/includes/footer.php"; ?>
-    </footer>
+    </div>
 
   </body>
 </html>

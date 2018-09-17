@@ -15,9 +15,7 @@ Die aktuelle Version der Website ist unter [duispaper.de](https://duispaper.de) 
 
 ## Build with
 * [jQuery](https://jquery.com) - JavaScript Libary, die Funktionen zur DOM-Navigation und -Manipulation zur Verfügung stellt.
-    * [jQuery Validate](https://github.com/jquery-validation/jquery-validation) - JavaScript Sublibary, die Validationsfunktionen in jQuery einfügt.
 * [Waves](http://fian.my.id/Waves/) - JavaScript Libary zum Hinzufügen der [Ripple](https://material.io/design/motion/understanding-motion.html)-Effekts
-* [Animate.css](https://github.com/daneden/animate.css) - CSS Libary, die einige coole cross-browser Animationen hinzufügt.
 
 ## Versionierung
 Wir benutzen [SemVer](https://semver.org/) zur Versionierung. Die verfügbaren Versionen siehst du in den [Tags dieses Repositories](https://github.com/dennis-adamczyk/FHG9A/tags).
