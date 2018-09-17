@@ -1,0 +1,957 @@
+@import "vars"
+
+html, body
+  margin: 0
+  padding: 0
+  font-size: 16px
+  font-family: 'Roboto', sans-serif
+  background-color: #FAFAFA
+  -webkit-tap-highlight-color: rgba(#000000, 0)
+
+.material-icons
+  -webkit-user-select: none
+  -moz-user-select: none
+  -ms-user-select: none
+  user-select: none
+
+overlay
+  display: none
+  position: fixed
+  left: 0
+  right: 0
+  top: 0
+  bottom: 0
+  width: 100%
+  height: 100%
+  background-color: rgba(#000000, .5)
+  z-index: 10
+
+  &.active
+    display: block
+
+dialogbox
+  min-width: 280px
+  display: none
+  position: fixed
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+  z-index: 24
+  box-shadow: $elevation--z24
+  background-color: #FFFFFF
+  border-radius: 4px
+  -webkit-user-select: none
+  -moz-user-select: none
+  -ms-user-select: none
+  user-select: none
+
+  &[open]
+    display: block
+
+  &.alert
+    .label
+      display: block
+      font-size: 16px
+      font-weight: 400
+      color: rgba(#000000, .6)
+      line-height: 18px
+      padding: 0
+      margin: 20px 28px 28px 24px
+
+    .buttons
+      display: flex
+      justify-content: flex-end
+      padding: 8px 8px 8px 24px
+
+      .button
+        margin: 0 0 0 8px
+
+  &.share
+    .close
+      position: absolute
+      top: 24px
+      right: 24px
+      cursor: pointer
+      height: 24px
+      width: 24px
+      padding: 8px
+      transform: translate(8px, -8px)
+      -webkit-border-radius: 50%
+      -moz-border-radius: 50%
+      border-radius: 50%
+      overlay: hidden
+
+      i
+        color: rgba(#000000, .54)
+
+    .label
+      display: block
+      font-size: 20px
+      font-weight: 500
+      color: #000000
+      padding: 0
+      margin: 21px 0 16px 24px
+
+    ul
+      width: 100%
+      height: auto
+      list-style: none
+      padding: 0
+      margin: 0 0 8px 0
+
+      li
+        position: relative
+        display: block
+        height: 56px
+        width: 100%
+        overflow: hidden
+        cursor: pointer
+        transition: background 150ms $easing
+
+        &:hover
+          background-color: rgba(#000000, .08)
+
+        i
+          display: block
+          position: relative
+          left: 24px
+          top: 50%
+          width: 24px
+          height: 24px
+          overflow: hidden
+          transform: translateY(-50%)
+          color: rgba(#000000, .56)
+
+          img
+            width: 100%
+            height: 100%
+            opacity: .56
+
+        p
+          position: absolute
+          left: 80px
+          top: 50%
+          display: inline-block
+          margin: 0
+          padding: 0
+          font-size: 16px
+          font-weight: 400
+          color: rgba(#000000, .86)
+          transform: translateY(-50%)
+
+    @media #{$mobile}
+      width: 100%
+      top: auto
+      left: 0
+      right: 0
+      bottom: 0
+      transform: none
+      border-radius: 16px 16px 0 0
+
+      .close
+        display: none
+
+      .label
+        font-size: 16px
+        font-weight: 400
+        color: rgba(#000000, .54)
+        margin: 21px 0 16px 16px
+
+      ul
+        li
+          i
+            left: 16px
+
+          p
+            left: 72px
+
+.snackBox
+  position: fixed
+  display: none
+  left: 8px
+  bottom: 8px
+  right: 8px
+  margin: 0
+  padding: 0
+  z-index: 6
+  overflow: hidden
+  -webkit-user-select: none
+  -moz-user-select: none
+  -ms-user-select: none
+  user-select: none
+
+  @media #{$not-mobile}
+    left: 24px
+    bottom: 24px
+    right: auto
+    min-width: 344px
+
+    @media #{$desktop}
+      left: calc(256px + 24px)
+
+  .snackBar
+    display: none
+    height: 48px
+    margin: 8px 0 0 0
+    padding: 0 16px
+    background-color: #323232
+    -webkit-border-radius: 4px
+    -moz-border-radius: 4px
+    border-radius: 4px
+    box-shadow: $elevation--z6
+    overflow: hidden
+
+    p
+      margin: 0
+      padding: 0
+      font-size: 14px
+      font-weight: 400
+      color: rgba(#ffffff, .86)
+      height: 100%
+      line-height: 48px
+
+.ripple--icon
+  border-radius: 50%
+  overflow: hidden
+
+@media #{$not-mobile}
+  body.search .header.header--search
+    .header__profile
+      display: block
+
+    .header--search__voice
+      right: 72px
+
+    .header--search__delete
+      right: 72px
+
+.header
+  width: 100%
+  height: 56px
+  position: fixed
+  top: 0
+  right: 0
+  left: 0
+  background-color: #FFFFFF
+  box-shadow: $elevation--z4
+  z-index: 4
+  overflow: hidden
+  transition: background 100ms $easing, box-shadow 100ms $easing, top 100ms $easing
+
+  &.header--search
+    top: 0 !important
+    box-shadow: $elevation--z4 !important
+
+    .header__menu,
+    .header__title,
+    .header__add,
+    .header__search,
+    .header__profile
+      display: none
+
+    .header--search__back
+      width: 24px
+      height: 24px
+      position: absolute
+      top: 50%
+      transform: translateY(-50%)
+      left: 16px
+      padding: 8px
+      margin-left: -8px
+      cursor: pointer
+      color: rgba(#000000, .56)
+
+      @media #{$not-mobile}
+        left: 24px
+
+    .header--search__input
+      display: inline-block
+      font-size: 20px
+      font-weight: 400
+      color: rgba(#000000, .86)
+      position: relative
+      left: 72px
+      top: 50%
+      transform: translateY(-50%)
+      margin: 0
+      padding: 0
+      background-color: transparent
+      border: none
+      height: 48px
+      width: calc(100% - 72px - 64px)
+      outline: none
+
+      &::placeholder,
+      &:-ms-input-placeholder,
+      &::-ms-input-placeholder
+        color: rgba(#000000, .32)
+
+      &:-webkit-autofill
+        background-color: transparent !important
+        color: rgba(#000000, .86) !important
+
+      @media #{$not-mobile}
+        left: 80px
+        width: calc(100% - 80px - 56px)
+
+    .header--search__voice
+      width: 24px
+      height: 24px
+      position: absolute
+      top: 50%
+      transform: translateY(-50%)
+      right: 16px
+      padding: 8px
+      margin-right: -8px
+      cursor: pointer
+      color: rgba(#000000, .56)
+
+      @media #{$not-mobile}
+        right: 24px
+
+    .header--search__delete
+      display: none
+      width: 24px
+      height: 24px
+      position: absolute
+      top: 50%
+      transform: translateY(-50%)
+      right: 16px
+      padding: 8px
+      margin-right: -8px
+      cursor: pointer
+      color: rgba(#000000, .56)
+
+      @media #{$not-mobile}
+        right: 24px
+
+  &.header--top
+    background-color: #FAFAFA
+    box-shadow: none
+    top: 0 !important
+
+  &.header--collapsed
+    top: -56px
+
+    @media #{$not-mobile}
+      top: -64px
+
+  @media #{$not-mobile}
+    height: 64px
+
+  @media #{$desktop}
+    left: auto
+    width: calc(100% - 256px)
+
+  .header__menu
+    width: 24px
+    height: 24px
+    position: absolute
+    top: 50%
+    transform: translateY(-50%)
+    left: 16px
+    padding: 8px
+    margin-left: -8px
+    cursor: pointer
+    color: rgba(#000000, .56)
+
+    @media #{$not-mobile}
+      left: 24px
+
+    @media #{$desktop}
+      &.header__menu--menu
+        display: none
+
+  .header__title
+    display: inline-block
+    font-size: 20px
+    font-weight: 400
+    color: rgba(#000000, 1)
+    position: relative
+    left: 72px
+    top: 50%
+    transform: translateY(-50%)
+    margin: 0
+    padding: 0
+
+    @media #{$not-mobile}
+      left: 80px
+
+  .header__add
+    width: 24px
+    height: 24px
+    position: absolute
+    top: 50%
+    transform: translateY(-50%)
+    right: 128px
+    padding: 8px
+    margin-right: -8px
+    cursor: pointer
+    color: rgba(#000000, .56)
+
+    @media #{$not-mobile}
+      right: 120px
+
+  .header__search
+    width: 24px
+    height: 24px
+    position: absolute
+    top: 50%
+    transform: translateY(-50%)
+    right: 72px
+    padding: 8px
+    margin-right: -8px
+    cursor: pointer
+    color: rgba(#000000, .56)
+
+    @media #{$not-mobile}
+      right: 72px
+
+  .header__profile
+    width: 32px
+    height: 32px
+    background-color: rgba(#000000, .24)
+    position: absolute
+    top: 50%
+    transform: translateY(-50%)
+    right: 16px
+    cursor: pointer
+    -webkit-border-radius: 100%
+    -moz-border-radius: 100%
+    border-radius: 100%
+
+    @media #{$not-mobile}
+      right: 24px
+
+.nav
+  width: calc(100vw - 64px)
+  max-width: 280px
+  z-index: 16
+  box-shadow: $elevation--z16
+  background-color: #FFFFFF
+  position: fixed
+  top: 0
+  left: -100%
+  bottom: 0
+  overflow-y: auto
+  transition: left 200ms $easing--accelerate
+
+  @media #{$not-mobile}
+    width: 256px
+
+  @media #{$desktop}
+    left: 0
+    z-index: 4
+    box-shadow: none
+    border-right: solid 1px rgba(#000000, .24)
+    transition: none
+
+  &.active
+    left: 0
+    transition: left 250ms $easing--decelerate
+
+  .nav__logo
+    height: 20px
+    width: auto
+    display: block
+    margin: 0 auto
+    position: relative
+    top: calc((56px - 20px) / 2)
+    cursor: pointer
+
+    @media #{$not-mobile}
+      top: calc((64px - 20px) / 2)
+
+  div
+    position: absolute
+    top: 78px
+    width: 100%
+    height: auto
+    margin: 0
+    padding: 0
+
+    ul
+      width: 100%
+      height: auto
+      padding: 0
+      margin: 0
+      list-style: none
+
+      li
+        position: relative
+        width: calc(100% - 8px)
+        height: 40px
+        display: block
+        margin: 0 auto 8px 0
+        border-radius: 0 20px 20px 0
+        cursor: pointer
+        transition: background-color 150ms $easing
+
+        &::before
+          content: 'label_important'
+          font-family: 'Material Icons', sans-serif
+          font-weight: normal
+          font-style: normal
+          line-height: 1
+          letter-spacing: normal
+          text-transform: none
+          white-space: nowrap
+          word-wrap: normal
+          direction: ltr
+          -webkit-font-feature-settings: 'liga'
+          -webkit-font-smoothing: antialiased
+          -webkit-user-select: none
+          -moz-user-select: none
+          -ms-user-select: none
+          user-select: none
+          display: inline-block
+          position: absolute
+          top: 8px
+          left: 16px
+          width: 24px
+          height: 24px
+          font-size: 24px
+          color: rgba(#000000, .56)
+
+        &.news::before
+          content: 'update'
+
+        &.about::before
+          content: 'supervisor_account'
+
+        &.your-contribution::before
+          content: 'edit'
+
+        &.contact::before
+          content: 'message'
+
+        &.imprint::before
+          content: 'info'
+
+        &.privacy::before
+          content: 'reorder'
+
+        &:hover
+          background-color: rgba(#000000, .08)
+
+        &.current-menu-item
+          background-color: rgba(#000000, .16)
+
+          &::before
+            color: rgba(#000000, 1)
+
+          a
+            color: rgba(#000000, 1)
+
+      a
+        font-size: 16px
+        font-weight: 400
+        text-decoration: none
+        color: rgba(#000000, .86)
+        position: relative
+        display: block
+        width: 100%
+        height: 100%
+        line-height: 40px
+
+        &::before
+          content: ''
+          display: inline-block
+          width: 64px
+
+content
+  display: block
+  width: 100%
+  height: auto
+  padding: 56px 0 0 0
+  margin: 0
+
+  @media #{$not-mobile}
+    padding: 64px 0 0 0
+
+  @media #{$desktop}
+    padding: 64px 0 0 256px
+    width: calc(100% - 256px)
+
+  a
+    color: $secondary
+    text-decoration: none
+
+    &:hover
+      text-decoration: underline
+
+  /* SEARCH SUGGESTIONS */
+
+  .searchSuggestions
+    position: fixed
+    top: 0
+    right: 0
+    left: 0
+    bottom: 0
+    background-color: #FAFAFA
+    z-index: 3
+    overflow: auto
+
+    ul
+      list-style: none
+      padding: 10px 0 0 0
+      margin: 56px 0 0 0
+
+      li
+        position: relative
+        display: block
+        height: 40px
+        width: 100%
+        overflow: hidden
+        cursor: pointer
+
+        .searchSuggestions__icon
+          width: 24px
+          height: 24px
+          position: absolute
+          top: 50%
+          transform: translateY(-50%)
+          left: 16px
+          padding: 8px
+          margin-left: -8px
+          color: rgba(#000000, .56)
+
+        p
+          position: relative
+          left: 72px
+          margin: 0
+          padding: 0
+          display: inline-block
+          -webkit-user-select: none
+          -moz-user-select: none
+          -ms-user-select: none
+          user-select: none
+          height: 40px
+          line-height: 40px
+          font-size: 14px
+          font-weight: 400
+          color: #000000
+
+        .searchSuggestions__insert
+          width: 24px
+          height: 24px
+          position: absolute
+          top: 50%
+          transform: translateY(-50%)
+          right: 16px
+          padding: 8px
+          margin-right: -8px
+          border-radius: 50%
+          overflow: hidden
+
+          img
+            opacity: .56
+            height: 24px
+            width: 24px
+
+    @media #{$not-mobile}
+      position: fixed
+      width: calc(100% - 80px - 56px)
+      top: 64px
+      right: auto
+      left: calc(80px - 8px)
+      bottom: auto
+      background-color: #FAFAFA
+      z-index: 3
+      border-radius: 0 0 4px 4px
+      overflow: hidden
+      box-shadow: $elevation--z3
+
+      @media #{$desktop}
+        left: calc(256px + 80px - 8px)
+        width: calc(100% - 256px - 80px - 56px)
+
+      ul
+        padding: 0
+        margin: 8px 0 0 0
+
+        li
+          transition: background 150ms $easing
+
+          &:hover,
+          &.selectedSug
+            background-color: rgba(#000000, .08)
+
+            .searchSuggestions__delete
+              display: inline-block
+
+          p
+            left: 8px
+            font-size: 16px
+            color: rgba(#000000, .86)
+
+          .searchSuggestions__delete
+            display: none
+            width: 24px
+            height: 24px
+            position: absolute
+            top: 50%
+            transform: translateY(-50%)
+            right: 16px
+            padding: 8px
+            margin-right: -8px
+            border-radius: 50%
+            overflow: hidden
+            color: rgba(#000000, .56)
+
+
+body.blog content .wrapper .sidebar,
+body.single content .wrapper .sidebar,
+body.page content .wrapper .sidebar,
+body.search content .wrapper .sidebar
+  margin: 72px 0 0 0
+
+  .sidebar__widget
+    margin: 0 0 24px 0
+
+    &:nth-child(odd)
+      background-color: rgba(#000000, .08)
+
+    &:nth-child(even)
+      border: 1px solid rgba(#000000, .24)
+
+    &.widget_social_media
+      padding: 16px
+      -webkit-border-radius: 8px
+      -moz-border-radius: 8px
+      border-radius: 8px
+
+      .sidebar__widget__title
+        margin: 0
+        padding: 0
+        font-size: 16px
+        font-weight: 500
+        color: rgba(#000000, .56)
+
+        &::after
+          content: ''
+          display: block
+          margin: 16px 0 0 0
+          width: 100%
+          height: 1px
+          background-color: rgba(#000000, .24)
+
+      h2
+        margin: 16px 0 8px 0
+        padding: 0
+
+        ul
+          list-style: none
+          margin: 0
+          padding: 0
+
+          li
+            margin: 0
+            padding: 0
+            display: inline-block
+
+            a
+              margin: 0 16px 0 0
+              height: 32px
+              width: 32px
+              text-decoration: none
+              display: block
+
+              img
+                width: 100%
+                height: 100%
+                opacity: .56
+                transition: opacity 150ms $easing
+
+                &:hover
+                  opacity: .86
+
+
+    &.widget_archive
+      padding: 16px
+      -webkit-border-radius: 8px
+      -moz-border-radius: 8px
+      border-radius: 8px
+
+      .sidebar__widget__title
+        margin: 0
+        padding: 0
+        font-size: 16px
+        font-weight: 500
+        color: rgba(#000000, .56)
+
+        &::after
+          content: ''
+          display: block
+          margin: 16px 0 0 0
+          width: 100%
+          height: 1px
+          background-color: rgba(#000000, .24)
+
+      h2
+        margin: 16px 0 8px 0
+        padding: 0
+
+        ul
+          list-style: none
+          margin: 0
+          padding: 0
+
+          li
+            margin: 8px 0 0 0
+            padding: 0
+
+            a
+              font-size: 16px
+              font-weight: 500
+              color: rgba(#000000, .86)
+              text-decoration: none
+
+              &:hover
+                text-decoration: underline
+
+    &.widget_categories
+      padding: 16px
+      -webkit-border-radius: 8px
+      -moz-border-radius: 8px
+      border-radius: 8px
+
+      .sidebar__widget__title
+        margin: 0
+        padding: 0
+        font-size: 16px
+        font-weight: 500
+        color: rgba(#000000, .56)
+
+        &::after
+          content: ''
+          display: block
+          margin: 16px 0 0 0
+          width: 100%
+          height: 1px
+          background-color: rgba(#000000, .24)
+
+      h2
+        margin: 0 0 8px 0
+        padding: 0
+
+        ul
+          list-style: none
+          margin: 0
+          padding: 0
+
+          li
+            margin: 0
+            padding: 0
+            display: inline-block
+
+            a
+              margin: 8px 8px 0 0
+              padding: 6px 12px
+              height: 18px
+              width: auto
+              background-color: rgba(#FFFFFF, .86)
+              border-radius: 8px
+              border: 1px solid rgba(#000000, .24)
+              font-size: 14px
+              font-weight: 500
+              color: rgba(#000000, .86)
+              text-decoration: none
+              display: block
+
+/* =============== INPUTS =============== */
+
+.input
+
+  &.input--line
+    &.input--textarea
+      position: relative
+
+      &:hover textarea
+        border-bottom: 1px solid rgba(#000000, .6)
+
+      textarea
+        width: 100%
+        min-width: 100%
+        max-width: 100%
+        resize: none
+        height: 35px
+        margin: 0
+        padding: 0
+        border: none
+        border-bottom: 1px solid rgba(#000000, .24)
+        outline: none
+        font-size: 16px
+        color: rgba(#000000, .86)
+        font-family: 'Roboto', sans-serif
+        line-height: 35px
+        background: transparent
+        z-index: 1
+        caret-color: $secondary
+        cursor: pointer
+        transition: border 150ms $easing
+
+        &:-moz-ui-invalid:not(output)
+          box-shadow: none !important
+
+        &:hover
+          border-bottom: 1px solid rgba(#000000, .6)
+
+        &:focus
+          cursor: text
+          outline: none
+          border-color: $secondary
+
+        &:focus + label.input__label,
+        &.hasValue + label.input__label
+          top: -15px
+          color: $secondary
+          font-size: 12px
+
+        &.hasValue:not(:focus) + label.input__label
+          color: rgba(#000000, .6)
+
+      &.input--placeholderDisappear textarea:focus + label.input__label,
+      &.input--placeholderDisappear textarea.hasValue + label.input__label
+        display: none
+
+      label.input__label
+        position: absolute
+        top: 10px
+        left: 3px
+        font-size: 16px
+        color: rgba(#000000, .6)
+        transition: all 150ms $easing
+        -webkit-user-select: none
+        -moz-user-select: none
+        -ms-user-select: none
+        user-select: none
+        cursor: pointer
+
+.button
+  height: 36px
+  min-width: 64px
+  display: inline-block
+  padding: 0 16px
+  border-radius: 4px
+  overflow: hidden
+  box-shadow: $elevation--z2
+  background-color: $secondary
+
+  span
+    display: block
+    text-align: center
+    line-height: 36px
+    font-size: 14px
+    font-weight: 400
+    color: #ffffff
+    text-transform: uppercase
+
+  &.button--flat
+    box-shadow: none
+    background-color: transparent
+    padding: 0 8px
+
+    span
+      font-weight: 500
+      color: $secondary
