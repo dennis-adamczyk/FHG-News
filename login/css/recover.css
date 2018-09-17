@@ -1,0 +1,167 @@
+/* CSS DATEI */
+
+div#recovery {
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+  text-align: center;
+}
+
+div#recovery h1 {
+  margin: 1em 0;
+}
+
+div#recovery form {
+  padding: 30px;
+  padding-top: 10px;
+  text-align: left;
+}
+
+div#recovery form .input-group {
+  font-size: 14px;
+  color: #9E9E9E;
+  position: relative;
+  margin: 30px auto;
+  width: 90%;
+}
+
+div#recovery form .input-group .text-field {
+  position: relative;
+  z-index: 0;
+  width: 100%;
+  height: 35px;
+  font-family: 'Lato', sans-serif;
+  color: #000;
+  font-weight: lighter;
+  font-size: 16px;
+  border: none;
+  border-bottom: 1px solid #757575;
+  background-color: transparent;
+  transition: all 0.2s ease-out;
+}
+
+div#recovery form .input-group .text-field.is-invalid {
+  border-bottom: 1px solid #DD2C00;
+}
+
+div#recovery form .input-group .text-field ~ .text-label {
+  position: absolute;
+  top: 10px;
+  left: 3px;
+  font-size: 16px;
+  color: #757575;
+  transition: all 0.2s ease-out;
+  z-index: -1;
+}
+
+div#recovery form .input-group .text-field:focus {
+  outline: none;
+  border-color: #3498db;
+}
+
+div#recovery form .input-group .text-field.is-invalid:focus {
+  border-color: #DD2C00;
+}
+
+div#recovery form .input-group .text-field:focus ~ .text-label,
+div#recovery form .input-group .text-field.has-value ~ .text-label {
+  top: -15px;
+  color: #3498db;
+  font-size: 12px;
+}
+
+div#recovery form .input-group .text-field.is-invalid:focus ~ .text-label,
+div#recovery form .input-group .text-field.is-invalid.has-value ~ .text-label {
+  color: #DD2C00;
+}
+
+div#recovery form .input-group .text-field.has-value:not(:focus) ~ .text-label {
+  color: #757575;
+}
+
+div#recovery form .input-group .text-field.is-invalid.has-value:not(:focus) ~ .text-label{
+  color: #DD2C00;
+}
+
+div#recovery form .input-group .button {
+  font-family: 'Lato', sans-serif;
+  font-size: 16px;
+  padding: 1em 0;
+  width: 100%;
+  border: none;
+  outline: none;
+  color: #fff;
+  background-color: #3498db;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+div#recovery form .error {
+  color: #D50000;
+  position: absolute;
+  bottom: -15px;
+  left: 0;
+  font-size: 12px;
+  top: auto;
+}
+
+.clearfix::before,
+.clearfix::after {
+  content: " ";
+  display: block;
+}
+
+.clearfix::after {
+  clear: both;
+}
+
+@media screen and (min-width: 700px) {
+  div#recovery form .input-group {
+    display: block;
+  }
+
+  div#recovery {
+    width: 60%;
+  }
+
+  div#recovery form .input-group .button {
+    width: 250px;
+    float: right;
+  }
+
+  div#recovery form .input-group .button {
+    width: 250px;
+    float: right;
+  }
+}
+
+@media screen and (min-width: 1300px) {
+  div#recovery {
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 100px;
+  }
+
+  div#recovery form .input-group {
+    width: 48%;
+    float: left;
+  }
+
+  div#recovery form .input-group.full-line {
+    width: 100%;
+    float: none;
+  }
+
+  div#recovery form .input-group:nth-child(even) {
+    float: right;
+  }
+
+  div#recovery form .input-group:nth-child(3) {
+    width: 100%;
+  }
+
+  div#recovery form .input-group .button:hover {
+    background-color: #2980b9;
+  }
+}

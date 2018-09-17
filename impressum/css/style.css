@@ -1,0 +1,124 @@
+#content h1 {
+  color: #333;
+  text-align: center;
+  font-size: 40px;
+  margin-top: 30px;
+}
+
+#content .stroke {
+  position: relative;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  height: 2px;
+  width: 50px;
+  background-color: #2c3e50;
+}
+
+#content p {
+  width: 85%;
+  height: auto;
+  -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+          hyphens: auto;
+  padding: 0;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size: 12pt;
+  margin: 0;
+  margin-left: auto;
+  margin-right: auto;
+  -webkit-transition: width 0.3s ease;
+  transition: width 0.3s ease;
+}
+
+#content p.pre-text {
+  width: 85%;
+  height: auto;
+  -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+          hyphens: auto;
+  padding: 0;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size: 14pt;
+  margin: 0;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 25px;
+  -webkit-transition: width 0.3s ease;
+  transition: width 0.3s ease;
+}
+
+#content p:last-of-type {
+  width: 85%;
+  height: auto;
+  -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+          hyphens: auto;
+  padding: 0;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size: 12pt;
+  margin: 0;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 50px;
+  -webkit-transition: width 0.3s ease;
+  transition: width 0.3s ease;
+}
+
+#content h3 {
+  color: #333;
+  font-size: 15pt;
+  width: 80%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 1em;
+  margin-bottom: 0.3em;
+  -webkit-transition: width 0.3s ease, padding 0.3s ease;
+  transition: width 0.3s ease, padding 0.3s ease;
+}
+
+#content h2 {
+  color: #333;
+  font-size: 22pt;
+  width: 85%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 1em;
+  margin-bottom: 0.7em;
+  -webkit-transition: width 0.3s ease;
+  transition: width 0.3s ease;
+}
+
+#content #datenschutz {
+  position: relative;
+  top: -70px;
+  margin: 0;
+  padding: 0;
+  height: 0;
+}
+
+@media screen and (min-width: 1300px) {
+  #content p {
+    width: 60%;
+  }
+
+  #content p.pre-text {
+    width: 60%;
+  }
+
+  #content p:last-of-type {
+    width: 60%;
+  }
+
+  #content h3 {
+    padding-left: 10px;
+    width: 60%;
+  }
+
+  #content h2 {
+    width: 60%;
+  }
+}

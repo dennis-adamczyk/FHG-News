@@ -1,0 +1,143 @@
+#content h1 {
+  color: #333;
+  text-align: center;
+  font-size: 40px;
+  margin-top: 30px;
+}
+
+#content form {
+  padding: 30px;
+  padding-top: 10px;
+  text-align: left;
+}
+
+#content form .input-group {
+  font-size: 14px;
+  color: #9E9E9E;
+  position: relative;
+  margin: 30px auto;
+  width: 90%;
+}
+
+#content form .input-group:last-child,
+#content form .input-group.submit {
+  margin-top: 50px;
+}
+
+#content form .input-group .text-field {
+  position: relative;
+  z-index: 0;
+  width: 100%;
+  height: 35px;
+  font-family: 'Lato', sans-serif;
+  color: #000;
+  font-weight: lighter;
+  font-size: 16px;
+  border: none;
+  border-bottom: 1px solid #757575;
+  background-color: transparent;
+  -webkit-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+}
+
+#content form .input-group .text-field.is-invalid {
+  border-bottom: 1px solid #DD2C00;
+}
+
+#content form .input-group .text-field ~ .text-label {
+  position: absolute;
+  top: 10px;
+  left: 3px;
+  font-size: 16px;
+  color: #757575;
+  -webkit-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+  z-index: -1;
+}
+
+#content form .input-group .text-field:focus {
+  outline: none;
+  border-color: #3498db;
+}
+
+#content form .input-group .text-field.is-invalid:focus {
+  border-color: #DD2C00;
+}
+
+#content form .input-group .text-field:focus ~ .text-label,
+#content form .input-group .text-field.has-value ~ .text-label {
+  top: -15px;
+  color: #3498db;
+  font-size: 12px;
+}
+
+#content form .input-group .text-field.is-invalid:focus ~ .text-label,
+#content form .input-group .text-field.is-invalid.has-value ~ .text-label {
+  color: #DD2C00;
+}
+
+#content form .input-group .text-field.has-value:not(:focus) ~ .text-label {
+  color: #757575;
+}
+
+#content form .input-group .text-field.is-invalid.has-value:not(:focus) ~ .text-label{
+  color: #DD2C00;
+}
+
+#content form .input-group .button {
+  font-family: 'Lato', sans-serif;
+  font-size: 16px;
+  padding: 1em 0;
+  width: 100%;
+  border: none;
+  outline: none;
+  color: #fff;
+  background-color: #3498db;
+  -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+
+#content form .input-group .button:hover {
+  background-color: #2980b9;
+}
+
+#content form .error {
+  color: #D50000;
+  position: absolute;
+  bottom: -15px;
+  left: 0;
+  font-size: 12px;
+  top: auto;
+}
+
+#content form .input-group .text-field#message {
+  -webkit-transition-property: none;
+  transition-property: none;
+  resize: vertical;
+  min-height: 80px;
+  max-height: 300px;
+}
+
+.clearfix::before,
+.clearfix::after {
+  content: " ";
+  display: block;
+}
+
+.clearfix::after {
+  clear: both;
+}
+
+@media screen and (min-width: 1300px) {
+  #content form .input-group {
+    width: 40%;
+  }
+
+  #content form .input-group .button {
+    width: 50%;
+    float: right;
+  }
+}

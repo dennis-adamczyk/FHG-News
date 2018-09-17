@@ -1,0 +1,364 @@
+/* CSS DATEI */
+
+div#register {
+  width: 100%;
+  position: relative;
+  text-align: center;
+}
+
+div#register h1 {
+  margin: 0.5em 0;
+}
+
+div#register form {
+  padding: 30px;
+  padding-top: 0;
+  text-align: left;
+}
+
+div#register form .input-group {
+  font-size: 14px;
+  color: #9E9E9E;
+  position: relative;
+  margin: 30px auto;
+  width: 90%;
+}
+
+div#register form .input-group .text-field {
+  position: relative;
+  z-index: 0;
+  width: 100%;
+  height: 35px;
+  font-family: 'Lato', sans-serif;
+  color: #000;
+  font-weight: lighter;
+  font-size: 16px;
+  border: none;
+  border-bottom: 1px solid #757575;
+  background-color: transparent;
+  -webkit-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+}
+
+div#register form .input-group .text-field.is-invalid {
+  border-bottom: 1px solid #DD2C00;
+}
+
+div#register form .input-group .text-field ~ .text-label {
+  position: absolute;
+  top: 10px;
+  left: 3px;
+  font-size: 16px;
+  color: #757575;
+  -webkit-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+  z-index: -1;
+}
+
+div#register form .input-group .text-field:focus {
+  outline: none;
+  border-color: #3498db;
+}
+
+div#register form .input-group .text-field.is-invalid:focus {
+  border-color: #DD2C00;
+}
+
+div#register form .input-group .text-field:focus ~ .text-label,
+div#register form .input-group .text-field.has-value ~ .text-label {
+  top: -15px;
+  color: #3498db;
+  font-size: 12px;
+}
+
+div#register form .input-group .text-field.is-invalid:focus ~ .text-label,
+div#register form .input-group .text-field.is-invalid.has-value ~ .text-label {
+  color: #DD2C00;
+}
+
+div#register form .input-group .text-field.has-value:not(:focus) ~ .text-label {
+  color: #757575;
+}
+
+div#register form .input-group .text-field.is-invalid.has-value:not(:focus) ~ .text-label{
+  color: #DD2C00;
+}
+
+div#register form .input-group select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  display: block;
+  position: relative;
+  z-index: 0;
+  width: 100%;
+  height: 35px;
+  font-family: 'Lato', sans-serif;
+  color: #757575;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #757575;
+  background-color: transparent;
+  -webkit-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+  padding-left: 3px;
+  font-weight: lighter;
+}
+
+
+div#register form .input-group select.is-invalid {
+  border-bottom: 1px solid #DD2C00;
+}
+
+i.fa.fa-chevron-down {
+  font-size: 16px;
+  width: 1em;
+  height: 1em;
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  color: #757575;
+  z-index: -1;
+  -webkit-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+}
+
+div#register form .input-group select:focus ~ .fa-chevron-down {
+  color: #3498db;
+}
+
+div#register form .input-group select.is-invalid:focus ~ .fa-chevron-down {
+  color: #DD2C00;
+}
+
+div#register form .input-group p {
+  margin: 0;
+}
+
+div#register form .input-group select option:not([disabled]) {
+  color: #000;
+}
+
+div#register form .input-group select ~ .select-label {
+  position: absolute;
+  left: 3px;
+  top: -15px;
+  color: #757575;
+  font-size: 12px;
+  -webkit-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+  z-index: -1;
+}
+
+div#register form .input-group select.is-invalid ~ .select-label {
+  color: #DD2C00;
+}
+
+div#register form .input-group select:focus ~ .select-label {
+  color: #3498db;
+}
+
+
+div#register form .input-group select.is-invalid:focus ~ .select-label {
+  color: #DD2c00;
+}
+
+div#register form .input-group select:focus {
+  border-bottom: 1px solid #3498db;
+}
+
+div#register form .input-group select.is-invalid:focus {
+  border-bottom: 1px solid #DD2C00;
+}
+
+div#register form .input-group #safety-text {
+  text-align: right;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  -webkit-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+}
+
+.g-recaptcha {
+  width: 47.45%;
+}
+
+div#register form .input-group .button {
+  font-family: 'Lato', sans-serif;
+  font-size: 16px;
+  padding: 1em 0;
+  width: 100%;
+  border: none;
+  outline: none;
+  color: #fff;
+  background-color: #2ecc71;
+  -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+div#register form .error {
+  color: #D50000;
+  position: absolute;
+  bottom: -15px;
+  left: 0;
+  font-size: 12px;
+  top: auto;
+}
+
+@media screen and (min-width: 700px) {
+  div#register form .input-group {
+    display: inline-block;
+    width: 47.45%;
+  }
+
+  div#register form .input-group.first:nth-child(even) {
+    margin-left: 4.4%;
+  }
+
+  div#register form .input-group.full-line {
+    display: block;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  div#register form .input-group.second:nth-child(odd) {
+    margin-left: 4.4%;
+  }
+
+  div#register form .input-group .button {
+    width: 250px;
+    float: right;
+  }
+
+  div#register form .input-group.recaptcha {
+    margin-left: auto;
+    margin-right: auto;
+    width: 47.45%;
+    float: left;
+  }
+
+  div#register form .input-group.submit {
+    float: right;
+    height: 78px;
+  }
+
+  div#register form .input-group.submit #submit {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+  }
+
+  .input-group .spinner {
+    position: absolute;
+    top: 18%;
+    right: 280px;
+    width: 40px;
+    left: auto;
+  }
+
+  .input-group .path {
+    stroke: #4285F4;
+  }
+}
+
+@media screen and (min-width: 1300px) {
+  div#register {
+    width: 60%;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  div#register form .input-group.recaptcha {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+  }
+}
+
+
+
+.spinner {
+  display: none;
+  -webkit-animation: rotator 1.4s linear infinite;
+          animation: rotator 1.4s linear infinite;
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: 6px;
+  left: 20px;
+}
+
+@-webkit-keyframes rotator {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(270deg);
+            transform: rotate(270deg);
+  }
+}
+
+@keyframes rotator {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(270deg);
+            transform: rotate(270deg);
+  }
+}
+.path {
+  stroke-dasharray: 187;
+  stroke-dashoffset: 0;
+  -webkit-transform-origin: center;
+          transform-origin: center;
+  stroke: #fff;
+  -webkit-animation: dash 1.4s ease-in-out infinite;
+          animation: dash 1.4s ease-in-out infinite;
+}
+
+@-webkit-keyframes dash {
+  0% {
+    stroke-dashoffset: 187;
+  }
+  50% {
+    stroke-dashoffset: 46.75;
+    -webkit-transform: rotate(135deg);
+            transform: rotate(135deg);
+  }
+  100% {
+    stroke-dashoffset: 187;
+    -webkit-transform: rotate(450deg);
+            transform: rotate(450deg);
+  }
+}
+@keyframes dash {
+  0% {
+    stroke-dashoffset: 187;
+  }
+  50% {
+    stroke-dashoffset: 46.75;
+    -webkit-transform: rotate(135deg);
+            transform: rotate(135deg);
+  }
+  100% {
+    stroke-dashoffset: 187;
+    -webkit-transform: rotate(450deg);
+            transform: rotate(450deg);
+  }
+}

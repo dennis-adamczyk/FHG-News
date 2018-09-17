@@ -1,0 +1,51 @@
+#content h1 {
+  color: #607D8B;
+  text-align: center;
+  font-size: 40px;
+  margin-top: 30px;
+}
+
+#content p {
+  width: 85%;
+  height: auto;
+  text-align: justify;
+  -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+          hyphens: auto;
+  padding: 0;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size: 12pt;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 12pt;
+  text-align: center;
+}
+
+#content p:first-of-type {
+  margin-top: 25px;
+}
+
+#content p:last-of-type {
+  margin-bottom: 50px;
+}
+
+#content iframe {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 50px;
+}
+
+@media screen and (min-width: 1300px) {
+  #content p {
+    width: 60%;
+    font-size: 13pt;
+  }
+}
+
+@media screen and (max-width: 1545px) {
+  #content p {
+    text-align: left;
+  }
+}
