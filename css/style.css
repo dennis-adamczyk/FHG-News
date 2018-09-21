@@ -32,6 +32,16 @@ dialogbox.share ul li p { position: absolute; left: 80px; top: 50%; display: inl
 .snackBox .snackBar { display: none; height: 48px; margin: 8px 0 0 0; padding: 0 16px; background-color: #323232; -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px; box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12); overflow: hidden; }
 .snackBox .snackBar p { margin: 0; padding: 0; font-size: 14px; font-weight: 400; color: rgba(255, 255, 255, 0.86); height: 100%; line-height: 48px; }
 
+.lightBox { position: fixed; display: none; top: 0; right: 0; bottom: 0; left: 0; background-color: #212121; z-index: 24; }
+.lightBox .lightBox__header { position: relative; width: 100%; height: 56px; top: 0; left: 0; right: 0; background-color: rgba(33, 33, 33, 0.64); z-index: 25; overflow: hidden; }
+.lightBox .lightBox__header .lightBox__header__page { position: relative; left: 16px; top: 50%; transform: translateY(-50%); margin: 0; padding: 0; font-size: 20px; font-weight: 400; color: rgba(255, 255, 255, 0.86); -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
+.lightBox .lightBox__header .lightBox__header__close { width: 24px; height: 24px; position: absolute; top: 50%; transform: translateY(-50%); right: 16px; padding: 8px; margin-right: -8px; cursor: pointer; color: #ffffff; }
+.lightBox .lightBox__image { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; -webkit-user-drag: none; user-drag: none; -webkit-touch-callout: none; max-width: 100%; max-height: 100%; }
+.lightBox .lightBox__left { width: 24px; height: 24px; position: absolute; top: 50%; transform: translateY(-50%); left: 16px; padding: 8px; margin-left: -8px; cursor: pointer; color: #ffffff; z-index: 25; }
+.lightBox .lightBox__right { width: 24px; height: 24px; position: absolute; top: 50%; transform: translateY(-50%); right: 16px; padding: 8px; margin-right: -8px; cursor: pointer; color: #ffffff; z-index: 25; }
+.lightBox .lightBox__captionBox { position: absolute; height: auto; bottom: 0; left: 0; right: 0; background-color: rgba(33, 33, 33, 0.64); z-index: 25; overflow: hidden; }
+.lightBox .lightBox__captionBox .lightBox__captionBox__caption { margin: 0; padding: 16px 16px 8px 16px; font-size: 14px; font-weight: 400; color: rgba(255, 255, 255, 0.6); }
+
 .ripple--icon { border-radius: 50%; overflow: hidden; }
 
 @media all and (min-width: 800px) { body.search .header.header--search .header__profile { display: block; }

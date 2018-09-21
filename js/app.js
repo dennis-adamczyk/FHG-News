@@ -48,6 +48,7 @@ jQuery(document).ready(function ($) {
 
     Waves.attach('.ripple--icon', ['waves-circle']);
     Waves.attach('.ripple--box', ['waves-box']);
+    Waves.attach('.ripple--icon--light', ['waves-circle', 'waves-light']);
     Waves.attach('.button:not(.button--flat)', ['waves-float', 'waves-light']);
     Waves.attach('.button--flat');
     if ($(window).width() < 800)
@@ -558,6 +559,56 @@ jQuery(document).ready(function ($) {
 
 });
 
+var lightBox_active_img = null;
+
+function showLightBox(srcset, $image, $images) {
+    const $lightBox = jQuery('.lightBox');
+    index = null;
+    $lightBox.find('.lightBox__captionBox').show();
+
+    $lightBox.find('.lightBox__image').attr('srcset', srcset);
+    $lightBox.find('.lightBox__header__page__index').text(jQuery($images).index($image) + 1);
+    $lightBox.find('.lightBox__header__page__total').text($images.length);
+    if ($image.children('.wp-caption-text').length !== 0) {
+        $lightBox.find('.lightBox__captionBox__caption').text($image.children('.wp-caption-text').text());
+    } else {
+        $lightBox.find('.lightBox__captionBox').hide();
+    }
+
+    $lightBox.find('.lightBox__left').off().bind('click', function () {
+        active_container = null;
+        if (jQuery($images).index($image) === 0) {
+            active_container = jQuery($images.get($images.length - 1));
+            lightBox_active_img = jQuery($images.get($images.length - 1)).children('img').length === 0 ? jQuery($images.get($images.length - 1)) : jQuery($images.get($images.length - 1)).children('img');
+        } else {
+            active_container = jQuery($images.get(jQuery($images).index($image) - 1));
+            lightBox_active_img = jQuery($images.get(jQuery($images).index($image) - 1)).children('img').length === 0 ? jQuery($images.get(jQuery($images).index($image) - 1)) : jQuery($images.get(jQuery($images).index($image) - 1)).children('img');
+        }
+        showLightBox(lightBox_active_img.attr('srcset'), active_container, $images);
+    });
+
+    $lightBox.find('.lightBox__right').off().bind('click', function () {
+        active_container = null;
+        if (jQuery($images).index($image) === $images.length - 1) {
+            active_container = jQuery($images.get(0));
+            lightBox_active_img = jQuery($images.get(0)).children('img').length === 0 ? jQuery($images.get(0)) : jQuery($images.get(0)).children('img');
+        } else {
+            active_container = jQuery($images.get(jQuery($images).index($image) + 1));
+            lightBox_active_img = jQuery($images.get(jQuery($images).index($image) + 1)).children('img').length === 0 ? jQuery($images.get(jQuery($images).index($image) + 1)) : jQuery($images.get(jQuery($images).index($image) + 1)).children('img');
+        }
+        showLightBox(lightBox_active_img.attr('srcset'), active_container, $images);
+    });
+
+    $lightBox.fadeIn(150);
+    jQuery('body').css('overflow', 'hidden');
+    lightBox_active_img = $image;
+}
+
+function hideLightBox() {
+    jQuery('.lightBox').fadeOut(180);
+    jQuery('body').css('overflow', 'auto');
+}
+
 /*
     ======================================
         Dialogs
@@ -566,12 +617,12 @@ jQuery(document).ready(function ($) {
 
 /**
  * Shows an Alert Dialog
- * @param string $question Label
- * @param array $buttons Labels of Buttons
+ * @param question Label
+ * @param buttons Labels of Bottons
  */
 
 function showAlertDialog(question, buttons = ['Abbrechen', 'OK']) {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
         const $ = jQuery;
         if ($('dialogbox').attr('open'))
             return;
@@ -607,6 +658,12 @@ function showAlertDialog(question, buttons = ['Abbrechen', 'OK']) {
     });
 }
 
+/**
+ * Shows the Share Dialog
+ * @param url Link of Article
+ * @param title Title of Article
+ * @returns {Promise<any>} callback
+ */
 function showShareDialog(url, title) {
     return new Promise((resolve, reject) => {
 

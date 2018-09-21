@@ -112,6 +112,17 @@ function writeNewComment() {
 }
 
 function replyTo(comment_id, parent_id, reply_user) {
+    if (!is_logged_in()) {
+        overlayFadeIn('comment');
+        showAlertDialog('Du musst angemeldet sein, um zu kommentieren', ['Abbrechen', 'Login']).then((res) => {
+            if (res === 'Login') {
+                window.location = php_vars.login_url;
+            }
+            overlayFadeOut('comment');
+        });
+        return;
+    }
+
     if (is_mobile()) {
         let $respond = $('.comments__respond.global');
         let $comment_parent = $respond.find('#comment_parent');
@@ -167,6 +178,15 @@ function optimizeCommentarea() {
 
 $(document).ready(function () {
 
+    /* ===== LIGHT BOX ===== */
+
+    const $images = jQuery('p > img, .wp-caption');
+
+    $images.stop().click(function () {
+        showLightBox($(this).children('img').length === 0 ? $(this).attr('src') : $(this).children('img').attr('srcset'), jQuery(this), jQuery('p > img, .wp-caption'));
+    });
+
+
     if (window.location.hash) {
         $('header').addClass('header--collapsed');
         $('ul.children').css('display', 'block');
@@ -190,6 +210,20 @@ $(document).ready(function () {
     $('.post__foot__like').one().click(function () {
         let $parent = $(this);
         let $count = $parent.find('.post__foot__like__count');
+
+        if (!is_logged_in()) {
+            overlayFadeIn('dialog-like-not_logged_in');
+            showAlertDialog('Zum Liken anmelden oder einfach ein kostenloses Konto erstellen', ['Abbrechen', 'Registrieren', 'Anmelden']).then((res) => {
+                if (res === 'Registrieren') {
+                    window.location = php_vars.registration_url;
+                } else if (res === 'Anmelden') {
+                    window.location = php_vars.login_url;
+                }
+                overlayFadeOut('dialog-like-not_logged_in');
+            });
+            return;
+        }
+
         if ($parent.hasClass('active')) {
             current_user_unlike_post(php_vars.post_id).done(function (success) {
                 if (success != 'false' && success) {
@@ -211,6 +245,20 @@ $(document).ready(function () {
         let $parent = $(this);
         let $comment_id = $parent.parents('.comments__list__comment').data('comment-id');
         let $count = $parent.find('.comments__list__comment__box__foot__like__count');
+
+        if (!is_logged_in()) {
+            overlayFadeIn('dialog-like-not_logged_in');
+            showAlertDialog('Zum Liken anmelden oder einfach ein kostenloses Konto erstellen', ['Abbrechen', 'Registrieren', 'Anmelden']).then((res) => {
+                if (res === 'Registrieren') {
+                    window.location = php_vars.registration_url;
+                } else if (res === 'Anmelden') {
+                    window.location = php_vars.login_url;
+                }
+                overlayFadeOut('dialog-like-not_logged_in');
+            });
+            return;
+        }
+
         if ($parent.hasClass('active')) {
             current_user_unlike_comment($comment_id).done(function (success) {
                 console.log(success);

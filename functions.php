@@ -29,7 +29,11 @@ function fhgnewsonline_enqueue() {
 	if ( is_single() ) {
 		wp_enqueue_style( 'single', get_template_directory_uri() . '/css/single.css' );
 		wp_enqueue_script( 'single', get_template_directory_uri() . '/js/single.js' );
-		wp_localize_script( 'single', 'php_vars', array( 'login_url' => wp_login_url(), 'post_id' => get_the_ID() ) );
+		wp_localize_script( 'single', 'php_vars', array(
+			'login_url'        => wp_login_url(),
+			'registration_url' => wp_registration_url(),
+			'post_id'          => get_the_ID()
+		) );
 	}
 	if ( is_page() ) {
 		wp_enqueue_style( 'page', get_template_directory_uri() . '/css/page.css' );
@@ -66,11 +70,11 @@ function fhgnewsonline_theme_setup() {
 	update_option( 'thread_comments_depth', 2, true );
 	update_option( 'permalink_structure', '/%year%/%monthnum%/%day%/%postname%/', true );
 
-	create_page_if_not_exists('about', 'Über Uns');
-	create_page_if_not_exists('your-contribution', 'Dein Beitrag');
-	create_page_if_not_exists('contact', 'Kontakt');
-	create_page_if_not_exists('imprint', 'Impressum');
-	create_page_if_not_exists('privacy', 'Datenschutz');
+	create_page_if_not_exists( 'about', 'Über Uns' );
+	create_page_if_not_exists( 'your-contribution', 'Dein Beitrag' );
+	create_page_if_not_exists( 'contact', 'Kontakt' );
+	create_page_if_not_exists( 'imprint', 'Impressum' );
+	create_page_if_not_exists( 'privacy', 'Datenschutz' );
 
 	include "includes/appbar.php";
 	include "includes/likeSystem.php";
@@ -126,5 +130,6 @@ function create_page_if_not_exists( $slug, $title ) {
 	if ( ! isset( get_page_by_title( $title )->ID ) && ! the_slug_exists( $title ) ) {
 		return wp_insert_post( $blog_page );
 	}
+
 	return false;
 }

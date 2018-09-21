@@ -210,6 +210,112 @@ dialogbox
       height: 100%
       line-height: 48px
 
+.lightBox
+  position: fixed
+  display: none
+  top: 0
+  right: 0
+  bottom: 0
+  left: 0
+  background-color: #212121
+  z-index: 24
+
+  .lightBox__header
+    position: relative
+    width: 100%
+    height: 56px
+    top: 0
+    left: 0
+    right: 0
+    background-color: rgba(#212121, .64)
+    z-index: 25
+    overflow: hidden
+
+    .lightBox__header__page
+      position: relative
+      left: 16px
+      top: 50%
+      transform: translateY(-50%)
+      margin: 0
+      padding: 0
+      font-size: 20px
+      font-weight: 400
+      color: rgba(#ffffff, .86)
+      -webkit-user-select: none
+      -moz-user-select: none
+      -ms-user-select: none
+      user-select: none
+
+    .lightBox__header__close
+      width: 24px
+      height: 24px
+      position: absolute
+      top: 50%
+      transform: translateY(-50%)
+      right: 16px
+      padding: 8px
+      margin-right: -8px
+      cursor: pointer
+      color: #ffffff
+
+  .lightBox__image
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    -webkit-user-select: none
+    -moz-user-select: none
+    -ms-user-select: none
+    user-select: none
+    -webkit-user-drag: none
+    user-drag: none
+    -webkit-touch-callout: none
+    max-width: 100%
+    max-height: 100%
+
+  .lightBox__left
+    width: 24px
+    height: 24px
+    position: absolute
+    top: 50%
+    transform: translateY(-50%)
+    left: 16px
+    padding: 8px
+    margin-left: -8px
+    cursor: pointer
+    color: #ffffff
+    z-index: 25
+
+  .lightBox__right
+    width: 24px
+    height: 24px
+    position: absolute
+    top: 50%
+    transform: translateY(-50%)
+    right: 16px
+    padding: 8px
+    margin-right: -8px
+    cursor: pointer
+    color: #ffffff
+    z-index: 25
+
+  .lightBox__captionBox
+    position: absolute
+    height: auto
+    bottom: 0
+    left: 0
+    right: 0
+    background-color: rgba(#212121, .64)
+    z-index: 25
+    overflow: hidden
+
+    .lightBox__captionBox__caption
+      margin: 0
+      padding: 16px 16px 8px 16px
+      font-size: 14px
+      font-weight: 400
+      color: rgba(#ffffff, .6)
+
 .ripple--icon
   border-radius: 50%
   overflow: hidden
@@ -699,7 +805,6 @@ content
             overflow: hidden
             color: rgba(#000000, .56)
 
-
 body.blog content .wrapper .sidebar,
 body.single content .wrapper .sidebar,
 body.page content .wrapper .sidebar,
@@ -765,7 +870,6 @@ body.search content .wrapper .sidebar
 
                 &:hover
                   opacity: .86
-
 
     &.widget_archive
       padding: 16px
