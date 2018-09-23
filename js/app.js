@@ -560,11 +560,13 @@ jQuery(document).ready(function ($) {
 });
 
 var lightBox_active_img = null;
+var lightBox_GUI_active = true;
 
 function showLightBox(srcset, $image, $images) {
     const $lightBox = jQuery('.lightBox');
     index = null;
-    $lightBox.find('.lightBox__captionBox').show();
+    $lightBox.find('.lightBox__captionBox, .lightBox__header, .lightBox__left, .lightBox__right').show();
+    $lightBox.find('.lightBox__captionBox__caption').text('');
 
     $lightBox.find('.lightBox__image').attr('srcset', srcset);
     $lightBox.find('.lightBox__header__page__index').text(jQuery($images).index($image) + 1);
@@ -575,7 +577,7 @@ function showLightBox(srcset, $image, $images) {
         $lightBox.find('.lightBox__captionBox').hide();
     }
 
-    $lightBox.find('.lightBox__left').off().bind('click', function () {
+    $lightBox.find('.lightBox__left').off().bind('click', function (e) {
         active_container = null;
         if (jQuery($images).index($image) === 0) {
             active_container = jQuery($images.get($images.length - 1));
@@ -585,9 +587,10 @@ function showLightBox(srcset, $image, $images) {
             lightBox_active_img = jQuery($images.get(jQuery($images).index($image) - 1)).children('img').length === 0 ? jQuery($images.get(jQuery($images).index($image) - 1)) : jQuery($images.get(jQuery($images).index($image) - 1)).children('img');
         }
         showLightBox(lightBox_active_img.attr('srcset'), active_container, $images);
+        e.stopPropagation();
     });
 
-    $lightBox.find('.lightBox__right').off().bind('click', function () {
+    $lightBox.find('.lightBox__right').off().bind('click', function (e) {
         active_container = null;
         if (jQuery($images).index($image) === $images.length - 1) {
             active_container = jQuery($images.get(0));
@@ -597,6 +600,18 @@ function showLightBox(srcset, $image, $images) {
             lightBox_active_img = jQuery($images.get(jQuery($images).index($image) + 1)).children('img').length === 0 ? jQuery($images.get(jQuery($images).index($image) + 1)) : jQuery($images.get(jQuery($images).index($image) + 1)).children('img');
         }
         showLightBox(lightBox_active_img.attr('srcset'), active_container, $images);
+        e.stopPropagation();
+    });
+
+    $lightBox.off().bind('click', function () {
+        if (lightBox_GUI_active) {
+            $lightBox.find('.lightBox__header, .lightBox__left, .lightBox__right, .lightBox__captionBox').fadeOut(180);
+            lightBox_GUI_active = false;
+        } else {
+            $lightBox.find('.lightBox__header, .lightBox__left, .lightBox__right').fadeIn(150);
+            if ($lightBox.find('.lightBox__captionBox__caption').text() !== '') $lightBox.find('.lightBox__captionBox').fadeIn(150);
+            lightBox_GUI_active = true;
+        }
     });
 
     $lightBox.fadeIn(150);
@@ -605,8 +620,11 @@ function showLightBox(srcset, $image, $images) {
 }
 
 function hideLightBox() {
-    jQuery('.lightBox').fadeOut(180);
+    let $lightBox = jQuery('.lightBox');
+    $lightBox.fadeOut(180);
     jQuery('body').css('overflow', 'auto');
+    lightBox_GUI_active = true;
+    if (event) event.stopPropagation();
 }
 
 /*

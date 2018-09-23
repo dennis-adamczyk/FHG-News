@@ -183,7 +183,7 @@ $(document).ready(function () {
     const $images = jQuery('p > img, .wp-caption');
 
     $images.stop().click(function () {
-        showLightBox($(this).children('img').length === 0 ? $(this).attr('src') : $(this).children('img').attr('srcset'), jQuery(this), jQuery('p > img, .wp-caption'));
+        showLightBox($(this).children('img').length === 0 ? $(this).attr('srcset') : $(this).children('img').attr('srcset'), jQuery(this), jQuery('p > img, .wp-caption'));
     });
 
 

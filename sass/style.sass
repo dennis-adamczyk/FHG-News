@@ -316,6 +316,34 @@ dialogbox
       font-weight: 400
       color: rgba(#ffffff, .6)
 
+  @media #{$not-mobile}
+
+    .lightBox__header
+      background-color: rgba(#000000, .64)
+      height: 64px
+
+      .lightBox__header__page
+        left: 24px
+
+      .lightBox__header__close
+        right: 24px
+
+    .lightBox__left
+      left: 24px
+
+    .lightBox__right
+      right: 24px
+
+    .lightBox__captionBox
+      background-color: rgba(#000000, .64)
+
+      .lightBox__captionBox__caption
+        text-align: center
+        max-width: 930px
+        margin: 0 auto
+        padding: 24px 0
+        color: #ffffff
+
 .ripple--icon
   border-radius: 50%
   overflow: hidden
