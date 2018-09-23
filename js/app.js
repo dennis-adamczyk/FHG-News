@@ -758,7 +758,7 @@ function showShareDialog(url, title) {
 
                     case 'link':
                         const el = document.createElement('textarea');
-                        el.value = 'Test';
+                        el.value = url;
                         el.setAttribute('readonly', '');
                         el.style.position = 'absolute';
                         el.style.left = '-9999px';
