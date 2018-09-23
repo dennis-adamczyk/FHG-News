@@ -1,0 +1,14 @@
+@media all and (min-width: 800px) { body.error404 content .wrapper { display: flex; margin: 0 24px; flex-wrap: nowrap; justify-content: space-around; } }
+@media all and (min-width: 1480px) { body.error404 content .wrapper { margin: 0 80px; } }
+body.error404 content .wrapper .main { width: 100%; }
+@media all and (min-width: 800px) { body.error404 content .wrapper .main { width: 72.5%; } }
+body.error404 content .wrapper .main .error { display: block; position: absolute; top: 50%; left: 50%; width: 50vw; height: auto; transform: translate(-50%, -50%); }
+body.error404 content .wrapper .main .error h3 { font-size: 48px; font-weight: 400; color: rgba(0, 0, 0, 0.56); text-align: center; margin: 0; padding: 0; }
+body.error404 content .wrapper .main .error p { font-size: 16px; font-weight: 500; color: #000000; text-align: center; margin: 4px 0 0 0; padding: 0; }
+body.error404 content .wrapper .main .error .button { position: relative; left: 50%; transform: translateX(-50%); margin: 4px auto; }
+body.error404 content .wrapper .main .error .button a { color: inherit; text-decoration: inherit; }
+@media all and (min-width: 800px) { body.error404 content .wrapper .main .error { position: relative; margin: 24px 0 0 0; top: 128px; width: 192px; transform: translateX(-50%); } }
+body.error404 content .wrapper .sidebar { display: none; margin: 24px 0 0 0; }
+@media all and (min-width: 800px) { body.error404 content .wrapper .sidebar { display: block; width: 22.5%; } }
+
+/*# sourceMappingURL=error404.css.map */

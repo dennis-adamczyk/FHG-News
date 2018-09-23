@@ -44,6 +44,9 @@ function fhgnewsonline_enqueue() {
 	if ( is_search() ) {
 		wp_enqueue_style( 'search', get_template_directory_uri() . '/css/search.css' );
 	}
+	if ( is_404() ) {
+		wp_enqueue_style( 'error404', get_template_directory_uri() . '/css/error404.css' );
+	}
 }
 
 add_action( 'wp_enqueue_scripts', 'fhgnewsonline_enqueue' );

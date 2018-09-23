@@ -1,4 +1,4 @@
-@media all and (min-width: 800px) { body.single content .wrapper { display: flex; margin: 0 24px; flex-wrap: nowrap; justify-content: space-evenly; } }
+@media all and (min-width: 800px) { body.single content .wrapper { display: flex; margin: 0 24px; flex-wrap: nowrap; justify-content: space-around; } }
 @media all and (min-width: 1480px) { body.single content .wrapper { margin: 0 80px; } }
 body.single content .wrapper .main { width: 100%; }
 @media all and (min-width: 800px) { body.single content .wrapper .main { width: 72.5%; } }

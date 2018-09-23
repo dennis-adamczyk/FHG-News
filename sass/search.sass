@@ -9,7 +9,7 @@ body.search
         display: flex
         margin: 0 24px
         flex-wrap: nowrap
-        justify-content: space-evenly
+        justify-content: space-around
 
       @media #{$desktop}
         margin: 0 80px
@@ -58,11 +58,9 @@ body.search
           @media #{$not-mobile}
             position: relative
             margin: 24px 0 0 0
-
-            .error
-              top: 128px
-              width: 192px
-              transform: translateX(-50%)
+            top: 128px
+            width: 192px
+            transform: translateX(-50%)
 
           .post
             width: calc(100% - 2 * 16px)
