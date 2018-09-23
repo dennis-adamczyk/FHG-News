@@ -7,7 +7,8 @@ body.search content .wrapper .main .posts .error { display: block; position: abs
 body.search content .wrapper .main .posts .error .material-icons { font-size: 64px; color: rgba(0, 0, 0, 0.56); text-align: center; width: 100%; }
 body.search content .wrapper .main .posts .error h3 { font-size: 16px; font-weight: 500; color: rgba(0, 0, 0, 0.86); text-align: center; margin: 16px 0 0 0; padding: 0; }
 body.search content .wrapper .main .posts .error p { font-size: 14px; font-weight: 400; color: rgba(0, 0, 0, 0.6); text-align: center; margin: 6px 0 0 0; padding: 0; }
-@media all and (min-width: 800px) { body.search content .wrapper .main .posts { position: relative; margin: 24px 0 0 0; top: 128px; width: 192px; transform: translateX(-50%); } }
+@media all and (min-width: 800px) { body.search content .wrapper .main .posts { position: relative; margin: 24px 0 0 0; }
+  body.search content .wrapper .main .posts .error { top: 128px; width: 192px; transform: translateX(-50%); } }
 body.search content .wrapper .main .posts .post { width: calc(100% - 2 * 16px); display: block; margin: 0 auto 24px auto; padding: 0; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; cursor: pointer; }
 body.search content .wrapper .main .posts .post .post__image { display: block; width: 100%; padding-top: 56.25%; background-color: rgba(0, 0, 0, 0.24); border-radius: 4px; position: relative; overflow: hidden; background-position: center; background-repeat: no-repeat; background-size: cover; }
 body.search content .wrapper .main .posts .post .post__image img { pointer-events: none; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 100%; height: auto; }

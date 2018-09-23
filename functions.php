@@ -47,6 +47,9 @@ function fhgnewsonline_enqueue() {
 	if ( is_404() ) {
 		wp_enqueue_style( 'error404', get_template_directory_uri() . '/css/error404.css' );
 	}
+	if ( is_category() ) {
+		wp_enqueue_style( 'error404', get_template_directory_uri() . '/css/category.css' );
+	}
 }
 
 add_action( 'wp_enqueue_scripts', 'fhgnewsonline_enqueue' );
@@ -91,7 +94,7 @@ add_action( 'init', 'fhgnewsonline_theme_setup' );
  * @return string page_title
  */
 function fhgnewsonline_get_page_title() {
-	return ( explode( ' &#8211;', get_wp_title_rss() )[0] == get_bloginfo_rss( 'name' ) || is_single() ? 'News' : explode( '&#8211;', get_wp_title_rss() )[0] );
+	return ( explode( ' &#8211;', get_wp_title_rss() )[0] == get_bloginfo_rss( 'name' ) || is_single() || is_category() ? 'News' : ( is_404() ? 'Fehler 404' : explode( '&#8211;', get_wp_title_rss() )[0] ) );
 }
 
 /**

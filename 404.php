@@ -16,9 +16,3 @@
 </div>
 
 <?php get_footer(); ?>
-
-<script>
-  jQuery(document).ready(function() {
-      jQuery('.header__title').text('Fehler 404');
-  });
-</script>

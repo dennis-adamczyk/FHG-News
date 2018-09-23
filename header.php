@@ -26,7 +26,7 @@
   </div>
 </div>
 
-<?php get_appbar( fhgnewsonline_get_page_title(), ( is_single() ? 'arrow_back' : 'menu' ), ( is_single() ? false : true ) ); ?>
+<?php get_appbar( fhgnewsonline_get_page_title(), ( is_single() || is_category() ? 'arrow_back' : 'menu' ), ( is_single() ? false : true ) ); ?>
 
 <nav class="nav">
   <img src="<?php echo get_template_directory_uri() ?>/img/fhgnews.svg" class="nav__logo"

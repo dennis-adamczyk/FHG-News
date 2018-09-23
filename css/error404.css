@@ -7,7 +7,8 @@ body.error404 content .wrapper .main .error h3 { font-size: 48px; font-weight: 4
 body.error404 content .wrapper .main .error p { font-size: 16px; font-weight: 500; color: #000000; text-align: center; margin: 4px 0 0 0; padding: 0; }
 body.error404 content .wrapper .main .error .button { position: relative; left: 50%; transform: translateX(-50%); margin: 4px auto; }
 body.error404 content .wrapper .main .error .button a { color: inherit; text-decoration: inherit; }
-@media all and (min-width: 800px) { body.error404 content .wrapper .main .error { position: relative; margin: 24px 0 0 0; top: 128px; width: 192px; transform: translateX(-50%); } }
+@media all and (min-width: 800px) { body.error404 content .wrapper .main .error { position: relative; margin: 24px 0 0 0; }
+  body.error404 content .wrapper .main .error .error { top: 128px; width: 192px; transform: translateX(-50%); } }
 body.error404 content .wrapper .sidebar { display: none; margin: 24px 0 0 0; }
 @media all and (min-width: 800px) { body.error404 content .wrapper .sidebar { display: block; width: 22.5%; } }
 
