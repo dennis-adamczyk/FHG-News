@@ -155,7 +155,7 @@ content .wrapper .sidebar .sidebar__widget.widget_categories .sidebar__widget__t
 content .wrapper .sidebar .sidebar__widget.widget_categories h2 { margin: 0 0 8px 0; padding: 0; }
 content .wrapper .sidebar .sidebar__widget.widget_categories h2 ul { list-style: none; margin: 0; padding: 0; }
 content .wrapper .sidebar .sidebar__widget.widget_categories h2 ul li { margin: 0; padding: 0; display: inline-block; }
-content .wrapper .sidebar .sidebar__widget.widget_categories h2 ul li a { margin: 8px 8px 0 0; padding: 6px 12px; height: 18px; width: auto; background-color: rgba(255, 255, 255, 0.86); border-radius: 8px; border: 1px solid rgba(0, 0, 0, 0.24); font-size: 14px; font-weight: 500; color: rgba(0, 0, 0, 0.86); text-decoration: none; display: block; }
+content .wrapper .sidebar .sidebar__widget.widget_categories h2 ul li a { margin: 8px 8px 0 0; padding: 6px 12px; height: 18px; width: auto; background-color: rgba(255, 255, 255, 0.86); border-radius: 8px; border: 1px solid rgba(0, 0, 0, 0.24); font-size: 14px; font-weight: 500; color: rgba(0, 0, 0, 0.86); text-decoration: none; display: block; transition: color 180ms cubic-bezier(0, 0, 0.2, 1); }
 
 /* =============== INPUTS =============== */
 .input.input--line.input--textarea { position: relative; }

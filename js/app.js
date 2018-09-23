@@ -557,6 +557,17 @@ jQuery(document).ready(function ($) {
         Waves.init();
     }
 
+    /* ==============================
+    *   Category Widget
+    *   ============================= */
+
+    $('content .wrapper .sidebar .sidebar__widget.widget_categories h2 ul li a').each(function (index, value) {
+        get_rl_color($(value).text()).success(function (data) {
+            data = data.substr(0, 7);
+            $(value).css('color', data);
+        });
+    });
+
 });
 
 var lightBox_active_img = null;
@@ -852,6 +863,17 @@ function current_user_unlike_comment($comment_id) {
         data: {
             method: 'remove_comment_like_current_user',
             comment_id: $comment_id
+        }
+    });
+}
+
+function get_rl_color($category) {
+    return jQuery.ajax({
+        type: 'POST',
+        url: php_info.ajaxurl,
+        data: {
+            action: 'get_rl_color',
+            cat: $category
         }
     });
 }
