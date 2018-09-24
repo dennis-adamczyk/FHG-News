@@ -19,7 +19,7 @@ function get_appbar( $title, $navigation = 'menu', $search = true, $profile = tr
         </div>
 	  <?php endif; ?>
 	  <?php if ( $profile ): ?>
-        <div class="header__profile ripple--icon">
+        <div class="header__profile ripple--icon" onclick="showUserOptions()">
 			<?php echo get_avatar( get_current_user_id(), 32 ); ?>
         </div>
 	  <?php endif; ?>

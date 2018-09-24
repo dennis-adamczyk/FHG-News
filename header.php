@@ -15,7 +15,9 @@
     <p class="lightBox__header__page">
       <span class="lightBox__header__page__index"></span> / <span class="lightBox__header__page__total"></span>
     </p>
-    <div class="lightBox__header__close ripple--icon--light" onclick="hideLightBox()"><i class="material-icons">close</i></div>
+    <div class="lightBox__header__close ripple--icon--light" onclick="hideLightBox()">
+      <i class="material-icons">close</i>
+    </div>
   </div>
 
   <div class="lightBox__left ripple--icon--light"><i class="material-icons">navigate_before</i></div>
@@ -23,6 +25,27 @@
   <img class="lightBox__image">
   <div class="lightBox__captionBox">
     <p class="lightBox__captionBox__caption"></p>
+  </div>
+</div>
+<div class="userOptions">
+  <div class="userOptions__current ripple--box">
+	  <?php echo get_avatar( get_current_user_id(), 32 ); ?>
+    <p class="userOptions__current__name"><?php echo wp_get_current_user()->user_login; ?></p>
+    <p class="userOptions__current__mail"><?php echo wp_get_current_user()->user_email; ?></p>
+  </div>
+  <div class="userOptions__actions">
+    <div class="userOptions__actions__action ripple--box">
+      <i class="material-icons">edit</i>
+      <p class="userOptions__actions__action__name">Profil bearbeiten</p>
+    </div>
+    <div class="userOptions__actions__action ripple--box">
+      <i class="material-icons">settings</i>
+      <p class="userOptions__actions__action__name">Einstellungen</p>
+    </div>
+    <div class="userOptions__actions__action ripple--box">
+      <i class="material-icons">exit_to_app</i>
+      <p class="userOptions__actions__action__name">Abmelden</p>
+    </div>
   </div>
 </div>
 

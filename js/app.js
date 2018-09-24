@@ -46,6 +46,7 @@ jQuery(document).ready(function ($) {
     ======================================
      */
 
+    Waves.attach('.ripple');
     Waves.attach('.ripple--icon', ['waves-circle']);
     Waves.attach('.ripple--box', ['waves-box']);
     Waves.attach('.ripple--icon--light', ['waves-circle', 'waves-light']);
@@ -577,10 +578,18 @@ jQuery(document).ready(function ($) {
 
 });
 
+window.onpopstate = function (e) {
+    if (e.state !== 'lightBox')
+        hideLightBox();
+};
+
 var lightBox_active_img = null;
 var lightBox_GUI_active = true;
 
 function showLightBox(srcset, $image, $images) {
+    if (!new URLSearchParams(window.location.search).has('lightBox'))
+        history.pushState('lightBox', null, '?lightBox');
+
     const $lightBox = jQuery('.lightBox');
     index = null;
     $lightBox.find('.lightBox__captionBox, .lightBox__header, .lightBox__left, .lightBox__right').show();
@@ -638,6 +647,8 @@ function showLightBox(srcset, $image, $images) {
 }
 
 function hideLightBox() {
+    if (new URLSearchParams(window.location.search).has('lightBox'))
+        history.back();
     let $lightBox = jQuery('.lightBox');
     $lightBox.fadeOut(180);
     jQuery('body').css('overflow', 'auto');
@@ -805,7 +816,7 @@ function is_mobile() {
 function overlayFadeIn(clazz, callback = false) {
     jQuery('overlay').fadeIn(150, function () {
         jQuery('body').css('overflow', 'hidden');
-        if (callback) callback();
+        if (callback) callback(this);
         jQuery(this).addClass('active active--' + clazz);
     });
 }
@@ -813,9 +824,34 @@ function overlayFadeIn(clazz, callback = false) {
 function overlayFadeOut(clazz, callback = false) {
     jQuery('body').css('overflow', 'auto');
     jQuery('overlay').fadeOut(180, function () {
-        if (callback) callback();
+        if (callback) callback(this);
         jQuery(this).removeClass('active active--' + clazz);
     });
+}
+
+function showUserOptions() {
+    if (is_mobile()) {
+        overlayFadeIn('userOptions', function (overlay) {
+            jQuery(overlay).bind('click', hideUserOptions);
+        });
+        jQuery('.userOptions').fadeIn(150);
+    } else {
+        jQuery('.userOptions').slideDown(150, function () {
+            jQuery(window).bind('click', hideUserOptions);
+        });
+    }
+}
+
+function hideUserOptions(e) {
+    jQuery('overlay').unbind('click', hideUserOptions);
+    jQuery(window).unbind('click', hideUserOptions);
+    if (is_mobile()) {
+        jQuery('.userOptions').fadeOut(180);
+        overlayFadeOut('userOptions');
+    } else {
+        jQuery('.userOptions').slideUp(180);
+    }
+
 }
 
 function showSingleLineSnackBar($message) {
