@@ -13,7 +13,7 @@ body.single content .wrapper .main .post .post__thumbnail .post__image__error i 
 body.single content .wrapper .main .post .post__thumbnail .post__image__error p { font-size: 16px; font-weight: 500; color: rgba(0, 0, 0, 0.86); text-align: center; margin: 16px 0 0 0; }
 body.single content .wrapper .main .post .post__title { font-size: 20px; font-weight: 500; padding: 0; margin: 12px 0 6px 0; color: #000000; }
 body.single content .wrapper .main .post .post__subtitle { font-size: 14px; font-weight: 400; color: rgba(0, 0, 0, 0.6); margin: 0; padding: 0; }
-body.single content .wrapper .main .post .post__content { width: 100%; margin: 32px 0 16px 0; font-size: 16px; line-height: 26px; }
+body.single content .wrapper .main .post .post__content { width: 100%; margin: 16px 0 0 0; font-size: 16px; line-height: 26px; }
 body.single content .wrapper .main .post .post__content::before { content: ""; display: table; table-layout: fixed; }
 body.single content .wrapper .main .post .post__content::after { content: ""; display: table; table-layout: fixed; clear: both; }
 body.single content .wrapper .main .post .post__content .alignleft { display: inline; float: left; margin-right: 16px; }
@@ -104,7 +104,7 @@ body.single content .wrapper .main .recommended .recommended__posts .recommended
   body.single content .wrapper .main .post .post__title { font-size: 24px; font-weight: 500; padding: 0; margin: 16px 0 6px 0; color: #000000; }
   body.single content .wrapper .main .post .post__subtitle { font-size: 14px; font-weight: 400; color: rgba(0, 0, 0, 0.6); margin: 0; padding: 0; }
   body.single content .wrapper .main .post .post__subtitle .post__subtitle__category { cursor: pointer; }
-  body.single content .wrapper .main .post .post__content { width: 100%; text-align: justify; -webkit-hyphens: auto; -moz-hyphens: auto; -ms-hyphens: auto; hyphens: auto; margin: 32px 0; }
+  body.single content .wrapper .main .post .post__content { width: 100%; text-align: justify; -webkit-hyphens: auto; -moz-hyphens: auto; -ms-hyphens: auto; hyphens: auto; margin: 16px 0; }
   body.single content .wrapper .main .post .post__foot { width: 100%; margin: 32px 0 0 0; padding: 0; position: relative; }
   body.single content .wrapper .main .post .post__foot .post__foot__like { position: relative; margin: 0 24px 0 0; padding: 0; display: inline-flex; height: 28px; align-items: center; }
   body.single content .wrapper .main .post .post__foot .post__foot__like.active i { color: #F44336; }

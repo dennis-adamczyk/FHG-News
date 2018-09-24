@@ -43,6 +43,7 @@ body.category content .wrapper .main .posts .post .post__foot .post__foot__comme
   body.category content .wrapper .main .posts .post .post__foot .post__foot__comments i { font-size: 24px; color: rgba(0, 0, 0, 0.56); margin: 0 4px 0 0; padding: 0; cursor: pointer; display: inline-block; }
   body.category content .wrapper .main .posts .post .post__foot .post__foot__comments .post__foot__comments__count { font-size: 14px; font-weight: 400; line-height: 14px; color: rgba(0, 0, 0, 0.56); margin: 0; padding: 0; display: inline-block; height: 14px; } }
 body.category content .wrapper .sidebar { display: none; }
+body.category content .wrapper .sidebar .widget_categories h2 ul li.current-cat a { border: 1px solid transparent; color: #ffffff; background-color: transparent; }
 @media all and (min-width: 800px) { body.category content .wrapper .sidebar { display: block; width: 22.5%; } }
 
 /*# sourceMappingURL=category.css.map */

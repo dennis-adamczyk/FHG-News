@@ -359,6 +359,17 @@ dialogbox
     .header--search__delete
       right: 72px
 
+body.admin-bar .header
+  @media screen and (min-width: 782px)
+    margin-top: 32px !important
+
+  @media screen and (min-width: 600px) and (max-width: 782px)
+    margin-top: 46px !important
+
+  @media screen and (max-width: 600px)
+    &.header--top
+      top: 46px !important
+
 .header
   width: 100%
   height: 56px
@@ -556,6 +567,16 @@ dialogbox
 
     @media #{$not-mobile}
       right: 24px
+
+body.admin-bar .nav
+  @media screen and (min-width: 782px)
+    top: 32px !important
+
+  @media screen and (min-width: 600px) and (max-width: 782px)
+    top: 46px !important
+
+  @media screen and (max-width: 600px)
+    z-index: 100000
 
 .nav
   width: calc(100vw - 64px)
@@ -988,7 +1009,7 @@ content .wrapper .sidebar
               text-decoration: none
               display: block
 
-              transition: color 180ms $easing--decelerate
+              transition: color 180ms $easing--decelerate, background-color 180ms $easing--decelerate
 
 /* =============== INPUTS =============== */
 

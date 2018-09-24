@@ -561,10 +561,17 @@ jQuery(document).ready(function ($) {
     *   Category Widget
     *   ============================= */
 
-    $('content .wrapper .sidebar .sidebar__widget.widget_categories h2 ul li a').each(function (index, value) {
+    $('content .wrapper .sidebar .sidebar__widget.widget_categories h2 ul li:not(.current-cat) a').each(function (index, value) {
         get_rl_color($(value).text()).success(function (data) {
             data = data.substr(0, 7);
             $(value).css('color', data);
+        });
+    });
+
+    $('content .wrapper .sidebar .sidebar__widget.widget_categories h2 ul li.current-cat a').each(function (index, value) {
+        get_rl_color($(value).text()).success(function (data) {
+            data = data.substr(0, 7);
+            $(value).css('background-color', data);
         });
     });
 
