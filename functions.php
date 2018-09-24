@@ -22,6 +22,7 @@ function fhgnewsonline_enqueue() {
 		'home_url'               => get_home_url(),
 		'admin_url'              => get_admin_url(),
 		'ajaxurl'                => admin_url( 'admin-ajax.php' ),
+		'login_url'              => wp_logout_url(),
 	) );
 
 	if ( is_home() ) {

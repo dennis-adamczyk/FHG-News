@@ -42,7 +42,7 @@
       <i class="material-icons">settings</i>
       <p class="userOptions__actions__action__name">Einstellungen</p>
     </div>
-    <div class="userOptions__actions__action ripple--box">
+    <div class="userOptions__actions__action ripple--box" onclick="window.location = '<?php echo wp_logout_url($_SERVER['REQUEST_URI']); ?>'">
       <i class="material-icons">exit_to_app</i>
       <p class="userOptions__actions__action__name">Abmelden</p>
     </div>

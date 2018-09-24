@@ -830,6 +830,11 @@ function overlayFadeOut(clazz, callback = false) {
 }
 
 function showUserOptions() {
+    if (!is_logged_in()) {
+        window.location = php_info.login_url;
+        return;
+    }
+
     if (is_mobile()) {
         overlayFadeIn('userOptions', function (overlay) {
             jQuery(overlay).bind('click', hideUserOptions);
@@ -842,7 +847,7 @@ function showUserOptions() {
     }
 }
 
-function hideUserOptions(e) {
+function hideUserOptions() {
     jQuery('overlay').unbind('click', hideUserOptions);
     jQuery(window).unbind('click scroll', hideUserOptions);
     if (is_mobile()) {
