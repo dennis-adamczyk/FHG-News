@@ -1,6 +1,6 @@
 @import "vars"
 
-body.search
+body.archive
 
   content
 
@@ -20,49 +20,17 @@ body.search
         @media #{$not-mobile}
           width: 72.5%
 
-        .posts
-          margin: 18px 0 0 0
-          width: 100%
-
-          .error
-            display: block
-            position: absolute
-            top: 50%
-            left: 50%
-            width: 50vw
-            height: auto
-            transform: translate(-50%, -50%)
-
-            .material-icons
-              font-size: 64px
-              color: rgba(#000000, .56)
-              text-align: center
-              width: 100%
-
-            h3
-              font-size: 16px
-              font-weight: 500
-              color: rgba(#000000, .86)
-              text-align: center
-              margin: 16px 0 0 0
-              padding: 0
-
-            p
-              font-size: 14px
-              font-weight: 400
-              color: rgba(#000000, .6)
-              text-align: center
-              margin: 6px 0 0 0
-              padding: 0
+        .main__title
+          font-size: 18px
+          font-weight: 500
+          color: rgba(#000000, .86)
+          margin: 24px 0 24px 16px
 
           @media #{$not-mobile}
-            position: relative
-            margin: 24px 0 0 0
+            margin: 24px 0
 
-            .error
-              top: 128px
-              width: 192px
-              transform: translateX(-50%)
+        .posts
+          width: 100%
 
           .post
             width: calc(100% - 2 * 16px)
@@ -366,7 +334,13 @@ body.search
                     height: 14px
       .sidebar
         display: none
-        margin: 24px 0 0 0
+
+        .widget_categories
+          h2 ul li.current-cat
+            a
+              border: 1px solid transparent
+              color: #ffffff
+              background-color: transparent
 
         @media #{$not-mobile}
           display: block

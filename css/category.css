@@ -3,6 +3,8 @@
 body.category content .wrapper .main { width: 100%; }
 @media all and (min-width: 800px) { body.category content .wrapper .main { width: 72.5%; } }
 body.category content .wrapper .main .main__title { font-size: 18px; font-weight: 500; color: rgba(0, 0, 0, 0.86); margin: 24px 0 24px 16px; }
+body.category content .wrapper .main .main__title .main__title__parent { cursor: pointer; }
+body.category content .wrapper .main .main__title i.material-icons { font-size: 20px; width: 20px; height: 20px; color: rgba(0, 0, 0, 0.86); vertical-align: sub; }
 @media all and (min-width: 800px) { body.category content .wrapper .main .main__title { margin: 24px 0; } }
 body.category content .wrapper .main .posts { width: 100%; }
 body.category content .wrapper .main .posts .post { width: calc(100% - 2 * 16px); display: block; margin: 0 auto 24px auto; padding: 0; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; cursor: pointer; }

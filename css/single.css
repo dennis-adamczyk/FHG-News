@@ -13,6 +13,7 @@ body.single content .wrapper .main .post .post__thumbnail .post__image__error i 
 body.single content .wrapper .main .post .post__thumbnail .post__image__error p { font-size: 16px; font-weight: 500; color: rgba(0, 0, 0, 0.86); text-align: center; margin: 16px 0 0 0; }
 body.single content .wrapper .main .post .post__title { font-size: 20px; font-weight: 500; padding: 0; margin: 12px 0 6px 0; color: #000000; }
 body.single content .wrapper .main .post .post__subtitle { font-size: 14px; font-weight: 400; color: rgba(0, 0, 0, 0.6); margin: 0; padding: 0; }
+body.single content .wrapper .main .post .post__subtitle i.material-icons { font-size: 16px; height: 16px; width: 16px; color: rgba(0, 0, 0, 0.6); vertical-align: sub; }
 body.single content .wrapper .main .post .post__content { width: 100%; margin: 16px 0 0 0; font-size: 16px; line-height: 26px; }
 body.single content .wrapper .main .post .post__content::before { content: ""; display: table; table-layout: fixed; }
 body.single content .wrapper .main .post .post__content::after { content: ""; display: table; table-layout: fixed; clear: both; }
@@ -91,6 +92,7 @@ body.single content .wrapper .main .recommended .recommended__posts .recommended
 body.single content .wrapper .main .recommended .recommended__posts .recommended__post .post__image .post__image__error p { display: none; }
 body.single content .wrapper .main .recommended .recommended__posts .recommended__post .post__title { font-size: 20px; font-weight: 500; padding: 0; margin: 0 82px 4px 0; color: #000000; }
 body.single content .wrapper .main .recommended .recommended__posts .recommended__post .post__subtitle { font-size: 14px; font-weight: 400; color: rgba(0, 0, 0, 0.6); margin: 0; padding: 0; }
+body.single content .wrapper .main .recommended .recommended__posts .recommended__post .post__subtitle i.material-icons { font-size: 16px; height: 16px; width: 16px; color: rgba(0, 0, 0, 0.6); vertical-align: sub; }
 body.single content .wrapper .main .recommended .recommended__posts .recommended__post .post__foot { display: none; }
 @media all and (min-width: 800px) { body.single content .wrapper .main .post { width: 100%; display: block; margin: 0; padding: 0; }
   body.single content .wrapper .main .post .post__author { width: 100%; height: 32px; margin: 24px 0 16px 0; padding: 0; cursor: pointer; }

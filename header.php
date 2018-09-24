@@ -18,8 +18,8 @@
     <div class="lightBox__header__close ripple--icon--light" onclick="hideLightBox()"><i class="material-icons">close</i></div>
   </div>
 
-  <div class="lightBox__left ripple--icon--light"><i class="material-icons">chevron_left</i></div>
-  <div class="lightBox__right ripple--icon--light"><i class="material-icons">chevron_right</i></div>
+  <div class="lightBox__left ripple--icon--light"><i class="material-icons">navigate_before</i></div>
+  <div class="lightBox__right ripple--icon--light"><i class="material-icons">navigate_next</i></div>
   <img class="lightBox__image">
   <div class="lightBox__captionBox">
     <p class="lightBox__captionBox__caption"></p>

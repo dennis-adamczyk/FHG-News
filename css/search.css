@@ -17,6 +17,7 @@ body.search content .wrapper .main .posts .post .post__image .post__image__error
 body.search content .wrapper .main .posts .post .post__image .post__image__error p { font-size: 16px; font-weight: 500; color: rgba(0, 0, 0, 0.86); text-align: center; margin: 16px 0 0 0; }
 body.search content .wrapper .main .posts .post .post__title { font-size: 20px; font-weight: 500; padding: 0; margin: 12px 0 6px 0; color: #000000; }
 body.search content .wrapper .main .posts .post .post__subtitle { font-size: 14px; font-weight: 400; color: rgba(0, 0, 0, 0.6); margin: 0; padding: 0; }
+body.search content .wrapper .main .posts .post .post__subtitle i.material-icons { font-size: 16px; height: 16px; width: 16px; color: rgba(0, 0, 0, 0.6); vertical-align: sub; }
 body.search content .wrapper .main .posts .post .post__preview { display: none; }
 body.search content .wrapper .main .posts .post .post__foot { width: 100%; margin: 20px 0 0 0; padding: 0; position: relative; }
 body.search content .wrapper .main .posts .post .post__foot .post__foot__like { position: relative; margin: 0 24px 0 0; padding: 0; display: inline-flex; height: 24px; align-items: center; }

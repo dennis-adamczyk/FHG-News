@@ -22,9 +22,20 @@
 	  <?php the_title(); ?>
   </h3>
   <p class="post__subtitle">
-    <span class="post__subtitle__category" style="color: <?php echo $category_color; ?>"
-          onclick="window.location = '<?php echo get_category_link( get_the_category()[0]->cat_ID ); ?>'">
-        <?php echo get_the_category()[0]->name; ?>
+    <span class="post__subtitle__category">
+      <?php if ( get_the_category()[0]->parent !== 0 ):
+	      echo '<span class="post__subtitle__category__parent" style="color: ' . rl_color( get_category( get_the_category()[0]->parent )->cat_ID ) . ';" onclick="window.location = \'' . get_category_link( get_category( get_the_category()[0]->parent )->cat_ID ) . '\'">' .
+	           get_category( get_the_category()[0]->parent )->name .
+	           '</span>' .
+	           '<i class="material-icons">chevron_right</i>' .
+	           '<span class="post__subtitle__category__sub" style="color: ' . $category_color . ';" onclick="window.location = \'' . get_category_link( get_the_category()[0]->cat_ID ) . '\'">' .
+	           get_the_category()[0]->name .
+	           '</span>';
+      else:
+	      echo '<span class="post__subtitle__category__sub" style="color: ' . $category_color . ';" onclick="window.location = \'' . get_category_link( get_the_category()[0]->cat_ID ) . '\'">' .
+	           get_the_category()[0]->name .
+	           '</span>';
+      endif; ?>
     </span> &bull; vor <?php echo human_time_diff( get_the_time( 'U' ), current_time( 'timestamp' ) ); ?>
   </p>
   <div class="post__content">
@@ -39,7 +50,8 @@
       <i class="material-icons">favorite</i>
       <p class="post__foot__like__count"><?php echo get_like_amount( get_the_ID() ); ?></p>
     </div>
-    <div class="post__foot__share" onclick="event.stopPropagation(); showShareDialog('<?php echo get_permalink(); ?>', '<?php echo get_the_title(); ?>');">
+    <div class="post__foot__share"
+         onclick="event.stopPropagation(); showShareDialog('<?php echo get_permalink(); ?>', '<?php echo get_the_title(); ?>');">
       <i class="material-icons">share</i>
     </div>
 	  <?php if ( ( current_user_can( 'edit_posts' ) && get_the_author_meta( 'ID' ) === get_current_user_id() ) || current_user_can( 'edit_others_posts' ) ): ?>
@@ -106,9 +118,20 @@
                   </div>
                   <h4 class="post__title"><?php the_title(); ?></h4>
                   <p class="post__subtitle">
-                  <span class="post__subtitle__category" style="color: <?php echo $category_color; ?>"
-                        onclick="window.location = '<?php echo get_category_link( get_the_category()[0]->cat_ID ); ?>'">
-                      <?php echo get_the_category()[0]->name; ?>
+                    <span class="post__subtitle__category">
+                    <?php if ( get_the_category()[0]->parent !== 0 ):
+	                    echo '<span class="post__subtitle__category__parent" style="color: ' . rl_color( get_category( get_the_category()[0]->parent )->cat_ID ) . ';" onclick="window.location = \'' . get_category_link( get_category( get_the_category()[0]->parent )->cat_ID ) . '\'">' .
+	                         get_category( get_the_category()[0]->parent )->name .
+	                         '</span>' .
+	                         '<i class="material-icons">chevron_right</i>' .
+	                         '<span class="post__subtitle__category__sub" style="color: ' . $category_color . ';" onclick="window.location = \'' . get_category_link( get_the_category()[0]->cat_ID ) . '\'">' .
+	                         get_the_category()[0]->name .
+	                         '</span>';
+                    else:
+	                    echo '<span class="post__subtitle__category__sub" style="color: ' . $category_color . ';" onclick="window.location = \'' . get_category_link( get_the_category()[0]->cat_ID ) . '\'">' .
+	                         get_the_category()[0]->name .
+	                         '</span>';
+                    endif; ?>
                   </span> &bull; vor <?php echo human_time_diff( get_the_time( 'U' ), current_time( 'timestamp' ) ); ?>
                   </p>
                   <div class="post__foot">
@@ -123,7 +146,8 @@
                       <i class="material-icons">insert_comment</i>
                       <p class="post__foot__comments__count"><?php echo get_comments_number() ?: ''; ?></p>
                     </div>
-                    <div class="post__foot__share" onclick="event.stopPropagation(); showShareDialog('<?php echo get_permalink(); ?>', '<?php echo get_the_title(); ?>');">
+                    <div class="post__foot__share"
+                         onclick="event.stopPropagation(); showShareDialog('<?php echo get_permalink(); ?>', '<?php echo get_the_title(); ?>');">
                       <i class="material-icons">share</i>
                     </div>
                   </div>
