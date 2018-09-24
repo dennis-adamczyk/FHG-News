@@ -22,7 +22,7 @@
 
   <div class="lightBox__left ripple--icon--light"><i class="material-icons">navigate_before</i></div>
   <div class="lightBox__right ripple--icon--light"><i class="material-icons">navigate_next</i></div>
-  <img class="lightBox__image">
+  <img src="" class="lightBox__image">
   <div class="lightBox__captionBox">
     <p class="lightBox__captionBox__caption"></p>
   </div>
@@ -52,7 +52,7 @@
 <?php get_appbar( fhgnewsonline_get_page_title(), ( is_single() || is_category() ? 'arrow_back' : 'menu' ), ( is_single() ? false : true ) ); ?>
 
 <nav class="nav">
-  <img src="<?php echo get_template_directory_uri() ?>/img/fhgnews.svg" class="nav__logo"
+  <img src="<?php echo get_template_directory_uri() . '/img/fhgnews.svg'; ?>" class="nav__logo"
        onclick="window.location = '<?php echo get_home_url(); ?>'">
 	<?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
 </nav>

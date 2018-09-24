@@ -123,11 +123,11 @@ dialogbox.share ul li p { position: absolute; left: 80px; top: 50%; display: inl
 .nav div ul li { position: relative; width: calc(100% - 8px); height: 40px; display: block; margin: 0 auto 8px 0; border-radius: 0 20px 20px 0; cursor: pointer; transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1); }
 .nav div ul li::before { content: "label_important"; font-family: "Material Icons", sans-serif; font-weight: normal; font-style: normal; line-height: 1; letter-spacing: normal; text-transform: none; white-space: nowrap; word-wrap: normal; direction: ltr; -webkit-font-feature-settings: "liga"; -webkit-font-smoothing: antialiased; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; display: inline-block; position: absolute; top: 8px; left: 16px; width: 24px; height: 24px; font-size: 24px; color: rgba(0, 0, 0, 0.56); }
 .nav div ul li.news::before { content: "update"; }
-.nav div ul li.about::before { content: "supervisor_account"; }
-.nav div ul li.your-contribution::before { content: "edit"; }
-.nav div ul li.contact::before { content: "message"; }
-.nav div ul li.imprint::before { content: "info"; }
-.nav div ul li.privacy::before { content: "reorder"; }
+.nav div ul li.ueber-uns::before { content: "supervisor_account"; }
+.nav div ul li.dein-beitrag::before { content: "edit"; }
+.nav div ul li.kontakt::before { content: "message"; }
+.nav div ul li.impressum::before { content: "info"; }
+.nav div ul li.datenschutz::before { content: "reorder"; }
 .nav div ul li:hover { background-color: rgba(0, 0, 0, 0.08); }
 .nav div ul li.current-menu-item { background-color: rgba(0, 0, 0, 0.16); }
 .nav div ul li.current-menu-item::before { color: black; }

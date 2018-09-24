@@ -837,14 +837,14 @@ function showUserOptions() {
         jQuery('.userOptions').fadeIn(150);
     } else {
         jQuery('.userOptions').slideDown(150, function () {
-            jQuery(window).bind('click', hideUserOptions);
+            jQuery(window).bind('click scroll', hideUserOptions);
         });
     }
 }
 
 function hideUserOptions(e) {
     jQuery('overlay').unbind('click', hideUserOptions);
-    jQuery(window).unbind('click', hideUserOptions);
+    jQuery(window).unbind('click scroll', hideUserOptions);
     if (is_mobile()) {
         jQuery('.userOptions').fadeOut(180);
         overlayFadeOut('userOptions');

@@ -13,4 +13,4 @@ body.page content .wrapper .sidebar { display: block !important; }
 @media all and (max-width: 799px) { body.page content .wrapper .sidebar { margin: 32px auto !important; width: calc(100% - 2 * 16px); } }
 @media all and (min-width: 800px) { body.page content .wrapper .sidebar { display: block; width: 22.5%; } }
 
-/*# sourceMappingURL=page-about.css.map */
+/*# sourceMappingURL=page-ueber-uns.css.map */
