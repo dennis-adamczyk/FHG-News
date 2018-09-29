@@ -15,19 +15,6 @@ body.single content .wrapper .main .post .post__title { font-size: 20px; font-we
 body.single content .wrapper .main .post .post__subtitle { font-size: 14px; font-weight: 400; color: rgba(0, 0, 0, 0.6); margin: 0; padding: 0; }
 body.single content .wrapper .main .post .post__subtitle i.material-icons { font-size: 16px; height: 16px; width: 16px; color: rgba(0, 0, 0, 0.6); vertical-align: sub; }
 body.single content .wrapper .main .post .post__content { width: 100%; margin: 16px 0 0 0; font-size: 16px; line-height: 26px; }
-body.single content .wrapper .main .post .post__content::before { content: ""; display: table; table-layout: fixed; }
-body.single content .wrapper .main .post .post__content::after { content: ""; display: table; table-layout: fixed; clear: both; }
-body.single content .wrapper .main .post .post__content .alignleft { display: inline; float: left; margin-right: 16px; }
-@media all and (max-width: 799px) { body.single content .wrapper .main .post .post__content .alignleft { display: block; float: none; margin-left: auto; margin-right: auto; } }
-body.single content .wrapper .main .post .post__content .aligncenter { display: block; margin-left: auto; margin-right: auto; }
-body.single content .wrapper .main .post .post__content .alignright { display: inline; float: right; margin-left: 16px; }
-@media all and (max-width: 799px) { body.single content .wrapper .main .post .post__content .alignright { display: block; float: none; margin-left: auto; margin-right: auto; } }
-body.single content .wrapper .main .post .post__content img { max-width: 100%; height: auto; cursor: pointer; margin-top: 16px; margin-bottom: 16px; }
-body.single content .wrapper .main .post .post__content .wp-caption { max-width: 100%; cursor: pointer; margin-top: 16px; margin-bottom: 16px; }
-body.single content .wrapper .main .post .post__content .wp-caption:not(.alignleft):not(.aligncenter):not(.alignright) { margin-left: 0; }
-body.single content .wrapper .main .post .post__content .wp-caption img { max-width: 100%; border-radius: 4px; overflow: hidden; margin-bottom: 0; }
-body.single content .wrapper .main .post .post__content .wp-caption .wp-caption-text { margin: 0; font-size: 14px; font-weight: 400; line-height: normal; text-align: center; color: rgba(0, 0, 0, 0.6); }
-body.single content .wrapper .main .post .post__content .wp-caption.alignleft .wp-caption-text { text-align: left; }
 body.single content .wrapper .main .post .post__foot { width: 100%; margin: 16px 0 0 0; padding: 0; position: relative; }
 body.single content .wrapper .main .post .post__foot .post__foot__like { position: relative; margin: 0 24px 0 0; padding: 0; display: inline-flex; height: 28px; align-items: center; }
 body.single content .wrapper .main .post .post__foot .post__foot__like.active i { color: #F44336; animation: bounce 200ms cubic-bezier(0.4, 0, 0, 2); }

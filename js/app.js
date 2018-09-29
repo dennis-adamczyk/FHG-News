@@ -598,8 +598,8 @@ function showLightBox(srcset, $image, $images) {
     $lightBox.find('.lightBox__image').attr('srcset', srcset);
     $lightBox.find('.lightBox__header__page__index').text(jQuery($images).index($image) + 1);
     $lightBox.find('.lightBox__header__page__total').text($images.length);
-    if ($image.children('.wp-caption-text').length !== 0) {
-        $lightBox.find('.lightBox__captionBox__caption').text($image.children('.wp-caption-text').text());
+    if ($image.children('figcaption').length !== 0) {
+        $lightBox.find('.lightBox__captionBox__caption').text($image.children('figcaption').text());
     } else {
         $lightBox.find('.lightBox__captionBox').hide();
     }

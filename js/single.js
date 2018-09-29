@@ -180,10 +180,10 @@ $(document).ready(function () {
 
     /* ===== LIGHT BOX ===== */
 
-    const $images = jQuery('p > img, .wp-caption');
+    const $images = jQuery('p > img, .wp-caption, .wp-block-image > figure, .blocks-gallery-item > figure');
 
     $images.stop().click(function () {
-        showLightBox($(this).children('img').length === 0 ? $(this).attr('srcset') : $(this).children('img').attr('srcset'), jQuery(this), jQuery('p > img, .wp-caption'));
+        showLightBox($(this).children('img').length === 0 ? $(this).attr('srcset') : $(this).children('img').attr('srcset'), jQuery(this), $images);
     });
 
 
