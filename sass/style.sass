@@ -1178,7 +1178,10 @@ content .wrapper .sidebar
               text-decoration: none
               display: block
 
-              transition: color 180ms $easing--decelerate, background-color 180ms $easing--decelerate
+              transition: color 180ms $easing--decelerate, background-color 180ms $easing--decelerate, border 150ms $easing
+
+              &:hover
+                border: 1px solid rgba(#000000, .48)
 
 // ========================================
 // ===== INPUTS ===========================
