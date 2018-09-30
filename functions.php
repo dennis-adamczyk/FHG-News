@@ -152,3 +152,51 @@ function get_rl_color() {
 
 add_action( 'wp_ajax_nopriv_get_rl_color', 'get_rl_color' );
 add_action( 'wp_ajax_get_rl_color', 'get_rl_color' );
+
+// Install Plugins notice
+
+if ( ! is_plugin_active( 'category-color/rl_category_color.php' ) ) {
+	function install_category_color_notice() {
+		?>
+      <div class="notice notice-warning">
+        <p>[FHG News] <a href="<?php the_plugin_url( 'category-color' ); ?>">Category Color</a> installieren und aktivieren!</p>
+      </div>
+		<?php
+	}
+	add_action( 'admin_notices', 'install_category_color_notice' );
+}
+if ( ! is_plugin_active( 'gutenberg/gutenberg.php' ) ) {
+	function install_gutenberg_notice() {
+		?>
+      <div class="notice notice-warning">
+        <p>[FHG News] <a href="<?php the_plugin_url( 'gutenberg' ); ?>">Gutenberg</a> installieren und aktivieren!</p>
+      </div>
+		<?php
+	}
+	add_action( 'admin_notices', 'install_gutenberg_notice' );
+}
+if ( ! is_plugin_active( 'user-role-editor/user-role-editor.php' ) ) {
+	function install_user_role_editor_notice() {
+		?>
+      <div class="notice notice-warning">
+        <p>[FHG News] <a href="<?php the_plugin_url( 'user-role-editor' ); ?>">User Role Editor</a> installieren und aktivieren!</p>
+      </div>
+		<?php
+	}
+	add_action( 'admin_notices', 'install_user_role_editor_notice' );
+}
+if ( ! is_plugin_active( 'wp-mail-smtp/wp_mail_smtp.php' ) ) {
+	function install_wp_mail_smtp_notice() {
+		?>
+      <div class="notice notice-warning">
+        <p>[FHG News] <a href="<?php the_plugin_url( 'wp-mail-smtp' ); ?>">WP Mail SMTP</a> installieren und aktivieren!</p>
+      </div>
+		<?php
+	}
+	add_action( 'admin_notices', 'install_wp_mail_smtp_notice' );
+}
+
+
+function the_plugin_url( $plugin_name ) {
+	echo esc_url( network_admin_url( 'plugin-install.php?tab=plugin-information&plugin=' . $plugin_name ) );
+}
