@@ -61,6 +61,41 @@ jQuery(document).ready(function ($) {
 
     /*
     ======================================
+        Inputs
+    ======================================
+     */
+
+    let $input = $('.input input');
+    let $inputGroup = $('.input');
+    let $inputCancel = $($inputGroup.find('i'));
+
+    $inputGroup.click(function () {
+       $(this).find('input').focus();
+    });
+
+    $inputCancel.click(function () {
+        console.log($(this).parent());
+        $(this).parent().find('input').val('');
+    });
+
+    $input.each(function () {
+        changeInputState($(this));
+    });
+
+    $input.focusout(function () {
+        changeInputState($(this));
+    });
+
+    function changeInputState($inputControl) {
+        if ($inputControl.val().length > 0) {
+            $inputControl.addClass('hasValue');
+        } else {
+            $inputControl.removeClass('hasValue');
+        }
+    }
+
+    /*
+    ======================================
         Navigation
     ======================================
      */
@@ -898,6 +933,19 @@ function current_user_like_post($post_id) {
             post_id: $post_id
         }
     });
+}
+
+function openURL(url, e) {
+    if (e.button === 2)
+        return;
+
+    if (is_mobile() && e.button === 0)
+        return window.location = url;
+
+    if (e.button === 1 || e.button === 4)
+        return window.open(url, '_blank').focus();
+
+    window.location = url;
 }
 
 function current_user_unlike_post($post_id) {

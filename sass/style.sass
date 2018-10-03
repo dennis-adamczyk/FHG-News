@@ -438,6 +438,7 @@ dialogbox
         color: rgba(#000000, .56)
 
       .userOptions__actions__action__name
+        display: inline-block
         position: relative
         left: 72px
         margin: 0
@@ -1192,6 +1193,111 @@ content .wrapper .sidebar
 // ========================================
 
 .input
+  position: relative
+  width: 100%
+
+  input
+    min-width: 280px - 2 * 12px
+    width: calc(100% - 2 * 12px)
+    padding: 8px 12px 0 12px
+    position: relative
+    z-index: 1
+    height: 48px
+    font-size: 16px
+    font-weight: 400
+    color: rgba(#000000, .86)
+    border: none
+    border-bottom: 1px solid rgba(#000000, .6)
+    border-top-left-radius: 4px
+    border-top-right-radius: 4px
+    background-color: rgba(#000000, .04)
+    caret-color: $secondary
+    overflow: hidden
+    outline: none
+    cursor: pointer
+    -webkit-transition: border 180ms $easing, background 180ms $easing
+    -moz-transition: border 180ms $easing, background 180ms $easing
+    -ms-transition: border 180ms $easing, background 180ms $easing
+    -o-transition: border 180ms $easing, background 180ms $easing
+    transition: border 180ms $easing, background 180ms $easing
+
+    &:not(:focus)::placeholder
+      color: transparent
+
+    &::placeholder
+      color: rgba(#000000, .6)
+      -webkit-transition: color 180ms $easing
+      -moz-transition: color 180ms $easing
+      -ms-transition: color 180ms $easing
+      -o-transition: color 180ms $easing
+      transition: color 180ms $easing
+
+    &:active
+      background-color: rgba(#000000, .06)
+
+    &:focus
+      border-bottom: 2px solid $secondary
+      cursor: text
+
+      & ~ .material-icons
+        display: inline-block
+
+      & ~ .label
+        top: 6px
+        font-size: 12px
+        color: $secondary
+        cursor: text
+
+      &:required ~ .label::after
+        color: $red
+
+    &.hasValue
+      & ~ label.label
+        top: 6px
+        font-size: 12px
+
+      & ~ .material-icons
+        display: inline-block
+
+    & ~ .label
+      position: absolute
+      top: 22px
+      left: 12px
+      font-size: 16px
+      color: rgba(#000000, .6)
+      cursor: pointer
+      -webkit-transition: all 180ms $easing
+      -moz-transition: all 180ms $easing
+      -ms-transition: all 180ms $easing
+      -o-transition: all 180ms $easing
+      transition: all 180ms $easing
+
+    &:required ~ .label::after
+      margin-left: 1px
+      content: '*'
+
+
+  .material-icons
+    display: none
+    position: absolute
+    top: 16px
+    right: 12px
+    color: rgba(#000000, .56)
+    cursor: pointer
+    z-index: 1
+
+  label.error
+    display: block
+    position: relative
+    margin: 4px 0 0 12px
+    font-size: 12px
+    color: rgba(#000000, .6)
+    -webkit-transition: all 180ms $easing
+    -moz-transition: all 180ms $easing
+    -ms-transition: all 180ms $easing
+    -o-transition: all 180ms $easing
+    transition: all 180ms $easing
+
 
   &.input--line
     &.input--textarea

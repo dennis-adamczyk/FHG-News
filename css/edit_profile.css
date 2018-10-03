@@ -1,0 +1,5 @@
+body.edit_profile .header__done { width: 24px; height: 24px; position: absolute; top: 50%; transform: translateY(-50%); right: 16px; padding: 8px; margin-right: -8px; cursor: pointer; color: #2196F3; }
+@media all and (min-width: 800px) { body.edit_profile .header__done { right: 24px; } }
+@media all and (min-width: 800px) { body.edit_profile content .wrapper { margin: 0 80px; } }
+
+/*# sourceMappingURL=edit_profile.css.map */

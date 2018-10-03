@@ -6,7 +6,7 @@
   <title><?php bloginfo( 'name' ); ?></title>
 	<?php wp_head(); ?>
 </head>
-<body <?php body_class(); ?>>
+<body <?php body_class((get_query_var( 'fhgnewsonline_page_id' ) == 1 ? 'edit_profile' : '')); ?>>
 <overlay></overlay>
 <dialogBox></dialogBox>
 <div class="snackBox"></div>
@@ -34,7 +34,7 @@
     <p class="userOptions__current__mail"><?php echo wp_get_current_user()->user_email; ?></p>
   </div>
   <div class="userOptions__actions">
-    <div class="userOptions__actions__action ripple--box">
+    <div class="userOptions__actions__action ripple--box" onmouseup="openURL('<?php echo get_home_url() . '/user/edit'; ?>', event)">
       <i class="material-icons">edit</i>
       <p class="userOptions__actions__action__name">Profil bearbeiten</p>
     </div>
