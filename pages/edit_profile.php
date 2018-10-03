@@ -36,6 +36,7 @@
       <section class="socialMedia section">
         <h2 class="section__title">Social Media</h2>
       </section>
+      <input type="submit" value="Änderungen speichern" class="submit">
     </form>
 
   </div>

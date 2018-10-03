@@ -1364,7 +1364,7 @@ content .wrapper .sidebar
         user-select: none
         cursor: pointer
 
-.button
+div.button
   height: 36px
   min-width: 64px
   display: inline-block
@@ -1391,3 +1391,26 @@ content .wrapper .sidebar
     span
       font-weight: 500
       color: $secondary
+
+input.submit
+  height: 36px
+  min-width: 64px
+  display: inline-block
+  padding: 0 16px
+  border: none
+  border-radius: 4px
+  overflow: hidden
+  box-shadow: $elevation--z2
+  background-color: $secondary
+  text-align: center
+  line-height: 36px
+  font-size: 14px
+  font-weight: 400
+  color: #ffffff
+  text-transform: uppercase
+  outline: none
+  cursor: pointer
+  transition: box-shadow 150ms $easing
+
+  &:active
+    box-shadow: $elevation--z8
