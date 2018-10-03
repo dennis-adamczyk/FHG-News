@@ -447,7 +447,11 @@ dialogbox
         color: rgba(#000000, .86)
         line-height: 56px
 
-  @media #{$not-mobile}
+@media #{$not-mobile}
+  body.admin-bar .userOptions
+    top: 32px + 12px !important
+
+  .userOptions
     right: 20px
     top: 12px
     left: auto

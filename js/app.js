@@ -176,9 +176,21 @@ jQuery(document).ready(function ($) {
     handleHeaderOnScroll($(window).scrollTop());
 
     /* HEADER ADD  */
-    $($appbar.find('.header__add')).click(function () {
-        window.location = php_info.admin_url + '/post-new.php';
+    $($appbar.find('.header__add')).on('mouseup', function (e) {
+        console.log(e.button);
+        switch (e.button) {
+            case 1:
+            case 4:
+                window.open(php_info.admin_url + '/post-new.php', '_blank').focus();
+                break;
+
+            case 0:
+                window.location = php_info.admin_url + '/post-new.php';
+                break;
+        }
     });
+
+    $($appbar.find('.header__profile')).click(showUserOptions);
 
     /* HEADER SEARCH */
 
@@ -829,9 +841,15 @@ function overlayFadeOut(clazz, callback = false) {
     });
 }
 
-function showUserOptions() {
+function showUserOptions(e) {
+    if (e.button === 2)
+        return;
+
     if (!is_logged_in()) {
-        window.location = php_info.login_url;
+        if (e.button === 0)
+            window.location = php_info.login_url;
+        else
+            window.open(php_info.login_url, '_blank').focus();
         return;
     }
 
@@ -840,7 +858,7 @@ function showUserOptions() {
             jQuery(overlay).bind('click', hideUserOptions);
         });
         jQuery('.userOptions').fadeIn(150);
-    } else {
+    } else if (e.button === 0) {
         jQuery('.userOptions').slideDown(150, function () {
             jQuery(window).bind('click scroll', hideUserOptions);
         });

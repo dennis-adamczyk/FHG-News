@@ -55,6 +55,9 @@ function fhgnewsonline_enqueue() {
 	if ( is_archive() ) {
 		wp_enqueue_style( 'archive', get_template_directory_uri() . '/css/archive.css' );
 	}
+	if ( is_author() ) {
+		wp_enqueue_style( 'author', get_template_directory_uri() . '/css/author.css' );
+	}
 }
 
 add_action( 'wp_enqueue_scripts', 'fhgnewsonline_enqueue' );
@@ -99,7 +102,29 @@ add_action( 'init', 'fhgnewsonline_theme_setup' );
  * @return string page_title
  */
 function fhgnewsonline_get_page_title() {
-	return ( explode( ' &#8211;', get_wp_title_rss() )[0] == get_bloginfo_rss( 'name' ) || is_single() || is_category() ? 'News' : ( is_404() ? 'Fehler 404' : explode( '&#8211;', get_wp_title_rss() )[0] ) );
+	return ( explode( ' &#8211;', get_wp_title_rss() )[0] == get_bloginfo_rss( 'name' ) || is_single() || is_category() ? 'News' : ( is_404() ? 'Fehler 404' : ( is_author() ? 'Profil' : explode( '&#8211;', get_wp_title_rss() )[0] ) ) );
+}
+
+function get_user_role_name( $user ) {
+	global $wp_roles;
+
+	return $wp_roles->roles[ $user->roles[0] ]['name'];
+}
+
+function get_user_role_color( $user ) {
+	$user_role = $user->roles[0];
+	$colors    = [
+		'administrator' => '#F44336',
+		'editor'        => '#FF9800',
+		'author'        => '#009688',
+		'contributor'   => '#00BCD4',
+		'subscriber'    => '#2196F3',
+	];
+	foreach ( $colors as $role => $color ) {
+		if ( $role === $user_role ) {
+			return $color;
+		}
+	}
 }
 
 /**
@@ -159,10 +184,12 @@ if ( ! is_plugin_active( 'category-color/rl_category_color.php' ) ) {
 	function install_category_color_notice() {
 		?>
       <div class="notice notice-warning">
-        <p>[FHG News] <a href="<?php the_plugin_url( 'category-color' ); ?>">Category Color</a> installieren und aktivieren!</p>
+        <p>[FHG News] <a href="<?php the_plugin_url( 'category-color' ); ?>">Category Color</a> installieren und
+          aktivieren!</p>
       </div>
 		<?php
 	}
+
 	add_action( 'admin_notices', 'install_category_color_notice' );
 }
 if ( ! is_plugin_active( 'gutenberg/gutenberg.php' ) ) {
@@ -173,26 +200,31 @@ if ( ! is_plugin_active( 'gutenberg/gutenberg.php' ) ) {
       </div>
 		<?php
 	}
+
 	add_action( 'admin_notices', 'install_gutenberg_notice' );
 }
 if ( ! is_plugin_active( 'user-role-editor/user-role-editor.php' ) ) {
 	function install_user_role_editor_notice() {
 		?>
       <div class="notice notice-warning">
-        <p>[FHG News] <a href="<?php the_plugin_url( 'user-role-editor' ); ?>">User Role Editor</a> installieren und aktivieren!</p>
+        <p>[FHG News] <a href="<?php the_plugin_url( 'user-role-editor' ); ?>">User Role Editor</a> installieren und
+          aktivieren!</p>
       </div>
 		<?php
 	}
+
 	add_action( 'admin_notices', 'install_user_role_editor_notice' );
 }
 if ( ! is_plugin_active( 'wp-mail-smtp/wp_mail_smtp.php' ) ) {
 	function install_wp_mail_smtp_notice() {
 		?>
       <div class="notice notice-warning">
-        <p>[FHG News] <a href="<?php the_plugin_url( 'wp-mail-smtp' ); ?>">WP Mail SMTP</a> installieren und aktivieren!</p>
+        <p>[FHG News] <a href="<?php the_plugin_url( 'wp-mail-smtp' ); ?>">WP Mail SMTP</a> installieren und aktivieren!
+        </p>
       </div>
 		<?php
 	}
+
 	add_action( 'admin_notices', 'install_wp_mail_smtp_notice' );
 }
 
