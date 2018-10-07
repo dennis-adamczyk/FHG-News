@@ -71,7 +71,7 @@ jQuery(document).ready(function ($) {
     let $inputCancel = $($inputGroup.find('i'));
 
     $inputGroup.click(function () {
-       $(this).find('input').focus();
+        $(this).find('input').focus();
     });
 
     $inputCancel.click(function () {
@@ -101,7 +101,33 @@ jQuery(document).ready(function ($) {
     ======================================
      */
 
-    
+    let snackbarPost = JSON.parse(php_info.snackbar_post === null ? null : php_info.snackbar_post.replace(new RegExp("\\\\", 'g'), ''));
+    let snackbarStorage = JSON.parse(localStorage.getItem('snackbar'));
+
+    if (snackbarPost) {
+        snackbarPost.forEach(function (obj) {
+            if (obj.type === 'singleLine') {
+                showSingleLineSnackBar(obj.message)
+            }
+        });
+    }
+
+    if (snackbarStorage) {
+        snackbarStorage.forEach(function (obj) {
+            if (obj.type === 'singleLine') {
+                showSingleLineSnackBar(obj.message)
+            }
+        });
+    }
+
+    jQuery.ajax({
+        type: 'POST',
+        url: php_info.template_directory_uri + '/includes/snackbar.php',
+        data: {
+            method: 'reset'
+        }
+    });
+    localStorage.removeItem('snackbar');
 
     /*
     ======================================
@@ -931,6 +957,25 @@ function showSingleLineSnackBar($message) {
             });
         }, 5000);
     });
+}
+
+function addNextSingleLineSnackbar($message) {
+    var snackbar = window.localStorage.getItem('snackbar');
+    if (snackbar !== null && snackbar !== '' && snackbar !== undefined) {
+        snackbar = JSON.parse(snackbar);
+        snackbar.push({
+            'type': 'singleLine',
+            'message': $message
+        });
+    } else {
+        snackbar = [
+            {
+                'type': 'singleLine',
+                'message': $message
+            }
+        ];
+    }
+    window.localStorage.setItem('snackbar', JSON.stringify(snackbar));
 }
 
 function current_user_like_post($post_id) {

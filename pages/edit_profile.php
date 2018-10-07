@@ -6,7 +6,8 @@ if ( ! is_user_logged_in() ) {
 if ( ! empty( $_POST ) ) {
 	if ( ! isset( $_POST['_wpnonce'] ) || ! wp_verify_nonce( $_POST['_wpnonce'], 'update-user_' . get_current_user_id() ) ) {
 		$_POST = array();
-		header('Location: .'); // TODO: Snackbar "Verifikation fehlgeschlagen"
+		addNextSingleLineSnackbar("Verifikation fehlgeschlagen");
+		header('Location: .');
 	}
 
 	exit;
