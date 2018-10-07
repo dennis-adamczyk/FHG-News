@@ -43,6 +43,7 @@ overlay
 
 dialogbox
   min-width: 280px
+  max-width: 432px
   display: none
   position: fixed
   top: 50%
@@ -750,6 +751,7 @@ body.admin-bar .nav
   top: 0
   left: -100%
   bottom: 0
+  overflow: hidden
   overflow-y: auto
   transition: left 200ms $easing--accelerate
 
@@ -1356,10 +1358,10 @@ content .wrapper .sidebar
       -o-transition: border 180ms $easing, background 180ms $easing
       transition: border 180ms $easing, background 180ms $easing
 
-      &:not(:focus)::placeholder
+      &:not(:focus)::placeholder, &:not(:focus)::-moz-placeholder, &:not(:focus)::-ms-input-placeholder, &:not(:focus)::-webkit-input-placeholder
         color: transparent
 
-      &::placeholder
+      &::placeholder, &::-moz-placeholder, &::-ms-input-placeholder, &::-webkit-input-placeholder
         color: rgba(#000000, .6)
         -webkit-transition: color 180ms $easing
         -moz-transition: color 180ms $easing

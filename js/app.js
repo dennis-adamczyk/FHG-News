@@ -95,13 +95,21 @@ jQuery(document).ready(function ($) {
         }
     }
 
+    try {
+        if (!$('.input input::placeholder').exists()) {
+            $input.attr('placeholder', '');
+        }
+    } catch (e) {
+        $input.attr('placeholder', '');
+    }
+
     /*
     ======================================
         Snackbar
     ======================================
      */
 
-    let snackbarPost = JSON.parse(php_info.snackbar_post === null ? null : php_info.snackbar_post.replace(new RegExp("\\\\", 'g'), ''));
+        let snackbarPost = JSON.parse(php_info.snackbar_post === null ? null : php_info.snackbar_post.replace(new RegExp("\\\\", 'g'), ''));
     let snackbarStorage = JSON.parse(localStorage.getItem('snackbar'));
 
     if (snackbarPost) {

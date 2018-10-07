@@ -4,14 +4,38 @@ body.edit_profile .header__done { width: 24px; height: 24px; position: absolute;
 body.edit_profile content .wrapper #edit_profile { width: 100%; margin: 24px 0; }
 body.edit_profile content .wrapper #edit_profile .section { margin: 0 0 24px 0; padding: 0 16px; border-bottom: 1px solid rgba(0, 0, 0, 0.16); }
 body.edit_profile content .wrapper #edit_profile .section:last-of-type { border-bottom: none; }
-body.edit_profile content .wrapper #edit_profile .section .section__title { display: none; }
-body.edit_profile content .wrapper #edit_profile .section.general .profilePicture { width: 100%; margin: 0 0 24px 0; padding: 0; }
-body.edit_profile content .wrapper #edit_profile .section.general .profilePicture .profilePicture__current { display: block; margin: 0 auto 8px auto; padding: 0; width: 96px; height: 96px; border-radius: 24px; overflow: hidden; }
-body.edit_profile content .wrapper #edit_profile .section.general .profilePicture .profilePicture__current img { width: 100%; height: 100%; }
-body.edit_profile content .wrapper #edit_profile .section.general .profilePicture .profilePicture__change { position: relative; left: 50%; transform: translateX(-50%); }
-body.edit_profile content .wrapper #edit_profile .section.general .resetPassword { margin: 0 auto 24px auto; }
+body.edit_profile content .wrapper #edit_profile .section:first-of-type .section__title { display: none; }
+body.edit_profile content .wrapper #edit_profile .section .section__title { margin: -8px 0 24px 0; font-size: 14px; font-weight: 500; color: rgba(0, 0, 0, 0.6); }
+body.edit_profile content .wrapper #edit_profile .section.general .general__profilePicture { width: 100%; margin: 0 0 24px 0; padding: 0; }
+body.edit_profile content .wrapper #edit_profile .section.general .general__profilePicture .general__profilePicture__current { display: block; margin: 0 auto 8px auto; padding: 0; width: 96px; height: 96px; border-radius: 24px; overflow: hidden; }
+body.edit_profile content .wrapper #edit_profile .section.general .general__profilePicture .general__profilePicture__current img { width: 100%; height: 100%; }
+body.edit_profile content .wrapper #edit_profile .section.general .general__profilePicture .general__profilePicture__change { position: relative; left: 50%; transform: translateX(-50%); }
+body.edit_profile content .wrapper #edit_profile .section.general .general__resetPassword { margin: 0 auto 24px auto; }
 body.edit_profile content .wrapper #edit_profile .section .input { margin: 0 0 5px 0; }
 body.edit_profile content .wrapper #edit_profile .info { margin: 8px 16px 16px 16px; font-size: 14px; font-weight: 400; color: rgba(0, 0, 0, 0.6); }
 body.edit_profile content .wrapper #edit_profile .submit { display: none; }
+@media all and (min-width: 1150px) { body.edit_profile content .wrapper #edit_profile { display: flex; flex-wrap: wrap; justify-content: space-between; margin: 32px 0 24px 0; }
+  body.edit_profile content .wrapper #edit_profile .section { display: grid; grid-template: auto/auto; grid-gap: 0px 24px; align-items: center; margin: 0; padding: 0; border-bottom: none; }
+  body.edit_profile content .wrapper #edit_profile .section:first-of-type .section__title { display: block; }
+  body.edit_profile content .wrapper #edit_profile .section .section__title { display: block; grid-area: title; margin: 0 0 16px 0; font-size: 16px; color: rgba(0, 0, 0, 0.56); }
+  body.edit_profile content .wrapper #edit_profile .section.general { grid-template: auto/144px auto auto auto auto auto auto; grid-template-areas: "title title title title title title title" "picture displayname displayname displayname email email email" "picture firstname firstname lastname lastname resetpassword resetpassword"; width: 100%; margin: 0 0 32px 0; }
+  body.edit_profile content .wrapper #edit_profile .section.general .general__profilePicture { display: inline-block; grid-area: picture; width: auto; margin: 0; }
+  body.edit_profile content .wrapper #edit_profile .section.general .general__profilePicture .general__profilePicture__current { width: 128px; height: 128px; }
+  body.edit_profile content .wrapper #edit_profile .section.general .general__displayname { grid-area: displayname; }
+  body.edit_profile content .wrapper #edit_profile .section.general .general__email { grid-area: email; }
+  body.edit_profile content .wrapper #edit_profile .section.general .general__firstname { grid-area: firstname; }
+  body.edit_profile content .wrapper #edit_profile .section.general .general__lastname { grid-area: lastname; }
+  body.edit_profile content .wrapper #edit_profile .section.general .general__resetPassword { grid-area: resetpassword; justify-self: start; margin: 0; }
+  body.edit_profile content .wrapper #edit_profile .section.personal { grid-template-areas: "title" "website" "biography"; width: calc(42% - 12px); }
+  body.edit_profile content .wrapper #edit_profile .section.personal .personal__website { grid-area: website; }
+  body.edit_profile content .wrapper #edit_profile .section.personal .personal__biography { grid-area: biography; }
+  body.edit_profile content .wrapper #edit_profile .section.socialMedia { grid-template-areas: "title title" "facebook twitter" "instagram snapchat"; width: calc(58% - 12px); }
+  body.edit_profile content .wrapper #edit_profile .section.socialMedia .socialMedia__facebook { grid-area: facebook; }
+  body.edit_profile content .wrapper #edit_profile .section.socialMedia .socialMedia__twitter { grid-area: twitter; }
+  body.edit_profile content .wrapper #edit_profile .section.socialMedia .socialMedia__instagram { grid-area: instagram; }
+  body.edit_profile content .wrapper #edit_profile .section.socialMedia .socialMedia__snapchat { grid-area: snapchat; }
+  body.edit_profile content .wrapper #edit_profile .section .input { display: inline-block; width: auto; }
+  body.edit_profile content .wrapper #edit_profile .info { width: 100%; margin: 0 0 16px 0; }
+  body.edit_profile content .wrapper #edit_profile .submit { display: inline-block; } }
 
 /*# sourceMappingURL=edit_profile.css.map */

@@ -6,9 +6,13 @@ if ( ! is_user_logged_in() ) {
 if ( ! empty( $_POST ) ) {
 	if ( ! isset( $_POST['_wpnonce'] ) || ! wp_verify_nonce( $_POST['_wpnonce'], 'update-user_' . get_current_user_id() ) ) {
 		$_POST = array();
-		addNextSingleLineSnackbar("Verifikation fehlgeschlagen");
-		header('Location: .');
+	  echo "showSingleLineSnackBar('Verifikation fehlgeschlagen');";
+	  exit;
 	}
+
+	echo "
+    console.log('recived data');
+	";
 
 	exit;
 }
@@ -21,51 +25,51 @@ if ( ! empty( $_POST ) ) {
 		<?php wp_nonce_field( 'update-user_' . get_current_user_id() ); ?>
       <section class="general section">
         <h2 class="section__title">Allgemein</h2>
-        <div class="profilePicture">
-          <div class="profilePicture__current">
+        <div class="general__profilePicture">
+          <div class="general__profilePicture__current">
 			  <?php echo get_avatar( get_current_user_id(), 128 ); ?>
           </div>
-          <div class="profilePicture__change button button--flat">
+          <div class="general__profilePicture__change button button--flat">
             <span>Foto ändern</span>
           </div>
         </div>
-        <div class="input">
+        <div class="general__displayname input">
           <input type="text" placeholder="Max Mustermann" required>
           <i class="material-icons">cancel</i>
           <label for="" class="label">Angezeigter Name</label>
           <label for="" class="error"></label>
         </div>
-        <div class="input">
+        <div class="general__email input">
           <input type="email" placeholder="max.mustermann@franz-haniel-gymnasium.eu" required>
           <i class="material-icons">cancel</i>
           <label for="" class="label">E-Mail</label>
           <label for="" class="error"></label>
         </div>
-        <div class="input">
+        <div class="general__firstname input">
           <input type="text">
           <i class="material-icons">cancel</i>
           <label for="" class="label">Vorname</label>
           <label for="" class="error"></label>
         </div>
-        <div class="input">
+        <div class="general__lastname input">
           <input type="text">
           <i class="material-icons">cancel</i>
           <label for="" class="label">Nachname</label>
           <label for="" class="error"></label>
         </div>
-        <div class="resetPassword button button--light">
+        <div class="general__resetPassword button button--light">
           <span>Passwort zurücksetzen</span>
         </div>
       </section>
       <section class="personal section">
         <h2 class="section__title">Persönlich</h2>
-        <div class="input">
+        <div class="personal__website input">
           <input type="text">
           <i class="material-icons">cancel</i>
           <label for="" class="label">Website</label>
           <label for="" class="error"></label>
         </div>
-        <div class="input input--textarea">
+        <div class="personal__biography input input--textarea">
           <textarea name="" id="" cols="30" rows="10"></textarea>
           <label for="" class="label">Steckbrief</label>
           <label for="" class="error"></label>
@@ -73,7 +77,7 @@ if ( ! empty( $_POST ) ) {
       </section>
       <section class="socialMedia section">
         <h2 class="section__title">Social Media</h2>
-        <div class="input input--leadingIcon">
+        <div class="socialMedia__facebook input input--leadingIcon">
           <i class="material-icons leadingIcon"><img
                 src="<?php echo get_template_directory_uri() . '/img/icons/facebook.svg' ?>"></i>
           <input type="text">
@@ -81,7 +85,7 @@ if ( ! empty( $_POST ) ) {
           <label for="" class="label">Facebook</label>
           <label for="" class="error"></label>
         </div>
-        <div class="input input--leadingIcon">
+        <div class="socialMedia__twitter input input--leadingIcon">
           <i class="material-icons leadingIcon"><img
                 src="<?php echo get_template_directory_uri() . '/img/icons/twitter.svg' ?>"></i>
           <input type="text">
@@ -89,7 +93,7 @@ if ( ! empty( $_POST ) ) {
           <label for="" class="label">Twitter</label>
           <label for="" class="error"></label>
         </div>
-        <div class="input input--leadingIcon">
+        <div class="socialMedia__instagram input input--leadingIcon">
           <i class="material-icons leadingIcon"><img
                 src="<?php echo get_template_directory_uri() . '/img/icons/instagram.svg' ?>"></i>
           <input type="text">
@@ -97,7 +101,7 @@ if ( ! empty( $_POST ) ) {
           <label for="" class="label">Instagram</label>
           <label for="" class="error"></label>
         </div>
-        <div class="input input--leadingIcon">
+        <div class="socialMedia__snapchat input input--leadingIcon">
           <i class="material-icons leadingIcon"><img
                 src="<?php echo get_template_directory_uri() . '/img/icons/snapchat.svg' ?>"></i>
           <input type="text">

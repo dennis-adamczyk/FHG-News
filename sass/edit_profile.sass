@@ -35,17 +35,23 @@ body.edit_profile
           &:last-of-type
             border-bottom: none
 
-          .section__title
+          &:first-of-type .section__title
             display: none
+
+          .section__title
+            margin: -8px 0 24px 0
+            font-size: 14px
+            font-weight: 500
+            color: rgba(#000000, .6)
 
           &.general
 
-            .profilePicture
+            .general__profilePicture
               width: 100%
               margin: 0 0 24px 0
               padding: 0
 
-              .profilePicture__current
+              .general__profilePicture__current
                 display: block
                 margin: 0 auto 8px auto
                 padding: 0
@@ -58,12 +64,12 @@ body.edit_profile
                   width: 100%
                   height: 100%
 
-              .profilePicture__change
+              .general__profilePicture__change
                 position: relative
                 left: 50%
                 transform: translateX(-50%)
 
-            .resetPassword
+            .general__resetPassword
               margin: 0 auto 24px auto
 
           .input
@@ -78,3 +84,97 @@ body.edit_profile
         .submit
           display: none
 
+        @media all and (min-width: 1150px)
+          display: flex
+          flex-wrap: wrap
+          justify-content: space-between
+          margin: 32px 0 24px 0
+
+          .section
+            display: grid
+            grid-template: auto / auto
+            grid-gap: 0px 24px
+            align-items: center
+            margin: 0
+            padding: 0
+            border-bottom: none
+
+            &:first-of-type .section__title
+              display: block
+
+            .section__title
+              display: block
+              grid-area: title
+              margin: 0 0 16px 0
+              font-size: 16px
+              color: rgba(#000000, .56)
+
+            &.general
+              grid-template: auto / 144px auto auto auto auto auto auto
+              grid-template-areas: "title title title title title title title" "picture displayname displayname displayname email email email" "picture firstname firstname lastname lastname resetpassword resetpassword"
+              width: 100%
+              margin: 0 0 32px 0
+
+              .general__profilePicture
+                display: inline-block
+                grid-area: picture
+                width: auto
+                margin: 0
+
+                .general__profilePicture__current
+                  width: 128px
+                  height: 128px
+
+              .general__displayname
+                grid-area: displayname
+
+              .general__email
+                grid-area: email
+
+              .general__firstname
+                grid-area: firstname
+
+              .general__lastname
+                grid-area: lastname
+
+              .general__resetPassword
+                grid-area: resetpassword
+                justify-self: start
+                margin: 0
+
+            &.personal
+              grid-template-areas: "title" "website" "biography"
+              width: calc(42% - 12px)
+
+              .personal__website
+                grid-area: website
+
+              .personal__biography
+                grid-area: biography
+
+            &.socialMedia
+              grid-template-areas: "title title" "facebook twitter" "instagram snapchat"
+              width: calc(58% - 12px)
+
+              .socialMedia__facebook
+                grid-area: facebook
+
+              .socialMedia__twitter
+                grid-area: twitter
+
+              .socialMedia__instagram
+                grid-area: instagram
+
+              .socialMedia__snapchat
+                grid-area: snapchat
+
+            .input
+              display: inline-block
+              width: auto
+
+          .info
+            width: 100%
+            margin: 0 0 16px 0
+
+          .submit
+            display: inline-block
