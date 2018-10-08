@@ -33,7 +33,7 @@ function get_appbar( $title, $navigation = 'menu', $search = true, $profile = tr
         </div>
 	  <?php endif; ?>
 	  <?php if ( $done ): ?>
-        <div class="header__done ripple--icon" onclick="">
+        <div class="header__done" onclick="">
           <i class="material-icons">done</i>
         </div>
 	  <?php endif; ?>

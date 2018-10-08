@@ -1,6 +1,7 @@
 <?php
 
 function fhgnewsonline_add_rewrite_rules() {
+	add_rewrite_rule( '^user\/?$', 'index.php?fhgnewsonline_page_id=2&post_type=custom_post_type', 'top' );
 	add_rewrite_rule( '^user\/edit?', 'index.php?fhgnewsonline_page_id=1&post_type=custom_post_type', 'top' );
 	flush_rewrite_rules();
 }
@@ -23,6 +24,11 @@ function fhgnewsonline_include_template( $template ) {
 		switch ( get_query_var( 'fhgnewsonline_page_id' ) ) {
 			case 1:
 				$new_template = get_template_directory() . '/pages/edit_profile.php';
+				break;
+
+			case 2:
+				header('Location: ' . get_author_posts_url(get_current_user_id()));
+				die();
 				break;
 		}
 

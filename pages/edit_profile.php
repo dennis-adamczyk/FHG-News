@@ -111,7 +111,14 @@ if ( ! empty( $_POST ) ) {
         </div>
       </section>
       <p class="info">* Pflichtfeld</p>
-      <input type="submit" name="save_changes" value="Änderungen speichern" class="submit">
+      <div class="button submit">
+        <span>Änderungen speichern</span>
+        <div class="material-loader">
+          <svg class="material-loader__circular" viewBox="25 25 50 50">
+            <circle class="material-loader__circular__path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"></circle>
+          </svg>
+        </div>
+      </div>
     </form>
 
   </div>

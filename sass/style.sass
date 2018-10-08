@@ -1191,6 +1191,54 @@ content .wrapper .sidebar
                 border: 1px solid rgba(#000000, .48)
 
 // ========================================
+// ===== MATERIAL UTILITIES ===============
+// ========================================
+
+.material-loader
+  position: relative
+  margin: 0
+  width: 48px
+
+  &::before
+    content: ''
+    display: block
+    padding-top: 100%
+
+  .material-loader__circular
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    margin: auto
+    width: 100%
+    height: 100%
+    transform-origin: center center
+    animation: rotate 2000ms linear infinite
+
+    .material-loader__circular__path
+      stroke: $secondary
+      stroke-dasharray: 1, 200
+      stroke-dashoffset: 0
+      stroke-linecap: round
+      animation: dash 1500ms ease-in-out infinite
+
+@keyframes rotate
+  100%
+    transform: rotate(360deg)
+
+@keyframes dash
+  0%
+    stroke-dasharray: 1, 200
+    stroke-dashoffset: 0
+  50%
+    stroke-dasharray: 89, 200
+    stroke-dashoffset: -35px
+  100%
+    stroke-dasharray: 89, 200
+    stroke-dashoffset: -124px
+
+// ========================================
 // ===== INPUTS ===========================
 // ========================================
 

@@ -188,6 +188,15 @@ content .wrapper .sidebar .sidebar__widget.widget_categories h2 ul li ul { displ
 content .wrapper .sidebar .sidebar__widget.widget_categories h2 ul li a { margin: 8px 8px 0 0; padding: 6px 12px; height: 18px; width: auto; background-color: rgba(255, 255, 255, 0.86); border-radius: 8px; border: 1px solid rgba(0, 0, 0, 0.24); font-size: 14px; font-weight: 500; color: rgba(0, 0, 0, 0.86); text-decoration: none; display: block; transition: color 180ms cubic-bezier(0, 0, 0.2, 1), background-color 180ms cubic-bezier(0, 0, 0.2, 1), border 150ms cubic-bezier(0.4, 0, 0.2, 1); }
 content .wrapper .sidebar .sidebar__widget.widget_categories h2 ul li a:hover { border: 1px solid rgba(0, 0, 0, 0.48); }
 
+.material-loader { position: relative; margin: 0; width: 48px; }
+.material-loader::before { content: ""; display: block; padding-top: 100%; }
+.material-loader .material-loader__circular { position: absolute; top: 0; left: 0; right: 0; bottom: 0; margin: auto; width: 100%; height: 100%; transform-origin: center center; animation: rotate 2000ms linear infinite; }
+.material-loader .material-loader__circular .material-loader__circular__path { stroke: #2196F3; stroke-dasharray: 1, 200; stroke-dashoffset: 0; stroke-linecap: round; animation: dash 1500ms ease-in-out infinite; }
+
+@keyframes rotate { 100% { transform: rotate(360deg); } }
+@keyframes dash { 0% { stroke-dasharray: 1, 200; stroke-dashoffset: 0; }
+  50% { stroke-dasharray: 89, 200; stroke-dashoffset: -35px; }
+  100% { stroke-dasharray: 89, 200; stroke-dashoffset: -124px; } }
 .input { position: relative; width: 100%; min-height: 75px; }
 .input input { min-width: 256px; width: calc(100% - 2 * 12px); padding: 8px 12px 0 12px; position: relative; z-index: 1; height: 48px; font-size: 16px; font-weight: 400; color: rgba(0, 0, 0, 0.86); border: none; border-bottom: 1px solid rgba(0, 0, 0, 0.6); border-top-left-radius: 4px; border-top-right-radius: 4px; background-color: rgba(0, 0, 0, 0.04); caret-color: #2196F3; overflow: hidden; outline: none; cursor: pointer; -webkit-transition: border 180ms cubic-bezier(0.4, 0, 0.2, 1), background 180ms cubic-bezier(0.4, 0, 0.2, 1); -moz-transition: border 180ms cubic-bezier(0.4, 0, 0.2, 1), background 180ms cubic-bezier(0.4, 0, 0.2, 1); -ms-transition: border 180ms cubic-bezier(0.4, 0, 0.2, 1), background 180ms cubic-bezier(0.4, 0, 0.2, 1); -o-transition: border 180ms cubic-bezier(0.4, 0, 0.2, 1), background 180ms cubic-bezier(0.4, 0, 0.2, 1); transition: border 180ms cubic-bezier(0.4, 0, 0.2, 1), background 180ms cubic-bezier(0.4, 0, 0.2, 1); }
 .input input:not(:focus)::placeholder { color: transparent; }

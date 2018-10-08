@@ -28,7 +28,7 @@
   </div>
 </div>
 <div class="userOptions">
-  <div class="userOptions__current ripple--box" onclick="window.location = '<?php echo get_author_posts_url(get_current_user_id()); ?>'">
+  <div class="userOptions__current ripple--box" onclick="window.location = '<?php echo get_home_url(); ?>/user/'">
 	  <?php echo get_avatar( get_current_user_id(), 32 ); ?>
     <p class="userOptions__current__name"><?php echo wp_get_current_user()->user_login; ?></p>
     <p class="userOptions__current__mail"><?php echo wp_get_current_user()->user_email; ?></p>
