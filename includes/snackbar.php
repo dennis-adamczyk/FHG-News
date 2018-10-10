@@ -1,5 +1,16 @@
 <?php
+/**
+ * @package fhgnewsonline
+ * -- Snackbar functions
+ */
 
+/**
+ * Displays a Snackbar with one line of information text on the page refresh or change
+ *
+ * @param $message
+ *
+ * @return bool Success
+ */
 function addNextSingleLineSnackbar( $message ) {
 	$snackbar = $_COOKIE['snackbar'];
 	if ( isset( $snackbar ) ) {
@@ -16,12 +27,17 @@ function addNextSingleLineSnackbar( $message ) {
 			),
 		);
     }
-    setcookie('snackbar', json_encode($snackbar), 0, '/');
+    return setcookie('snackbar', json_encode($snackbar), 0, '/');
 }
 
+/**
+ * Resets all requests for displaying Snackbars
+ *
+ * @return bool Success
+ */
 function resetSnackbar() {
 	unset($_COOKIE['snackbar']);
-	setcookie('snackbar', '', time() - 3600, '/');
+	return setcookie('snackbar', '', time() - 3600, '/');
 }
 
 if ($_POST['method'] === 'reset') {

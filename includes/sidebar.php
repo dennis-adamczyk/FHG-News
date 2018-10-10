@@ -1,9 +1,12 @@
 <?php
-
-/*
- * Register Sidebar
+/**
+ * @package fhgnewsonline
+ * -- Register Sidebar
  */
 
+/**
+ * Register sidebar
+ */
 function fhgnewsonline_sidebar_setup() {
 	register_sidebar( array(
 		'name'          => 'Sidebar',

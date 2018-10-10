@@ -1,10 +1,14 @@
 <?php
 /**
  * @package fhgnewsonline
+ * -- Comments Format
+ */
+
+/**
+ * Echos the comment form
  *
  * @param null $class
  */
-
 function fhgnewsonline_comment_form( $class = null ) {
 	global $id;
 	$post_id       = $id;
@@ -44,6 +48,9 @@ function fhgnewsonline_comment_form( $class = null ) {
 	<?php
 }
 
+/**
+ * Echos all comments
+ */
 function fhgnewsonline_comment_callback() {
 	if ( $GLOBALS['comment_depth'] == 1 ):
 		?>
@@ -91,6 +98,9 @@ function fhgnewsonline_comment_callback() {
 	<?php
 }
 
+/**
+ * End of echoing all comments
+ */
 function fhgnewsonline_comment_end_callback() {
 	if ( $GLOBALS['comment_depth'] == 1 ):
 		?>
@@ -99,6 +109,14 @@ function fhgnewsonline_comment_end_callback() {
 	endif;
 }
 
+/**
+ * Returns the amount of reply comments on the comment with post ID and comment ID
+ *
+ * @param $post_id
+ * @param $comment_id
+ *
+ * @return int
+ */
 function fhgnewsonline_reply_count( $post_id, $comment_id ) {
 	global $wpdb;
 	$query   = "SELECT COUNT(comment_post_ID) AS count FROM $wpdb->comments WHERE `comment_approved` = 1 AND `comment_post_ID` = $post_id AND `comment_parent` = $comment_id";

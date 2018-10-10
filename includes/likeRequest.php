@@ -1,7 +1,7 @@
 <?php
-
 /**
  * @package fhgnewsonline
+ * -- AJAX support for Like System
  */
 
 require_once("../../../../wp-load.php");
@@ -41,6 +41,11 @@ switch ( $_POST['method'] ) {
 		break;
 }
 
+/**
+ * Echos 'false' and returns false
+ *
+ * @return bool
+ */
 function False() {
 	echo 'false';
 	return false;

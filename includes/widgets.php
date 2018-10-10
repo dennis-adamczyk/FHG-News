@@ -1,12 +1,15 @@
 <?php
 /**
  * @package fhgnewsonline
+ * -- Register theme widgets
  */
 
 class Fhgnewsonline_Social_Media_Widget extends WP_Widget {
 
+	/**
+	 * Fhgnewsonline_Social_Media_Widget constructor
+	 */
 	public function __construct() {
-
 		$widget_opts = array(
 			'classname'   => 'widget_social_media',
 			'description' => 'Verlinkung zu unseren Social Media Konten',
@@ -15,6 +18,13 @@ class Fhgnewsonline_Social_Media_Widget extends WP_Widget {
 		parent::__construct( 'fhgnewsonline_social_media', 'Social Media', $widget_opts );
 	}
 
+	/**
+   * Echos inputs for widget settings in backend
+   *
+	 * @param array $instance
+	 *
+	 * @return string|void
+	 */
 	public function form( $instance ) {
 		$title = ! empty( $instance['title'] ) ? $instance['title'] : esc_html__( '', 'text_domain' );
 
@@ -70,6 +80,14 @@ class Fhgnewsonline_Social_Media_Widget extends WP_Widget {
 		<?php
 	}
 
+	/**
+   * Saves the widget settings on update
+   *
+	 * @param array $new_instance
+	 * @param array $old_instance
+	 *
+	 * @return array
+	 */
 	public function update( $new_instance, $old_instance ) {
 		$instance          = array();
 		$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? sanitize_text_field( $new_instance['title'] ) : '';
@@ -83,6 +101,12 @@ class Fhgnewsonline_Social_Media_Widget extends WP_Widget {
 		return $instance;
 	}
 
+	/**
+   * Echos widget in sidebar on frontend
+   *
+	 * @param array $args
+	 * @param array $instance
+	 */
 	public function widget( $args, $instance ) {
 		echo $args['before_widget'];
 

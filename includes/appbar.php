@@ -1,5 +1,17 @@
 <?php
+/**
+ * @package fhgnewsonline
+ * -- App Bar
+ */
 
+/**
+ * Echos the app bar or header
+ *
+ * @param $title
+ * @param string $navigation  Material icons font icon name
+ * @param bool $search
+ * @param bool $profile
+ */
 function get_appbar( $title, $navigation = 'menu', $search = true, $profile = true ) {
 	switch ( get_query_var( 'fhgnewsonline_page_id' ) ) {
 		case 1:

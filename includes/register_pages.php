@@ -1,5 +1,12 @@
 <?php
+/**
+ * @package fhgnewsonline
+ * -- Register Theme Custom Pages
+ */
 
+/**
+ * Adds URL rewrite and redirect rules
+ */
 function fhgnewsonline_add_rewrite_rules() {
 	add_rewrite_rule( '^user\/?$', 'index.php?fhgnewsonline_page_id=2&post_type=custom_post_type', 'top' );
 	add_rewrite_rule( '^user\/edit?', 'index.php?fhgnewsonline_page_id=1&post_type=custom_post_type', 'top' );
@@ -9,6 +16,13 @@ function fhgnewsonline_add_rewrite_rules() {
 add_action( 'init', 'fhgnewsonline_add_rewrite_rules' );
 
 
+/**
+ * Sets the query variables
+ *
+ * @param $vars
+ *
+ * @return mixed
+ */
 function fhgnewsonline_set_query_var( $vars ) {
 	array_push( $vars, 'fhgnewsonline_page_id' );
 
@@ -18,6 +32,13 @@ function fhgnewsonline_set_query_var( $vars ) {
 add_action( 'query_vars', 'fhgnewsonline_set_query_var' );
 
 
+/**
+ * Includes PHP template files for all redirected URLs
+ *
+ * @param $template
+ *
+ * @return null|string
+ */
 function fhgnewsonline_include_template( $template ) {
 	if ( get_query_var( 'fhgnewsonline_page_id' ) ) {
 		$new_template = null;
