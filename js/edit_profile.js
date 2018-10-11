@@ -1,6 +1,8 @@
 jQuery(document).ready(function ($) {
 
-    window.onbeforeunload = function() { return "Deine Änderungen wurden noch nicht gespeichert. Bist du sicher, dass du die Änderungen verwerfen möchtest?"; };
+    window.onbeforeunload = function () {
+        return "Deine Änderungen wurden noch nicht gespeichert. Bist du sicher, dass du die Änderungen verwerfen möchtest?";
+    };
 
     if (is_mobile()) {
         $('.header__menu i').html('close');

@@ -7,14 +7,14 @@ if ( ! empty( $_POST ) ) {
 	if ( ! isset( $_POST['_wpnonce'] ) || ! wp_verify_nonce( $_POST['_wpnonce'], 'update-user_' . get_current_user_id() ) ) {
 		$_POST = array();
 	  echo "showSingleLineSnackBar('Verifikation fehlgeschlagen');";
-	  exit;
+	  die();
 	}
 
 	echo "
     console.log('recived data');
 	";
 
-	exit;
+	die();
 }
 ?>
 

@@ -50,3 +50,5 @@ function False() {
 	echo 'false';
 	return false;
 }
+
+die();

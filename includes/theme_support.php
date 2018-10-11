@@ -26,6 +26,11 @@ function fhgnewsonline_enqueue() {
 
 	if ( is_home() && ! get_query_var( 'fhgnewsonline_page_id' ) ) {
 		wp_enqueue_style( 'blog', get_template_directory_uri() . '/css/blog.css' );
+		wp_enqueue_script( 'blog', get_template_directory_uri() . '/js/blog.js' );
+		wp_localize_script( 'blog', 'php_vars', array(
+			'admin_ajax_url' => admin_url( 'admin-ajax.php' ),
+			'max_num_pages'  => $GLOBALS["wp_query"]->max_num_pages,
+		) );
 	}
 	if ( is_single() ) {
 		wp_enqueue_style( 'single', get_template_directory_uri() . '/css/single.css' );
@@ -93,9 +98,9 @@ function fhgnewsonline_theme_setup() {
 	create_page_if_not_exists( 'impressum', 'Impressum' );
 	create_page_if_not_exists( 'datenschutz', 'Datenschutz' );
 
-	include "includes/appbar.php";
-	include "includes/likeSystem.php";
-	include "includes/comment_format.php";
+	include get_template_directory() . "/includes/appbar.php";
+	include get_template_directory() . "/includes/likeSystem.php";
+	include get_template_directory() . "/includes/comment_format.php";
 }
 
 add_action( 'init', 'fhgnewsonline_theme_setup' );
@@ -204,19 +209,6 @@ function create_page_if_not_exists( $slug, $title ) {
 
 	return false;
 }
-
-
-/**
- * Echos category color of category with given category name in $_POST['cat']
- */
-function get_rl_color() {
-	echo function_exists( 'rl_color' ) ? rl_color( get_cat_ID( $_POST['cat'] ) ) : '';
-}
-
-add_action( 'wp_ajax_nopriv_get_rl_color', 'get_rl_color' );
-add_action( 'wp_ajax_get_rl_color', 'get_rl_color' );
-
-
 
 /*
  * ===============================

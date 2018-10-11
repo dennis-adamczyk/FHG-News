@@ -1,11 +1,10 @@
 <?php
-global $category_color;
-
+$category_color = function_exists( 'rl_color' ) ? rl_color( get_the_category()[0]->cat_ID ) : '';
 $featured_image = false;
 
 if ( has_post_thumbnail() ) {
 	$featured_image = wp_get_attachment_url( get_post_thumbnail_id( get_the_ID() ) );
-} else if ( $img = preg_match_all( '/<img.+src=[\'"]([^\'"]+)[\'"].*>/im', get_the_content(), $matches ) ) {
+} else if ( $img = preg_match_all( '/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', get_the_content(), $matches ) ) {
 	$featured_image = $matches[1][0];
 }
 ?>

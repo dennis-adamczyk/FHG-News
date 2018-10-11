@@ -109,7 +109,7 @@ jQuery(document).ready(function ($) {
     ======================================
      */
 
-        let snackbarPost = JSON.parse(php_info.snackbar_post === null ? null : php_info.snackbar_post.replace(new RegExp("\\\\", 'g'), ''));
+    let snackbarPost = JSON.parse(php_info.snackbar_post === null ? null : php_info.snackbar_post.replace(new RegExp("\\\\", 'g'), ''));
     let snackbarStorage = JSON.parse(localStorage.getItem('snackbar'));
 
     if (snackbarPost) {

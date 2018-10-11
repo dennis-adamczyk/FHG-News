@@ -1220,8 +1220,14 @@ content .wrapper .sidebar
       stroke: $secondary
       stroke-dasharray: 1, 200
       stroke-dashoffset: 0
-      stroke-linecap: round
+      stroke-linecap: square
       animation: dash 1500ms ease-in-out infinite
+
+  &.material-loader--small
+    width: 28px
+
+    .material-loader__circular .material-loader__circular__path
+      stroke-width: 5
 
 @keyframes rotate
   100%

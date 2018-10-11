@@ -4,6 +4,8 @@ body.blog content .wrapper .main { width: 100%; }
 @media all and (min-width: 800px) { body.blog content .wrapper .main { width: 72.5%; } }
 body.blog content .wrapper .main .main__title { font-size: 18px; font-weight: 500; color: rgba(0, 0, 0, 0.86); margin: 24px 0 24px 16px; }
 @media all and (min-width: 800px) { body.blog content .wrapper .main .main__title { margin: 24px 0; } }
+body.blog content .wrapper .main .material-loader { margin: 16px auto 24px auto; }
+body.blog content .wrapper .main .material-loader .material-loader__circular__path { stroke: rgba(0, 0, 0, 0.56); }
 body.blog content .wrapper .main .posts { width: 100%; }
 body.blog content .wrapper .main .posts .post { width: calc(100% - 2 * 16px); display: block; margin: 0 auto 24px auto; padding: 0; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; cursor: pointer; }
 body.blog content .wrapper .main .posts .post .post__image { display: block; width: 100%; padding-top: 56.25%; background-color: rgba(0, 0, 0, 0.24); border-radius: 4px; position: relative; overflow: hidden; background-position: center; background-repeat: no-repeat; background-size: cover; }
