@@ -78,6 +78,10 @@ body.edit_profile
             font-size: 14px
             font-weight: 500
             color: rgba(#000000, .6)
+            -webkit-user-select: none
+            -moz-user-select: none
+            -ms-user-select: none
+            user-select: none
 
           &.general
 
@@ -188,8 +192,10 @@ body.edit_profile
                 grid-area: biography
 
             &.socialMedia
+              grid-template: auto / auto
               grid-template-areas: "title title" "facebook twitter" "instagram snapchat"
               width: calc(58% - 12px)
+              height: fit-content
 
               .socialMedia__facebook
                 grid-area: facebook

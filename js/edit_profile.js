@@ -24,15 +24,15 @@ jQuery(document).ready(function ($) {
         });
     }
 
-    $('.header__menu').off().on('click', function () {
-        overlayFadeIn('dialog-edit_profile-unsaved_changes');
-        showAlertDialog('Deine Änderungen wurden noch nicht gespeichert. Bist du sicher, dass du die Änderungen verwerfen möchtest?', ['Ja', 'Abbrechen']).then((res) => {
-            if (res === 'Ja') {
-                window.history.back();
-            }
-            overlayFadeOut('dialog-edit_profile-unsaved_changes');
-        });
-    });
+    // $('.header__menu').off().on('click', function () {
+    //     overlayFadeIn('dialog-edit_profile-unsaved_changes');
+    //     showAlertDialog('Deine Änderungen wurden noch nicht gespeichert. Bist du sicher, dass du die Änderungen verwerfen möchtest?', ['Ja', 'Abbrechen']).then((res) => {
+    //         if (res === 'Ja') {
+    //             window.history.back();
+    //         }
+    //         overlayFadeOut('dialog-edit_profile-unsaved_changes');
+    //     });
+    // });
 
     $('#edit_profile').submit(function () {
         $.ajax({

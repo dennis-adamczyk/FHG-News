@@ -33,6 +33,10 @@ dialogbox.share ul li p { position: absolute; left: 80px; top: 50%; display: inl
 
 .snackBox .snackBar { display: none; height: 48px; margin: 8px 0 0 0; padding: 0 16px; background-color: #323232; -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px; box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12); overflow: hidden; }
 .snackBox .snackBar p { margin: 0; padding: 0; font-size: 14px; font-weight: 400; color: rgba(255, 255, 255, 0.86); height: 100%; line-height: 48px; }
+.snackBox .snackBar.snackBar--action { padding: 0 8px 0 16px; }
+.snackBox .snackBar.snackBar--action p { display: inline-block; }
+.snackBox .snackBar.snackBar--action .button { display: inline-block; float: right; margin: 6px 0 6px 16px; height: 36px; cursor: pointer; }
+.snackBox .snackBar.snackBar--action .button span { line-height: 36px; }
 
 .lightBox { position: fixed; display: none; top: 0; right: 0; bottom: 0; left: 0; background-color: #212121; z-index: 24; }
 .lightBox .lightBox__header { position: relative; width: 100%; height: 56px; top: 0; left: 0; right: 0; background-color: rgba(33, 33, 33, 0.64); z-index: 25; overflow: hidden; }

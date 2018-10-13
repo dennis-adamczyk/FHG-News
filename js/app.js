@@ -66,7 +66,7 @@ jQuery(document).ready(function ($) {
     ======================================
      */
 
-    if(window.location.hash)
+    if (window.location.hash)
         history.replaceState(null, null, window.location.href.replace(/(page\/\S*(?=\?)|page\/(\S*))|#\S*(?=\?)|#\S*/g, ''));
 
     /*
@@ -75,25 +75,33 @@ jQuery(document).ready(function ($) {
     ======================================
      */
 
-    let $input = $('.input input');
+    let $input = $('.input input, .input--textarea textarea');
     let $inputGroup = $('.input');
-    let $inputCancel = $($inputGroup.find('i'));
+    let $inputCancel = $($inputGroup.find('i:not(.leadingIcon)'));
 
     $inputGroup.click(function () {
-        $(this).find('input').focus();
+        $(this).find('input, textarea').focus();
     });
 
     $inputCancel.click(function () {
         console.log($(this).parent());
-        $(this).parent().find('input').val('');
+        $(this).parent().find('input, textarea').val('');
     });
 
     $input.each(function () {
         changeInputState($(this));
+        if ($(this).is('textarea'))
+            auto_grow(this);
     });
 
     $input.focusout(function () {
         changeInputState($(this));
+        if ($(this).is('textarea'))
+            auto_grow(this);
+    });
+
+    $('.input--textarea textarea').on('input', function () {
+        auto_grow(this);
     });
 
     function changeInputState($inputControl) {
@@ -102,6 +110,11 @@ jQuery(document).ready(function ($) {
         } else {
             $inputControl.removeClass('hasValue');
         }
+    }
+
+    function auto_grow(textarea) {
+        $(textarea).css('height', '5px');
+        $(textarea).css('height', ($(textarea).prop('scrollHeight') - 11) + 'px');
     }
 
     try {
@@ -118,13 +131,16 @@ jQuery(document).ready(function ($) {
     ======================================
      */
 
-    let snackbarPost = JSON.parse(php_info.snackbar_post === null ? null : php_info.snackbar_post.replace(new RegExp("\\\\", 'g'), ''));
+    let snackbarPost = php_info.snackbar_post ? JSON.parse(php_info.snackbar_post) : false;
     let snackbarStorage = JSON.parse(localStorage.getItem('snackbar'));
 
     if (snackbarPost) {
         snackbarPost.forEach(function (obj) {
+
             if (obj.type === 'singleLine') {
-                showSingleLineSnackBar(obj.message)
+                showSingleLineSnackBar(obj.message);
+            } else if (obj.type === 'singleLineWithAction') {
+                showSingleLineWithActionSnackbar(obj.message, obj.action, function() { eval(obj.actionHandler) });
             }
         });
     }
@@ -133,6 +149,8 @@ jQuery(document).ready(function ($) {
         snackbarStorage.forEach(function (obj) {
             if (obj.type === 'singleLine') {
                 showSingleLineSnackBar(obj.message)
+            } else if (obj.type === 'singleLineWithAction') {
+                showSingleLineWithActionSnackbar(obj.message, obj.action, obj.actionHandler);
             }
         });
     }
@@ -989,6 +1007,44 @@ function addNextSingleLineSnackbar($message) {
             {
                 'type': 'singleLine',
                 'message': $message
+            }
+        ];
+    }
+    window.localStorage.setItem('snackbar', JSON.stringify(snackbar));
+}
+
+function showSingleLineWithActionSnackbar($message, $action, $actionHandler) {
+    jQuery('.snackBox').show().append('<div class="snackBar snackBar--action"><p>' + $message + '</p><div class="button button--flat"><span>' + $action + '</span></div></div>');
+    jQuery('.snackBar:last').fadeIn(180, function () {
+        const self = this;
+        jQuery(self).find('.button').click($actionHandler);
+        Waves.attach('.snackBar .button', ['waves-light']);
+        Waves.init();
+        setTimeout(function () {
+            jQuery(self).fadeOut(180, function () {
+                jQuery(self).remove();
+            });
+        }, 5000);
+    });
+}
+
+function addNextSingleLineWithActionSnackbar($message, $action, $actionHandler) {
+    var snackbar = window.localStorage.getItem('snackbar');
+    if (snackbar !== null && snackbar !== '' && snackbar !== undefined) {
+        snackbar = JSON.parse(snackbar);
+        snackbar.push({
+            'type': 'singleLineWithAction',
+            'message': $message,
+            'action': $action,
+            'actionHandler': $actionHandler
+        });
+    } else {
+        snackbar = [
+            {
+                'type': 'singleLineWithAction',
+                'message': $message,
+                'action': $action,
+                'actionHandler': $actionHandler
             }
         ];
     }

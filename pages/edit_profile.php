@@ -1,5 +1,6 @@
 <?php
 if ( ! is_user_logged_in() ) {
+  addNextSingleLineWithActionSnackbar('Melde dich an um diese Seite aufzurufen', 'Anmelden', 'window.location = "' . wp_login_url() . '";');
 	header( 'Location: ' . get_home_url() ); // TODO: Snackbar "Melde dich an um diese Seite aufzurufen" [ANMELDEN]
 }
 
@@ -9,6 +10,10 @@ if ( ! empty( $_POST ) ) {
 	  echo "showSingleLineSnackBar('Verifikation fehlgeschlagen');";
 	  die();
 	}
+
+	$errors = array();
+
+
 
 	echo "
     console.log('recived data');
@@ -34,28 +39,28 @@ if ( ! empty( $_POST ) ) {
           </div>
         </div>
         <div class="general__displayname input">
-          <input type="text" placeholder="Max Mustermann" required>
+          <input type="text" name="displayname" id="displayname" placeholder="Max Mustermann" value="<?php echo wp_get_current_user()->display_name; ?>" required>
           <i class="material-icons">cancel</i>
-          <label for="" class="label">Angezeigter Name</label>
-          <label for="" class="error"></label>
+          <label for="displayname" class="label">Angezeigter Name</label>
+          <label for="displayname" class="error"></label>
         </div>
         <div class="general__email input">
-          <input type="email" placeholder="max.mustermann@franz-haniel-gymnasium.eu" required>
+          <input type="email" name="email" id="email" placeholder="max.mustermann@franz-haniel-gymnasium.eu" value="<?php echo wp_get_current_user()->user_email ?>" required>
           <i class="material-icons">cancel</i>
-          <label for="" class="label">E-Mail</label>
-          <label for="" class="error"></label>
+          <label for="email" class="label">E-Mail</label>
+          <label for="email" class="error"></label>
         </div>
         <div class="general__firstname input">
-          <input type="text">
+          <input type="text" name="firstname" id="firstname" value="<?php echo wp_get_current_user()->first_name; ?>">
           <i class="material-icons">cancel</i>
-          <label for="" class="label">Vorname</label>
-          <label for="" class="error"></label>
+          <label for="firstname" class="label">Vorname</label>
+          <label for="firstname" class="error"></label>
         </div>
         <div class="general__lastname input">
-          <input type="text">
+          <input type="text" name="lastname" id="lastname" value="<?php echo wp_get_current_user()->last_name; ?>">
           <i class="material-icons">cancel</i>
-          <label for="" class="label">Nachname</label>
-          <label for="" class="error"></label>
+          <label for="lastname" class="label">Nachname</label>
+          <label for="lastname" class="error"></label>
         </div>
         <div class="general__resetPassword button button--light">
           <span>Passwort zurücksetzen</span>
@@ -64,15 +69,15 @@ if ( ! empty( $_POST ) ) {
       <section class="personal section">
         <h2 class="section__title">Persönlich</h2>
         <div class="personal__website input">
-          <input type="text">
+          <input type="text" name="website" id="website" value="<?php echo wp_get_current_user()->user_url; ?>">
           <i class="material-icons">cancel</i>
-          <label for="" class="label">Website</label>
-          <label for="" class="error"></label>
+          <label for="website" class="label">Website</label>
+          <label for="website" class="error"></label>
         </div>
         <div class="personal__biography input input--textarea">
-          <textarea name="" id="" cols="30" rows="10"></textarea>
-          <label for="" class="label">Steckbrief</label>
-          <label for="" class="error"></label>
+          <textarea name="biograpgy" id="biograpgy" cols="30" rows="10"><?php echo wp_get_current_user()->description; ?></textarea>
+          <label for="biograpgy" class="label">Steckbrief</label>
+          <label for="biograpgy" class="error"></label>
         </div>
       </section>
       <section class="socialMedia section">
@@ -80,34 +85,34 @@ if ( ! empty( $_POST ) ) {
         <div class="socialMedia__facebook input input--leadingIcon">
           <i class="material-icons leadingIcon"><img
                 src="<?php echo get_template_directory_uri() . '/img/icons/facebook.svg' ?>"></i>
-          <input type="text">
+          <input type="text" name="facebook" id="facebook" value="<?php echo get_facebook_url(get_current_user_id()); ?>">
           <i class="material-icons">cancel</i>
-          <label for="" class="label">Facebook</label>
-          <label for="" class="error"></label>
+          <label for="facebook" class="label">Facebook</label>
+          <label for="facebook" class="error"></label>
         </div>
         <div class="socialMedia__twitter input input--leadingIcon">
           <i class="material-icons leadingIcon"><img
                 src="<?php echo get_template_directory_uri() . '/img/icons/twitter.svg' ?>"></i>
-          <input type="text">
+          <input type="text" name="twitter" id="twitter" value="<?php echo get_twitter_url(get_current_user_id()); ?>">
           <i class="material-icons">cancel</i>
-          <label for="" class="label">Twitter</label>
-          <label for="" class="error"></label>
+          <label for="twitter" class="label">Twitter</label>
+          <label for="twitter" class="error"></label>
         </div>
         <div class="socialMedia__instagram input input--leadingIcon">
           <i class="material-icons leadingIcon"><img
                 src="<?php echo get_template_directory_uri() . '/img/icons/instagram.svg' ?>"></i>
-          <input type="text">
+          <input type="text" name="instagram" id="instagram" value="<?php echo get_instagram_url(get_current_user_id()); ?>">
           <i class="material-icons">cancel</i>
-          <label for="" class="label">Instagram</label>
-          <label for="" class="error"></label>
+          <label for="instagram" class="label">Instagram</label>
+          <label for="instagram" class="error"></label>
         </div>
         <div class="socialMedia__snapchat input input--leadingIcon">
           <i class="material-icons leadingIcon"><img
                 src="<?php echo get_template_directory_uri() . '/img/icons/snapchat.svg' ?>"></i>
-          <input type="text">
+          <input type="text" name="snapchat" id="snapchat" value="<?php echo get_snapchat_url(get_current_user_id()); ?>">
           <i class="material-icons">cancel</i>
-          <label for="" class="label">Snapchat</label>
-          <label for="" class="error"></label>
+          <label for="snapchat" class="label">Snapchat</label>
+          <label for="snapchat" class="error"></label>
         </div>
       </section>
       <p class="info">* Pflichtfeld</p>

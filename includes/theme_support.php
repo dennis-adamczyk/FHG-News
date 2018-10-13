@@ -21,7 +21,7 @@ function fhgnewsonline_enqueue() {
 		'admin_url'              => get_admin_url(),
 		'ajax_url'               => admin_url( 'admin-ajax.php' ),
 		'login_url'              => wp_logout_url(),
-		'snackbar_post'          => $_COOKIE["snackbar"],
+		'snackbar_post'          => stripslashes($_COOKIE["snackbar"]),
 		'max_num_pages'          => $GLOBALS["wp_query"]->max_num_pages,
 		'paged'                  => get_query_var( 'paged' ) == 0 ? 1 : get_query_var( 'paged' ),
 	) );
@@ -113,6 +113,7 @@ function fhgnewsonline_theme_setup() {
 	include get_template_directory() . "/includes/appbar.php";
 	include get_template_directory() . "/includes/likeSystem.php";
 	include get_template_directory() . "/includes/comment_format.php";
+	include get_template_directory() . "/includes/user_meta.php";
 }
 
 add_action( 'init', 'fhgnewsonline_theme_setup' );
