@@ -1,4 +1,5 @@
 <?php
+global $count;
 $category_color = function_exists( 'rl_color' ) ? rl_color( get_the_category()[0]->cat_ID ) : '';
 $featured_image = false;
 
@@ -8,7 +9,7 @@ if ( has_post_thumbnail() ) {
 	$featured_image = $matches[1][0];
 }
 ?>
-<article <?php post_class( 'post' ); ?> onclick="window.location = '<?php echo get_the_permalink(); ?>'">
+<article <?php post_class( 'post' ); ?> id="<?php echo $count; ?>" onclick="window.location = '<?php echo get_the_permalink(); ?>'">
   <div class="post__image ripple--mobile" style="background-image: url('<?php echo $featured_image; ?>')">
 	  <?php if ( ! $featured_image ) { ?>
         <div class="post__image__error">
@@ -21,19 +22,21 @@ if ( has_post_thumbnail() ) {
   <h3 class="post__title"><?php the_title(); ?></h3>
   <p class="post__subtitle">
     <span class="post__subtitle__category">
-      <?php if ( get_the_category()[0]->parent !== 0 ):
-	      echo '<span class="post__subtitle__category__parent" style="color: ' . rl_color( get_category( get_the_category()[0]->parent )->cat_ID ) . ';" onclick="window.location = \'' . get_category_link( get_category( get_the_category()[0]->parent )->cat_ID ) . '\'">' .
-	           get_category( get_the_category()[0]->parent )->name .
-	           '</span>' .
-	           '<i class="material-icons">chevron_right</i>' .
-	           '<span class="post__subtitle__category__sub" style="color: ' . $category_color . ';" onclick="window.location = \'' . get_category_link( get_the_category()[0]->cat_ID ) . '\'">' .
-	           get_the_category()[0]->name .
-	           '</span>';
+      <?php if ( empty( get_the_category() ) ): echo "Unkategorisiert";
       else:
-	      echo '<span class="post__subtitle__category__sub" style="color: ' . $category_color . ';" onclick="window.location = \'' . get_category_link( get_the_category()[0]->cat_ID ) . '\'">' .
-	           get_the_category()[0]->name .
-	           '</span>';
-      endif; ?>
+	      if ( get_the_category()[0]->parent !== 0 ):
+		      echo '<span class="post__subtitle__category__parent" style="color: ' . rl_color( get_category( get_the_category()[0]->parent )->cat_ID ) . ';" onclick="window.location = \'' . get_category_link( get_category( get_the_category()[0]->parent )->cat_ID ) . '\'">' .
+		           get_category( get_the_category()[0]->parent )->name .
+		           '</span>' .
+		           '<i class="material-icons">chevron_right</i>' .
+		           '<span class="post__subtitle__category__sub" style="color: ' . $category_color . ';" onclick="window.location = \'' . get_category_link( get_the_category()[0]->cat_ID ) . '\'">' .
+		           get_the_category()[0]->name .
+		           '</span>';
+	      else:
+		      echo '<span class="post__subtitle__category__sub" style="color: ' . $category_color . ';" onclick="window.location = \'' . get_category_link( get_the_category()[0]->cat_ID ) . '\'">' .
+		           get_the_category()[0]->name .
+		           '</span>';
+	      endif; endif; ?>
     </span> &bull; vor <?php echo human_time_diff( get_the_time( 'U' ), current_time( 'timestamp' ) ); ?>
   </p>
   <p class="post__preview"><?php echo wp_trim_words( get_the_content( '...' ), 30, '...' ) ?></p>

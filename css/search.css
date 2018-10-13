@@ -2,6 +2,8 @@
 @media all and (min-width: 1480px) { body.search content .wrapper { margin: 0 80px; } }
 body.search content .wrapper .main { width: 100%; }
 @media all and (min-width: 800px) { body.search content .wrapper .main { width: 72.5%; } }
+body.search content .wrapper .main .material-loader { margin: 16px auto 24px auto; }
+body.search content .wrapper .main .material-loader .material-loader__circular__path { stroke: rgba(0, 0, 0, 0.56); }
 body.search content .wrapper .main .posts { margin: 18px 0 0 0; width: 100%; }
 body.search content .wrapper .main .posts .error { display: block; position: absolute; top: 50%; left: 50%; width: 50vw; height: auto; transform: translate(-50%, -50%); }
 body.search content .wrapper .main .posts .error .material-icons { font-size: 64px; color: rgba(0, 0, 0, 0.56); text-align: center; width: 100%; }

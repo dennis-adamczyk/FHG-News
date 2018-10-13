@@ -46,7 +46,7 @@
 			} ?>
 			<?php get_template_part( 'formats/post/content', get_post_format() ); ?>
 
-			<?php if ( $count % 5 == 0 ): ?>
+			<?php if ( $count % 4 == 0 && $count !== 0 ): ?>
 
             <!--TODO Werbung-->
 

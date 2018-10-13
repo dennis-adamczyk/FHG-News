@@ -62,6 +62,15 @@ jQuery(document).ready(function ($) {
 
     /*
     ======================================
+        Infinite Scroll
+    ======================================
+     */
+
+    if(window.location.hash)
+        history.replaceState(null, null, window.location.href.replace(/(page\/\S*(?=\?)|page\/(\S*))|#\S*(?=\?)|#\S*/g, ''));
+
+    /*
+    ======================================
         Inputs
     ======================================
      */
@@ -1046,10 +1055,59 @@ function current_user_unlike_comment($comment_id) {
 function get_rl_color($category) {
     return jQuery.ajax({
         type: 'POST',
-        url: php_info.ajaxurl,
+        url: php_info.ajax_url,
         data: {
             action: 'get_rl_color',
             cat: $category
         }
     });
+}
+
+function infiniteScroll(type = 'blog', details = {}) {
+    let $ = jQuery;
+
+    var infiniteScroll_page = php_info.paged;
+    var infiniteScroll_loading = false;
+    let infiniteScroll_ajaxURL = php_info.ajax_url;
+    let infiniteScroll_max_num_pages = parseInt(php_info.max_num_pages);
+
+    infiniteScroll_deactivateIfMaxPage();
+
+    $(window).scroll(function () {
+        if (($(window).scrollTop() >= $(document).height() - $(window).height() - (is_mobile() ? 768 : 384)) && !infiniteScroll_loading) {
+            infiniteScroll_loading = true;
+            $.ajax({
+                url: infiniteScroll_ajaxURL,
+                type: 'POST',
+                data: {
+                    page: infiniteScroll_page,
+                    type: type,
+                    details: details,
+                    action: 'fhgnewsonline_infinite_scroll_content',
+                },
+                success: function (response) {
+                    $('.main .posts').append(response);
+                    infiniteScroll_page++;
+                    infiniteScroll_loading = false;
+                    infiniteScroll_deactivateIfMaxPage();
+                    $('.main').find('.post').unbind('click', infiniteScroll_replacePage).bind('click', infiniteScroll_replacePage);
+                }
+            });
+
+        }
+    });
+
+    $('.post').unbind('click', infiniteScroll_replacePage).bind('click', infiniteScroll_replacePage);
+
+    function infiniteScroll_replacePage() {
+        $id = $(this).attr('id');
+        history.replaceState(null, null, window.location.href.replace(/(page\/\S*(?=\?)|page\/(\S*))|#\S*(?=\?)|#\S*/g, '') + 'page/' + Math.max(Math.ceil($id / 4), 1) + '/#' + $id);
+    }
+
+    function infiniteScroll_deactivateIfMaxPage() {
+        if (infiniteScroll_page >= infiniteScroll_max_num_pages) {
+            infiniteScroll_loading = true;
+            $('.infiniteScroller').hide();
+        }
+    }
 }

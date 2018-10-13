@@ -15,21 +15,71 @@ add_action( 'wp_ajax_nopriv_get_rl_color', 'get_rl_color' );
 add_action( 'wp_ajax_get_rl_color', 'get_rl_color' );
 
 function fhgnewsonline_infinite_scroll_content() {
-	$paged = $_POST["page"] + 1;
-	$query = new WP_Query( array(
-		'post_type'   => 'post',
-		'post_status' => (current_user_can('read_private_pages') ? array('publish', 'private') : 'publish'),
-		'paged'       => $paged,
-	) );
+	global $count;
+	$type    = $_POST["type"];
+	$details = $_POST["details"];
+	$paged   = $_POST["page"] + 1;
+	switch ( $type ) {
+		case "category":
+			$args = array(
+				'post_type'   => 'post',
+				'post_status' => ( current_user_can( 'read_private_pages' ) ? array(
+					'publish',
+					'private'
+				) : 'publish' ),
+				'paged'       => $paged,
+				'cat'         => $details["cat_id"],
+			);
+			break;
 
-	$count = 0;
+		case "archive":
+			$args = array(
+				'post_type'   => 'post',
+				'post_status' => ( current_user_can( 'read_private_pages' ) ? array(
+					'publish',
+					'private'
+				) : 'publish' ),
+				'paged'       => $paged,
+				'year'        => $details["year"],
+				'monthnum'    => $details["monthnum"],
+				'day'         => $details["day"],
+			);
+			break;
+
+		case "search":
+			$args = array(
+				'post_type'   => 'post',
+				'post_status' => ( current_user_can( 'read_private_pages' ) ? array(
+					'publish',
+					'private'
+				) : 'publish' ),
+				'paged'       => $paged,
+				's'           => $details["s"],
+			);
+			break;
+
+		default:
+			$args = array(
+				'post_type'   => 'post',
+				'post_status' => ( current_user_can( 'read_private_pages' ) ? array(
+					'publish',
+					'private'
+				) : 'publish' ),
+				'paged'       => $paged,
+			);
+			break;
+	}
+
+	$query = new WP_Query( $args );
+
+	$count = (($paged - 1) * 5);
 	if ( $query->have_posts() ):
 		while ( $query->have_posts() ):
 			$query->the_post();
 
 			get_template_part( 'formats/post/content', get_post_format() );
 
-			if ( $count % 5 == 0 ): ?>
+			if ( $count % 4 == 0 && $count !== 0 ): ?>
 
               <!--TODO Werbung-->
 

@@ -19,18 +19,16 @@ function fhgnewsonline_enqueue() {
 		'template_directory_uri' => get_template_directory_uri(),
 		'home_url'               => get_home_url(),
 		'admin_url'              => get_admin_url(),
-		'ajaxurl'                => admin_url( 'admin-ajax.php' ),
+		'ajax_url'               => admin_url( 'admin-ajax.php' ),
 		'login_url'              => wp_logout_url(),
 		'snackbar_post'          => $_COOKIE["snackbar"],
+		'max_num_pages'          => $GLOBALS["wp_query"]->max_num_pages,
+		'paged'                  => get_query_var( 'paged' ) == 0 ? 1 : get_query_var( 'paged' ),
 	) );
 
 	if ( is_home() && ! get_query_var( 'fhgnewsonline_page_id' ) ) {
 		wp_enqueue_style( 'blog', get_template_directory_uri() . '/css/blog.css' );
 		wp_enqueue_script( 'blog', get_template_directory_uri() . '/js/blog.js' );
-		wp_localize_script( 'blog', 'php_vars', array(
-			'admin_ajax_url' => admin_url( 'admin-ajax.php' ),
-			'max_num_pages'  => $GLOBALS["wp_query"]->max_num_pages,
-		) );
 	}
 	if ( is_single() ) {
 		wp_enqueue_style( 'single', get_template_directory_uri() . '/css/single.css' );
@@ -49,15 +47,29 @@ function fhgnewsonline_enqueue() {
 	}
 	if ( is_search() ) {
 		wp_enqueue_style( 'search', get_template_directory_uri() . '/css/search.css' );
+		wp_enqueue_script( 'search', get_template_directory_uri() . '/js/search.js' );
+		wp_localize_script( 'search', 'php_vars', array(
+			's' => get_query_var( 's' ),
+		) );
 	}
 	if ( is_404() ) {
 		wp_enqueue_style( 'error404', get_template_directory_uri() . '/css/error404.css' );
 	}
 	if ( is_category() ) {
 		wp_enqueue_style( 'category', get_template_directory_uri() . '/css/category.css' );
+		wp_enqueue_script( 'category', get_template_directory_uri() . '/js/category.js' );
+		wp_localize_script( 'category', 'php_vars', array(
+			'cat_id' => get_the_category()[0]->cat_ID,
+		) );
 	}
-	if ( is_archive() ) {
+	if ( is_archive() && !is_category() ) {
 		wp_enqueue_style( 'archive', get_template_directory_uri() . '/css/archive.css' );
+		wp_enqueue_script( 'archive', get_template_directory_uri() . '/js/archive.js' );
+		wp_localize_script( 'archive', 'php_vars', array(
+			'year'  => get_query_var( 'year' ),
+			'month' => get_query_var( 'monthnum' ),
+			'day'   => get_query_var( 'day' ),
+		) );
 	}
 	if ( is_author() ) {
 		wp_enqueue_style( 'author', get_template_directory_uri() . '/css/author.css' );
@@ -208,6 +220,88 @@ function create_page_if_not_exists( $slug, $title ) {
 	}
 
 	return false;
+}
+
+/**
+ * Echos previous page content for a specific template type
+ *
+ * @param string|null $type
+ * @param array $details
+ */
+function fhgnewsonline_printPaged( $type = null, $details = array() ) {
+	global $count;
+	if ( is_paged() ) {
+		for ( $i = 1; $i < get_query_var( 'paged' ); $i ++ ) {
+			switch ( $type ) {
+				case "category":
+					$args = array(
+						'post_type'   => 'post',
+						'post_status' => ( current_user_can( 'read_private_pages' ) ? array(
+							'publish',
+							'private'
+						) : 'publish' ),
+						'paged'       => $i,
+						'cat'         => $details["cat_id"],
+					);
+					break;
+
+				case "archive":
+					$args = array(
+						'post_type'   => 'post',
+						'post_status' => ( current_user_can( 'read_private_pages' ) ? array(
+							'publish',
+							'private'
+						) : 'publish' ),
+						'paged'       => $i,
+						'year'        => $details["year"],
+						'monthnum'    => $details["monthnum"],
+						'day'         => $details["day"],
+					);
+					break;
+
+				case "search":
+					$args = array(
+						'post_type'   => 'post',
+						'post_status' => ( current_user_can( 'read_private_pages' ) ? array(
+							'publish',
+							'private'
+						) : 'publish' ),
+						'paged'       => $i,
+						's'           => $details["s"],
+					);
+					break;
+
+				default:
+					$args = array(
+						'post_type'   => 'post',
+						'post_status' => ( current_user_can( 'read_private_pages' ) ? array(
+							'publish',
+							'private'
+						) : 'publish' ),
+						'paged'       => $i,
+					);
+					break;
+			}
+			$query = new WP_Query( $args );
+
+			if ( $query->have_posts() ):
+				while ( $query->have_posts() ):
+					$query->the_post();
+
+					get_template_part( 'formats/post/content', get_post_format() );
+
+					if ( $count % 4 == 0 && $count !== 0 ): ?>
+
+            <!--TODO Werbung-->
+
+					<?php
+					endif;
+					$count ++;
+				endwhile;
+			endif;
+			wp_reset_postdata();
+		}
+	}
 }
 
 /*

@@ -6,6 +6,8 @@ body.category content .wrapper .main .main__title { font-size: 18px; font-weight
 body.category content .wrapper .main .main__title .main__title__parent { cursor: pointer; }
 body.category content .wrapper .main .main__title i.material-icons { font-size: 20px; width: 20px; height: 20px; color: rgba(0, 0, 0, 0.86); vertical-align: sub; }
 @media all and (min-width: 800px) { body.category content .wrapper .main .main__title { margin: 24px 0; } }
+body.category content .wrapper .main .material-loader { margin: 16px auto 24px auto; }
+body.category content .wrapper .main .material-loader .material-loader__circular__path { stroke: rgba(0, 0, 0, 0.56); }
 body.category content .wrapper .main .posts { width: 100%; }
 body.category content .wrapper .main .posts .post { width: calc(100% - 2 * 16px); display: block; margin: 0 auto 24px auto; padding: 0; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; cursor: pointer; }
 body.category content .wrapper .main .posts .post .post__image { display: block; width: 100%; padding-top: 56.25%; background-color: rgba(0, 0, 0, 0.24); border-radius: 4px; position: relative; overflow: hidden; background-position: center; background-repeat: no-repeat; background-size: cover; }
