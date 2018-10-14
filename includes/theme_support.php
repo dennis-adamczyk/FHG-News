@@ -63,7 +63,7 @@ function fhgnewsonline_enqueue() {
 			'cat_id' => get_the_category()[0]->cat_ID,
 		) );
 	}
-	if ( is_archive() && ! is_category() ) {
+	if ( is_archive() && ! is_category() && ! is_author() ) {
 		wp_enqueue_style( 'archive', get_template_directory_uri() . '/css/archive.css' );
 		wp_enqueue_script( 'archive', get_template_directory_uri() . '/js/archive.js' );
 		wp_localize_script( 'archive', 'php_vars', array(
@@ -74,6 +74,10 @@ function fhgnewsonline_enqueue() {
 	}
 	if ( is_author() ) {
 		wp_enqueue_style( 'author', get_template_directory_uri() . '/css/author.css' );
+		wp_enqueue_script( 'author', get_template_directory_uri() . '/js/author.js' );
+		wp_localize_script( 'author', 'php_vars', array(
+			'author' => get_query_var( 'author' ),
+		) );
 	}
 	if ( get_query_var( 'fhgnewsonline_page_id' ) == 1 ) {
 		wp_enqueue_style( 'edit_profiles', get_template_directory_uri() . '/css/edit_profile.css' );
@@ -272,6 +276,18 @@ function fhgnewsonline_printPaged( $type = null, $details = array() ) {
 						) : 'publish' ),
 						'paged'       => $i,
 						's'           => $details["s"],
+					);
+					break;
+
+				case "author":
+					$args = array(
+						'post_type'   => 'post',
+						'post_status' => ( current_user_can( 'read_private_pages' ) ? array(
+							'publish',
+							'private'
+						) : 'publish' ),
+						'paged'       => $i,
+						'author'      => $details["author"],
 					);
 					break;
 

@@ -34,16 +34,65 @@ jQuery(document).ready(function ($) {
     //     });
     // });
 
+    var submitted = false;
+    let $input = $('.input input, .input textarea');
+
+    $input.on('input', function () {
+        if (submitted) {
+            let $parent = $(this).parent();
+            $parent.find('label.error').text('');
+            $parent.removeClass('isInvalid');
+        }
+    });
+
+    $input.focusout(function () {
+        if (submitted)
+            submitEditProfile();
+    });
+
     $('#edit_profile').submit(function () {
+        submitEditProfile(1);
+        return false;
+    });
+
+    function submitEditProfile($enter = 0) {
+        let form = $('#edit_profile');
         $.ajax({
                 type: "POST",
-                data: $(this).serialize(),
+                data: $(form).serialize() + '&enter=' + $enter,
                 success: function (data) {
-                    eval(data);
+                    console.log(data);
+                    if (data.startsWith("E")) { // [E]RRORS
+                        var $errors = JSON.parse(data.substr(1));
+                    } else if (data === "F") { // [F]AILURE
+                        showSingleLineWithActionSnackbar('Fehler aufgetreten', 'Erneut versuchen', function () {
+                            submitEditProfile(1);
+                        });
+                    } else if (data === "S") { // [S]UCCESS
+                        addNextSingleLineSnackbar('Profil aktualisiert');
+                        window.onbeforeunload = undefined;
+                        window.history.back();
+                    } else {
+                        eval(data);
+                    }
+
+                    submitted = true;
+                    $('.input.isInvalid label.error').text('');
+                    $('.input').removeClass('isInvalid');
+                    for (var $id in $errors) {
+                        var $msg = $errors[$id];
+
+                        let $parent = $('#' + $id).parent();
+
+                        $parent.addClass('isInvalid');
+                        $parent.find('label.error').text($msg);
+                        if (is_mobile() && $enter === 1)
+                            $(window).scrollTop($parent.offset().top - 128);
+                    }
+
                     $('.loading').removeClass('loading');
                 }
             }
         );
-        return false;
-    });
+    }
 });

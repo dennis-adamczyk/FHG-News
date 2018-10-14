@@ -58,6 +58,18 @@ function fhgnewsonline_infinite_scroll_content() {
 			);
 			break;
 
+		case "author":
+			$args = array(
+				'post_type'   => 'post',
+				'post_status' => ( current_user_can( 'read_private_pages' ) ? array(
+					'publish',
+					'private'
+				) : 'publish' ),
+				'paged'       => $paged,
+				'author'      => $details["author"],
+			);
+			break;
+
 		case "recommended":
 			fhgnewsonline_printRecommendedPosts( get_post( $details["post"]["ID"] ), $paged );
 			die();

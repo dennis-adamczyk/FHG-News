@@ -16,6 +16,11 @@ const TWITTER_URL_DB_KEY   = 'user_twitter';
 const INSTAGRAM_URL_DB_KEY = 'user_instagram';
 const SNAPCHAT_URL_DB_KEY  = 'user_snapchat';
 
+const FACEBOOK_PRE_URL  = 'https://www.facebook.com/';
+const TWITTER_PRE_URL   = 'https://twitter.com/';
+const INSTAGRAM_PRE_URL = 'https://www.instagram.com/';
+const SNAPCHAT_PRE_URL  = 'https://www.snapchat.com/add/';
+
 /**
  * Sets the Facebook link of an user
  *
@@ -66,6 +71,55 @@ function set_snapchat_url( $user_id, $url ) {
 
 
 /**
+ * Sets the Facebook name of an user
+ *
+ * @param int $user_id User ID
+ * @param string $name Username
+ *
+ * @return bool|int Meta ID if the key didn't exist; true on successful update; false on failure or if $meta_value is the same as the existing meta value in the database.
+ */
+function set_facebook_name( $user_id, $name ) {
+	return set_facebook_url( $user_id, FACEBOOK_PRE_URL . $name );
+}
+
+/**
+ * Sets the Twitter name of an user
+ *
+ * @param int $user_id User ID
+ * @param string $name Username
+ *
+ * @return bool|int Meta ID if the key didn't exist; true on successful update; false on failure or if $meta_value is the same as the existing meta value in the database.
+ */
+function set_twitter_name( $user_id, $name ) {
+	return set_twitter_url( $user_id, TWITTER_PRE_URL . $name );
+}
+
+/**
+ * Sets the Instagram name of an user
+ *
+ * @param int $user_id User ID
+ * @param string $name Username
+ *
+ * @return bool|int Meta ID if the key didn't exist; true on successful update; false on failure or if $meta_value is the same as the existing meta value in the database.
+ */
+function set_instagram_name( $user_id, $name ) {
+	return set_instagram_url( $user_id, INSTAGRAM_PRE_URL . $name );
+}
+
+/**
+ * Sets the Snapchat name of an user
+ *
+ * @param int $user_id User ID
+ * @param string $name Username
+ *
+ * @return bool|int Meta ID if the key didn't exist; true on successful update; false on failure or if $meta_value is the same as the existing meta value in the database.
+ */
+function set_snapchat_name( $user_id, $name ) {
+	return set_snapchat_url( $user_id, SNAPCHAT_PRE_URL . $name );
+}
+
+
+/**
  * Gets the Facebook link of an user
  *
  * @param int $user_id User ID
@@ -107,6 +161,67 @@ function get_instagram_url( $user_id ) {
  */
 function get_snapchat_url( $user_id ) {
 	return get_user_meta( $user_id, SNAPCHAT_URL_DB_KEY, true );
+}
+
+
+/**
+ * Gets the Facebook name of an user
+ *
+ * @param int $user_id User ID
+ *
+ * @return string Value of meta_key field
+ */
+function get_facebook_name( $user_id = null ) {
+	if ( $user_id === null ) {
+		$user_id = get_current_user_id();
+	}
+
+	return substr( get_facebook_url( $user_id ), strlen( FACEBOOK_PRE_URL ) );
+}
+
+/**
+ * Gets the Twitter name of an user
+ *
+ * @param int $user_id User ID
+ *
+ * @return string Value of meta_key field
+ */
+function get_twitter_name( $user_id = null ) {
+	if ( $user_id === null ) {
+		$user_id = get_current_user_id();
+	}
+
+	return substr( get_twitter_url( $user_id ), strlen( TWITTER_PRE_URL ) );
+}
+
+/**
+ * Gets the Instagram name of an user
+ *
+ * @param int $user_id User ID
+ *
+ * @return string Value of meta_key field
+ */
+function get_instagram_name( $user_id = null ) {
+	if ( $user_id === null ) {
+		$user_id = get_current_user_id();
+	}
+
+	return substr( get_instagram_url( $user_id ), strlen( INSTAGRAM_PRE_URL ) );
+}
+
+/**
+ * Gets the Snapchat name of an user
+ *
+ * @param int $user_id User ID
+ *
+ * @return string Value of meta_key field
+ */
+function get_snapchat_name( $user_id = null ) {
+	if ( $user_id === null ) {
+		$user_id = get_current_user_id();
+	}
+
+	return substr( get_snapchat_url( $user_id ), strlen( SNAPCHAT_PRE_URL ) );
 }
 
 

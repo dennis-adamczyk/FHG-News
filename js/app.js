@@ -84,7 +84,8 @@ jQuery(document).ready(function ($) {
     });
 
     $inputCancel.click(function () {
-        $(this).parent().find('input, textarea').val('');
+        if (!$(this).parent().hasClass('isInvalid'))
+            $(this).parent().find('input, textarea').val('');
     });
 
     $input.each(function () {
@@ -116,8 +117,13 @@ jQuery(document).ready(function ($) {
         $(textarea).css('height', ($(textarea).prop('scrollHeight') - 11) + 'px');
     }
 
+    jQuery.support.placeholder = (function () {
+        var i = document.createElement('input');
+        return 'placeholder' in i;
+    })();
+
     try {
-        if (!$('.input input::placeholder').exists()) {
+        if (!jQuery.support.placeholder) {
             $input.attr('placeholder', '');
         }
     } catch (e) {
@@ -1141,11 +1147,11 @@ function infiniteScroll(type = 'blog', details = {}) {
                     action: 'fhgnewsonline_infinite_scroll_content',
                 },
                 success: function (response) {
-                    $('.main .posts').append(response);
+                    $('content .posts').append(response);
                     infiniteScroll_page++;
                     infiniteScroll_loading = false;
                     infiniteScroll_deactivateIfMaxPage();
-                    $('.main').find('.post').unbind('click', infiniteScroll_replacePage).bind('click', infiniteScroll_replacePage);
+                    $('content').find('.post').unbind('click', infiniteScroll_replacePage).bind('click', infiniteScroll_replacePage);
                 }
             });
 

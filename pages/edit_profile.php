@@ -1,23 +1,140 @@
 <?php
 if ( ! is_user_logged_in() ) {
-  addNextSingleLineWithActionSnackbar('Melde dich an um diese Seite aufzurufen', 'Anmelden', 'window.location = "' . wp_login_url() . '";');
+	addNextSingleLineWithActionSnackbar( 'Melde dich an um diese Seite aufzurufen', 'Anmelden', 'window.location = "' . wp_login_url() . '";' );
 	header( 'Location: ' . get_home_url() ); // TODO: Snackbar "Melde dich an um diese Seite aufzurufen" [ANMELDEN]
 }
 
 if ( ! empty( $_POST ) ) {
+	header( 'content-type: text/html; charset=utf-8' );
 	if ( ! isset( $_POST['_wpnonce'] ) || ! wp_verify_nonce( $_POST['_wpnonce'], 'update-user_' . get_current_user_id() ) ) {
 		$_POST = array();
-	  echo "showSingleLineSnackBar('Verifikation fehlgeschlagen');";
-	  die();
+		echo "showSingleLineSnackBar('Verifikation fehlgeschlagen');";
+		die();
 	}
 
 	$errors = array();
 
+	$displayname = strip_tags( trim( $_POST["displayname"] ) );
+	$email       = strip_tags( trim( $_POST["email"] ) );
+	$firstname   = strip_tags( trim( $_POST["firstname"] ) );
+	$lastname    = strip_tags( trim( $_POST["lastname"] ) );
+	$website     = strip_tags( trim( $_POST["website"] ) );
+	$biography   = strip_tags( trim( $_POST["biography"] ) );
+	$facebook    = strip_tags( trim( $_POST["facebook"] ) );
+	$twitter     = strip_tags( trim( $_POST["twitter"] ) );
+	$instagram   = strip_tags( trim( $_POST["instagram"] ) );
+	$snapchat    = strip_tags( trim( $_POST["snapchat"] ) );
+	$enter       = boolval( $_POST["enter"] );
 
+	if ( ! isset( $displayname ) || empty( $displayname ) || strlen( $displayname ) === 0 ) {
+		$errors["displayname"] = "Dies ist ein Pflichtfeld";
+	} else if ( strlen( $displayname ) > 250 ) {
+		$errors["displayname"] = "Maximal 250 Zeichen eingeben";
+	}
 
-	echo "
-    console.log('recived data');
-	";
+	if ( ! isset( $email ) || empty( $email ) || strlen( $email ) === 0 ) {
+		$errors["email"] = "Dies ist ein Pflichtfeld";
+	} else if ( strlen( $email ) > 100 ) {
+		$errors["email"] = "Maximal 100 Zeichen eingeben";
+	} else if ( ! is_email( $email ) ) {
+		$errors["email"] = "Ungültige E-Mail";
+	}
+
+	if ( strlen( $firstname ) !== 0 && ! preg_match( "/^([a-zA-ZäöüÄÖÜß' ]+)$/", $firstname ) ) {
+		$errors["firstname"] = "Ungültiger Vorname";
+	}
+
+	if ( strlen( $lastname ) !== 0 && ! preg_match( "/^([a-zA-ZäöüÄÖÜß' ]+)$/", $lastname ) ) {
+		$errors["lastname"] = "Ungültiger Nachname";
+	}
+
+	if ( strlen( $website ) !== 0 ) {
+		if ( ! filter_var( $website, FILTER_VALIDATE_URL ) ) {
+			$errors["website"] = "Ungültige Internetadresse";
+		} else if ( esc_url( $website, array( 'http', 'https', 'mailto', 'tel', 'fax' ) ) === '' ) {
+			$errors["website"] = "Ungültige Internetadresse";
+		}
+	}
+
+	if ( strlen( $facebook ) !== 0 ) {
+		if ( strpos( $facebook, '@' ) === 0 ) {
+			$facebook = substr( $facebook, 1 );
+		}
+		if ( strlen( $facebook ) < 5 ) {
+			$errors["facebook"] = "Mindestens 5 Zeichen";
+		} else if ( ! preg_match( "/^([a-zA-Z0-9.]+)$/", $facebook ) ) {
+			$errors["facebook"] = "Enthält ungültige Zeichen";
+		}
+	}
+
+	if ( strlen( $twitter ) !== 0 ) {
+		if ( strpos( $twitter, '@' ) === 0 ) {
+			$twitter = substr( $twitter, 1 );
+		}
+		if ( strlen( $twitter ) < 1 ) {
+			$errors["twitter"] = "Mindestens 1 Zeichen";
+		} else if ( strlen( $twitter ) > 15 ) {
+			$errors["twitter"] = "Maximal 15 zeichen";
+		} else if ( ! preg_match( "/^([a-zA-Z0-9_]+)$/", $twitter ) ) {
+			$errors["twitter"] = "Enthält ungültige Zeichen";
+		}
+	}
+
+	if ( strlen( $instagram ) !== 0 ) {
+		if ( strpos( $instagram, '@' ) === 0 ) {
+			$instagram = substr( $instagram, 1 );
+		}
+		if ( strlen( $instagram ) < 1 ) {
+			$errors["instagram"] = "Mindestens 1 Zeichen";
+		} else if ( strlen( $instagram ) > 30 ) {
+			$errors["instagram"] = "Maximal 30 Zeichen";
+		} else if ( ! preg_match( "/^([a-zA-Z_])$/", substr( $instagram, 0, 1 ) ) ) {
+			$errors["instagram"] = "Darf nicht mit Zahl oder Sonderzeichen beginnen";
+		} else if ( ! preg_match( "/^([a-zA-Z0-9._]+)$/", $instagram ) ) {
+			$errors["instagram"] = "Enthält ungültige Zeichen";
+		}
+	}
+
+	if ( strlen( $snapchat ) !== 0 ) {
+		if ( strpos( $snapchat, '@' ) === 0 ) {
+			$snapchat = substr( $snapchat, 1 );
+		}
+		if ( strlen( $snapchat ) < 3 ) {
+			$errors["snapchat"] = "Mindestens 3 Zeichen";
+		} else if ( ! preg_match( "/^([a-zA-Z0-9._-]+)$/", $snapchat ) ) {
+			$errors["snapchat"] = "Enthält ungültige Zeichen";
+		}
+	}
+
+	if ( ! empty( $errors ) ) {
+		echo "E" . json_encode( $errors );
+		die();
+	} else if ( $enter ) {
+		$status[] = wp_update_user( (object) array(
+			'ID'           => get_current_user_id(),
+			'display_name' => $displayname,
+			'user_email'   => $email,
+			'first_name'   => $firstname,
+			'last_name'    => $lastname,
+			'user_url'     => $website,
+			'description'  => $biography,
+		) );
+		$status[] = set_facebook_name( get_current_user_id(), $facebook );
+		$status[] = set_twitter_name( get_current_user_id(), $twitter );
+		$status[] = set_instagram_name( get_current_user_id(), $instagram );
+		$status[] = set_snapchat_name( get_current_user_id(), $snapchat );
+		foreach ( $status as $val ) {
+			if ( is_wp_error( $val ) ) {
+        echo "F";
+        die();
+			}
+		}
+		echo "S";
+		die();
+	} else {
+		echo "E{}";
+	}
+
 
 	die();
 }
@@ -39,13 +156,15 @@ if ( ! empty( $_POST ) ) {
           </div>
         </div>
         <div class="general__displayname input">
-          <input type="text" name="displayname" id="displayname" placeholder="Max Mustermann" value="<?php echo wp_get_current_user()->display_name; ?>" required>
+          <input type="text" name="displayname" id="displayname" placeholder="Max Mustermann"
+                 value="<?php echo wp_get_current_user()->display_name; ?>" required>
           <i class="material-icons">cancel</i>
           <label for="displayname" class="label">Angezeigter Name</label>
           <label for="displayname" class="error"></label>
         </div>
         <div class="general__email input">
-          <input type="email" name="email" id="email" placeholder="max.mustermann@franz-haniel-gymnasium.eu" value="<?php echo wp_get_current_user()->user_email ?>" required>
+          <input type="email" name="email" id="email" placeholder="max.mustermann@franz-haniel-gymnasium.eu"
+                 value="<?php echo wp_get_current_user()->user_email ?>" required>
           <i class="material-icons">cancel</i>
           <label for="email" class="label">E-Mail</label>
           <label for="email" class="error"></label>
@@ -75,7 +194,8 @@ if ( ! empty( $_POST ) ) {
           <label for="website" class="error"></label>
         </div>
         <div class="personal__biography input input--textarea">
-          <textarea name="biograpgy" id="biograpgy" cols="30" rows="10"><?php echo wp_get_current_user()->description; ?></textarea>
+          <textarea name="biography" id="biograpgy" cols="30"
+                    rows="10"><?php echo wp_get_current_user()->description; ?></textarea>
           <label for="biograpgy" class="label">Steckbrief</label>
           <label for="biograpgy" class="error"></label>
         </div>
@@ -85,7 +205,8 @@ if ( ! empty( $_POST ) ) {
         <div class="socialMedia__facebook input input--leadingIcon">
           <i class="material-icons leadingIcon"><img
                 src="<?php echo get_template_directory_uri() . '/img/icons/facebook.svg' ?>"></i>
-          <input type="text" name="facebook" id="facebook" value="<?php echo get_facebook_url(get_current_user_id()); ?>">
+          <input type="text" name="facebook" id="facebook" placeholder="Benutzername"
+                 value="<?php echo get_facebook_name(); ?>">
           <i class="material-icons">cancel</i>
           <label for="facebook" class="label">Facebook</label>
           <label for="facebook" class="error"></label>
@@ -93,7 +214,8 @@ if ( ! empty( $_POST ) ) {
         <div class="socialMedia__twitter input input--leadingIcon">
           <i class="material-icons leadingIcon"><img
                 src="<?php echo get_template_directory_uri() . '/img/icons/twitter.svg' ?>"></i>
-          <input type="text" name="twitter" id="twitter" value="<?php echo get_twitter_url(get_current_user_id()); ?>">
+          <input type="text" name="twitter" id="twitter" placeholder="Benutzername"
+                 value="<?php echo get_twitter_name(); ?>">
           <i class="material-icons">cancel</i>
           <label for="twitter" class="label">Twitter</label>
           <label for="twitter" class="error"></label>
@@ -101,7 +223,8 @@ if ( ! empty( $_POST ) ) {
         <div class="socialMedia__instagram input input--leadingIcon">
           <i class="material-icons leadingIcon"><img
                 src="<?php echo get_template_directory_uri() . '/img/icons/instagram.svg' ?>"></i>
-          <input type="text" name="instagram" id="instagram" value="<?php echo get_instagram_url(get_current_user_id()); ?>">
+          <input type="text" name="instagram" id="instagram" placeholder="Benutzername"
+                 value="<?php echo get_instagram_name(); ?>">
           <i class="material-icons">cancel</i>
           <label for="instagram" class="label">Instagram</label>
           <label for="instagram" class="error"></label>
@@ -109,7 +232,8 @@ if ( ! empty( $_POST ) ) {
         <div class="socialMedia__snapchat input input--leadingIcon">
           <i class="material-icons leadingIcon"><img
                 src="<?php echo get_template_directory_uri() . '/img/icons/snapchat.svg' ?>"></i>
-          <input type="text" name="snapchat" id="snapchat" value="<?php echo get_snapchat_url(get_current_user_id()); ?>">
+          <input type="text" name="snapchat" id="snapchat" placeholder="Benutzername"
+                 value="<?php echo get_snapchat_name(); ?>">
           <i class="material-icons">cancel</i>
           <label for="snapchat" class="label">Snapchat</label>
           <label for="snapchat" class="error"></label>
@@ -120,7 +244,8 @@ if ( ! empty( $_POST ) ) {
         <span>Änderungen speichern</span>
         <div class="material-loader">
           <svg class="material-loader__circular" viewBox="25 25 50 50">
-            <circle class="material-loader__circular__path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"></circle>
+            <circle class="material-loader__circular__path" cx="50" cy="50" r="20" fill="none" stroke-width="2"
+                    stroke-miterlimit="10"></circle>
           </svg>
         </div>
       </div>

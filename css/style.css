@@ -204,11 +204,11 @@ content .wrapper .sidebar .sidebar__widget.widget_categories h2 ul li a:hover { 
   50% { stroke-dasharray: 89, 200; stroke-dashoffset: -35px; }
   100% { stroke-dasharray: 89, 200; stroke-dashoffset: -124px; } }
 .input { position: relative; width: 100%; min-height: 75px; }
-.input input { min-width: 256px; width: calc(100% - 2 * 12px); padding: 8px 12px 0 12px; position: relative; z-index: 1; height: 48px; font-size: 16px; font-weight: 400; color: rgba(0, 0, 0, 0.86); border: none; border-bottom: 1px solid rgba(0, 0, 0, 0.6); border-top-left-radius: 4px; border-top-right-radius: 4px; background-color: rgba(0, 0, 0, 0.04); caret-color: #2196F3; overflow: hidden; outline: none; cursor: pointer; -webkit-transition: border 180ms cubic-bezier(0.4, 0, 0.2, 1), background 180ms cubic-bezier(0.4, 0, 0.2, 1); -moz-transition: border 180ms cubic-bezier(0.4, 0, 0.2, 1), background 180ms cubic-bezier(0.4, 0, 0.2, 1); -ms-transition: border 180ms cubic-bezier(0.4, 0, 0.2, 1), background 180ms cubic-bezier(0.4, 0, 0.2, 1); -o-transition: border 180ms cubic-bezier(0.4, 0, 0.2, 1), background 180ms cubic-bezier(0.4, 0, 0.2, 1); transition: border 180ms cubic-bezier(0.4, 0, 0.2, 1), background 180ms cubic-bezier(0.4, 0, 0.2, 1); }
+.input input { min-width: 256px; width: calc(100% - 2 * 12px); padding: 8px 12px 0 12px; position: relative; z-index: 1; height: 48px; font-size: 16px; font-weight: 400; color: rgba(0, 0, 0, 0.86); border: none; border-bottom: 1px solid rgba(0, 0, 0, 0.6); border-top-left-radius: 4px; border-top-right-radius: 4px; background-color: rgba(0, 0, 0, 0.04); caret-color: #2196F3; overflow: hidden; outline: none; cursor: pointer; -webkit-transition: border 180ms cubic-bezier(0.4, 0, 0.2, 1), background 180ms cubic-bezier(0.4, 0, 0.2, 1), height 180ms cubic-bezier(0.4, 0, 0.2, 1); -moz-transition: border 180ms cubic-bezier(0.4, 0, 0.2, 1), background 180ms cubic-bezier(0.4, 0, 0.2, 1), height 180ms cubic-bezier(0.4, 0, 0.2, 1); -ms-transition: border 180ms cubic-bezier(0.4, 0, 0.2, 1), background 180ms cubic-bezier(0.4, 0, 0.2, 1), height 180ms cubic-bezier(0.4, 0, 0.2, 1); -o-transition: border 180ms cubic-bezier(0.4, 0, 0.2, 1), background 180ms cubic-bezier(0.4, 0, 0.2, 1), height 180ms cubic-bezier(0.4, 0, 0.2, 1); transition: border 180ms cubic-bezier(0.4, 0, 0.2, 1), background 180ms cubic-bezier(0.4, 0, 0.2, 1), height 180ms cubic-bezier(0.4, 0, 0.2, 1); }
 .input input:not(:focus)::placeholder { color: transparent; }
 .input input::placeholder { color: rgba(0, 0, 0, 0.6); -webkit-transition: color 180ms cubic-bezier(0.4, 0, 0.2, 1); -moz-transition: color 180ms cubic-bezier(0.4, 0, 0.2, 1); -ms-transition: color 180ms cubic-bezier(0.4, 0, 0.2, 1); -o-transition: color 180ms cubic-bezier(0.4, 0, 0.2, 1); transition: color 180ms cubic-bezier(0.4, 0, 0.2, 1); }
 .input input:active { background-color: rgba(0, 0, 0, 0.06); }
-.input input:focus { border-bottom: 2px solid #2196F3; cursor: text; }
+.input input:focus { height: 47px; border-bottom: 2px solid #2196F3; cursor: text; }
 .input input:focus ~ .material-icons { display: inline-block; }
 .input input:focus ~ .label { top: 6px; font-size: 12px; color: #2196F3; cursor: text; }
 .input input:focus:required ~ .label::after { color: #F44336; }
@@ -218,6 +218,13 @@ content .wrapper .sidebar .sidebar__widget.widget_categories h2 ul li a:hover { 
 .input input:required ~ .label::after { margin-left: 1px; content: "*"; }
 .input .material-icons { display: none; position: absolute; top: 16px; right: 12px; color: rgba(0, 0, 0, 0.56); cursor: pointer; z-index: 1; }
 .input label.error { display: block; position: relative; margin: 4px 0 0 12px; font-size: 12px; color: rgba(0, 0, 0, 0.6); -webkit-transition: all 180ms cubic-bezier(0.4, 0, 0.2, 1); -moz-transition: all 180ms cubic-bezier(0.4, 0, 0.2, 1); -ms-transition: all 180ms cubic-bezier(0.4, 0, 0.2, 1); -o-transition: all 180ms cubic-bezier(0.4, 0, 0.2, 1); transition: all 180ms cubic-bezier(0.4, 0, 0.2, 1); }
+.input.isInvalid input { border-bottom: 1px solid #F44336; }
+.input.isInvalid input:focus { border-bottom: 2px solid #F44336; }
+.input.isInvalid input:focus ~ .label { color: #F44336; }
+.input.isInvalid input ~ .label { animation: shake 650ms linear; color: #F44336; }
+.input.isInvalid .material-icons:not(.leadingIcon) { display: inline-block; color: transparent; }
+.input.isInvalid .material-icons:not(.leadingIcon)::after { display: inline-block; position: absolute; top: 0; left: 0; color: #F44336; content: "error"; }
+.input.isInvalid label.error { color: #F44336; }
 .input.input--leadingIcon input { min-width: 220px; width: calc(100% - 2 * 12px - 24px - 12px); padding: 8px 12px 0 48px; }
 .input.input--leadingIcon input ~ .label { left: 48px; }
 .input.input--leadingIcon .leadingIcon { display: inline-block; position: absolute; top: 16px; left: 12px; width: 24px; height: 24px; color: #000000; opacity: 0.56; cursor: pointer; z-index: auto; }
@@ -253,5 +260,10 @@ div.button.button--light span { font-weight: 500; color: #2196F3; }
 
 input.submit { height: 36px; min-width: 64px; display: inline-block; padding: 0 16px; border: none; border-radius: 4px; overflow: hidden; box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12); background-color: #2196F3; text-align: center; line-height: 36px; font-size: 14px; font-weight: 400; color: #ffffff; text-transform: uppercase; outline: none; cursor: pointer; transition: box-shadow 150ms cubic-bezier(0.4, 0, 0.2, 1), background 150ms cubic-bezier(0.4, 0, 0.2, 1); }
 input.submit:active { background-color: #51adf6; box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12); }
+
+@keyframes shake { 100%,
+0% { transform: translate3d(0, 0, 0); }
+  15%, 45%, 75% { transform: translate3d(5px, 0, 0); }
+  30%, 60%, 90% { transform: translate3d(-5px, 0, 0); } }
 
 /*# sourceMappingURL=style.css.map */

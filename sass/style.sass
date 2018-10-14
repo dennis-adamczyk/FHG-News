@@ -1038,7 +1038,6 @@ content
             overflow: hidden
             color: rgba(#000000, .56)
 
-
 // ========================================
 // ===== SIDEBAR ==========================
 // ========================================
@@ -1288,11 +1287,11 @@ content .wrapper .sidebar
     overflow: hidden
     outline: none
     cursor: pointer
-    -webkit-transition: border 180ms $easing, background 180ms $easing
-    -moz-transition: border 180ms $easing, background 180ms $easing
-    -ms-transition: border 180ms $easing, background 180ms $easing
-    -o-transition: border 180ms $easing, background 180ms $easing
-    transition: border 180ms $easing, background 180ms $easing
+    -webkit-transition: border 180ms $easing, background 180ms $easing, height 180ms $easing
+    -moz-transition: border 180ms $easing, background 180ms $easing, height 180ms $easing
+    -ms-transition: border 180ms $easing, background 180ms $easing, height 180ms $easing
+    -o-transition: border 180ms $easing, background 180ms $easing, height 180ms $easing
+    transition: border 180ms $easing, background 180ms $easing, height 180ms $easing
 
     &:not(:focus)::placeholder
       color: transparent
@@ -1309,6 +1308,7 @@ content .wrapper .sidebar
       background-color: rgba(#000000, .06)
 
     &:focus
+      height: 47px
       border-bottom: 2px solid $secondary
       cursor: text
 
@@ -1349,7 +1349,6 @@ content .wrapper .sidebar
       margin-left: 1px
       content: '*'
 
-
   .material-icons
     display: none
     position: absolute
@@ -1370,6 +1369,35 @@ content .wrapper .sidebar
     -ms-transition: all 180ms $easing
     -o-transition: all 180ms $easing
     transition: all 180ms $easing
+
+  &.isInvalid
+    input
+      border-bottom: 1px solid $red
+
+      &:focus
+        border-bottom: 2px solid $red
+
+        & ~ .label
+          color: $red
+
+      & ~ .label
+        animation: shake 650ms linear
+        color: $red
+
+    .material-icons:not(.leadingIcon)
+      display: inline-block
+      color: transparent
+
+      &::after
+        display: inline-block
+        position: absolute
+        top: 0
+        left: 0
+        color: $red
+        content: "error"
+
+    label.error
+      color: $red
 
   &.input--leadingIcon
     input
@@ -1476,7 +1504,6 @@ content .wrapper .sidebar
       &:required ~ .label::after
         margin-left: 1px
         content: '*'
-
 
   &.input--line
     &.input--textarea
@@ -1602,3 +1629,14 @@ input.submit
   &:active
     background-color: lighten($secondary, 10)
     box-shadow: $elevation--z8
+
+@keyframes shake
+  100%,
+  0%
+    transform: translate3d(0,0,0)
+
+  15%, 45%, 75%
+    transform: translate3d(5px,0,0)
+
+  30%, 60%, 90%
+    transform: translate3d(-5px,0,0)
