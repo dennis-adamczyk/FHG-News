@@ -21,7 +21,7 @@ function fhgnewsonline_enqueue() {
 		'admin_url'              => get_admin_url(),
 		'ajax_url'               => admin_url( 'admin-ajax.php' ),
 		'login_url'              => wp_logout_url(),
-		'snackbar_post'          => stripslashes($_COOKIE["snackbar"]),
+		'snackbar_post'          => stripslashes( $_COOKIE["snackbar"] ),
 		'max_num_pages'          => $GLOBALS["wp_query"]->max_num_pages,
 		'paged'                  => get_query_var( 'paged' ) == 0 ? 1 : get_query_var( 'paged' ),
 	) );
@@ -36,7 +36,8 @@ function fhgnewsonline_enqueue() {
 		wp_localize_script( 'single', 'php_vars', array(
 			'login_url'        => wp_login_url(),
 			'registration_url' => wp_registration_url(),
-			'post_id'          => get_the_ID()
+			'post_id'          => get_the_ID(),
+			'post'             => get_post(),
 		) );
 	}
 	if ( is_page() ) {
@@ -62,7 +63,7 @@ function fhgnewsonline_enqueue() {
 			'cat_id' => get_the_category()[0]->cat_ID,
 		) );
 	}
-	if ( is_archive() && !is_category() ) {
+	if ( is_archive() && ! is_category() ) {
 		wp_enqueue_style( 'archive', get_template_directory_uri() . '/css/archive.css' );
 		wp_enqueue_script( 'archive', get_template_directory_uri() . '/js/archive.js' );
 		wp_localize_script( 'archive', 'php_vars', array(
@@ -114,6 +115,8 @@ function fhgnewsonline_theme_setup() {
 	include get_template_directory() . "/includes/likeSystem.php";
 	include get_template_directory() . "/includes/comment_format.php";
 	include get_template_directory() . "/includes/user_meta.php";
+
+	flush_rewrite_rules( true );
 }
 
 add_action( 'init', 'fhgnewsonline_theme_setup' );
@@ -293,7 +296,7 @@ function fhgnewsonline_printPaged( $type = null, $details = array() ) {
 
 					if ( $count % 4 == 0 && $count !== 0 ): ?>
 
-            <!--TODO Werbung-->
+                      <!--TODO Werbung-->
 
 					<?php
 					endif;
@@ -305,12 +308,132 @@ function fhgnewsonline_printPaged( $type = null, $details = array() ) {
 	}
 }
 
+/**
+ * Prints recommended Posts
+ *
+ * @param $post
+ * @param int $paged
+ */
+function fhgnewsonline_printRecommendedPosts( $post, $paged = 1 ) {
+	if ( ! $post ) {
+		global $post;
+	}
+	$tags = wp_get_post_tags( $post->ID );
+
+	if ( $tags ) {
+		$tag_ids = array();
+		foreach ( $tags as $individual_tag ) {
+			$tag_ids[] = $individual_tag->term_id;
+		}
+		$related_query = new WP_Query( array(
+			'tag__in'          => $tag_ids,
+			'post__not_in'     => array( $post->ID ),
+			'posts_per_page'   => 3,
+			'caller_get_posts' => 1,
+			'paged'            => $paged,
+		) );
+
+	} else {
+		$categories = wp_get_post_categories( $post->ID );
+
+		if ( $categories ) {
+			$cat_ids       = $categories;
+			$related_query = new WP_Query( array(
+				'category__in'     => $cat_ids,
+				'post__not_in'     => array( $post->ID ),
+				'posts_per_page'   => 3,
+				'caller_get_posts' => 1,
+				'paged'            => $paged,
+			) );
+		}
+	}
+	if ( isset( $related_query ) ) {
+		if ( $related_query->have_posts() ) {
+			while ( $related_query->have_posts() ) {
+				$related_query->the_post();
+				$category_color = function_exists( 'rl_color' ) ? rl_color( get_the_category()[0]->cat_ID ) : '';
+				$featured_image = false;
+
+				if ( has_post_thumbnail() ) {
+					$featured_image = wp_get_attachment_url( get_post_thumbnail_id( get_the_ID() ) );
+				} else if ( $img = preg_match_all( '/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', get_the_content(), $matches ) ) {
+					$featured_image = $matches[1][0];
+				} ?>
+              <article <?php post_class( 'recommended__post' ); ?>
+                  onclick="window.location = '<?php echo get_the_permalink(); ?>'">
+                <div class="post__image" style="background-image: url('<?php echo $featured_image; ?>')">
+					<?php if ( ! $featured_image ): ?>
+                      <div class="post__image__error">
+                        <i class="material-icons">error</i>
+                        <p>Kein Bild gefunden!</p>
+                      </div>
+					<?php endif; ?>
+                </div>
+                <h4 class="post__title"><?php the_title(); ?></h4>
+                <p class="post__subtitle">
+                    <span class="post__subtitle__category">
+                    <?php if ( empty( get_the_category() ) ): echo "Unkategorisiert";
+                    else:
+	                    if ( get_the_category()[0]->parent !== 0 ):
+		                    echo '<span class="post__subtitle__category__parent" style="color: ' . rl_color( get_category( get_the_category()[0]->parent )->cat_ID ) . ';" onclick="window.location = \'' . get_category_link( get_category( get_the_category()[0]->parent )->cat_ID ) . '\'">' .
+		                         get_category( get_the_category()[0]->parent )->name .
+		                         '</span>' .
+		                         '<i class="material-icons">chevron_right</i>' .
+		                         '<span class="post__subtitle__category__sub" style="color: ' . $category_color . ';" onclick="window.location = \'' . get_category_link( get_the_category()[0]->cat_ID ) . '\'">' .
+		                         get_the_category()[0]->name .
+		                         '</span>';
+	                    else:
+		                    echo '<span class="post__subtitle__category__sub" style="color: ' . $category_color . ';" onclick="window.location = \'' . get_category_link( get_the_category()[0]->cat_ID ) . '\'">' .
+		                         get_the_category()[0]->name .
+		                         '</span>';
+	                    endif; endif; ?>
+                  </span> &bull; vor <?php echo human_time_diff( get_the_time( 'U' ), current_time( 'timestamp' ) ); ?>
+                </p>
+                <div class="post__foot">
+                  <div
+                      class="post__foot__like<?php if ( is_user_logged_in() && has_liked( get_the_ID(), get_current_user_id() ) ) {
+						  echo " active";
+					  } ?>">
+                    <i class="material-icons">favorite</i>
+                    <p class="post__foot__like__count"><?php echo get_like_amount( get_the_ID() ); ?></p>
+                  </div>
+                  <div class="post__foot__comments">
+                    <i class="material-icons">insert_comment</i>
+                    <p class="post__foot__comments__count"><?php echo get_comments_number() ?: ''; ?></p>
+                  </div>
+                  <div class="post__foot__share"
+                       onclick="event.stopPropagation(); showShareDialog('<?php echo get_permalink(); ?>', '<?php echo get_the_title(); ?>');">
+                    <i class="material-icons">share</i>
+                  </div>
+                </div>
+              </article>
+
+				<?php
+			}
+		} else {
+			?>
+          <div class="recommended__error">
+            <p>Keine Artikel vorhanden.</p>
+          </div>
+			<?php
+		}
+	} else {
+		?>
+      <div class="recommended__error">
+        <p>Keine Artikel vorhanden.</p>
+      </div>
+		<?php
+	}
+	wp_reset_query();
+}
+
 /*
  * ===============================
  *      INSTALL PLUGINS NOTICE
  * ===============================
  */
 
+include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 if ( ! is_plugin_active( 'category-color/rl_category_color.php' ) ) {
 	function install_category_color_notice() {
 		?>

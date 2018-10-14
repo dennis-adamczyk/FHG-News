@@ -68,6 +68,8 @@ body.single content .wrapper .main .comments .comments__list .comments__list__co
 body.single content .wrapper .main .comments .comments__list .comments__list__commentParent .children .comments__list__comment:first-child { margin: 32px 0 0 0; }
 body.single content .wrapper .main .recommended { width: calc(100% - 2 * 16px); margin: 0 auto; display: block; }
 body.single content .wrapper .main .recommended .recommended__title { font-size: 16px; font-weight: 400; margin: 24px 0; padding: 0; color: rgba(0, 0, 0, 0.86); }
+body.single content .wrapper .main .recommended .material-loader { margin: 16px auto 24px auto; }
+body.single content .wrapper .main .recommended .material-loader .material-loader__circular__path { stroke: rgba(0, 0, 0, 0.56); }
 body.single content .wrapper .main .recommended .recommended__posts { width: 100%; display: block; margin: 0; padding: 0; }
 body.single content .wrapper .main .recommended .recommended__posts .recommended__error { position: relative; width: 100%; display: block; margin: 0 0 32px 0; padding: 0; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
 body.single content .wrapper .main .recommended .recommended__posts .recommended__error p { margin: 0; display: block; text-align: center; font-size: 16px; font-weight: 400; color: rgba(0, 0, 0, 0.56); }

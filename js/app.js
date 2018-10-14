@@ -75,7 +75,7 @@ jQuery(document).ready(function ($) {
     ======================================
      */
 
-    let $input = $('.input input, .input--textarea textarea');
+    let $input = $('.input input, .input--textarea:not(.input--line) textarea');
     let $inputGroup = $('.input');
     let $inputCancel = $($inputGroup.find('i:not(.leadingIcon)'));
 
@@ -84,7 +84,6 @@ jQuery(document).ready(function ($) {
     });
 
     $inputCancel.click(function () {
-        console.log($(this).parent());
         $(this).parent().find('input, textarea').val('');
     });
 
@@ -100,7 +99,7 @@ jQuery(document).ready(function ($) {
             auto_grow(this);
     });
 
-    $('.input--textarea textarea').on('input', function () {
+    $('.input--textarea:not(.input--line) textarea').on('input', function () {
         auto_grow(this);
     });
 
@@ -140,7 +139,9 @@ jQuery(document).ready(function ($) {
             if (obj.type === 'singleLine') {
                 showSingleLineSnackBar(obj.message);
             } else if (obj.type === 'singleLineWithAction') {
-                showSingleLineWithActionSnackbar(obj.message, obj.action, function() { eval(obj.actionHandler) });
+                showSingleLineWithActionSnackbar(obj.message, obj.action, function () {
+                    eval(obj.actionHandler)
+                });
             }
         });
     }
@@ -282,7 +283,6 @@ jQuery(document).ready(function ($) {
 
     /* HEADER ADD  */
     $($appbar.find('.header__add')).on('mouseup', function (e) {
-        console.log(e.button);
         switch (e.button) {
             case 1:
             case 4:
@@ -322,7 +322,6 @@ jQuery(document).ready(function ($) {
                 });
             } else {
                 getSearchHistory().filter((suggestion) => suggestion.toLowerCase().startsWith(filter.toLowerCase())).forEach(function (elem) {
-                    console.log(elem);
                     $searchSugsList.append(`
                     <li data-val="` + elem + `">
                       <div class="searchSuggestions__icon"><i class="material-icons">history</i></div>
@@ -1165,5 +1164,48 @@ function infiniteScroll(type = 'blog', details = {}) {
             infiniteScroll_loading = true;
             $('.infiniteScroller').hide();
         }
+    }
+}
+
+function infiniteScrollRecommended(post) {
+    let $ = jQuery;
+
+    var infiniteScroll_page = 1;
+    var infiniteScroll_loading = false;
+    let infiniteScroll_ajaxURL = php_info.ajax_url;
+    let type = 'recommended';
+
+    infiniteScroll_deactivateIfMaxPage();
+
+    $(window).scroll(function () {
+        if (($(window).scrollTop() >= $(document).height() - $(window).height() - (is_mobile() ? 384 : 256)) && !infiniteScroll_loading) {
+            infiniteScroll_loading = true;
+            $.ajax({
+                url: infiniteScroll_ajaxURL,
+                type: 'POST',
+                data: {
+                    page: infiniteScroll_page,
+                    type: type,
+                    details: {'post': post},
+                    action: 'fhgnewsonline_infinite_scroll_content',
+                },
+                success: function (response) {
+                    infiniteScroll_loading = false;
+                    if (!infiniteScroll_deactivateIfMaxPage(response))
+                        $('.recommended .recommended__posts').append(response);
+                    infiniteScroll_page++;
+                }
+            });
+
+        }
+    });
+
+    function infiniteScroll_deactivateIfMaxPage(response = '') {
+        if ($('.recommended .recommended__posts').html().trim().startsWith('<div class="recommended__error">') || response.trim().startsWith('<div class="recommended__error">')) {
+            infiniteScroll_loading = true;
+            $('.infiniteScroller').hide();
+            return true;
+        }
+        return false;
     }
 }

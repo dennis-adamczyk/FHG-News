@@ -58,6 +58,11 @@ function fhgnewsonline_infinite_scroll_content() {
 			);
 			break;
 
+		case "recommended":
+			fhgnewsonline_printRecommendedPosts( get_post( $details["post"]["ID"] ), $paged );
+			die();
+			break;
+
 		default:
 			$args = array(
 				'post_type'   => 'post',
@@ -72,7 +77,7 @@ function fhgnewsonline_infinite_scroll_content() {
 
 	$query = new WP_Query( $args );
 
-	$count = (($paged - 1) * 5);
+	$count = ( ( $paged - 1 ) * 5 );
 	if ( $query->have_posts() ):
 		while ( $query->have_posts() ):
 			$query->the_post();

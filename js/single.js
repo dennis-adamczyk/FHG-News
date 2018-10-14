@@ -37,7 +37,7 @@ function writeNewComment() {
         $textarea.focus();
         $respond.find('.input__label').text('Öffentlich kommentieren...');
 
-        $textarea.keyup(function (evt) {
+        $textarea.on('input', function () {
             if ($.trim($(this).val())) {
                 $(this).addClass('hasValue');
                 $submit.addClass('show');
@@ -83,7 +83,7 @@ function writeNewComment() {
         $submit.addClass('active');
         $textarea.focus();
 
-        $textarea.keyup(function (evt) {
+        $textarea.on('input', function () {
             if ($.trim($(this).val())) {
                 $(this).addClass('hasValue');
                 $submit_button.addClass('show');
@@ -163,7 +163,7 @@ function optimizeCommentarea() {
     let $respond = $('.comments__respond' + (is_mobile() ? '.global' : ':not(.global)'));
     let $textarea = $respond.find('textarea#comment' + (is_mobile() ? '-global' : ''));
 
-    $textarea.on('paste keyup keydown', function (evt) {
+    $textarea.on('input', function () {
         $textarea.css({'height': '35px', 'line-height': '19px'});
         var newHeight = this.scrollHeight;
         if (newHeight > 35) {
@@ -177,6 +177,8 @@ function optimizeCommentarea() {
 }
 
 $(document).ready(function () {
+
+    infiniteScrollRecommended(php_vars.post);
 
     /* ===== LIGHT BOX ===== */
 
