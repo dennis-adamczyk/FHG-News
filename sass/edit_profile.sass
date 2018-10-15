@@ -108,6 +108,9 @@ body.edit_profile
                 left: 50%
                 transform: translateX(-50%)
 
+              input
+                display: none
+
             .general__resetPassword
               margin: 0 auto 24px auto
 
@@ -248,3 +251,72 @@ body.edit_profile
 
                 .material-loader__circular__path
                   stroke: #ffffff
+
+dialogbox.cropProfilePic
+  .cropContainer
+    position: relative
+    width: 100%
+    height: auto
+
+    .close
+      position: absolute
+      top: 0
+      left: 16px
+      cursor: pointer
+      height: 24px
+      width: 24px
+      padding: 8px
+      transform: translate(-8px, -8px)
+      -webkit-border-radius: 50%
+      -moz-border-radius: 50%
+      border-radius: 50%
+      overlay: hidden
+
+      i
+        color: rgba(#000000, .54)
+
+    .done
+      position: absolute
+      top: 0
+      right: 16px
+      cursor: pointer
+      height: 24px
+      width: 24px
+      padding: 8px
+      transform: translate(8px, -8px)
+      -webkit-border-radius: 50%
+      -moz-border-radius: 50%
+      border-radius: 50%
+      overlay: hidden
+
+      i
+        color: $secondary
+
+    .label
+      display: block
+      font-size: 20px
+      font-weight: 500
+      color: #000000
+      padding: 0
+      margin: 21px 0 16px 0
+      text-align: center
+
+    #croppie
+      width: 100%
+      height: auto
+      padding: 0
+      margin: 0 0 8px 0
+
+  @media #{$mobile}
+    width: 100%
+    max-width: none
+    height: 100%
+    max-height: none
+    border-radius: 0
+
+    .cropContainer
+      #croppie
+        width: 100%
+        position: fixed
+        top: 50%
+        transform: translateY(-50%)

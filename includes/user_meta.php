@@ -79,7 +79,7 @@ function set_snapchat_url( $user_id, $url ) {
  * @return bool|int Meta ID if the key didn't exist; true on successful update; false on failure or if $meta_value is the same as the existing meta value in the database.
  */
 function set_facebook_name( $user_id, $name ) {
-	return set_facebook_url( $user_id, FACEBOOK_PRE_URL . $name );
+	return $name === '' ? set_facebook_url( $user_id, '' ) : set_facebook_url( $user_id, FACEBOOK_PRE_URL . $name );
 }
 
 /**
@@ -91,7 +91,7 @@ function set_facebook_name( $user_id, $name ) {
  * @return bool|int Meta ID if the key didn't exist; true on successful update; false on failure or if $meta_value is the same as the existing meta value in the database.
  */
 function set_twitter_name( $user_id, $name ) {
-	return set_twitter_url( $user_id, TWITTER_PRE_URL . $name );
+	return $name === '' ? set_twitter_url( $user_id, '' ) : set_twitter_url( $user_id, TWITTER_PRE_URL . $name );
 }
 
 /**
@@ -103,7 +103,7 @@ function set_twitter_name( $user_id, $name ) {
  * @return bool|int Meta ID if the key didn't exist; true on successful update; false on failure or if $meta_value is the same as the existing meta value in the database.
  */
 function set_instagram_name( $user_id, $name ) {
-	return set_instagram_url( $user_id, INSTAGRAM_PRE_URL . $name );
+	return $name === '' ? set_instagram_url( $user_id, '' ) : set_instagram_url( $user_id, INSTAGRAM_PRE_URL . $name );
 }
 
 /**
@@ -115,7 +115,7 @@ function set_instagram_name( $user_id, $name ) {
  * @return bool|int Meta ID if the key didn't exist; true on successful update; false on failure or if $meta_value is the same as the existing meta value in the database.
  */
 function set_snapchat_name( $user_id, $name ) {
-	return set_snapchat_url( $user_id, SNAPCHAT_PRE_URL . $name );
+	return $name === '' ? set_snapchat_url( $user_id, '' ) : set_snapchat_url( $user_id, SNAPCHAT_PRE_URL . $name );
 }
 
 

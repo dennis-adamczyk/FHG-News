@@ -927,6 +927,64 @@ function showShareDialog(url, title) {
     });
 }
 
+/**
+ * Shows Select Dialog
+ *
+ * @param string title Title of Article
+ * @param array options
+ * @returns {Promise<any>} callback
+ */
+function showSelectDialog(title, options) {
+    return new Promise((resolve, reject) => {
+
+        const $ = jQuery;
+        if ($('dialogbox').attr('open'))
+            return;
+        $('dialogbox').addClass('select');
+        let $dialog = $('dialogbox.select');
+
+        $html = `
+            <div class="close"><i class="material-icons">close</i></div>
+            <p class="label">` + title + `</p>
+            <ul>`;
+
+        options.forEach(function(elem) {
+            $html += '<li><span>' + elem + '</span></li>';
+        });
+
+        $html += '</ul>';
+
+        $dialog.html($html);
+
+        overlayFadeIn('share');
+        $dialog.fadeIn(200, function () {
+            $dialog.attr('open', '');
+            Waves.attach('dialogbox ul li');
+            Waves.attach('dialogbox .close');
+            Waves.init();
+
+            var closeSelectDialog = function () {
+                resolve();
+                overlayFadeOut('share');
+                $dialog.fadeOut(180, function () {
+                    $dialog.html('');
+                    $dialog.removeClass('alert');
+                    $dialog.removeClass('select');
+                    $dialog.removeAttr('open');
+                });
+            };
+
+            $($dialog.find('div.close')).on('click', closeSelectDialog);
+            $('overlay').on('click', closeSelectDialog);
+            $($dialog.find('li')).on('click', function () {
+                resolve($(this).find('span').text());
+                closeSelectDialog();
+            });
+        });
+
+    });
+}
+
 function is_logged_in() {
     return jQuery('body').hasClass('logged-in');
 }

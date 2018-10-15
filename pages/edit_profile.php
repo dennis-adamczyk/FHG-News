@@ -5,11 +5,17 @@ if ( ! is_user_logged_in() ) {
 }
 
 if ( ! empty( $_POST ) ) {
+
 	header( 'content-type: text/html; charset=utf-8' );
 	if ( ! isset( $_POST['_wpnonce'] ) || ! wp_verify_nonce( $_POST['_wpnonce'], 'update-user_' . get_current_user_id() ) ) {
 		$_POST = array();
 		echo "showSingleLineSnackBar('Verifikation fehlgeschlagen');";
 		die();
+	}
+
+	if ( isset( $_POST["profilePic"] ) ) {
+	    set_profile_picture(null, $_POST["profilePic"]);
+      die();
 	}
 
 	$errors = array();
@@ -125,8 +131,8 @@ if ( ! empty( $_POST ) ) {
 		$status[] = set_snapchat_name( get_current_user_id(), $snapchat );
 		foreach ( $status as $val ) {
 			if ( is_wp_error( $val ) ) {
-        echo "F";
-        die();
+				echo "F";
+				die();
 			}
 		}
 		echo "S";
@@ -154,6 +160,7 @@ if ( ! empty( $_POST ) ) {
           <div class="general__profilePicture__change button button--flat">
             <span>Foto ändern</span>
           </div>
+          <input type="file" accept="image/*" name="avatar" id="avatar">
         </div>
         <div class="general__displayname input">
           <input type="text" name="displayname" id="displayname" placeholder="Max Mustermann"
