@@ -235,7 +235,7 @@ jQuery(document).ready(function ($) {
         var yDiff = yDown - yUp;
 
         if (Math.abs(xDiff) > Math.abs(yDiff)) {
-            if (xDiff < 0) {
+            if (xDiff < 0 && $('dialogbox').css('display') === 'none' && $('overlay').css('display') === 'none') {
                 $nav.addClass('active');
                 overlayFadeIn('nav');
             }

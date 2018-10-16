@@ -270,7 +270,7 @@ dialogbox.cropProfilePic
       -webkit-border-radius: 50%
       -moz-border-radius: 50%
       border-radius: 50%
-      overlay: hidden
+      overflow: hidden
 
       i
         color: rgba(#000000, .54)
@@ -287,7 +287,7 @@ dialogbox.cropProfilePic
       -webkit-border-radius: 50%
       -moz-border-radius: 50%
       border-radius: 50%
-      overlay: hidden
+      overflow: hidden
 
       i
         color: $secondary
@@ -301,11 +301,64 @@ dialogbox.cropProfilePic
       margin: 21px 0 16px 0
       text-align: center
 
+    .uploadImage
+      display: none
+      position: absolute
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
+
     #croppie
+      position: relative
       width: 100%
       height: auto
       padding: 0
       margin: 0 0 8px 0
+
+      .cr-boundary
+        width: 400px
+        height: 400px
+
+      .options
+        position: absolute
+        right: 8px
+        top: 8px
+        background-color: #ffffff
+        border-radius: 4px
+        overflow: hidden
+        box-shadow: $elevation--z8
+        margin: 0
+        padding: 8px 4px
+        z-index: 2
+
+        div
+          display: block
+          cursor: pointer
+          height: 24px
+          width: 24px
+          padding: 8px
+          -webkit-border-radius: 50%
+          -moz-border-radius: 50%
+          border-radius: 50%
+          overflow: hidden
+          transition: background 200ms $easing
+
+          &:hover
+            background-color: rgba(#000000, .08)
+
+          &:active,
+          &:focus
+            background-color: rgba(#000000, .24)
+
+
+          i
+            color: rgba(#000000, .56)
+
+      .cr-boundary
+        .cr-viewport
+          border: 1px solid rgba(#ffffff, .56)
+          border-radius: 24px
+          box-shadow: 0 0 2000px 2000px rgba(#000000, 0.56)
 
   @media #{$mobile}
     width: 100%
@@ -315,8 +368,24 @@ dialogbox.cropProfilePic
     border-radius: 0
 
     .cropContainer
+      .uploadImage
+        position: fixed
+
       #croppie
-        width: 100%
+        width: 100vw
+        height: 100vw
         position: fixed
         top: 50%
         transform: translateY(-50%)
+
+        .cr-boundary
+          min-width: 100%
+          min-height: 100%
+
+        .options div
+          &:hover
+            background-color: transparent
+
+          &:active,
+          &:focus
+            background-color: rgba(#000000, .32)

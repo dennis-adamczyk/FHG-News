@@ -24,6 +24,7 @@ function fhgnewsonline_enqueue() {
 		'snackbar_post'          => stripslashes( $_COOKIE["snackbar"] ),
 		'max_num_pages'          => $GLOBALS["wp_query"]->max_num_pages,
 		'paged'                  => get_query_var( 'paged' ) == 0 ? 1 : get_query_var( 'paged' ),
+		'user_id'                => get_current_user_id(),
 	) );
 
 	if ( is_home() && ! get_query_var( 'fhgnewsonline_page_id' ) ) {
@@ -81,10 +82,10 @@ function fhgnewsonline_enqueue() {
 	}
 	if ( get_query_var( 'fhgnewsonline_page_id' ) == 1 ) {
 		wp_enqueue_style( 'edit_profiles', get_template_directory_uri() . '/css/edit_profile.css' );
-	  wp_enqueue_script( 'edit_profiles', get_template_directory_uri() . '/js/edit_profile.js' );
-	  wp_enqueue_style( 'croppie', get_template_directory_uri() . '/vendor/css/croppie.css' );
-	  wp_enqueue_script( 'croppie', get_template_directory_uri() . '/vendor/js/croppie.min.js' );
-  }
+		wp_enqueue_script( 'edit_profiles', get_template_directory_uri() . '/js/edit_profile.js' );
+		wp_enqueue_style( 'croppie', get_template_directory_uri() . '/vendor/css/croppie.css' );
+		wp_enqueue_script( 'croppie', get_template_directory_uri() . '/vendor/js/croppie.min.js' );
+	}
 }
 
 add_action( 'wp_enqueue_scripts', 'fhgnewsonline_enqueue' );
@@ -124,6 +125,7 @@ function fhgnewsonline_theme_setup() {
 	include get_template_directory() . "/includes/profile_picture_system.php";
 
 	flush_rewrite_rules( true );
+	profile_picture_init();
 }
 
 add_action( 'init', 'fhgnewsonline_theme_setup' );

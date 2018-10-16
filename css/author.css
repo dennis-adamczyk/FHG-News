@@ -15,7 +15,7 @@ body.author content .wrapper .info .website { margin: 0 16px; padding: 0; font-s
 body.author content .wrapper .info .website .website__title { display: inline-block; width: calc(25% - 16px); margin: 0; padding: 0; font-size: 14px; font-weight: 500; line-height: 19px; color: rgba(0, 0, 0, 0.56); }
 body.author content .wrapper .info .facebook, body.author content .wrapper .info .twitter, body.author content .wrapper .info .instagram, body.author content .wrapper .info .snapchat { position: relative; margin: 0 16px 8px 16px; padding: 0; font-size: 16px; font-weight: 400; }
 body.author content .wrapper .info .facebook img, body.author content .wrapper .info .twitter img, body.author content .wrapper .info .instagram img, body.author content .wrapper .info .snapchat img { width: 24px; height: 24px; opacity: 0.56; display: block; }
-body.author content .wrapper .info .facebook a, body.author content .wrapper .info .twitter a, body.author content .wrapper .info .instagram a, body.author content .wrapper .info .snapchat a { position: absolute; left: calc(25% - 16px); top: 0; line-height: 24px; }
+body.author content .wrapper .info .facebook a, body.author content .wrapper .info .twitter a, body.author content .wrapper .info .instagram a, body.author content .wrapper .info .snapchat a { position: absolute; left: 48px; top: 0; line-height: 24px; }
 @media all and (min-width: 800px) { body.author content .wrapper .info { width: 22.5%; height: fit-content; margin: 32px 0 0 0; position: sticky; top: 96px; }
   body.author content .wrapper .info .profile { margin: 0 auto; }
   body.author content .wrapper .info .profile .profile__picture { width: 128px; height: 128px; }
@@ -26,7 +26,6 @@ body.author content .wrapper .info .facebook a, body.author content .wrapper .in
   body.author content .wrapper .info .website { margin: 0; }
   body.author content .wrapper .info .website .website__title { width: 30%; }
   body.author content .wrapper .info .facebook, body.author content .wrapper .info .twitter, body.author content .wrapper .info .instagram, body.author content .wrapper .info .snapchat { margin: 0 0 8px 0; }
-  body.author content .wrapper .info .facebook a, body.author content .wrapper .info .twitter a, body.author content .wrapper .info .instagram a, body.author content .wrapper .info .snapchat a { left: 30%; }
   body.author content .wrapper .info hr.divider:last-child { display: none; } }
 body.author content .wrapper .postContainer { width: 100%; }
 body.author content .wrapper .postContainer .material-loader { margin: 16px auto 24px auto; }

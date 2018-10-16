@@ -14,8 +14,24 @@ if ( ! empty( $_POST ) ) {
 	}
 
 	if ( isset( $_POST["profilePic"] ) ) {
-	    set_profile_picture(null, $_POST["profilePic"]);
-      die();
+		if ( $_POST["profilePic"] === "delete" ) {
+			if ( delete_profile_picture( null ) ) {
+				echo "S" . get_avatar_url( get_current_user_id(), array( "size" => 128 ) );
+			} else {
+				echo "F";
+			}
+		} else {
+			try {
+				if ( set_profile_picture( null, $_POST["profilePic"] ) === false ) {
+					echo "F";
+				} else {
+					echo "S" . get_profile_picture_url( null );
+				}
+			} catch ( Exception $e ) {
+				echo "F";
+			}
+		}
+		die();
 	}
 
 	$errors = array();

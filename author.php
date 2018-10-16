@@ -31,7 +31,9 @@
 				echo $url['host'] . rtrim( $url['path'], '/' ); ?></a>
           </p>
 		<?php endif; ?>
-      <hr class="divider">
+		<?php if ( ! ( empty( get_facebook_name() ) && empty( get_twitter_name() ) && empty( get_instagram_name() ) && empty( get_snapchat_name() ) ) ): ?>
+          <hr class="divider">
+		<?php endif; ?>
 		<?php if ( ! empty( get_facebook_name() ) ): ?>
           <p class="facebook">
             <img src="<?php echo get_template_directory_uri() . '/img/icons/facebook.svg' ?>" alt="Facebook">
