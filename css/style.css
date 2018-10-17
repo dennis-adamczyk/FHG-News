@@ -42,8 +42,8 @@ dialogbox.select ul li span { position: absolute; left: 24px; top: 50%; display:
 @media all and (min-width: 800px) { .snackBox { left: 24px; bottom: 24px; right: auto; min-width: 344px; } }
 @media all and (min-width: 800px) and (min-width: 1480px) { .snackBox { left: calc(256px + 24px); } }
 
-.snackBox .snackBar { display: none; height: 48px; margin: 8px 0 0 0; padding: 0 16px; background-color: #323232; -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px; box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12); overflow: hidden; }
-.snackBox .snackBar p { margin: 0; padding: 0; font-size: 14px; font-weight: 400; color: rgba(255, 255, 255, 0.86); height: 100%; line-height: 48px; }
+.snackBox .snackBar { display: none; min-height: 48px; margin: 8px 0 0 0; padding: 0 16px; background-color: #323232; -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px; box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12); overflow: hidden; }
+.snackBox .snackBar p { margin: 15px 0; padding: 0; font-size: 14px; font-weight: 400; color: rgba(255, 255, 255, 0.86); height: 100%; }
 .snackBox .snackBar.snackBar--action { padding: 0 8px 0 16px; }
 .snackBox .snackBar.snackBar--action p { display: inline-block; }
 .snackBox .snackBar.snackBar--action .button { display: inline-block; float: right; margin: 6px 0 6px 16px; height: 36px; cursor: pointer; }
@@ -262,7 +262,7 @@ content .wrapper .sidebar .sidebar__widget.widget_categories h2 ul li a:hover { 
 .input.input--line.input--textarea.input--placeholderDisappear textarea:focus + label.input__label, .input.input--line.input--textarea.input--placeholderDisappear textarea.hasValue + label.input__label { display: none; }
 .input.input--line.input--textarea label.input__label { position: absolute; top: 10px; left: 3px; font-size: 16px; color: rgba(0, 0, 0, 0.6); transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1); -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; cursor: pointer; }
 
-div.button { height: 36px; min-width: 64px; display: inline-block; padding: 0 16px; border-radius: 4px; overflow: hidden; box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12); background-color: #2196F3; }
+div.button { min-height: 36px; min-width: 64px; display: inline-block; padding: 0 16px; border-radius: 4px; overflow: hidden; box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12); background-color: #2196F3; }
 div.button span { display: block; text-align: center; line-height: 36px; font-size: 14px; font-weight: 400; color: #ffffff; text-transform: uppercase; }
 div.button.button--flat { box-shadow: none; background-color: transparent; padding: 0 8px; }
 div.button.button--flat span { font-weight: 500; color: #2196F3; }

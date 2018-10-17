@@ -204,7 +204,7 @@ if ( ! empty( $_POST ) ) {
           <label for="lastname" class="label">Nachname</label>
           <label for="lastname" class="error"></label>
         </div>
-        <div class="general__resetPassword button button--light">
+        <div class="general__resetPassword button button--light" onclick="window.location = '<?php echo get_reset_password_url(); ?>'">
           <span>Passwort zurücksetzen</span>
         </div>
       </section>

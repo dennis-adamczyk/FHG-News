@@ -23,7 +23,15 @@ function get_appbar( $title, $navigation = 'menu', $search = true, $profile = tr
 			break;
 
 		case 3:
-			$title = isset($GLOBALS["page_title"]) ? $GLOBALS["page_title"] : 'Login';
+			$title = 'Login';
+			break;
+
+		case 4:
+			$title = 'Registrieren';
+			break;
+
+		case 5:
+			$title = 'Passwort ändern';
 			break;
 	}
 	?>

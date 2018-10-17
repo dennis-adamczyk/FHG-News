@@ -94,7 +94,7 @@ jQuery(document).ready(function ($) {
         }
     });
 
-    $inputCancel.on('mouseup touchend', function () {
+    $inputCancel.on('mouseup touchend', function (e) {
         $parent = $(this).parent();
         if (!$parent.hasClass('isInvalid') && $parent.hasClass('input--password')) {
             $(this).html('visibility');
@@ -106,7 +106,7 @@ jQuery(document).ready(function ($) {
 
     $inputCancel.click(function () {
         $parent = $(this).parent();
-        if (!$parent.hasClass('isInvalid')) {
+        if (!$parent.hasClass('isInvalid') && !$parent.hasClass('input--password')) {
             $(this).parent().find('input, textarea').val('');
         }
     });

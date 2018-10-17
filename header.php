@@ -1,3 +1,20 @@
+<?php
+$body_class = '';
+switch ( get_query_var( 'fhgnewsonline_page_id' ) ) {
+	case 1:
+		$body_class = 'edit_profile';
+		break;
+	case 3:
+		$body_class = 'login_page';
+		break;
+	case 4:
+		$body_class = 'register';
+		break;
+	case 5:
+		$body_class = 'reset_password';
+		break;
+}
+?>
 <!DOCTYPE HTML>
 <html lang="de">
 <head>
@@ -6,7 +23,7 @@
   <title><?php bloginfo( 'name' ); ?></title>
 	<?php wp_head(); ?>
 </head>
-<body <?php body_class((get_query_var( 'fhgnewsonline_page_id' ) == 1 ? 'edit_profile' : (get_query_var( 'fhgnewsonline_page_id' ) == 3 ? 'login_page' : ''))); ?>>
+<body <?php body_class( $body_class ); ?>>
 <overlay></overlay>
 <dialogBox></dialogBox>
 <div class="snackBox"></div>
@@ -34,7 +51,8 @@
     <p class="userOptions__current__mail"><?php echo wp_get_current_user()->user_email; ?></p>
   </div>
   <div class="userOptions__actions">
-    <div class="userOptions__actions__action ripple--box" onmouseup="openURL('<?php echo get_home_url() . '/user/edit'; ?>', event)">
+    <div class="userOptions__actions__action ripple--box"
+         onmouseup="openURL('<?php echo get_home_url() . '/user/edit'; ?>', event)">
       <i class="material-icons">edit</i>
       <p class="userOptions__actions__action__name">Profil bearbeiten</p>
     </div>
@@ -42,7 +60,8 @@
       <i class="material-icons">settings</i>
       <p class="userOptions__actions__action__name">Einstellungen</p>
     </div>
-    <div class="userOptions__actions__action ripple--box" onclick="window.location = '<?php echo wp_logout_url($_SERVER['REQUEST_URI']); ?>'">
+    <div class="userOptions__actions__action ripple--box"
+         onclick="window.location = '<?php echo wp_logout_url( $_SERVER['REQUEST_URI'] ); ?>'">
       <i class="material-icons">exit_to_app</i>
       <p class="userOptions__actions__action__name">Abmelden</p>
     </div>

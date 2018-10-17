@@ -1,0 +1,15 @@
+body.register .nav div ul li.current-menu-item { background-color: initial; }
+body.register .nav div ul li.current-menu-item a { color: rgba(0, 0, 0, 0.86); }
+body.register .nav div ul li.current-menu-item::before { color: rgba(0, 0, 0, 0.56); }
+body.register .wrapper { position: relative; top: calc(50vh - 56px); width: inherit; transform: translateY(-50%); }
+body.register .wrapper .logo { display: block; margin: 0 auto 48px auto; padding: 0; width: auto; height: 24px; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; -webkit-user-drag: none; user-drag: none; -webkit-touch-callout: none; }
+body.register .wrapper form { padding: 0; margin: 0 16px; }
+body.register .wrapper form .input .label::after { content: ""; }
+body.register .wrapper form .info { display: block; margin: 24px 0 8px 0; padding: 0; font-size: 12px; font-weight: 400; color: rgba(0, 0, 0, 0.6); }
+body.register .wrapper form .button { display: block; margin: 0 0 8px 0; }
+body.register .wrapper form .button:last-of-type { margin: 0; }
+@media all and (min-width: 800px) { body.register .wrapper { position: absolute; top: 50%; left: 50%; width: 288px; padding: 24px; transform: translate(-50%, -50%); background-color: #ffffff; border-radius: 4px; box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12); }
+  body.register .wrapper .logo { margin: 8px auto 32px auto; height: 24px; }
+  body.register .wrapper form { margin: 0; } }
+
+/*# sourceMappingURL=register.css.map */

@@ -87,9 +87,19 @@ function fhgnewsonline_enqueue() {
 		wp_enqueue_script( 'croppie', get_template_directory_uri() . '/vendor/js/croppie.min.js' );
 	}
 	if ( get_query_var( 'fhgnewsonline_page_id' ) == 3 ) {
-	  wp_dequeue_style( 'login' );
+		wp_dequeue_style( 'login' );
 		wp_enqueue_style( 'login_page', get_template_directory_uri() . '/css/login.css' );
-		wp_enqueue_script( 'login', get_template_directory_uri() . '/js/login.js' );
+		wp_enqueue_script( 'login_page', get_template_directory_uri() . '/js/login.js' );
+	}
+	if ( get_query_var( 'fhgnewsonline_page_id' ) == 4 ) {
+		wp_dequeue_style( 'login' );
+		wp_enqueue_style( 'register_page', get_template_directory_uri() . '/css/register.css' );
+		wp_enqueue_script( 'register_page', get_template_directory_uri() . '/js/register.js' );
+	}
+	if ( get_query_var( 'fhgnewsonline_page_id' ) == 5 ) {
+		wp_dequeue_style( 'login' );
+		wp_enqueue_style( 'reset_password_page', get_template_directory_uri() . '/css/reset_password.css' );
+		wp_enqueue_script( 'reset_password_page', get_template_directory_uri() . '/js/reset_password.js' );
 	}
 }
 
@@ -134,6 +144,12 @@ function fhgnewsonline_theme_setup() {
 }
 
 add_action( 'init', 'fhgnewsonline_theme_setup' );
+
+function fhgnewsonline_registration_save( $user_id ) {
+	update_user_meta( $user_id, 'show_admin_bar_front', false );
+}
+
+add_action( 'user_register', 'fhgnewsonline_registration_save', 10, 1 );
 
 /**
  * Get title of current page
@@ -451,6 +467,84 @@ function fhgnewsonline_printRecommendedPosts( $post, $paged = 1 ) {
 		<?php
 	}
 	wp_reset_query();
+}
+
+
+/**
+ * Retrives the password
+ *
+ * @param string $user_login Username or email
+ *
+ * @return bool|WP_Error
+ */
+function fhgnewsonline_retrieve_password( $user_login ) {
+	$errors = new WP_Error();
+
+	if ( empty( $user_login ) || ! is_string( $user_login ) ) {
+		$errors->add( 'empty_username', __( '<strong>ERROR</strong>: Enter a username or email address.' ) );
+	} elseif ( strpos( $user_login, '@' ) ) {
+		$user_data = get_user_by( 'email', trim( wp_unslash( $user_login ) ) );
+		if ( empty( $user_data ) ) {
+			$errors->add( 'invalid_email', __( '<strong>ERROR</strong>: There is no user registered with that email address.' ) );
+		}
+	} else {
+		$login     = trim( $user_login );
+		$user_data = get_user_by( 'login', $login );
+	}
+
+	do_action( 'lostpassword_post', $errors );
+
+	if ( $errors->get_error_code() ) {
+		return $errors;
+	}
+
+	if ( ! $user_data ) {
+		$errors->add( 'invalidcombo', __( '<strong>ERROR</strong>: Invalid username or email.' ) );
+
+		return $errors;
+	}
+
+	$user_login = $user_data->user_login;
+	$user_email = $user_data->user_email;
+	$key        = get_password_reset_key( $user_data );
+
+	if ( is_wp_error( $key ) ) {
+		return $key;
+	}
+
+	$site_name = wp_specialchars_decode( get_option( 'blogname' ), ENT_QUOTES );
+
+	$message = __( 'Someone has requested a password reset for the following account:' ) . "\r\n\r\n";
+	$message .= sprintf( __( 'Site Name: %s' ), $site_name ) . "\r\n\r\n";
+	$message .= sprintf( __( 'Username: %s' ), $user_login ) . "\r\n\r\n";
+	$message .= __( 'If this was a mistake, just ignore this email and nothing will happen.' ) . "\r\n\r\n";
+	$message .= __( 'To reset your password, visit the following address:' ) . "\r\n\r\n";
+	$message .= '<' . network_site_url( "/login/reset-password/?change&key=$key&login=" . rawurlencode( $user_login ), 'login' ) . ">\r\n";
+
+	$title = sprintf( __( '[%s] Password Reset' ), $site_name );
+
+	$title = apply_filters( 'retrieve_password_title', $title, $user_login, $user_data );
+
+	$message = apply_filters( 'retrieve_password_message', $message, $key, $user_login, $user_data );
+
+	if ( $message && ! wp_mail( $user_email, wp_specialchars_decode( $title ), $message ) ) {
+		wp_die( __( 'The email could not be sent.' ) . "<br />\n" . __( 'Possible reason: your host may have disabled the mail() function.' ) );
+	}
+
+	return true;
+}
+
+function get_reset_password_url( $user_id_or_login = null ) {
+	if ( $user_id_or_login === null ) {
+		$user_id_or_login = get_current_user_id();
+	}
+	if ( is_numeric( $user_id_or_login ) ) {
+		$user_login = get_user_by( 'ID', $user_id_or_login )->user_login;
+	} else {
+		$user_login = $user_id_or_login;
+	}
+
+	return wp_lostpassword_url() . '?change&key=' . get_password_reset_key( wp_get_current_user() ) . '&login=' . rawurlencode( $user_login );
 }
 
 /*

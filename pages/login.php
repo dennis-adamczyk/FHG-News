@@ -1,4 +1,26 @@
 <?php
+if ( isset( $_REQUEST['logout'] ) ) {
+	$user = wp_get_current_user();
+
+	wp_logout();
+
+	if ( ! empty( $_REQUEST['redirect_to'] ) ) {
+		$redirect_to = $requested_redirect_to = $_REQUEST['redirect_to'];
+	} else {
+		$redirect_to           = get_home_url();
+		$requested_redirect_to = '';
+	}
+
+	if ( $switched_locale ) {
+		restore_previous_locale();
+	}
+
+	$redirect_to = apply_filters( 'logout_redirect', $redirect_to, $requested_redirect_to, $user );
+	wp_safe_redirect( $redirect_to );
+	exit();
+}
+
+$interim = isset( $_REQUEST['interim-login'] );
 if ( ! empty( $_POST ) ) {
 	$script = '';
 	if ( ! isset( $_POST['_wpnonce'] ) || ! wp_verify_nonce( $_POST['_wpnonce'], 'login' ) ) {
@@ -26,7 +48,7 @@ if ( ! empty( $_POST ) ) {
 						$errors["username"] = "Benutzer existiert nicht";
 						break;
 					case "incorrect_password":
-						$errors["password"] = "Passwort falsch";
+						$errors["password"] = "Passwort inkorrekt";
 						break;
 					default:
 						$errors["username"] = ' ';
@@ -35,7 +57,15 @@ if ( ! empty( $_POST ) ) {
 				}
 			}
 		} else {
-			header( "Location: " . (! empty( $_REQUEST["redirect_to"] ) ? $_REQUEST["redirect_to"] : get_home_url()) );
+			if ( $interim ) {
+				global $interim_login;
+				$message       = '<p class="message">' . __( 'You have logged in successfully.' ) . '</p>';
+				$interim_login = 'success';
+				$classes       = array( 'interim-login', 'interim-login-success' );
+				echo "<html><body class='login " . esc_attr( implode( ' ', $classes ) ) . "'>" . $message . "</body></html>";
+				exit;
+			}
+			header( "Location: " . ( ! empty( $_REQUEST["redirect_to"] ) ? $_REQUEST["redirect_to"] : get_home_url() ) );
 			die();
 		}
 
@@ -46,12 +76,26 @@ if ( ! empty( $_POST ) ) {
 <?php get_header();
 if ( ! empty ( $script ) ) {
 	echo "<script>" . $script . "</script>";
-} ?>
+}
+if ( $interim ) {
+	?>
+  <style>
+    header,
+    nav {
+      display: none !important;
+    }
+  </style>
+	<?php
+}
+?>
 <div class="wrapper">
   <img class="logo" src="<?php echo get_template_directory_uri() . "/img/fhgnews.svg"; ?>" alt="FHG News">
 
   <form id="login" action="<?php self_link(); ?>" method="post" novalidate>
 	  <?php wp_nonce_field( 'login' ); ?>
+	  <?php if ( $interim ) { ?>
+        <input type="hidden" name="interim-login" value="1"/>
+	  <?php } ?>
     <div class="username input <?php echo( isset( $errors["username"] ) ? 'isInvalid' : '' ); ?>">
       <input type="text" name="username" id="username" value="<?php echo $_POST["username"]; ?>" required>
       <i class="material-icons">cancel</i>
@@ -64,17 +108,11 @@ if ( ! empty ( $script ) ) {
       <i class="material-icons">visibility</i>
       <label for="password" class="label">Passwort</label>
       <label for="password"
-             class="error"><?php echo( isset( $errors["password"] ) ? $errors["password"] : '<a class="forgot" href="#">Passwort vergessen?</a>' ); ?></label>
+             class="error"><?php echo( isset( $errors["password"] ) ? $errors["password"] : '<a class="forgot" href="' . wp_lostpassword_url() . '">Passwort vergessen?</a>' ); ?></label>
     </div>
-    <a class="forgot" href="#">Passwort vergessen?</a>
+    <a class="forgot" href="<?php echo wp_lostpassword_url(); ?>">Passwort vergessen?</a>
     <div class="submit button">
       <span>Login</span>
-      <div class="material-loader">
-        <svg class="material-loader__circular" viewBox="25 25 50 50">
-          <circle class="material-loader__circular__path" cx="50" cy="50" r="20" fill="none" stroke-width="2"
-                  stroke-miterlimit="10"></circle>
-        </svg>
-      </div>
     </div>
     <div class="register button button--light" onclick="window.location = '<?php echo wp_registration_url(); ?>'">
       <span>Kein Account? Jetzt registrieren</span>
