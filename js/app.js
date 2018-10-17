@@ -15,6 +15,7 @@ jQuery(document).ready(function ($) {
     function addSearchHistory(key) {
         key = key.trim();
         var history = JSON.parse(localStorage.getItem(searchHis));
+        if (key === '') return;
         if (history.includes(key) || history.filter((e) => e.toLowerCase() === key)) {
             history = history.filter(function (e) {
                 return e.toLowerCase() !== key.toLowerCase();
@@ -519,39 +520,65 @@ jQuery(document).ready(function ($) {
         });
 
         $voice.click(function () {
-            try {
-                var SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-                new SpeechRecognition();
-            } catch (e) {
-                console.error(e);
-                overlayFadeIn('error-voice');
-                showAlertDialog('Dein Browser unterstützt die Spracheingabe nicht.', ['OK']).then((res) => overlayFadeOut('error-voice'));
-                return;
-            }
-            const recognition = new SpeechRecognition();
-            recognition.interimResults = true;
+            navigator.permissions.query({name: 'microphone'})
+                .then(function (permissionStatus) {
+                    if (permissionStatus.state === "granted" || permissionStatus.state === "promt") {
+                        speechInput();
+                    } else {
+                        speechInput();
+                        overlayFadeIn('micPermission');
+                        showAlertDialog('Aktiviere die Mikrofon-Berechtigung um die Spracheingabe nutzen zu können.', ['OK']).then(() => overlayFadeOut('micPermission'));
+                    }
 
-            recognition.addEventListener('result', function (e) {
-                const transcript = Array.from(e.results)
-                    .map(result => result[0])
-                    .map(result => result.transcript)
-                    .join('');
+                    permissionStatus.onchange = function () {
+                        if (permissionStatus.state === "granted" || permissionStatus.state === "promt") {
+                            speechInput();
+                        } else {
+                            speechInput();
+                            overlayFadeIn('micPermission');
+                            showAlertDialog('Aktiviere die Mikrofon-Berechtigung um die Spracheingabe nutzen zu können.', ['OK']).then(() => overlayFadeOut('micPermission'));
+                        }
+                    };
+                });
 
-                $input.val(transcript);
-                showSearchSuggestions(transcript);
-            });
+            let speechInput = function () {
+                var SpeechRecognition = false;
+                try {
+                    SpeechRecognition = window.webkitSpeechRecognition || window.SpeechRecognition;
+                    new SpeechRecognition();
+                } catch (e) {
+                    console.error(e);
+                    overlayFadeIn('error-voice');
+                    showAlertDialog('Dein Browser unterstützt die Spracheingabe nicht.', ['OK']).then(() => overlayFadeOut('error-voice'));
+                    return;
+                }
+                const recognition = new SpeechRecognition();
+                recognition.continuous = true;
+                recognition.interimResults = true;
 
-            recognition.addEventListener('end', function () {
-                search($input.val());
-            });
+                recognition.addEventListener('result', function (e) {
+                    const transcript = Array.from(e.results)
+                        .map(result => result[0])
+                        .map(result => result.transcript)
+                        .join('');
 
-            $delete.click(function () {
-                recognition.abort();
-            });
+                    $input.val(transcript);
+                    showSearchSuggestions(transcript);
+                });
 
-            recognition.start();
-            $voice.hide();
-            $delete.show();
+                recognition.addEventListener('end', function () {
+                    if ($input.val() !== '')
+                        search($input.val());
+                });
+
+                $delete.click(function () {
+                    recognition.abort();
+                });
+
+                recognition.start();
+                $voice.hide();
+                $delete.show();
+            };
         });
 
         $input.keyup(function (e) {
@@ -610,39 +637,65 @@ jQuery(document).ready(function ($) {
         });
 
         $voice.click(function () {
-            try {
-                var SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-                new SpeechRecognition();
-            } catch (e) {
-                console.error(e);
-                overlayFadeIn('error-voice');
-                showAlertDialog('Dein Browser unterstützt die Spracheingabe nicht.', ['OK']).then((res) => overlayFadeOut('error-voice'));
-                return;
-            }
-            const recognition = new SpeechRecognition();
-            recognition.interimResults = true;
+            navigator.permissions.query({name: 'microphone'})
+                .then(function (permissionStatus) {
+                    if (permissionStatus.state === "granted" || permissionStatus.state === "promt") {
+                        speechInput();
+                    } else {
+                        speechInput();
+                        overlayFadeIn('micPermission');
+                        showAlertDialog('Aktiviere die Mikrofon-Berechtigung um die Spracheingabe nutzen zu können.', ['OK']).then(() => overlayFadeOut('micPermission'));
+                    }
 
-            recognition.addEventListener('result', function (e) {
-                const transcript = Array.from(e.results)
-                    .map(result => result[0])
-                    .map(result => result.transcript)
-                    .join('');
+                    permissionStatus.onchange = function () {
+                        if (permissionStatus.state === "granted" || permissionStatus.state === "promt") {
+                            speechInput();
+                        } else {
+                            speechInput();
+                            overlayFadeIn('micPermission');
+                            showAlertDialog('Aktiviere die Mikrofon-Berechtigung um die Spracheingabe nutzen zu können.', ['OK']).then(() => overlayFadeOut('micPermission'));
+                        }
+                    };
+                });
 
-                $input.val(transcript);
-                showSearchSuggestions(transcript);
-            });
+            let speechInput = function () {
+                var SpeechRecognition = false;
+                try {
+                    SpeechRecognition = window.webkitSpeechRecognition || window.SpeechRecognition;
+                    new SpeechRecognition();
+                } catch (e) {
+                    console.error(e);
+                    overlayFadeIn('error-voice');
+                    showAlertDialog('Dein Browser unterstützt die Spracheingabe nicht.', ['OK']).then(() => overlayFadeOut('error-voice'));
+                    return;
+                }
+                const recognition = new SpeechRecognition();
+                recognition.continuous = true;
+                recognition.interimResults = true;
 
-            recognition.addEventListener('end', function () {
-                search($input.val());
-            });
+                recognition.addEventListener('result', function (e) {
+                    const transcript = Array.from(e.results)
+                        .map(result => result[0])
+                        .map(result => result.transcript)
+                        .join('');
 
-            $delete.click(function () {
-                recognition.abort();
-            });
+                    $input.val(transcript);
+                    showSearchSuggestions(transcript);
+                });
 
-            recognition.start();
-            $voice.hide();
-            $delete.show();
+                recognition.addEventListener('end', function () {
+                    if ($input.val() !== '')
+                        search($input.val());
+                });
+
+                $delete.click(function () {
+                    recognition.abort();
+                });
+
+                recognition.start();
+                $voice.hide();
+                $delete.show();
+            };
         });
 
         $input.keyup(function (e) {
@@ -948,7 +1001,7 @@ function showSelectDialog(title, options) {
             <p class="label">` + title + `</p>
             <ul>`;
 
-        options.forEach(function(elem) {
+        options.forEach(function (elem) {
             $html += '<li><span>' + elem + '</span></li>';
         });
 
