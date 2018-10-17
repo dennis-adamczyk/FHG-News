@@ -8,7 +8,7 @@
  * Echos the app bar or header
  *
  * @param $title
- * @param string $navigation  Material icons font icon name
+ * @param string $navigation Material icons font icon name
  * @param bool $search
  * @param bool $profile
  */
@@ -17,9 +17,13 @@ function get_appbar( $title, $navigation = 'menu', $search = true, $profile = tr
 		case 1:
 			$title      = 'Profil bearbeiten';
 			$navigation = 'arrow_back';
-			$search = false;
-			$profile = false;
+			$search     = false;
+			$profile    = false;
 			$done       = true;
+			break;
+
+		case 3:
+			$title = isset($GLOBALS["page_title"]) ? $GLOBALS["page_title"] : 'Login';
 			break;
 	}
 	?>

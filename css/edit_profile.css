@@ -17,7 +17,7 @@ body.edit_profile content .wrapper #edit_profile .section:first-of-type .section
 body.edit_profile content .wrapper #edit_profile .section .section__title { margin: -8px 0 24px 0; font-size: 14px; font-weight: 500; color: rgba(0, 0, 0, 0.6); -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
 body.edit_profile content .wrapper #edit_profile .section.general .general__profilePicture { width: 100%; margin: 0 0 24px 0; padding: 0; }
 body.edit_profile content .wrapper #edit_profile .section.general .general__profilePicture .general__profilePicture__current { display: block; margin: 0 auto 8px auto; padding: 0; width: 96px; height: 96px; border-radius: 24px; overflow: hidden; }
-body.edit_profile content .wrapper #edit_profile .section.general .general__profilePicture .general__profilePicture__current img { width: 100%; height: 100%; }
+body.edit_profile content .wrapper #edit_profile .section.general .general__profilePicture .general__profilePicture__current img { width: 100%; height: 100%; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; -webkit-user-drag: none; user-drag: none; -webkit-touch-callout: none; }
 body.edit_profile content .wrapper #edit_profile .section.general .general__profilePicture .general__profilePicture__change { position: relative; left: 50%; transform: translateX(-50%); }
 body.edit_profile content .wrapper #edit_profile .section.general .general__profilePicture input { display: none; }
 body.edit_profile content .wrapper #edit_profile .section.general .general__resetPassword { margin: 0 auto 24px auto; }

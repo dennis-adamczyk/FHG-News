@@ -210,7 +210,7 @@ jQuery(document).ready(function ($) {
                                     closeCropDialog();
 
                                     if (data.startsWith("S")) {
-                                        showSingleLineSnackBar('Profilbild aktualisiert');
+                                        showSingleLineSnackBar('Profilbild geändert');
                                         $(".avatar").attr("src", data.substr(1) + "?" + new Date().getTime());
                                     } else {
                                         showSingleLineWithActionSnackbar('Fehler aufgetreten', 'Erneut versuchen', function () {

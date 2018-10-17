@@ -6,7 +6,7 @@
   <title><?php bloginfo( 'name' ); ?></title>
 	<?php wp_head(); ?>
 </head>
-<body <?php body_class((get_query_var( 'fhgnewsonline_page_id' ) == 1 ? 'edit_profile' : '')); ?>>
+<body <?php body_class((get_query_var( 'fhgnewsonline_page_id' ) == 1 ? 'edit_profile' : (get_query_var( 'fhgnewsonline_page_id' ) == 3 ? 'login_page' : ''))); ?>>
 <overlay></overlay>
 <dialogBox></dialogBox>
 <div class="snackBox"></div>

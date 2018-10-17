@@ -2,6 +2,11 @@
 /**
  * @package fhgnewsonline
  * -- Register Theme Custom Pages
+ *
+ * ##### PAGE IDs #####
+ * 1    - Edit Profile Page
+ * 2    - Profile Page Redirect
+ * 3    - Login Page
  */
 
 /**
@@ -10,6 +15,7 @@
 function fhgnewsonline_add_rewrite_rules() {
 	add_rewrite_rule( '^user\/?$', 'index.php?fhgnewsonline_page_id=2&post_type=custom_post_type', 'top' );
 	add_rewrite_rule( '^user\/edit?', 'index.php?fhgnewsonline_page_id=1&post_type=custom_post_type', 'top' );
+	add_rewrite_rule( '^login?', 'index.php?fhgnewsonline_page_id=3&post_type=custom_post_type', 'top' );
 	flush_rewrite_rules();
 }
 
@@ -48,8 +54,12 @@ function fhgnewsonline_include_template( $template ) {
 				break;
 
 			case 2:
-				header('Location: ' . get_author_posts_url(get_current_user_id()));
+				header( 'Location: ' . get_author_posts_url( get_current_user_id() ) );
 				die();
+				break;
+
+			case 3:
+				$new_template = get_template_directory() . '/pages/login.php';
 				break;
 		}
 
@@ -62,3 +72,15 @@ function fhgnewsonline_include_template( $template ) {
 }
 
 add_filter( 'template_include', 'fhgnewsonline_include_template', 1000, 1 );
+
+
+/* LOGIN PAGE */
+
+add_filter( 'login_url', 'login_page_url', 10, 3 );
+
+function login_page_url( $login_url, $redirect, $force_reauth ) {
+	$login_page = home_url( '/login/' );
+	$login_url  = ! empty( $redirect ) ? add_query_arg( 'redirect_to', $redirect, $login_page ) : $login_page;
+
+	return $login_url;
+}

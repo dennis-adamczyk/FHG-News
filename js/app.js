@@ -84,9 +84,31 @@ jQuery(document).ready(function ($) {
         $(this).find('input, textarea').focus();
     });
 
+    $inputCancel.on('mousedown touchstart', function () {
+        $parent = $(this).parent();
+        if (!$parent.hasClass('isInvalid') && $parent.hasClass('input--password')) {
+            $(this).html('visibility_off');
+            $parent.addClass('visible');
+            $parent.find('input').attr('type', 'text');
+            return false;
+        }
+    });
+
+    $inputCancel.on('mouseup touchend', function () {
+        $parent = $(this).parent();
+        if (!$parent.hasClass('isInvalid') && $parent.hasClass('input--password')) {
+            $(this).html('visibility');
+            $parent.removeClass('visible');
+            $parent.find('input').attr('type', 'password');
+            return false;
+        }
+    });
+
     $inputCancel.click(function () {
-        if (!$(this).parent().hasClass('isInvalid'))
+        $parent = $(this).parent();
+        if (!$parent.hasClass('isInvalid')) {
             $(this).parent().find('input, textarea').val('');
+        }
     });
 
     $input.each(function () {
@@ -751,7 +773,8 @@ jQuery(document).ready(function ($) {
         });
     });
 
-});
+})
+;
 
 window.onpopstate = function (e) {
     if (e.state !== 'lightBox')
