@@ -22,10 +22,10 @@ if ( ! empty( $_POST ) ) {
 			}
 		} else {
 			try {
-				if ( set_profile_picture( null, $_POST["profilePic"] ) === false ) {
-					echo "F";
-				} else {
+				if ( set_profile_picture( null, $_POST["profilePic"] ) !== false ) {
 					echo "S" . get_profile_picture_url( null );
+				} else {
+					echo "F";
 				}
 			} catch ( Exception $e ) {
 				echo "F";
@@ -204,7 +204,8 @@ if ( ! empty( $_POST ) ) {
           <label for="lastname" class="label">Nachname</label>
           <label for="lastname" class="error"></label>
         </div>
-        <div class="general__resetPassword button button--light" onclick="window.location = '<?php echo get_reset_password_url(); ?>'">
+        <div class="general__resetPassword button button--light"
+             onclick="window.location = '<?php echo get_reset_password_url(); ?>'">
           <span>Passwort zurücksetzen</span>
         </div>
       </section>

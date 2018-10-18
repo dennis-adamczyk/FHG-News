@@ -138,6 +138,7 @@ function fhgnewsonline_theme_setup() {
 	include get_template_directory() . "/includes/comment_format.php";
 	include get_template_directory() . "/includes/user_meta.php";
 	include get_template_directory() . "/includes/profile_picture_system.php";
+	include get_template_directory() . "/includes/post_views.php";
 
 	flush_rewrite_rules( true );
 	profile_picture_init();

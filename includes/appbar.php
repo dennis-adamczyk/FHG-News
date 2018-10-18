@@ -23,7 +23,8 @@ function get_appbar( $title, $navigation = 'menu', $search = true, $profile = tr
 			break;
 
 		case 3:
-			$title = 'Login';
+			$title      = ! empty( $GLOBALS["login_page_title"] ) ? $GLOBALS["login_page_title"] : 'Login';
+			$hideAddBtn = true;
 			break;
 
 		case 4:
@@ -31,7 +32,8 @@ function get_appbar( $title, $navigation = 'menu', $search = true, $profile = tr
 			break;
 
 		case 5:
-			$title = 'Passwort ändern';
+			$title      = 'Passwort ändern';
+			$hideAddBtn = true;
 			break;
 	}
 	?>
@@ -41,7 +43,7 @@ function get_appbar( $title, $navigation = 'menu', $search = true, $profile = tr
       <i class="material-icons"><?php echo $navigation; ?></i>
     </div>
     <h1 class="header__title"><?php echo $title ?></h1>
-	  <?php if ( $search && $profile && current_user_can( 'publish_posts' ) ): ?>
+	  <?php if ( $search && $profile && current_user_can( 'publish_posts' ) && ! isset( $hideAddBtn ) ): ?>
         <div class="header__add ripple--icon">
           <i class="material-icons">add</i>
         </div>

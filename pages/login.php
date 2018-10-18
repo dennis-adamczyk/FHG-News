@@ -20,6 +20,42 @@ if ( isset( $_REQUEST['logout'] ) ) {
 	exit();
 }
 
+if ( $_REQUEST["action"] === "confirmaction" ) {
+//	if ( ! isset( $_GET['request_id'] ) ) {
+//		wp_die( __( 'Invalid request.' ) );
+//	}
+
+	$request_id = (int) $_GET['request_id'];
+
+//	if ( isset( $_GET['confirm_key'] ) ) {
+//		$key    = sanitize_text_field( wp_unslash( $_GET['confirm_key'] ) );
+//		$result = wp_validate_user_request_key( $request_id, $key );
+//	} else {
+//		$result = new WP_Error( 'invalid_key', __( 'Invalid key' ) );
+//	}
+//
+//	if ( is_wp_error( $result ) ) {
+//		wp_die( $result );
+//	}
+//
+//	do_action( 'user_request_action_confirmed', $request_id );
+
+	$message = _wp_privacy_account_request_confirmed_message( $request_id );
+
+	$GLOBALS["login_page_title"] = substr(__( 'User action confirmed.' ), 0, -1);
+	get_header(); ?>
+  <div class="wrapper">
+    <img class="logo" src="<?php echo get_template_directory_uri() . "/img/fhgnews.svg"; ?>" alt="FHG News">
+
+    <div class="confirmaction">
+      <?php echo $message; ?>
+    </div>
+  </div>
+	<?php
+    get_footer();
+	exit;
+}
+
 $interim = isset( $_REQUEST['interim-login'] );
 if ( ! empty( $_POST ) ) {
 	$script = '';

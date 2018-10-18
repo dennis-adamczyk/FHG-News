@@ -107,9 +107,10 @@ if ( ! empty ( $script ) ) {
 		  <?php wp_nonce_field( 'reset_password' ); ?>
         <input type="hidden" id="user_login" value="<?php echo esc_attr( $rp_login ); ?>" autocomplete="off"/>
         <input type="hidden" name="rp_key" value="<?php echo esc_attr( $rp_key ); ?>"/>
-        <div class="pass1 input input--password <?php echo( isset( $errors["pass1"] ) ? 'isInvalid' : '' ); ?>">
+        <div class="pass1 input input--password input--strength <?php echo( isset( $errors["pass1"] ) ? 'isInvalid' : '' ); ?>">
           <input type="password" name="pass1" id="pass1" value="<?php echo $_POST["pass1"]; ?>" autocomplete="off"
                  required>
+          <div class="strength"></div>
           <i class="material-icons">visibility</i>
           <label for="pass1" class="label">Neues Passwort</label>
           <label for="pass1" class="error"><?php echo( isset( $errors["pass1"] ) ? $errors["pass1"] : '' ); ?></label>

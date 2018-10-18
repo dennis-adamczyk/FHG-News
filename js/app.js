@@ -1032,7 +1032,7 @@ function showSelectDialog(title, options) {
 
         $dialog.html($html);
 
-        overlayFadeIn('share');
+        overlayFadeIn('select');
         $dialog.fadeIn(200, function () {
             $dialog.attr('open', '');
             Waves.attach('dialogbox ul li');
@@ -1041,11 +1041,69 @@ function showSelectDialog(title, options) {
 
             var closeSelectDialog = function () {
                 resolve();
-                overlayFadeOut('share');
+                overlayFadeOut('select');
                 $dialog.fadeOut(180, function () {
                     $dialog.html('');
                     $dialog.removeClass('alert');
                     $dialog.removeClass('select');
+                    $dialog.removeAttr('open');
+                });
+            };
+
+            $($dialog.find('div.close')).on('click', closeSelectDialog);
+            $('overlay').on('click', closeSelectDialog);
+            $($dialog.find('li')).on('click', function () {
+                resolve($(this).find('span').text());
+                closeSelectDialog();
+            });
+        });
+
+    });
+}
+
+/**
+ * Shows Select Dialog
+ *
+ * @param string title Title of Article
+ * @param array options [ ['ICON', 'TITLE'], ... ]
+ * @returns {Promise<any>} callback
+ */
+function showSelectDialogWithIcons(title, options) {
+    return new Promise((resolve, reject) => {
+
+        const $ = jQuery;
+        if ($('dialogbox').attr('open'))
+            return;
+        $('dialogbox').addClass('select select--icons');
+        let $dialog = $('dialogbox.select.select--icons');
+
+        $html = `
+            <div class="close"><i class="material-icons">close</i></div>
+            <p class="label">` + title + `</p>
+            <ul>`;
+
+        options.forEach(function (elem) {
+            $html += '<li><i class="material-icons">' + elem[0] + '</i><span>' + elem[1] + '</span></li>';
+        });
+
+        $html += '</ul>';
+
+        $dialog.html($html);
+
+        overlayFadeIn('select--icons');
+        $dialog.fadeIn(200, function () {
+            $dialog.attr('open', '');
+            Waves.attach('dialogbox ul li');
+            Waves.attach('dialogbox .close');
+            Waves.init();
+
+            var closeSelectDialog = function () {
+                resolve();
+                overlayFadeOut('select--icons');
+                $dialog.fadeOut(180, function () {
+                    $dialog.html('');
+                    $dialog.removeClass('alert');
+                    $dialog.removeClass('select select--icons');
                     $dialog.removeAttr('open');
                 });
             };
@@ -1348,4 +1406,20 @@ function infiniteScrollRecommended(post) {
         }
         return false;
     }
+}
+
+/**
+ * Tests strength of a password
+ *
+ * @param password
+ * @returns {number} strength score
+ */
+function strengthMeter(password) {
+    var strength = password.length;
+    var arr = [/[a-z]+/, /[0-9]+/, /[A-Z]+/, /[\^°!"§$%&\/()=?`{\[\]}\\´+*~#'<>|,;.:\-_]+/];
+    arr.forEach(function (regexp) {
+        if (password.match(regexp))
+            strength++;
+    });
+    return strength;
 }

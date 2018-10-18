@@ -37,6 +37,11 @@ dialogbox.select ul li span { position: absolute; left: 24px; top: 50%; display:
   dialogbox.select .close { display: none; }
   dialogbox.select .label { font-size: 16px; font-weight: 400; color: rgba(0, 0, 0, 0.54); margin: 21px 0 16px 16px; }
   dialogbox.select ul li span { left: 16px; } }
+dialogbox.select.select--icons ul li i { display: block; position: relative; left: 24px; top: 50%; width: 24px; height: 24px; overflow: hidden; transform: translateY(-50%); color: rgba(0, 0, 0, 0.56); }
+dialogbox.select.select--icons ul li i img { width: 100%; height: 100%; opacity: 0.56; }
+dialogbox.select.select--icons ul li span { position: absolute; left: 80px; top: 50%; display: inline-block; margin: 0; padding: 0; font-size: 16px; font-weight: 400; color: rgba(0, 0, 0, 0.86); transform: translateY(-50%); }
+@media all and (max-width: 799px) { dialogbox.select.select--icons ul li i { left: 16px; }
+  dialogbox.select.select--icons ul li span { left: 72px; } }
 
 .snackBox { position: fixed; display: none; left: 8px; bottom: 8px; right: 8px; margin: 0; padding: 0; z-index: 6; overflow: hidden; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
 @media all and (min-width: 800px) { .snackBox { left: 24px; bottom: 24px; right: auto; min-width: 344px; } }
@@ -215,7 +220,7 @@ content .wrapper .sidebar .sidebar__widget.widget_categories h2 ul li a:hover { 
   50% { stroke-dasharray: 89, 200; stroke-dashoffset: -35px; }
   100% { stroke-dasharray: 89, 200; stroke-dashoffset: -124px; } }
 .input { position: relative; width: 100%; min-height: 75px; }
-.input input { min-width: 256px; width: calc(100% - 2 * 12px); padding: 8px 12px 0 12px; position: relative; z-index: 1; height: 48px; font-size: 16px; font-weight: 400; color: rgba(0, 0, 0, 0.86); border: none; border-bottom: 1px solid rgba(0, 0, 0, 0.6); border-top-left-radius: 4px; border-top-right-radius: 4px; background-color: rgba(0, 0, 0, 0.04); caret-color: #2196F3; overflow: hidden; outline: none; cursor: pointer; -webkit-transition: border 180ms cubic-bezier(0.4, 0, 0.2, 1), background 180ms cubic-bezier(0.4, 0, 0.2, 1), height 180ms cubic-bezier(0.4, 0, 0.2, 1); -moz-transition: border 180ms cubic-bezier(0.4, 0, 0.2, 1), background 180ms cubic-bezier(0.4, 0, 0.2, 1), height 180ms cubic-bezier(0.4, 0, 0.2, 1); -ms-transition: border 180ms cubic-bezier(0.4, 0, 0.2, 1), background 180ms cubic-bezier(0.4, 0, 0.2, 1), height 180ms cubic-bezier(0.4, 0, 0.2, 1); -o-transition: border 180ms cubic-bezier(0.4, 0, 0.2, 1), background 180ms cubic-bezier(0.4, 0, 0.2, 1), height 180ms cubic-bezier(0.4, 0, 0.2, 1); transition: border 180ms cubic-bezier(0.4, 0, 0.2, 1), background 180ms cubic-bezier(0.4, 0, 0.2, 1), height 180ms cubic-bezier(0.4, 0, 0.2, 1); }
+.input input { min-width: 224px; width: calc(100% - 56px); padding: 8px 44px 0 12px; position: relative; z-index: 1; height: 48px; font-size: 16px; font-weight: 400; color: rgba(0, 0, 0, 0.86); border: none; border-bottom: 1px solid rgba(0, 0, 0, 0.6); border-top-left-radius: 4px; border-top-right-radius: 4px; background-color: rgba(0, 0, 0, 0.04); caret-color: #2196F3; overflow: hidden; outline: none; cursor: pointer; -webkit-transition: border 180ms cubic-bezier(0.4, 0, 0.2, 1), background 180ms cubic-bezier(0.4, 0, 0.2, 1), height 180ms cubic-bezier(0.4, 0, 0.2, 1); -moz-transition: border 180ms cubic-bezier(0.4, 0, 0.2, 1), background 180ms cubic-bezier(0.4, 0, 0.2, 1), height 180ms cubic-bezier(0.4, 0, 0.2, 1); -ms-transition: border 180ms cubic-bezier(0.4, 0, 0.2, 1), background 180ms cubic-bezier(0.4, 0, 0.2, 1), height 180ms cubic-bezier(0.4, 0, 0.2, 1); -o-transition: border 180ms cubic-bezier(0.4, 0, 0.2, 1), background 180ms cubic-bezier(0.4, 0, 0.2, 1), height 180ms cubic-bezier(0.4, 0, 0.2, 1); transition: border 180ms cubic-bezier(0.4, 0, 0.2, 1), background 180ms cubic-bezier(0.4, 0, 0.2, 1), height 180ms cubic-bezier(0.4, 0, 0.2, 1); }
 .input input:not(:focus)::placeholder { color: transparent; }
 .input input::placeholder { color: rgba(0, 0, 0, 0.6); -webkit-transition: color 180ms cubic-bezier(0.4, 0, 0.2, 1); -moz-transition: color 180ms cubic-bezier(0.4, 0, 0.2, 1); -ms-transition: color 180ms cubic-bezier(0.4, 0, 0.2, 1); -o-transition: color 180ms cubic-bezier(0.4, 0, 0.2, 1); transition: color 180ms cubic-bezier(0.4, 0, 0.2, 1); }
 .input input:active { background-color: rgba(0, 0, 0, 0.06); }
@@ -229,6 +234,9 @@ content .wrapper .sidebar .sidebar__widget.widget_categories h2 ul li a:hover { 
 .input input:required ~ .label::after { margin-left: 1px; content: "*"; }
 .input .material-icons { display: none; position: absolute; top: 16px; right: 12px; color: rgba(0, 0, 0, 0.56); cursor: pointer; z-index: 1; }
 .input label.error { display: block; position: relative; margin: 4px 0 0 12px; font-size: 12px; color: rgba(0, 0, 0, 0.6); -webkit-transition: all 180ms cubic-bezier(0.4, 0, 0.2, 1); -moz-transition: all 180ms cubic-bezier(0.4, 0, 0.2, 1); -ms-transition: all 180ms cubic-bezier(0.4, 0, 0.2, 1); -o-transition: all 180ms cubic-bezier(0.4, 0, 0.2, 1); transition: all 180ms cubic-bezier(0.4, 0, 0.2, 1); }
+.input.input--password.input--strength input { position: relative; border-bottom-color: rgba(0, 0, 0, 0.6); }
+.input.input--password.input--strength input:focus ~ .strength { opacity: 1; }
+.input.input--password.input--strength .strength { display: block; content: ""; position: absolute; top: 55px; height: 2px; min-width: 1%; background-color: #F44336; opacity: 0; z-index: 2; transition: opacity 150ms cubic-bezier(0.4, 0, 0.2, 1), width 150ms cubic-bezier(0.4, 0, 0.2, 1), background 150ms cubic-bezier(0.4, 0, 0.2, 1); }
 .input.isInvalid input { border-bottom: 1px solid #F44336; }
 .input.isInvalid input:focus { border-bottom: 2px solid #F44336; }
 .input.isInvalid input:focus ~ .label { color: #F44336; }
@@ -236,7 +244,7 @@ content .wrapper .sidebar .sidebar__widget.widget_categories h2 ul li a:hover { 
 .input.isInvalid .material-icons:not(.leadingIcon) { display: inline-block; color: transparent; }
 .input.isInvalid .material-icons:not(.leadingIcon)::after { display: inline-block; position: absolute; top: 0; left: 0; color: #F44336; content: "error"; }
 .input.isInvalid label.error { color: #F44336; }
-.input.input--leadingIcon input { min-width: 220px; width: calc(100% - 2 * 12px - 24px - 12px); padding: 8px 12px 0 48px; }
+.input.input--leadingIcon input { min-width: 188px; width: calc(100% - 92px); padding: 8px 44px 0 48px; }
 .input.input--leadingIcon input ~ .label { left: 48px; }
 .input.input--leadingIcon .leadingIcon { display: inline-block; position: absolute; top: 16px; left: 12px; width: 24px; height: 24px; color: #000000; opacity: 0.56; cursor: pointer; z-index: auto; }
 .input.input--leadingIcon .leadingIcon img { width: 24px; height: 24px; }

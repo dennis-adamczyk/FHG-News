@@ -51,8 +51,15 @@ switch ( get_query_var( 'fhgnewsonline_page_id' ) ) {
     <p class="userOptions__current__mail"><?php echo wp_get_current_user()->user_email; ?></p>
   </div>
   <div class="userOptions__actions">
+	  <?php if ( is_user_logged_in() && current_user_can( 'publish_posts' ) ): ?>
+        <div class="userOptions__actions__action ripple--box"
+             onmouseup="openURL('<?php echo get_admin_url(); ?>', event)">
+          <i class="material-icons">dashboard</i>
+          <p class="userOptions__actions__action__name">Administrationsbereich</p>
+        </div>
+	  <?php endif; ?>
     <div class="userOptions__actions__action ripple--box"
-         onmouseup="openURL('<?php echo get_home_url() . '/user/edit'; ?>', event)">
+         onmouseup="openURL('<?php echo home_url('/user/edit'); ?>', event)">
       <i class="material-icons">edit</i>
       <p class="userOptions__actions__action__name">Profil bearbeiten</p>
     </div>

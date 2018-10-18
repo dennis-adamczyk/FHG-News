@@ -40,7 +40,7 @@ jQuery(document).ready(function ($) {
     let $avatar = $('#avatar');
 
     $changeProfilePictureBtn.click(function () {
-        showSelectDialog('Profilbild ändern', ['Neues Profilbild', 'Profilbild entfernen']).then(function (res) {
+        showSelectDialogWithIcons('Profilbild ändern', [['add_photo_alternate', 'Neues Profilbild'], ['delete', 'Profilbild entfernen']]).then(function (res) {
             if (res === 'Neues Profilbild') {
                 $avatar.click();
             } else if (res === 'Profilbild entfernen') {
@@ -81,11 +81,10 @@ jQuery(document).ready(function ($) {
                         method: 'POST',
                         data: {"_wpnonce": $('#_wpnonce').val(), "profilePic": "delete"},
                         success: function (data) {
-                            console.log(data);
-                            if (data.startsWith("S")) {
+                            if (data.startsWith("S")) { // [S]UCCESS
                                 showSingleLineSnackBar('Profilbild entfernt');
                                 $('.avatar').attr('src', data.substr(1));
-                            } else {
+                            } else { // [F]AILURE
                                 showSingleLineWithActionSnackbar('Fehler aufgetreten', 'Erneut versuchen', deleteProfilePic);
                             }
                         }
@@ -211,7 +210,7 @@ jQuery(document).ready(function ($) {
 
                                     if (data.startsWith("S")) {
                                         showSingleLineSnackBar('Profilbild geändert');
-                                        $(".avatar").attr("src", data.substr(1) + "?" + new Date().getTime());
+                                        $(".avatar").attr("src", data.substr(1) + "?t=" + new Date().getTime());
                                     } else {
                                         showSingleLineWithActionSnackbar('Fehler aufgetreten', 'Erneut versuchen', function () {
                                             $avatar.click();
