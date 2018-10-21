@@ -9,6 +9,7 @@
  * 3    - Login Page
  * 4    - Registration Page
  * 5    - Reset Password Page
+ * 6    - Settings Page
  */
 
 /**
@@ -17,9 +18,10 @@
 function fhgnewsonline_add_rewrite_rules() {
 	add_rewrite_rule( '^user\/?$', 'index.php?fhgnewsonline_page_id=2&post_type=custom_post_type', 'top' );
 	add_rewrite_rule( '^user\/edit?', 'index.php?fhgnewsonline_page_id=1&post_type=custom_post_type', 'top' );
+	add_rewrite_rule( '^user\/settings?', 'index.php?fhgnewsonline_page_id=6&post_type=custom_post_type', 'top' );
+	add_rewrite_rule( '^login\/?$', 'index.php?fhgnewsonline_page_id=3&post_type=custom_post_type', 'top' );
 	add_rewrite_rule( '^login\/register?', 'index.php?fhgnewsonline_page_id=4&post_type=custom_post_type', 'top' );
 	add_rewrite_rule( '^login\/reset-password?', 'index.php?fhgnewsonline_page_id=5&post_type=custom_post_type', 'top' );
-	add_rewrite_rule( '^login?', 'index.php?fhgnewsonline_page_id=3&post_type=custom_post_type', 'top' );
 	flush_rewrite_rules();
 }
 
@@ -72,6 +74,10 @@ function fhgnewsonline_include_template( $template ) {
 
 			case 5:
 				$new_template = get_template_directory() . '/pages/reset_password.php';
+				break;
+
+			case 6:
+				$new_template = get_template_directory() . '/pages/settings.php';
 				break;
 		}
 

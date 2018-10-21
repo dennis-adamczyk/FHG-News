@@ -64,14 +64,16 @@ if ( ! empty ( $script ) ) {
   <form id="register" action="<?php self_link(); ?>" method="post" novalidate>
 	  <?php wp_nonce_field( 'register' ); ?>
     <div class="username input <?php echo( isset( $errors["username"] ) ? 'isInvalid' : '' ); ?>">
-      <input type="text" name="username" id="username" value="<?php echo $_POST["username"]; ?>" required>
+      <input type="text" name="username" id="username" placeholder="Max Mustermann"
+             value="<?php echo $_POST["username"]; ?>" required>
       <i class="material-icons">cancel</i>
       <label for="username" class="label">Benutzername</label>
       <label for="username"
              class="error"><?php echo( isset( $errors["username"] ) ? $errors["username"] : '' ); ?></label>
     </div>
     <div class="email input <?php echo( isset( $errors["email"] ) ? 'isInvalid' : '' ); ?>">
-      <input type="email" name="email" id="email" value="<?php echo $_POST["email"]; ?>" required>
+      <input type="email" name="email" id="email" placeholder="max.muster@franz-haniel-gymnasium.de"
+             value="<?php echo $_POST["email"]; ?>" required>
       <i class="material-icons">cancel</i>
       <label for="email" class="label">E-Mail</label>
       <label for="email" class="error"><?php echo( isset( $errors["email"] ) ? $errors["email"] : '' ); ?></label>

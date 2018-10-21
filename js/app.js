@@ -1266,8 +1266,10 @@ function openURL(url, e) {
     if (is_mobile() && e.button === 0)
         return window.location = url;
 
-    if (e.button === 1 || e.button === 4)
-        return window.open(url, '_blank').focus();
+    if (e.button === 1 || e.button === 4) {
+        window.open(url, '_blank').focus();
+        return false;
+    }
 
     window.location = url;
 }

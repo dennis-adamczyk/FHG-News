@@ -1,7 +1,7 @@
 <?php
 if ( ! is_user_logged_in() ) {
 	addNextSingleLineWithActionSnackbar( 'Melde dich an um diese Seite aufzurufen', 'Anmelden', 'window.location = "' . wp_login_url() . '";' );
-	header( 'Location: ' . get_home_url() ); // TODO: Snackbar "Melde dich an um diese Seite aufzurufen" [ANMELDEN]
+	header( 'Location: ' . get_home_url() );
 }
 
 if ( ! empty( $_POST ) ) {
@@ -206,7 +206,7 @@ if ( ! empty( $_POST ) ) {
         </div>
         <div class="general__resetPassword button button--light"
              onclick="window.location = '<?php echo get_reset_password_url(); ?>'">
-          <span>Passwort zurücksetzen</span>
+          <span>Passwort ändern</span>
         </div>
       </section>
       <section class="personal section">

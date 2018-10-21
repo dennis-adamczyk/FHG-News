@@ -13,6 +13,10 @@ switch ( get_query_var( 'fhgnewsonline_page_id' ) ) {
 	case 5:
 		$body_class = 'reset_password';
 		break;
+
+	case 6:
+		$body_class = 'settings';
+		break;
 }
 ?>
 <!DOCTYPE HTML>
@@ -59,11 +63,12 @@ switch ( get_query_var( 'fhgnewsonline_page_id' ) ) {
         </div>
 	  <?php endif; ?>
     <div class="userOptions__actions__action ripple--box"
-         onmouseup="openURL('<?php echo home_url('/user/edit'); ?>', event)">
+         onmouseup="openURL('<?php echo home_url( '/user/edit' ); ?>', event)">
       <i class="material-icons">edit</i>
       <p class="userOptions__actions__action__name">Profil bearbeiten</p>
     </div>
-    <div class="userOptions__actions__action ripple--box">
+    <div class="userOptions__actions__action ripple--box"
+         onmouseup="openURL('<?php echo home_url( '/user/settings' ); ?>', event)">
       <i class="material-icons">settings</i>
       <p class="userOptions__actions__action__name">Einstellungen</p>
     </div>

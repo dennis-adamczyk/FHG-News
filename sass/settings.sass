@@ -1,0 +1,236 @@
+@import "vars"
+
+body.settings
+
+  .nav div ul li.current-menu-item
+    background-color: initial
+
+    a
+      color: rgba(0, 0, 0, 0.86)
+
+    &::before
+      color: rgba(0, 0, 0, 0.56)
+
+  content
+
+    .wrapper
+
+      #settings
+        display: block
+        margin: 0
+        padding: 0
+
+        .section
+          margin: 0
+          padding: 0
+
+          .section__title
+            display: block
+            margin: 16px 16px 8px 16px
+            font-size: 14px
+            font-weight: 500
+            color: $secondary
+
+          .section__list
+            margin: 0
+            padding: 0
+            list-style: none
+
+            .section__list__item
+              position: relative
+              display: block
+              height: 64px
+              margin: 0
+              padding: 0 16px
+              overflow: hidden
+              border-bottom: 1px solid rgba(#000000, .16)
+              -webkit-user-select: none
+              -moz-user-select: none
+              -ms-user-select: none
+              user-select: none
+
+              &:last-of-type
+                border-bottom: none
+
+              span
+                display: block
+                font-size: 16px
+                font-weight: 400
+                color: rgba(#000000, .86)
+
+              .progress
+                position: absolute
+                bottom: 0
+                right: 0
+                left: 0
+                height: 2px
+                display: block
+                width: 100%
+                background-color: lighten($secondary, 35%)
+                margin: 0
+                overflow: hidden
+
+                .indeterminate
+                  background-color: $secondary
+
+                  &::before
+                    content: ''
+                    position: absolute
+                    background-color: inherit
+                    top: 0
+                    left: 0
+                    bottom: 0
+                    will-change: left, right
+                    animation: indeterminate 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite
+
+                  &::after
+                    content: ''
+                    position: absolute
+                    background-color: inherit
+                    top: 0
+                    left: 0
+                    bottom: 0
+                    will-change: left, right
+                    animation: indeterminate-short 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite
+                    animation-delay: 1.15s
+
+              @keyframes indeterminate
+                0%
+                  left: -35%
+                  right: 100%
+
+                60%
+                  left: 100%
+                  right: -90%
+
+                100%
+                  left: 100%
+                  right: -90%
+
+              @keyframes indeterminate-short
+                0%
+                  left: -200%
+                  right: 100%
+
+                60%
+                  left: 107%
+                  right: -8%
+
+                100%
+                  left: 107%
+                  right: -8%
+
+              &.item--link
+                cursor: pointer
+
+                span
+                  margin: 22.5px 0
+
+              &.item--toggle
+                position: relative
+
+                span
+                  max-width: calc(100% - 48px)
+                  display: inline-block
+                  margin: 22.5px 0
+
+                input[type="checkbox"]
+                  position: absolute
+                  top: 50%
+                  right: 16px
+                  transform: translateY(-50%)
+                  -webkit-appearance: none
+                  -moz-appearance: none
+                  appearance: none
+                  width: 32px
+                  height: 14px
+                  background-color: rgba(#000000, .38)
+                  border-radius: 7px
+                  outline: none
+                  transition: background 150ms $easing
+
+                  &::after
+                    position: absolute
+                    top: -3px
+                    left: -4px
+                    content: ''
+                    width: 20px
+                    height: 20px
+                    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12)
+                    border-radius: 50%
+                    background-color: rgba(#ffffff, 1)
+                    z-index: 1
+                    transition: background 150ms $easing, left 150ms $easing
+
+                  &:checked
+                    background-color: rgba($secondary, .54)
+
+                    &::after
+                      left: 16px
+                      background-color: $secondary
+
+              &.item--select
+                position: relative
+                cursor: pointer
+                overflow: hidden
+
+                span
+                  margin: 0
+                  padding: 13px 0 0 0
+
+                  &.selected
+                    font-size: 14px
+                    font-weight: 400
+                    color: rgba(#000000, .6)
+                    margin: 2px 0 13px 0
+                    padding: 0
+
+                .select
+                  display: none
+                  position: absolute
+                  top: -2px
+                  left: 8px
+                  min-width: 80px
+                  padding: 8px 0
+                  margin: 0
+                  list-style: none
+                  background-color: #ffffff
+                  border-radius: 4px
+                  box-shadow: $elevation--z8
+                  z-index: 8
+                  transition: top 100ms $easing
+
+                  li
+                    display: block
+                    height: 48px
+                    font-size: 14px
+                    font-weight: 400
+                    color: rgba(#000000, .86)
+                    line-height: 48px
+                    padding: 0 16px
+                    margin: 0
+
+      @media #{$not-mobile}
+        #settings
+          min-width: 640px
+          max-width: 50vw
+          margin: 0 auto
+
+          .section
+
+            .section__title
+              margin: 24px 0 16px 0
+              font-size: 16px
+              color: rgba(#000000, .6)
+
+              &:first-of-type
+                margin: 32px 0 16px 0
+
+            .section__list
+              background-color: #ffffff
+              border-radius: 4px
+              box-shadow: $elevation--z2
+
+              .section__list__item
+                padding: 0 16px
+                border-bottom: none

@@ -35,6 +35,12 @@ function get_appbar( $title, $navigation = 'menu', $search = true, $profile = tr
 			$title      = 'Passwort ändern';
 			$hideAddBtn = true;
 			break;
+
+		case 6:
+			$title = 'Einstellungen';
+			$navigation = 'arrow_back';
+			$search = false;
+			break;
 	}
 	?>
 

@@ -230,6 +230,8 @@ content .wrapper .sidebar .sidebar__widget.widget_categories h2 ul li a:hover { 
 .input input:focus:required ~ .label::after { color: #F44336; }
 .input input.hasValue ~ label.label { top: 6px; font-size: 12px; }
 .input input.hasValue ~ .material-icons { display: inline-block; }
+.input input:-webkit-autofill { -webkit-box-shadow: 0 0 0 30px #F5F5F5 inset !important; }
+.input input:-webkit-autofill ~ .label { z-index: 1; }
 .input input ~ .label { position: absolute; top: 22px; left: 12px; font-size: 16px; color: rgba(0, 0, 0, 0.6); cursor: pointer; -webkit-transition: all 180ms cubic-bezier(0.4, 0, 0.2, 1); -moz-transition: all 180ms cubic-bezier(0.4, 0, 0.2, 1); -ms-transition: all 180ms cubic-bezier(0.4, 0, 0.2, 1); -o-transition: all 180ms cubic-bezier(0.4, 0, 0.2, 1); transition: all 180ms cubic-bezier(0.4, 0, 0.2, 1); }
 .input input:required ~ .label::after { margin-left: 1px; content: "*"; }
 .input .material-icons { display: none; position: absolute; top: 16px; right: 12px; color: rgba(0, 0, 0, 0.56); cursor: pointer; z-index: 1; }

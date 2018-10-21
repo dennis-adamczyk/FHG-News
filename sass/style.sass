@@ -1451,6 +1451,12 @@ content .wrapper .sidebar
       & ~ .material-icons
         display: inline-block
 
+    &:-webkit-autofill
+      -webkit-box-shadow: 0 0 0 30px #F5F5F5 inset !important
+
+      & ~ .label
+        z-index: 1
+
     & ~ .label
       position: absolute
       top: 22px
