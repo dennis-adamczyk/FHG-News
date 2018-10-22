@@ -258,7 +258,7 @@ jQuery(document).ready(function ($) {
         var yDiff = yDown - yUp;
 
         if (Math.abs(xDiff) > Math.abs(yDiff)) {
-            if (xDiff < 0 && $('dialogbox').css('display') === 'none' && $('overlay').css('display') === 'none') {
+            if (xDiff < 0 && $('dialogbox').css('display') === 'none' && $('overlay').css('display') === 'none' && $('.lightBox').css('display') === 'none') {
                 $nav.addClass('active');
                 overlayFadeIn('nav');
             }
@@ -811,7 +811,7 @@ function showLightBox(srcset, $image, $images) {
             active_container = jQuery($images.get(jQuery($images).index($image) - 1));
             lightBox_active_img = jQuery($images.get(jQuery($images).index($image) - 1)).children('img').length === 0 ? jQuery($images.get(jQuery($images).index($image) - 1)) : jQuery($images.get(jQuery($images).index($image) - 1)).children('img');
         }
-        showLightBox(lightBox_active_img.attr('srcset'), active_container, $images);
+        showLightBox(lightBox_active_img.attr('srcset') ? lightBox_active_img.attr('srcset') : lightBox_active_img.attr('src'), active_container, $images);
         e.stopPropagation();
     });
 
@@ -824,7 +824,7 @@ function showLightBox(srcset, $image, $images) {
             active_container = jQuery($images.get(jQuery($images).index($image) + 1));
             lightBox_active_img = jQuery($images.get(jQuery($images).index($image) + 1)).children('img').length === 0 ? jQuery($images.get(jQuery($images).index($image) + 1)) : jQuery($images.get(jQuery($images).index($image) + 1)).children('img');
         }
-        showLightBox(lightBox_active_img.attr('srcset'), active_container, $images);
+        showLightBox(lightBox_active_img.attr('srcset') ? lightBox_active_img.attr('srcset') : lightBox_active_img.attr('src'), active_container, $images);
         e.stopPropagation();
     });
 

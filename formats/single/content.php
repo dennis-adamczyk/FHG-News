@@ -27,9 +27,9 @@ if ( has_post_thumbnail() ) {
 		  <?php
 	  } ?>
   </div>
-  <h3 class="post__title">
+  <h1 class="post__title">
 	  <?php the_title(); ?>
-  </h3>
+  </h1>
   <p class="post__subtitle">
     <span class="post__subtitle__category">
       <?php if ( empty( get_the_category() ) ): echo "Unkategorisiert";

@@ -11,7 +11,7 @@ body.single content .wrapper .main .post .post__thumbnail img { pointer-events: 
 body.single content .wrapper .main .post .post__thumbnail .post__image__error { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
 body.single content .wrapper .main .post .post__thumbnail .post__image__error i { font-size: 48px; color: #F44336; text-align: center; display: block; }
 body.single content .wrapper .main .post .post__thumbnail .post__image__error p { font-size: 16px; font-weight: 500; color: rgba(0, 0, 0, 0.86); text-align: center; margin: 16px 0 0 0; }
-body.single content .wrapper .main .post .post__title { font-size: 20px; font-weight: 500; padding: 0; margin: 12px 0 6px 0; color: #000000; }
+body.single content .wrapper .main .post .post__title { font-size: 24px; font-weight: 500; padding: 0; margin: 12px 0 6px 0; color: #000000; }
 body.single content .wrapper .main .post .post__subtitle { font-size: 14px; font-weight: 400; color: rgba(0, 0, 0, 0.6); margin: 0; padding: 0; }
 body.single content .wrapper .main .post .post__subtitle i.material-icons { font-size: 16px; height: 16px; width: 16px; color: rgba(0, 0, 0, 0.6); vertical-align: sub; }
 body.single content .wrapper .main .post .post__content { width: 100%; margin: 16px 0 0 0; font-size: 16px; line-height: 32px; }
@@ -92,7 +92,7 @@ body.single content .wrapper .main .recommended .recommended__posts .recommended
   body.single content .wrapper .main .post .post__thumbnail .post__image__error { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
   body.single content .wrapper .main .post .post__thumbnail .post__image__error i { font-size: 48px; color: #F44336; text-align: center; display: block; }
   body.single content .wrapper .main .post .post__thumbnail .post__image__error p { font-size: 16px; font-weight: 500; color: rgba(0, 0, 0, 0.86); text-align: center; margin: 16px 0 0 0; }
-  body.single content .wrapper .main .post .post__title { font-size: 24px; font-weight: 500; padding: 0; margin: 16px 0 6px 0; color: #000000; }
+  body.single content .wrapper .main .post .post__title { font-size: 32px; font-weight: 500; padding: 0; margin: 16px 0 6px 0; color: #000000; }
   body.single content .wrapper .main .post .post__subtitle { font-size: 14px; font-weight: 400; color: rgba(0, 0, 0, 0.6); margin: 0; padding: 0; }
   body.single content .wrapper .main .post .post__subtitle .post__subtitle__category { cursor: pointer; }
   body.single content .wrapper .main .post .post__content { width: 100%; text-align: justify; -webkit-hyphens: auto; -moz-hyphens: auto; -ms-hyphens: auto; hyphens: auto; margin: 16px 0; }

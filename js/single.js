@@ -178,14 +178,20 @@ function optimizeCommentarea() {
 
 $(document).ready(function () {
 
+    Waves.attach('.wp-block-button a');
+    Waves.init({
+        duration: 200,
+        delay: 0
+    });
+
     infiniteScrollRecommended(php_vars.post);
 
     /* ===== LIGHT BOX ===== */
 
-    const $images = jQuery('p > img, .wp-caption, .wp-block-image > figure, .blocks-gallery-item > figure');
+    const $images = jQuery('p > img:not(.emoji), .wp-caption, .wp-block-image > figure, .blocks-gallery-item > figure');
 
     $images.stop().click(function () {
-        showLightBox($(this).children('img').length === 0 ? $(this).attr('srcset') : $(this).children('img').attr('srcset'), jQuery(this), $images);
+        showLightBox($(this).children('img').length === 0 ? ($(this).attr('srcset') ? $(this).attr('srcset') : $(this).attr('src')) : ($(this).children('img').attr('srcset') ? $(this).children('img').attr('srcset') : $(this).children('img').attr('src')), jQuery(this), $images);
     });
 
 

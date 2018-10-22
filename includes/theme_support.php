@@ -33,6 +33,7 @@ function fhgnewsonline_enqueue() {
 	}
 	if ( is_single() ) {
 		wp_enqueue_style( 'single', get_template_directory_uri() . '/css/single.css' );
+		wp_enqueue_style( 'gutenberg-frontend', get_template_directory_uri() . '/css/gutenberg-frontend.css' );
 		wp_enqueue_script( 'single', get_template_directory_uri() . '/js/single.js' );
 		wp_localize_script( 'single', 'php_vars', array(
 			'login_url'        => wp_login_url(),
@@ -118,6 +119,9 @@ function fhgnewsonline_theme_setup() {
 	add_theme_support( 'post-thumbnails' );
 	add_theme_support( 'html5', array( 'comment-list', 'comment-form', 'search-form', 'gallery', 'caption' ) );
 
+	// GUTENBERG
+	add_theme_support( 'editor-color-palette', MATERIAL_DESIGN_COLORS );
+
 	set_post_thumbnail_size( 1920, 1080, array( 'center', 'center' ) );
 
 	register_nav_menu( 'primary', 'Webseiten-Navigation' );
@@ -150,6 +154,12 @@ function fhgnewsonline_theme_setup() {
 }
 
 add_action( 'init', 'fhgnewsonline_theme_setup' );
+
+function fhgnewsonline_add_gutenberg_assets() {
+	wp_enqueue_style( 'gutenberg-backend', get_theme_file_uri( '/css/gutenberg-backend.css' ), false );
+}
+
+add_action( 'enqueue_block_editor_assets', 'fhgnewsonline_add_gutenberg_assets' );
 
 function fhgnewsonline_registration_save( $user_id ) {
 	update_user_meta( $user_id, 'show_admin_bar_front', false );
@@ -552,6 +562,114 @@ function get_reset_password_url( $user_id_or_login = null ) {
 
 	return wp_lostpassword_url() . '?change&key=' . get_password_reset_key( wp_get_current_user() ) . '&login=' . rawurlencode( $user_login );
 }
+
+define( 'MATERIAL_DESIGN_COLORS', array(
+	array(
+		'name'  => esc_html( 'Schwarz' ),
+		'slug'  => 'black',
+		'color' => '#000000',
+	),
+	array(
+		'name'  => esc_html( 'Weiß' ),
+		'slug'  => 'white',
+		'color' => '#ffffff',
+	),
+	array(
+		'name'  => esc_html( 'Rot' ),
+		'slug'  => 'red',
+		'color' => '#F44336',
+	),
+	array(
+		'name'  => esc_html( 'Pink' ),
+		'slug'  => 'pink',
+		'color' => '#E91E63',
+	),
+	array(
+		'name'  => esc_html( 'Lila' ),
+		'slug'  => 'purple',
+		'color' => '#9C27B0',
+	),
+	array(
+		'name'  => esc_html( 'Dunkellila' ),
+		'slug'  => 'deep-purple',
+		'color' => '#673AB7',
+	),
+	array(
+		'name'  => esc_html( 'Indigo' ),
+		'slug'  => 'indigo',
+		'color' => '#3F51B5',
+	),
+	array(
+		'name'  => esc_html( 'Blau' ),
+		'slug'  => 'secondary',
+		'color' => '#2196F3',
+	),
+	array(
+		'name'  => esc_html( 'Hellblau' ),
+		'slug'  => 'light-blue',
+		'color' => '#03A9F4',
+	),
+	array(
+		'name'  => esc_html( 'Cyan' ),
+		'slug'  => 'cyan',
+		'color' => '#00BCD4',
+	),
+	array(
+		'name'  => esc_html( 'Teal' ),
+		'slug'  => 'teal',
+		'color' => '#009688',
+	),
+	array(
+		'name'  => esc_html( 'Grün' ),
+		'slug'  => 'green',
+		'color' => '#4CAF50',
+	),
+	array(
+		'name'  => esc_html( 'Hellgrün' ),
+		'slug'  => 'light-green',
+		'color' => '#8BC34A',
+	),
+	array(
+		'name'  => esc_html( 'Limette' ),
+		'slug'  => 'lime',
+		'color' => '#CDDC39',
+	),
+	array(
+		'name'  => esc_html( 'Gelb' ),
+		'slug'  => 'yellow',
+		'color' => '#FFEB3B',
+	),
+	array(
+		'name'  => esc_html( 'Amber' ),
+		'slug'  => 'amber',
+		'color' => '#FFC107',
+	),
+	array(
+		'name'  => esc_html( 'Orange' ),
+		'slug'  => 'orange',
+		'color' => '#FF9800',
+	),
+	array(
+		'name'  => esc_html( 'Dunkelorange' ),
+		'slug'  => 'deep-orange',
+		'color' => '#FF5722',
+	),
+	array(
+		'name'  => esc_html( 'Braun' ),
+		'slug'  => 'brown',
+		'color' => '#795548',
+	),
+	array(
+		'name'  => esc_html( 'Grau' ),
+		'slug'  => 'grey',
+		'color' => '#9E9E9E',
+	),
+	array(
+		'name'  => esc_html( 'Blau-Grau' ),
+		'slug'  => 'blue-grey',
+		'color' => '#607D8B',
+	),
+) );
 
 /*
  * ===============================
