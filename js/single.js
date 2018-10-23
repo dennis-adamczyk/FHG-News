@@ -186,6 +186,187 @@ $(document).ready(function () {
 
     infiniteScrollRecommended(php_vars.post);
 
+    /* ===== POLLS ===== */
+
+    let $poll = $('.post__content poll');
+    let $pollAnswer = $poll.find('.poll_answer');
+    let $pollAnswerRadio = $pollAnswer.find('input:radio');
+    let $pollAnswerCheckbox = $pollAnswer.find('input:checkbox');
+
+
+    $pollAnswerRadio.mousedown(function () {
+        if ($(this).find('input[type="radio"]').attr('disabled') !== undefined) return false;
+        var $self = $(this);
+        if ($self.is(':checked')) {
+            var uncheck = function () {
+                setTimeout(function () {
+                    $self
+                        .removeAttr('checked')
+                        .trigger('change');
+                }, 0);
+            };
+            var unbind = function () {
+                $self.unbind('mouseup', up);
+            };
+            var up = function () {
+                uncheck();
+                unbind();
+            };
+            $self.bind('mouseup', up);
+            $self.one('mouseout', unbind);
+        }
+    });
+
+
+    $pollAnswer.on('click', function (e) {
+        if ($(e.target).is($('input')) || $(this).find('input').attr('disabled') !== undefined) return;
+        if ($(this).parents('poll').attr('multi') === undefined) {
+            let $radioState = $(this).find('input[type="radio"]').attr('checked') !== undefined;
+            $pollAnswerRadio.filter('[name=' + $(this).attr('name') + ']').removeAttr('checked');
+            $(this).find('input[type="radio"]')
+                .attr('checked', !$radioState)
+                .trigger('change');
+        } else {
+            let $checkState = $(this).find('input[type="checkbox"]').attr('checked') !== undefined;
+            $(this).find('input[type="checkbox"]')
+                .attr('checked', !$checkState)
+                .trigger('change');
+        }
+        e.preventDefault();
+        return false;
+    });
+
+    $pollAnswer.find('input').change(function () {
+        let $that = $(this);
+        const $poll = $(this).parents('poll');
+        let $poll_id = $poll.data('id');
+        let $inputGroup = $pollAnswer.find('input[name="' + $that.attr('name') + '"]');
+        var $answer = 0;
+
+        if ($that.attr('checked') !== undefined) {
+            if ($poll.attr('multi') === undefined) {
+                $poll.find('.poll_answer').each(function (index) {
+                    if ($that.parents('.poll_answer')[0] === $(this)[0]) {
+                        $answer = index;
+                        return false;
+                    }
+                });
+            } else {
+                $answer = [];
+                $poll.find('.poll_answer').each(function (index) {
+                    if ($(this).children('input:checkbox').attr('checked') !== undefined) {
+                        $answer.push(index);
+                    }
+                });
+            }
+        } else {
+            $answer = -1;
+            if ($poll.attr('multi') !== undefined) {
+                $answer = [];
+                $poll.find('.poll_answer').each(function (index) {
+                    if ($(this).children('input:checkbox').attr('checked') !== undefined) {
+                        $answer.push(index);
+                    }
+                });
+                if ($answer.length === 0) {
+                    $answer = -1;
+                }
+            }
+        }
+
+        if ($(this).attr('disabled') !== undefined) return false;
+        $inputGroup.attr('disabled', true);
+
+        $poll.find('.poll_answer .result').fadeOut(150, function () {
+            $(this).remove();
+        });
+
+        // TODO: LOADING INDICATOR
+
+        $.ajax({
+            type: 'POST',
+            url: php_info.ajax_url,
+            data: {
+                action: 'update_poll_vote',
+                post_id: php_vars.post_id,
+                poll_id: $poll_id,
+                answer: $answer
+            },
+            success: function (data) {
+                if (data.startsWith('F')) {
+                    showSingleLineSnackBar('Fehler aufgetreten. Versuche es später erneut.');
+                } else {
+                    $data = data.substr(1);
+                    $info = $data.split('|');
+                    $votesText = $info[0];
+                    $results = $info[1] ? JSON.parse($info[1]) : false;
+                    $votesCount = $info[2];
+
+                    $poll.find('.poll_votes').text($votesText);
+                    if ($results) {
+                        for(var index in $results) {
+                            val = $results[index];
+                            $percentage = 100 * val / $votesCount;
+                            $poll.find('.poll_answer:eq(' + index + ') label').append('<div class="result" style="width: ' + $percentage +  '%"><span>' + $percentage + '%</span></div>');
+                            $poll.find('.poll_answer:eq(' + index + ') label .result span').css('margin-left', $poll.find('.poll_answer:eq(' + index + ') label > span').outerWidth(true) + 8 + 'px');
+                            $poll.find('.poll_answer:eq(' + index + ')').append('<div class="result"><span style="width: ' + $percentage +  '%"></span></div>');
+                        }
+                        $poll.find('.poll_answer label .result').hide().fadeIn(150);
+                    }
+                }
+                $inputGroup.removeAttr('disabled');
+            }
+        });
+
+    });
+
+    load_results_if_voted();
+
+    function load_results_if_voted() {
+        $polls = $('.post__content poll');
+        $polls.each(function() {
+            const $poll = $(this);
+            const $poll_id = $(this).data('id');
+            $.ajax({
+                type: 'POST',
+                url: php_info.ajax_url,
+                data: {
+                    action: 'get_poll_results',
+                    post_id: php_vars.post_id,
+                    poll_id: $poll_id,
+                },
+                success: function (data) {
+                    if (data.startsWith('S')) {
+                        $data = data.substr(1);
+                        $info = $data.split('|');
+                        $voted = $info[0];
+                        $results = $info[1] ? JSON.parse($info[1]) : false;
+                        $votesCount = $info[2];
+
+                        if($.isNumeric($voted)) {
+                            $poll.find('.poll_answer:eq(' + $voted + ') input').attr('checked', true);
+                        } else {
+                            $voted = JSON.parse($voted);
+                            for(var voteI in $voted) {
+                                $poll.find('.poll_answer:eq(' + $voted[voteI] + ') input').attr('checked', true);
+                            }
+                        }
+                        if ($results) {
+                            for(var index in $results) {
+                                val = $results[index];
+                                $percentage = 100 * val / $votesCount;
+                                $poll.find('.poll_answer:eq(' + index + ') label').append('<div class="result" style="width: ' + $percentage +  '%"><span>' + $percentage + '%</span></div>');
+                                $poll.find('.poll_answer:eq(' + index + ') label .result span').css('margin-left', $poll.find('.poll_answer:eq(' + index + ') label > span').outerWidth(true) + 8 + 'px');
+                                $poll.find('.poll_answer:eq(' + index + ')').append('<div class="result"><span style="width: ' + $percentage +  '%"></span></div>');
+                            }
+                            $poll.find('.poll_answer label .result').hide().fadeIn(150);
+                        }
+                    }
+                }
+            });
+        });
+    }
+
     /* ===== LIGHT BOX ===== */
 
     const $images = jQuery('p > img:not(.emoji), .wp-caption, .wp-block-image > figure, .blocks-gallery-item > figure');
@@ -290,4 +471,5 @@ $(document).ready(function () {
         replyTo(parseInt($(this).parents('.comments__list__comment').data('comment-id')), parseInt($(this).parents('.comments__list__comment').data('parent-id')), $(this).parents('.comments__list__comment').data('author'));
     });
 
-});
+})
+;

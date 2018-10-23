@@ -125,6 +125,168 @@ body.single
             font-size: 16px
             line-height: 32px
 
+            poll
+              display: block
+              margin: 24px 0
+              padding: 16px
+              background-color: #ffffff
+              border-radius: 4px
+              box-shadow: $elevation--z2
+              overflow: hidden
+
+              .poll_question
+                font-size: 16px
+                font-weight: 500
+                line-height: initial
+                color: rgba(#000000, .86)
+                margin: 0 0 2px 0
+                padding: 0
+
+              .poll_votes
+                font-size: 14px
+                font-weight: 400
+                line-height: initial
+                color: rgba(#000000, .56)
+                margin: 0 0 16px 0
+                padding: 0
+
+              .poll_answer
+                display: flex
+                flex-wrap: wrap
+                font-size: 16px
+                font-weight: 400
+                color: rgba(#000000, .6)
+                margin: 0 0 8px 0
+                padding: 0
+
+                input[type="radio"]
+                  position: relative
+                  -webkit-appearance: none
+                  -moz-appearance: none
+                  appearance: none
+                  outline: none
+                  cursor: pointer
+                  width: 20px
+                  height: 20px
+                  margin: 0
+                  padding: 0
+                  border-radius: 50%
+                  border: 2px solid rgba(#000000, .54)
+                  transition: border 150ms $easing
+
+                  &::after
+                    content: ''
+                    display: inline-block
+                    position: absolute
+                    top: 3px
+                    left: 3px
+                    width: 10px
+                    height: 10px
+                    border-radius: 50%
+                    background-color: $secondary
+                    transform: scale(0)
+                    transition: transform 150ms $easing
+
+                  &:checked
+                    border: 2px solid $secondary
+
+                    &::after
+                      transform: scale(1)
+
+                input[type="checkbox"]
+                  position: relative
+                  -webkit-appearance: none
+                  -moz-appearance: none
+                  appearance: none
+                  outline: none
+                  cursor: pointer
+                  width: 16px
+                  height: 16px
+                  margin: 0
+                  padding: 0
+                  border-radius: 2px
+                  background-color: transparent
+                  border: 2px solid rgba(#000000, .54)
+                  transition: border 100ms $easing, background 100ms $easing
+
+                  &::after
+                    content: 'check'
+                    font-family: "Material Icons", sans-serif
+                    font-weight: normal
+                    font-style: normal
+                    line-height: 1
+                    letter-spacing: normal
+                    text-transform: none
+                    display: inline-block
+                    white-space: nowrap
+                    word-wrap: normal
+                    direction: ltr
+                    -webkit-font-feature-settings: 'liga'
+                    -webkit-font-smoothing: antialiased
+                    font-size: 16px
+                    position: absolute
+                    left: -2px
+                    top: -2px
+                    color: #ffffff
+                    transform: scale(0)
+                    transition: transform 100ms $easing
+
+                  &:checked
+                    border: 2px solid $secondary
+                    background-color: $secondary
+                    transition: border 100ms $easing, background 100ms $easing
+
+                    &::after
+                      transform: scale(1)
+                      transition: transform 100ms $easing 80ms
+
+
+                label
+                  margin-left: 16px
+                  line-height: 20px
+                  width: calc(100% - 36px)
+                  height: 20px
+                  cursor: pointer
+                  -webkit-user-select: none
+                  -moz-user-select: none
+                  -ms-user-select: none
+                  user-select: none
+                  clear: both
+
+                  .result
+                    float: right
+                    min-width: 48px
+                    max-width: 48px
+                    display: block
+                    height: auto
+                    background-color: transparent
+                    margin: 0
+
+                    span
+                      position: initial
+                      float: right
+                      text-align: right
+                      margin: 0
+                      width: 48px
+                      height: auto
+                      background-color: transparent
+
+                .result
+                  display: block
+                  position: relative
+                  height: 4px
+                  width: 100%
+                  background-color: lighten($secondary, 35%)
+                  margin: 8px 0 8px 36px
+
+                  span
+                    position: absolute
+                    left: 0
+                    top: 0
+                    bottom: 0
+                    height: 100%
+                    background-color: $secondary
+
           //&::before
           //  content: ""
           //  display: table
@@ -201,6 +363,7 @@ body.single
             margin: 16px 0 0 0
             padding: 0
             position: relative
+            clear: both
 
             .post__foot__like
               position: relative
@@ -729,6 +892,176 @@ body.single
               -ms-hyphens: auto
               hyphens: auto
               margin: 16px 0
+
+              poll
+                display: block
+                margin: 32px 128px
+                padding: 16px
+                background-color: #ffffff
+                border-radius: 4px
+                box-shadow: $elevation--z2
+                overflow: hidden
+
+                .poll_question
+                  font-size: 16px
+                  font-weight: 500
+                  color: rgba(#000000, .86)
+                  margin: 0 0 8px 0
+                  padding: 0
+
+                .poll_votes
+                  font-size: 14px
+                  font-weight: 400
+                  line-height: initial
+                  color: rgba(#000000, .56)
+                  margin: 0 0 16px 0
+                  padding: 0
+
+                .poll_answer
+                  display: flex
+                  font-size: 16px
+                  font-weight: 400
+                  color: rgba(#000000, .86)
+                  height: 32px
+                  margin: 0 0 8px 0
+                  padding: 0
+                  cursor: pointer
+
+                  input[type="radio"]
+                    position: relative
+                    -webkit-appearance: none
+                    -moz-appearance: none
+                    appearance: none
+                    outline: none
+                    cursor: pointer
+                    width: 20px
+                    height: 20px
+                    margin: 6px 0 0 0
+                    padding: 0
+                    border-radius: 50%
+                    border: 2px solid rgba(#000000, .54)
+                    transition: border 150ms $easing
+
+                    &::after
+                      content: ''
+                      display: inline-block
+                      position: absolute
+                      top: 3px
+                      left: 3px
+                      width: 10px
+                      height: 10px
+                      border-radius: 50%
+                      background-color: $secondary
+                      transform: scale(0)
+                      transition: transform 150ms $easing
+
+                    &:checked
+                      border: 2px solid $secondary
+
+                      &::after
+                        transform: scale(1)
+
+                      & ~ label .result
+                        background-color: $secondary
+
+                  input[type="checkbox"]
+                    position: relative
+                    -webkit-appearance: none
+                    -moz-appearance: none
+                    appearance: none
+                    outline: none
+                    cursor: pointer
+                    width: 16px
+                    height: 16px
+                    margin: 6px 0 0 0
+                    padding: 0
+                    border-radius: 2px
+                    background-color: transparent
+                    border: 2px solid rgba(#000000, .54)
+                    transition: border 100ms $easing, background 100ms $easing
+
+                    &::after
+                      content: 'check'
+                      font-family: "Material Icons", sans-serif
+                      font-weight: normal
+                      font-style: normal
+                      line-height: 1
+                      letter-spacing: normal
+                      text-transform: none
+                      display: inline-block
+                      white-space: nowrap
+                      word-wrap: normal
+                      direction: ltr
+                      -webkit-font-feature-settings: 'liga'
+                      -webkit-font-smoothing: antialiased
+                      font-size: 16px
+                      position: absolute
+                      left: -2px
+                      top: -2px
+                      color: #ffffff
+                      transform: scale(0)
+                      transition: transform 100ms $easing
+
+                    &:checked
+                      border: 2px solid $secondary
+                      background-color: $secondary
+                      transition: border 100ms $easing, background 100ms $easing
+
+                      &::after
+                        transform: scale(1)
+                        transition: transform 100ms $easing 80ms
+
+                      & ~ label .result
+                        background-color: $secondary
+
+                  label
+                    display: block
+                    position: relative
+                    margin-left: 16px
+                    line-height: 32px
+                    width: calc(100% - 36px)
+                    height: 32px
+                    cursor: pointer
+                    -webkit-user-select: none
+                    -moz-user-select: none
+                    -ms-user-select: none
+                    user-select: none
+                    border-radius: 4px
+                    overflow: hidden
+
+                    span
+                      position: relative
+                      margin-left: 16px
+                      z-index: 1
+
+                    .result
+                      display: block
+                      position: absolute
+                      left: 0
+                      top: 0
+                      bottom: 0
+                      min-width: auto
+                      width: 100%
+                      max-width: none
+                      background-color: rgba(#000000, .08)
+                      margin: 0
+                      padding: 0
+                      border-radius: 4px
+                      overflow: visible
+                      z-index: 0
+                      transition: background 150ms $easing
+
+                      span
+                        position: sticky
+                        left: 100%
+                        color: #000000
+                        text-align: right
+                        margin-left: 100px
+                        margin-right: 8px
+                        float: none
+
+                  .result
+                    display: none
 
             .post__foot
               width: 100%
