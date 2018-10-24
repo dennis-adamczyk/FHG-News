@@ -3,9 +3,9 @@
 .edit-post-visual-editor .editor-block-list__block .editor-block-list__block-edit { text-align: justify; font-size: 16px; line-height: 32px; }
 .edit-post-visual-editor .editor-post-title__input { font-family: "Roboto", sans-serif; font-size: 32px; font-weight: 500; color: #000000; }
 @media all and (max-width: 799px) { .edit-post-visual-editor .editor-post-title__input { font-size: 24px; } }
-.edit-post-visual-editor .wp-block-cover-image { border-radius: 4px; overflow: hidden; }
-.edit-post-visual-editor .wp-block-cover-image .wp-block-cover-image-text { font-weight: 300; font-size: 24px; }
-@media all and (min-width: 800px) { .edit-post-visual-editor .wp-block-cover-image .wp-block-cover-image-text { font-size: 32px; } }
+.edit-post-visual-editor .wp-block-cover { border-radius: 4px; overflow: hidden; }
+.edit-post-visual-editor .wp-block-cover .wp-block-cover-text { font-weight: 300; font-size: 24px; }
+@media all and (min-width: 800px) { .edit-post-visual-editor .wp-block-cover .wp-block-cover-text { font-size: 32px; } }
 .edit-post-visual-editor .wp-block-heading h1 { font-size: 24px; font-weight: 500; padding: 0; margin: 32px 0 16px 0; color: #000000; }
 @media all and (min-width: 800px) { .edit-post-visual-editor .wp-block-heading h1 { font-size: 32px; } }
 .edit-post-visual-editor .wp-block-heading h2 { font-size: 24px; font-weight: 500; padding: 0; margin: 24px 0 16px; color: rgba(0, 0, 0, 0.86); }
@@ -35,6 +35,8 @@
 .edit-post-visual-editor .wp-block-gallery .blocks-gallery-item figure figcaption { font-size: 14px; font-weight: 400; line-height: 16px; color: #ffffff; padding: 32px 8px 4px 8px; margin: 0; width: 100%; border-bottom-left-radius: 4px; border-bottom-right-radius: 4px; overflow: hidden; }
 .edit-post-visual-editor .editor-block-list__block[data-type="core/button"][data-align=center] .editor-block-list__block-edit { text-align: center; }
 .edit-post-visual-editor .wp-block-shortcode .editor-plain-text { line-height: initial; font-family: monospace; }
+.edit-post-visual-editor .wp-block-media-text { cursor: pointer; }
+.edit-post-visual-editor .wp-block-media-text .wp-block-media-text__media img { border-radius: 4px; overflow: hidden; }
 .edit-post-visual-editor .wp-block-fhgnewsonline-poll { font-family: "Roboto", sans-serif; }
 .edit-post-visual-editor .wp-block-fhgnewsonline-poll h4 { font-size: 18px; font-weight: 500; margin: 0 0 16px 0; padding: 0; }
 .edit-post-visual-editor .wp-block-fhgnewsonline-poll .components-base-control .components-base-control__field { display: flex; }

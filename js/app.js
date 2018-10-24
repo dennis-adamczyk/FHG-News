@@ -773,8 +773,30 @@ jQuery(document).ready(function ($) {
         });
     });
 
-})
-;
+    /* ===== PUSH NOTIFICATION CHANGE ===== */
+
+    window.addEventListener('load', function () {
+        if ($('body').hasClass('settings')) return;
+        if ('OneSignal' in window) {
+            OneSignal.on('subscriptionChange', function (status) {
+                console.log(status);
+                $.ajax({
+                    type: 'POST',
+                    url: php_info.ajax_url,
+                    data: {
+                        action: 'set_setting',
+                        settingsname: 'settings-push_notifications',
+                        value: status
+                    },
+                    success: function (data) {
+                        console.log(data);
+                    }
+                });
+            });
+        }
+    });
+
+});
 
 window.onpopstate = function (e) {
     if (e.state !== 'lightBox')

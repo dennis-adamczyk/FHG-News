@@ -56,9 +56,13 @@ jQuery(document).ready(function ($) {
 
         if (Math.abs(xDiff) > Math.abs(yDiff)) {
             if (xDiff < 0) {
-                $(this).attr("checked", true).trigger('change');
+                $(this)
+                    .attr("checked", true)
+                    .trigger('change');
             } else if (xDiff > 0) {
-                $(this).attr("checked", false).trigger('change');
+                $(this)
+                    .attr("checked", false)
+                    .trigger('change');
             }
         }
 
@@ -80,6 +84,9 @@ jQuery(document).ready(function ($) {
         $parent
             .append('<div class="progress"><div class="indeterminate"></div></div>')
             .addClass('loading');
+
+
+        applyChanges($settingsname, $checked);
 
         $.ajax({
             type: 'POST',
@@ -179,6 +186,8 @@ jQuery(document).ready(function ($) {
             .addClass('loading')
             .append('<div class="progress"><div class="indeterminate"></div></div>');
 
+        applyChanges($settingsname, newSelectedValue);
+
         $.ajax({
             type: 'POST',
             url: php_info.ajax_url,
@@ -199,5 +208,44 @@ jQuery(document).ready(function ($) {
 
     });
 
+    /*
+    ======================================
+        Apply Changes
+    ======================================
+     */
+
+    function applyChanges(settingsname, value) {
+        switch (settingsname) {
+            case 'settings-push_notifications':
+                if (value) {
+                    OneSignal.registerForPushNotifications();
+                } else {
+                    OneSignal.setSubscription(false);
+                }
+                break;
+        }
+    }
+
+    window.addEventListener('load', function () {
+        if ('OneSignal' in window) {
+            OneSignal.on('subscriptionChange', function(status) {
+                console.log(status);
+                $('#pushNotifications')
+                    .attr('checked', status);
+                $.ajax({
+                    type: 'POST',
+                    url: php_info.ajax_url,
+                    data: {
+                        action: 'set_setting',
+                        settingsname: 'settings-push_notifications',
+                        value: status
+                    },
+                    success: function (data) {
+                        console.log(data);
+                    }
+                });
+            });
+        }
+    });
 
 });
