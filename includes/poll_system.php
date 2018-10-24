@@ -101,7 +101,7 @@ function update_poll( $post_id, $poll_id, $value ) {
  * @return bool success
  */
 function reset_poll( $post_id, $poll_id ) {
-	return delete_post_meta($post_id, POLL_DB_KEY . $poll_id);
+	return delete_post_meta( $post_id, POLL_DB_KEY . $poll_id );
 }
 
 /*
@@ -271,6 +271,17 @@ function fhgnewsonline_ajax_get_poll_results() {
 add_action( 'wp_ajax_nopriv_get_poll_results', 'fhgnewsonline_ajax_get_poll_results' );
 add_action( 'wp_ajax_get_poll_results', 'fhgnewsonline_ajax_get_poll_results' );
 
+function fhgnewsonline_ajax_reset_poll() {
+	$post_id = (int) $_POST["post_id"];
+	$poll_id = (int) $_POST["poll_id"];
+
+	echo (intval(reset_poll($post_id, $poll_id)) === 1 ? 'S' : 'F');
+	die();
+}
+
+add_action( 'wp_ajax_nopriv_reset_poll', 'fhgnewsonline_ajax_reset_poll' );
+add_action( 'wp_ajax_reset_poll', 'fhgnewsonline_ajax_reset_poll' );
+
 /*
  * ===============================
  *      SHORTCODE
@@ -316,7 +327,7 @@ function fhgnewsonline_poll_question_shortcode( $atts, $content, $tag ) {
 add_shortcode( 'frage', 'fhgnewsonline_poll_question_shortcode' );
 
 function fhgnewsonline_poll_answer_shortcode( $atts, $content, $tag ) {
-	$multi        = in_array( 'multi', $atts );
+	$multi        = ! is_array( $atts ) ? false : in_array( 'multi', $atts );
 	$atts         = shortcode_atts( array(
 		'multi' => $multi,
 		'group' => uniqid()
@@ -338,3 +349,13 @@ add_shortcode( 'antwort', 'fhgnewsonline_poll_answer_shortcode' );
   [antwort]Ich mag kein Eis[/antwort]
 [/umfrage]
 */
+
+function fhgnewsonline_get_poll_shortcode( $attributes ) {
+	$shortcode = "[umfrage id=\"{$attributes["id"]}\" " . ( $attributes["multi"] ? 'multi' : '' ) . "][frage]{$attributes["question"]}[/frage]";
+	foreach ( $attributes["answers"] as $answer ) {
+		$shortcode .= "[antwort]{$answer}[/antwort]";
+	}
+	$shortcode .= "[/umfrage]";
+
+	return do_shortcode( $shortcode );
+}

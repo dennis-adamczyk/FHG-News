@@ -152,6 +152,22 @@ function fhgnewsonline_theme_setup() {
 
 	flush_rewrite_rules( true );
 	profile_picture_init();
+
+	wp_enqueue_script( 'gutenberg_register_poll_block', get_theme_file_uri( '/js/gutenberg_register_poll_block.js' ), array(
+		'wp-blocks',
+		'wp-element',
+		'wp-editor',
+		'wp-components',
+	) );
+	wp_localize_script( 'gutenberg_register_poll_block', 'php_vars', array(
+		'ajax_url' => admin_url( 'admin-ajax.php' ),
+		'post_id'  => get_the_ID(),
+	) );
+
+	register_block_type( 'fhgnewsonline/poll', array(
+		'editor_script'   => 'gutenberg_register_poll_block',
+		'render_callback' => 'fhgnewsonline_get_poll_shortcode'
+	) );
 }
 
 add_action( 'init', 'fhgnewsonline_theme_setup' );
