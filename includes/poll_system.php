@@ -75,7 +75,7 @@ function get_poll( $post_id, $poll_id ) {
 function update_poll( $post_id, $poll_id, $value ) {
 	$prev_value = get_poll( $post_id, $poll_id );
 	if ( $poll_id === null ) {
-		$poll_id = empty( $prev_value ) ? 0 : (int) get_polls( $post_id )[ count( $prev_value ) - 1 ]['ID'] + 1;
+		$poll_id = empty( $prev_value ) ? 0 : (int) ( intval( end( get_polls( $post_id ) )['ID'] ) + 1 );
 	}
 	if ( empty( $prev_value ) ) {
 		$prev_value = array(
@@ -90,6 +90,18 @@ function update_poll( $post_id, $poll_id, $value ) {
 	$value = array_merge( $prev_value, $value );
 
 	return array( update_post_meta( $post_id, POLL_DB_KEY . $poll_id, $value ), $poll_id );
+}
+
+/**
+ * Resets a poll by deleting post meta from database
+ *
+ * @param int $post_id
+ * @param int $poll_id
+ *
+ * @return bool success
+ */
+function reset_poll( $post_id, $poll_id ) {
+	return delete_post_meta($post_id, POLL_DB_KEY . $poll_id);
 }
 
 /*
@@ -267,7 +279,7 @@ add_action( 'wp_ajax_get_poll_results', 'fhgnewsonline_ajax_get_poll_results' );
 
 function fhgnewsonline_poll_shortcode( $atts, $content, $tag ) {
 	global $post;
-	$multi = in_array( 'multi', $atts );
+	$multi = empty( $atts ) ? false : in_array( 'multi', $atts );
 	$atts  = shortcode_atts( array(
 		'multi' => $multi,
 		'id'    => null
