@@ -153,6 +153,8 @@ function fhgnewsonline_theme_setup() {
 	flush_rewrite_rules( true );
 	profile_picture_init();
 
+	/* ===== GUTENBERG ===== */
+
 	wp_enqueue_script( 'gutenberg_register_poll_block', get_theme_file_uri( '/js/gutenberg_register_poll_block.js' ), array(
 		'wp-blocks',
 		'wp-element',

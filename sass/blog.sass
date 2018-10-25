@@ -290,6 +290,16 @@ body.blog
                     display: block
                     padding-top: 100%
 
+            &.format-video
+              .post__image
+                .post__image__hint
+                  position: absolute
+                  top: 50%
+                  left: 50%
+                  transform: translate(-50%, -50%)
+                  font-size: 48px
+                  color: rgba(#ffffff, .6)
+
           @media #{$not-mobile}
             .post
               position: relative
@@ -544,6 +554,17 @@ body.blog
                 .post__image
                   grid-template: 1fr 1fr / calc(50% - 2px) calc(50% - 2px)
                   grid-gap: 4px
+
+              &.format-video
+                .post__image
+                  .post__image__hint
+                    position: absolute
+                    top: 50%
+                    left: 50%
+                    transform: translate(-50%, -50%)
+                    font-size: 32px
+                    color: rgba(#ffffff, .6)
+
 
       .sidebar
         display: none

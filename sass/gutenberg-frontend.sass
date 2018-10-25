@@ -88,7 +88,7 @@
   //    IMAGE WITH CAPTION
   // ################################
 
-  figure.wp-block-image
+  .wp-block-image
     cursor: pointer
 
     figcaption
@@ -209,17 +209,27 @@
           overflow: hidden
 
   // ################################
-  //    EMBEDED VIMEO
+  //    EMBEDED VIDEO
   // ################################
 
-  .wp-block-embed-vimeo
+  .wp-block-embed
     margin-left: auto
     margin-right: auto
     width: 100%
 
-  .wp-block-embed__wrapper
-    iframe
-      width: 100%
+    &.wp-embed-aspect-16-9
+      .wp-block-embed__wrapper
+        position: relative
+        padding-bottom: 56.25%
+        padding-top: 0
+        height: 0
+
+        iframe
+          position: absolute
+          top: 0
+          left: 0
+          width: 100%
+          height: 100%
 
   // ################################
   //    MEDIA TEXT

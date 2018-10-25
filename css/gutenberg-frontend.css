@@ -12,10 +12,10 @@
 .post__content h4 { font-size: 20px; font-weight: 500; padding: 0; margin: 20px 0 16px; color: #000000; }
 .post__content h5 { font-size: 18px; font-weight: 500; padding: 0; margin: 18px 0 16px; color: #000000; }
 .post__content h6 { font-size: 16px; font-weight: 500; padding: 0; margin: 16px 0 16px; color: #000000; }
-.post__content figure.wp-block-image { cursor: pointer; }
-.post__content figure.wp-block-image figcaption { font-size: 14px; font-weight: 400; line-height: 16px; color: rgba(0, 0, 0, 0.6); margin-top: 0; }
-@media all and (max-width: 799px) { .post__content figure.wp-block-image.alignright, .post__content figure.wp-block-image.alignleft { float: none; margin-left: auto; margin-right: auto; } }
-.post__content figure.wp-block-image img { border-radius: 4px; overflow: hidden; height: auto; cursor: pointer; }
+.post__content .wp-block-image { cursor: pointer; }
+.post__content .wp-block-image figcaption { font-size: 14px; font-weight: 400; line-height: 16px; color: rgba(0, 0, 0, 0.6); margin-top: 0; }
+@media all and (max-width: 799px) { .post__content .wp-block-image.alignright, .post__content .wp-block-image.alignleft { float: none; margin-left: auto; margin-right: auto; } }
+.post__content .wp-block-image img { border-radius: 4px; overflow: hidden; height: auto; cursor: pointer; }
 .post__content .wp-block-separator { margin-top: 32px; margin-bottom: 32px; width: 100px; border: 1px solid rgba(0, 0, 0, 0.48); }
 .post__content .wp-block-separator.is-style-wide { width: 100%; border: 0.5px solid rgba(0, 0, 0, 0.24); }
 .post__content .wp-block-separator.is-style-dots { width: 100%; border: none; }
@@ -31,8 +31,9 @@
 .post__content .wp-block-gallery .blocks-gallery-item figure { border-radius: 4px; overflow: hidden; cursor: pointer; }
 .post__content .wp-block-gallery .blocks-gallery-item figure img { border-radius: 4px; overflow: hidden; }
 .post__content .wp-block-gallery .blocks-gallery-item figure figcaption { font-size: 14px; font-weight: 400; line-height: 16px; color: #ffffff; padding: 32px 8px 4px 8px; width: calc(100% - 16px); border-bottom-left-radius: 4px; border-bottom-right-radius: 4px; overflow: hidden; }
-.post__content .wp-block-embed-vimeo { margin-left: auto; margin-right: auto; width: 100%; }
-.post__content .wp-block-embed__wrapper iframe { width: 100%; }
+.post__content .wp-block-embed { margin-left: auto; margin-right: auto; width: 100%; }
+.post__content .wp-block-embed.wp-embed-aspect-16-9 .wp-block-embed__wrapper { position: relative; padding-bottom: 56.25%; padding-top: 0; height: 0; }
+.post__content .wp-block-embed.wp-embed-aspect-16-9 .wp-block-embed__wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 .post__content .wp-block-media-text .wp-block-media-text__media { cursor: pointer; }
 .post__content .wp-block-media-text .wp-block-media-text__media img { border-radius: 4px; overflow: hidden; }
 
