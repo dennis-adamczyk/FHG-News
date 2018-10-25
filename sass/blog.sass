@@ -265,6 +265,31 @@ body.blog
                   i.material-icons
                     color: #ffffff
 
+            &.format-gallery
+              .post__image
+                display: grid
+                grid-template: .8fr .8fr / calc(50% - 4px) calc(50% - 4px)
+                grid-gap: 8px
+                padding-top: initial
+                background-color: transparent
+                overflow: hidden
+
+                .post__image__img
+                  position: initial
+                  transform: none
+                  width: 100%
+                  height: auto
+                  background-position: center
+                  background-repeat: no-repeat
+                  background-size: cover
+                  border-radius: 4px
+                  overflow: hidden
+
+                  &::before
+                    content: ''
+                    display: block
+                    padding-top: 100%
+
           @media #{$not-mobile}
             .post
               position: relative
@@ -514,6 +539,11 @@ body.blog
 
                     i.material-icons
                       color: #ffffff
+
+              &.format-gallery
+                .post__image
+                  grid-template: 1fr 1fr / calc(50% - 2px) calc(50% - 2px)
+                  grid-gap: 4px
 
       .sidebar
         display: none
