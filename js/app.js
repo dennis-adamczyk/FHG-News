@@ -67,8 +67,11 @@ jQuery(document).ready(function ($) {
     ======================================
      */
 
-    if (window.location.hash)
+    if (window.location.hash) {
+        $(document).scrollTop($(window.location.hash).offset().top - 80);
         history.replaceState(null, null, window.location.href.replace(/(page\/\S*(?=\?)|page\/(\S*))|#\S*(?=\?)|#\S*/g, ''));
+    }
+
 
     /*
     ======================================

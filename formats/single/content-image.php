@@ -9,13 +9,6 @@ if ( $category === array() ) {
 	$category = get_the_category()[0];
 }
 $category_color = function_exists( 'rl_color' ) ? rl_color( $category->cat_ID ) : '';
-$featured_image = false;
-
-if ( has_post_thumbnail() ) {
-	$featured_image = wp_get_attachment_url( get_post_thumbnail_id( get_the_ID() ) );
-} else if ( $img = preg_match_all( '/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', get_the_content(), $matches ) ) {
-	$featured_image = $matches[1][0];
-}
 ?>
 <div <?php post_class( 'post' ); ?>>
   <div class="post__author"
@@ -27,18 +20,11 @@ if ( has_post_thumbnail() ) {
 		<?php the_author(); ?>
     </p>
   </div>
-  <div class="post__thumbnail" style="background-image: url('<?php the_post_thumbnail_url(); ?>')">
-	  <?php if ( ! has_post_thumbnail() ) { ?>
-        <div class="post__image__error">
-          <i class="material-icons">error</i>
-          <p>Kein Bild gefunden!</p>
-        </div>
-		  <?php
-	  } ?>
-  </div>
-  <h1 class="post__title">
-	  <?php the_title(); ?>
-  </h1>
+	<?php if ( ! empty( get_the_title() ) ): ?>
+      <h1 class="post__title">
+		  <?php the_title(); ?>
+      </h1>
+	<?php endif; ?>
   <p class="post__subtitle">
     <span class="post__subtitle__category">
       <?php if ( empty( get_the_category() ) ): echo "Unkategorisiert";
@@ -59,7 +45,11 @@ if ( has_post_thumbnail() ) {
     </span> &bull; vor <?php echo human_time_diff( get_the_time( 'U' ), current_time( 'timestamp' ) ); ?>
   </p>
   <div class="post__content">
-	  <?php the_content(); ?>
+	  <?php the_content();
+	  preg_match_all( '/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', get_the_content(), $matches );
+	  if ( has_post_thumbnail() && ! in_array( wp_get_attachment_url( get_post_thumbnail_id( get_the_ID() ) ), $matches[1] ) ) {
+		  echo "<figure class='wp-block-image'><img src='" . wp_get_attachment_url( get_post_thumbnail_id( get_the_ID() ) ) . "'></figure>";
+	  } ?>
   </div>
   <div class="post__foot">
     <div class="post__foot__like<?php if ( is_user_logged_in() ) {

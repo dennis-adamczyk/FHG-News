@@ -189,6 +189,82 @@ body.blog
                   display: inline-block
                   height: 14px
 
+            &.format-image
+              .post__author
+                display: flex
+                width: 100%
+                height: 32px
+                margin: 24px 0 16px 0
+                padding: 0
+                cursor: pointer
+
+                .post__author__profilePicture
+                  display: inline-block
+                  height: 32px
+                  width: 32px
+                  margin: 0
+                  padding: 0
+                  border-radius: 50%
+                  background-color: rgba(#000000, .24)
+                  overflow: hidden
+
+                .post__author__info
+                  margin: 0 0 0 8px
+
+                  .post__author__info__name
+                    font-size: 14px
+                    font-weight: 500
+                    display: block
+                    margin: 0
+                    padding: 0
+                    vertical-align: top
+
+                  .post__author__info__subtitle
+                    font-size: 14px
+                    font-weight: 400
+                    display: block
+                    color: rgba(#000000, .6)
+                    margin: 0
+                    padding: 0
+
+                    i.material-icons
+                      font-size: 16px
+                      height: 16px
+                      width: 16px
+                      color: rgba(#000000, .6)
+                      vertical-align: sub
+
+              .post__preview
+                display: block
+                font-size: 16px
+                font-weight: 400
+                color: rgba(#000000, 0.86)
+                margin: 16px 0
+                padding: 0
+
+                .post__preview__more
+                  display: block
+                  font-size: 14px
+                  font-weight: 500
+                  color: rgba(#000000, .56)
+
+              .post__image
+                .post__image__img
+                  display: none
+
+                .post__image__hint
+                  position: absolute
+                  right: 8px
+                  bottom: 8px
+                  height: 24px
+                  width: 24px
+                  padding: 2px
+                  border-radius: 4px
+                  background-color: rgba(#000000, .86)
+
+                  i.material-icons
+                    color: #ffffff
+
           @media #{$not-mobile}
             .post
               position: relative
@@ -342,6 +418,103 @@ body.blog
                     padding: 0
                     display: inline-block
                     height: 14px
+
+              &.format-image
+                .post__author
+                  display: flex
+                  width: 100%
+                  height: 32px
+                  margin: 16px
+                  padding: 0
+                  cursor: pointer
+
+                  .post__author__profilePicture
+                    display: inline-block
+                    height: 32px
+                    width: 32px
+                    margin: 0
+                    padding: 0
+                    border-radius: 50%
+                    background-color: rgba(#000000, .24)
+                    overflow: hidden
+
+                  .post__author__info
+                    margin: 0 0 0 10px
+
+                    .post__author__info__name
+                      font-size: 14px
+                      font-weight: 500
+                      display: block
+                      margin: 0
+                      padding: 0
+                      vertical-align: top
+
+                    .post__author__info__subtitle
+                      font-size: 14px
+                      font-weight: 400
+                      display: block
+                      color: rgba(#000000, .6)
+                      margin: 0
+                      padding: 0
+
+                      i.material-icons
+                        font-size: 16px
+                        height: 16px
+                        width: 16px
+                        color: rgba(#000000, .6)
+                        vertical-align: sub
+
+                .post__preview
+                  display: block
+                  font-size: 16px
+                  font-weight: 400
+                  color: rgba(#000000, .56)
+                  margin: 16px
+                  padding: 0
+
+                  .post__preview__more
+                    display: inline
+                    font-size: 14px
+                    font-weight: 500
+                    color: rgba(#000000, .6)
+
+                .post__image
+                  display: inline-block
+                  position: relative
+                  top: 0
+                  right: 0
+                  width: auto
+                  max-width: calc(100% - 32px)
+                  height: auto
+                  background-image: none !important
+                  border-radius: 4px
+                  margin: 0 16px
+
+                  .post__image__img
+                    display: block
+                    position: initial
+                    left: auto
+                    top: auto
+                    transform: none
+                    width: auto
+                    max-width: 100%
+                    height: auto
+                    max-height: 384px
+                    pointer-events: none
+
+                  .post__image__hint
+                    position: absolute
+                    right: 8px
+                    bottom: 8px
+                    height: 24px
+                    width: 24px
+                    padding: 2px
+                    border-radius: 4px
+                    background-color: rgba(#000000, .86)
+
+                    i.material-icons
+                      color: #ffffff
+
       .sidebar
         display: none
 

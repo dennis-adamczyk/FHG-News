@@ -369,7 +369,7 @@ $(document).ready(function () {
 
     /* ===== LIGHT BOX ===== */
 
-    const $images = jQuery('p > img:not(.emoji), .wp-caption, .wp-block-image > figure, .blocks-gallery-item > figure, figure.wp-block-media-text__media');
+    const $images = jQuery('p > img:not(.emoji), .wp-caption, figure.wp-block-image, .blocks-gallery-item > figure, figure.wp-block-media-text__media');
 
     $images.stop().click(function () {
         showLightBox($(this).children('img').length === 0 ? ($(this).attr('srcset') ? $(this).attr('srcset') : $(this).attr('src')) : ($(this).children('img').attr('srcset') ? $(this).children('img').attr('srcset') : $(this).children('img').attr('src')), jQuery(this), $images);

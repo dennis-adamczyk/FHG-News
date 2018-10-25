@@ -88,23 +88,22 @@
   //    IMAGE WITH CAPTION
   // ################################
 
-  .wp-block-image
-    figure
-      cursor: pointer
+  figure.wp-block-image
+    cursor: pointer
 
-      figcaption
-        font-size: 14px
-        font-weight: 400
-        line-height: 16px
-        color: rgba(#000000, .6)
-        margin-top: 0
+    figcaption
+      font-size: 14px
+      font-weight: 400
+      line-height: 16px
+      color: rgba(#000000, .6)
+      margin-top: 0
 
-      @media #{$mobile}
-        &.alignright,
-        &.alignleft
-          float: none
-          margin-left: auto
-          margin-right: auto
+    @media #{$mobile}
+      &.alignright,
+      &.alignleft
+        float: none
+        margin-left: auto
+        margin-right: auto
 
     img
       border-radius: 4px
