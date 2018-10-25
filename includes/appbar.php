@@ -49,7 +49,7 @@ function get_appbar( $title, $navigation = 'menu', $search = true, $profile = tr
       <i class="material-icons"><?php echo $navigation; ?></i>
     </div>
     <h1 class="header__title"><?php echo $title ?></h1>
-	  <?php if ( $search && $profile && current_user_can( 'publish_posts' ) && ! isset( $hideAddBtn ) ): ?>
+	  <?php if ( $search && $profile && current_user_can( 'edit_posts' ) && ! isset( $hideAddBtn ) ): ?>
         <div class="header__add ripple--icon">
           <i class="material-icons">add</i>
         </div>

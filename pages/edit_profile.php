@@ -1,7 +1,7 @@
 <?php
 if ( ! is_user_logged_in() ) {
-	addNextSingleLineWithActionSnackbar( 'Melde dich an um diese Seite aufzurufen', 'Anmelden', 'window.location = "' . wp_login_url() . '";' );
-	header( 'Location: ' . get_home_url() );
+  addNextSingleLineSnackbar('Melde dich an um diese Seite aufzurufen');
+	wp_redirect( wp_login_url( $_SERVER['REQUEST_URI'] ) );
 }
 
 if ( ! empty( $_POST ) ) {

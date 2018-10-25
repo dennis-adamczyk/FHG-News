@@ -118,11 +118,31 @@ function register_page_url( $register_url ) {
 	return home_url( '/login/register/' );
 }
 
+/* EDIT PROFILE PAGE */
+
 add_filter( 'edit_profile_url', 'edit_profile_page_url', 10, 3 );
 
 function edit_profile_page_url( $url, $user_id, $scheme ) {
 	return home_url( '/user/edit/' );
 }
+
+add_action( 'admin_menu', 'admin_menu_edit_profile_page_link', 99 );
+function admin_menu_edit_profile_page_link() {
+	global $menu, $submenu;
+	if ( ! current_user_can( 'list_users' ) ) {
+		$menu[70] = array(
+			__( 'Profile' ),
+			'read',
+			get_edit_profile_url(),
+			'',
+			'menu-top menu-icon-users',
+			'menu-users',
+			'dashicons-admin-users'
+		);
+	}
+}
+
+/* RESET PASSWORD PAGE */
 
 add_filter( 'lostpassword_url', 'reset_password_page', 10, 2 );
 function reset_password_page( $lostpassword_url, $redirect ) {

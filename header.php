@@ -55,7 +55,7 @@ switch ( get_query_var( 'fhgnewsonline_page_id' ) ) {
     <p class="userOptions__current__mail"><?php echo wp_get_current_user()->user_email; ?></p>
   </div>
   <div class="userOptions__actions">
-	  <?php if ( is_user_logged_in() && current_user_can( 'publish_posts' ) ): ?>
+	  <?php if ( is_user_logged_in() && current_user_can( 'edit_posts' ) ): ?>
         <div class="userOptions__actions__action ripple--box"
              onmouseup="openURL('<?php echo get_admin_url(); ?>', event)">
           <i class="material-icons">dashboard</i>
