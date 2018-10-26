@@ -594,7 +594,7 @@ function get_reset_password_url( $user_id_or_login = null ) {
  * @return null|string|string[]
  */
 function trim_words( $string, $limit, $more, $line_limit = null ) {
-	$new_string = preg_replace( '/((\w+\W*){' . ( $limit - 1 ) . '}(\w+))(.*)/', '${1}', $string );
+	$new_string = preg_replace( '/((\w+\W*){0,' . ( $limit - 1 ) . '}(\w*))(.*)/', '${1}', $string );
 	if ( $line_limit !== null ) {
 		$new_string = implode( '<br>', array_slice( explode( '<br>', $new_string ), 0, $line_limit ) );
 	}
