@@ -10,13 +10,6 @@ if ( $category === array() ) {
 	$category = get_the_category()[0];
 }
 $category_color = function_exists( 'rl_color' ) ? rl_color( $category->cat_ID ) : '';
-$featured_image = false;
-
-if ( has_post_thumbnail() ) {
-	$featured_image = wp_get_attachment_url( get_post_thumbnail_id( get_the_ID() ) );
-} else if ( $img = preg_match_all( '/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', get_the_content(), $matches ) ) {
-	$featured_image = $matches[1][0];
-}
 ?>
 <article <?php post_class( 'post' ); ?> id="<?php echo $count; ?>"
                                         onclick="window.location = '<?php echo get_the_permalink(); ?>'">
@@ -26,7 +19,7 @@ if ( has_post_thumbnail() ) {
     </div>
     <div class="post__author__info">
       <p class="post__author__info__name">
-	      <?php the_author(); ?>
+		  <?php the_author(); ?>
       </p>
       <p class="post__author__info__subtitle">
     <span class="post__author__info__subtitle__category">
@@ -49,20 +42,9 @@ if ( has_post_thumbnail() ) {
       </p>
     </div>
   </div>
-  <p class="post__preview"><?php echo trim_words( strip_tags( get_the_content(), '<br><a><strong><em><i><b><u><span>' ), 30, '... <span class="post__preview__more">Mehr anzeigen</span>', 4); ?></p>
-  <div class="post__image ripple--mobile" style="background-image: url('<?php echo $featured_image; ?>')">
-	  <?php if ( ! $featured_image ) : ?>
-        <div class="post__image__error">
-          <i class="material-icons">error</i>
-          <p>Kein Bild gefunden!</p>
-        </div>
-	  <?php else: ?>
-    <img src="<?php echo $featured_image; ?>" class="post__image__img">
-    <div class="post__image__hint">
-      <i class="material-icons">image</i>
-    </div>
-	  <?php endif; ?>
-  </div>
+  <p class="post__preview">
+	  <?php echo trim_words( strip_tags( get_the_content(), '<br><a><strong><em><i><b><u><span>' ), 30, '... <span class="post__preview__more">Mehr anzeigen</span>', 4); ?>
+  </p>
   <div class="post__foot">
     <div class="post__foot__like<?php if ( is_user_logged_in() ) {
 		if ( has_liked( get_the_ID(), get_current_user_id() ) ) {

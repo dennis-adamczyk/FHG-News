@@ -166,10 +166,12 @@ function fhgnewsonline_theme_setup() {
 		'post_id'  => get_the_ID(),
 	) );
 
-	register_block_type( 'fhgnewsonline/poll', array(
-		'editor_script'   => 'gutenberg_register_poll_block',
-		'render_callback' => 'fhgnewsonline_get_poll_shortcode'
-	) );
+	if ( function_exists( 'register_block_type' ) ) {
+		register_block_type( 'fhgnewsonline/poll', array(
+			'editor_script'   => 'gutenberg_register_poll_block',
+			'render_callback' => 'fhgnewsonline_get_poll_shortcode'
+		) );
+	}
 }
 
 add_action( 'init', 'fhgnewsonline_theme_setup' );
@@ -580,6 +582,27 @@ function get_reset_password_url( $user_id_or_login = null ) {
 	}
 
 	return wp_lostpassword_url() . '?change&key=' . get_password_reset_key( wp_get_current_user() ) . '&login=' . rawurlencode( $user_login );
+}
+
+/**
+ * @param string $string
+ * @param int $limit
+ * @param string $more
+ *
+ * @param null $line_limit
+ *
+ * @return null|string|string[]
+ */
+function trim_words( $string, $limit, $more, $line_limit = null ) {
+	$new_string = preg_replace( '/((\w+\W*){' . ( $limit - 1 ) . '}(\w+))(.*)/', '${1}', $string );
+	if ( $line_limit !== null ) {
+		$new_string = implode( '<br>', array_slice( explode( '<br>', $new_string ), 0, $line_limit ) );
+	}
+	if ( $new_string !== $string ) {
+		$new_string = trim( $new_string ) . $more;
+	}
+
+	return $new_string;
 }
 
 define( 'MATERIAL_DESIGN_COLORS', array(

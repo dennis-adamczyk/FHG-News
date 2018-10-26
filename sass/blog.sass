@@ -300,6 +300,65 @@ body.blog
                   font-size: 48px
                   color: rgba(#ffffff, .6)
 
+            &.format-status
+              .post__author
+                display: flex
+                width: 100%
+                height: 32px
+                margin: 24px 0 16px 0
+                padding: 0
+                cursor: pointer
+
+                .post__author__profilePicture
+                  display: inline-block
+                  height: 32px
+                  width: 32px
+                  margin: 0
+                  padding: 0
+                  border-radius: 50%
+                  background-color: rgba(#000000, .24)
+                  overflow: hidden
+
+                .post__author__info
+                  margin: 0 0 0 8px
+
+                  .post__author__info__name
+                    font-size: 14px
+                    font-weight: 500
+                    display: block
+                    margin: 0
+                    padding: 0
+                    vertical-align: top
+
+                  .post__author__info__subtitle
+                    font-size: 14px
+                    font-weight: 400
+                    display: block
+                    color: rgba(#000000, .6)
+                    margin: 0
+                    padding: 0
+
+                    i.material-icons
+                      font-size: 16px
+                      height: 16px
+                      width: 16px
+                      color: rgba(#000000, .6)
+                      vertical-align: sub
+
+              .post__preview
+                display: block
+                font-size: 16px
+                font-weight: 400
+                color: rgba(#000000, 0.86)
+                margin: 16px 0
+                padding: 0
+
+                .post__preview__more
+                  display: block
+                  font-size: 14px
+                  font-weight: 500
+                  color: rgba(#000000, .56)
+
           @media #{$not-mobile}
             .post
               position: relative
@@ -503,7 +562,7 @@ body.blog
                   display: block
                   font-size: 16px
                   font-weight: 400
-                  color: rgba(#000000, .56)
+                  color: rgba(#000000, .86)
                   margin: 16px
                   padding: 0
 
@@ -511,7 +570,7 @@ body.blog
                     display: inline
                     font-size: 14px
                     font-weight: 500
-                    color: rgba(#000000, .6)
+                    color: rgba(#000000, .56)
 
                 .post__image
                   display: inline-block
@@ -564,6 +623,65 @@ body.blog
                     transform: translate(-50%, -50%)
                     font-size: 32px
                     color: rgba(#ffffff, .6)
+
+              &.format-status
+                .post__author
+                  display: flex
+                  width: 100%
+                  height: 32px
+                  margin: 16px
+                  padding: 0
+                  cursor: pointer
+
+                  .post__author__profilePicture
+                    display: inline-block
+                    height: 32px
+                    width: 32px
+                    margin: 0
+                    padding: 0
+                    border-radius: 50%
+                    background-color: rgba(#000000, .24)
+                    overflow: hidden
+
+                  .post__author__info
+                    margin: 0 0 0 10px
+
+                    .post__author__info__name
+                      font-size: 14px
+                      font-weight: 500
+                      display: block
+                      margin: 0
+                      padding: 0
+                      vertical-align: top
+
+                    .post__author__info__subtitle
+                      font-size: 14px
+                      font-weight: 400
+                      display: block
+                      color: rgba(#000000, .6)
+                      margin: 0
+                      padding: 0
+
+                      i.material-icons
+                        font-size: 16px
+                        height: 16px
+                        width: 16px
+                        color: rgba(#000000, .6)
+                        vertical-align: sub
+
+                .post__preview
+                  display: block
+                  font-size: 16px
+                  font-weight: 400
+                  color: rgba(#000000, .86)
+                  margin: 16px
+                  padding: 0
+
+                  .post__preview__more
+                    display: inline
+                    font-size: 14px
+                    font-weight: 500
+                    color: rgba(#000000, .56)
 
 
       .sidebar
