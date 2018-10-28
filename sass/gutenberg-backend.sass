@@ -32,6 +32,25 @@
       font-size: 24px
 
   // ################################
+  //    LINK
+  // ################################
+
+  .editor-rich-text__tinymce
+    a
+      color: $secondary
+      text-decoration: none
+
+      &:hover
+        text-decoration: underline
+
+  a
+    color: $secondary
+    text-decoration: none
+
+    &:hover
+      text-decoration: underline
+
+  // ################################
   //    COVER IMAGE
   // ################################
 
@@ -232,7 +251,7 @@
 
   .editor-block-list__block[data-type="core/button"][data-align=center]
     .editor-block-list__block-edit
-        text-align: center
+      text-align: center
 
   // ################################
   //    SHORTCODE
@@ -248,7 +267,7 @@
 
   .wp-block-media-text
     cursor: pointer
-    
+
     .wp-block-media-text__media
       img
         border-radius: 4px
