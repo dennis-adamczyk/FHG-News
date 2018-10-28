@@ -47,6 +47,10 @@ function fhgnewsonline_enqueue() {
 		if ( is_page( 'ueber-uns' ) ) {
 			wp_enqueue_style( 'page-ueber-uns', get_template_directory_uri() . '/css/page-ueber-uns.css' );
 		}
+		if ( is_page( 'dein-beitrag' ) ) {
+			wp_enqueue_style( 'page-dein-beitrag', get_theme_file_uri( '/css/page-dein-beitrag.css' ) );
+			wp_enqueue_script( 'page-dein-beitrag', get_theme_file_uri( '/js/page-dein-beitrag.js' ) );
+		}
 	}
 	if ( is_search() ) {
 		wp_enqueue_style( 'search', get_template_directory_uri() . '/css/search.css' );

@@ -1601,16 +1601,17 @@ content .wrapper .sidebar
       -o-transition: border 180ms $easing, background 180ms $easing
       transition: border 180ms $easing, background 180ms $easing
 
-      &:not(:focus)::placeholder, &:not(:focus)::-moz-placeholder, &:not(:focus)::-ms-input-placeholder, &:not(:focus)::-webkit-input-placeholder
+      &:not(:focus)::placeholder
         color: transparent
 
-      &::placeholder, &::-moz-placeholder, &::-ms-input-placeholder, &::-webkit-input-placeholder
+      &::placeholder
         color: rgba(#000000, .6)
         -webkit-transition: color 180ms $easing
         -moz-transition: color 180ms $easing
         -ms-transition: color 180ms $easing
         -o-transition: color 180ms $easing
         transition: color 180ms $easing
+
 
       &:active
         background-color: rgba(#000000, .06)

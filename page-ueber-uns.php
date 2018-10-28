@@ -6,11 +6,6 @@
 		<?php if ( have_posts() ) : while ( have_posts() ):
 			the_post(); ?>
 
-
-			<?php if ( function_exists( 'rl_color' ) ) {
-			$category_color = rl_color( get_the_category()[0]->cat_ID );
-		} ?>
-
           <div <?php post_class( 'page' ); ?>>
             <div class="page__content">
               <div class="story">
@@ -36,7 +31,7 @@
                                    für neue Beitragsarten, anonyme Beiträge oder ähnlichem kannst du das Formular unter
                       <a href="<?php echo get_home_url(); ?>/your-contribution">Dein Beitrag</a> benutzen.
 					<?php else:
-              echo strip_tags(get_the_content(), '<a><span><br>');
+						echo strip_tags( get_the_content(), '<a><span><br>' );
 					endif; ?>
                 </p>
               </div>
