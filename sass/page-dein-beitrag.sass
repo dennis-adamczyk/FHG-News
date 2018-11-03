@@ -21,9 +21,63 @@ body.page
 
             form
               margin: 0 0 32px 0
+
+              .success
+                display: block
+                width: 350px
+                max-width: 100%
+                margin: 64px auto
+                text-align: center
+
+                img
+                  width: 100%
+                  height: auto
+                  margin: 0 0 32px 0
+
+                h3
+                  font-size: 18px
+                  font-weight: 500
+                  color: rgba(#000000, .86)
+                  margin-bottom: 8px
+
+                p
+                  font-size: 16px
+                  font-weight: 400
+                  color: rgba(#000000, .6)
+                  margin: 0
+
+              .error-login
+                display: block
+                width: 192px
+                max-width: 100%
+                margin: 64px auto
+                text-align: center
+
+                h3
+                  font-weight: 500
+                  margin-bottom: 32px
+
+                a.button
+                  width: calc(100% - 32px)
+
+                p
+                  font-size: 14px
+                  color: rgba(#000000, .56)
+                  margin: 8px 0
+
               .changeable
                 & > div
                   display: none
+
+                  .input
+                    margin: 0 0 8px 0
+
+                    &.input--textarea
+                      .error
+                        margin-top: 0
+
+                .submit
+                  margin: 16px 0 0 0
 
               .select
                 position: relative
@@ -60,12 +114,14 @@ body.page
                     height: 24px
                     font-size: 24px
                     color: rgba(#000000, .6)
+                    z-index: 0
 
                 select
                   -webkit-appearance: none
                   -moz-appearance: none
                   appearance: none
                   box-sizing: border-box
+                  position: relative
                   outline: none
                   border: none
                   border-radius: 4px
@@ -78,6 +134,7 @@ body.page
                   margin: 0
                   cursor: pointer
                   transition: background 100ms $easing
+                  z-index: 1
 
                   &:focus
                     background-color: rgba(#000000, .18)

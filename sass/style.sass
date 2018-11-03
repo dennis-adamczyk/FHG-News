@@ -670,6 +670,7 @@ body.admin-bar .header
 
   &.header--search
     top: 0 !important
+    background-color: #FFFFFF !important
     box-shadow: $elevation--z4 !important
 
     .header__menu,
@@ -1651,6 +1652,35 @@ content .wrapper .sidebar
         margin-left: 1px
         content: '*'
 
+    &.isInvalid
+      textarea
+        border-bottom: 1px solid $red
+
+        &:focus
+          border-bottom: 2px solid $red
+
+          & ~ .label
+            color: $red
+
+        & ~ .label
+          animation: shake 650ms linear
+          color: $red
+
+      .material-icons:not(.leadingIcon)
+        display: inline-block
+        color: transparent
+
+        &::after
+          display: inline-block
+          position: absolute
+          top: 0
+          left: 0
+          color: $red
+          content: "error"
+
+      label.error
+        color: $red
+
   &.input--line
     &.input--textarea
       position: relative
@@ -1717,7 +1747,8 @@ content .wrapper .sidebar
         user-select: none
         cursor: pointer
 
-div.button
+div.button,
+a.button
   min-height: 36px
   min-width: 64px
   display: inline-block
@@ -1726,6 +1757,10 @@ div.button
   overflow: hidden
   box-shadow: $elevation--z2
   background-color: $secondary
+  cursor: pointer
+
+  &:hover
+    text-decoration: none
 
   span
     display: block
@@ -1735,6 +1770,10 @@ div.button
     font-weight: 400
     color: #ffffff
     text-transform: uppercase
+    -webkit-user-select: none
+    -moz-user-select: none
+    -ms-user-select: none
+    user-select: none
 
   &.button--flat
     box-shadow: none

@@ -52,8 +52,11 @@ jQuery(document).ready(function ($) {
     Waves.attach('.ripple--box', ['waves-box']);
     Waves.attach('.ripple--icon--light', ['waves-circle', 'waves-light']);
     Waves.attach('div.button:not(.button--flat):not(.button--light)', ['waves-float', 'waves-light']);
+    Waves.attach('a.button:not(.button--flat):not(.button--light)', ['waves-float', 'waves-light']);
     Waves.attach('div.button--light', ['waves-float']);
+    Waves.attach('a.button--light', ['waves-float']);
     Waves.attach('div.button--flat');
+    Waves.attach('a.button--flat');
     if ($(window).width() < 800)
         Waves.attach('.ripple--mobile');
     Waves.init({

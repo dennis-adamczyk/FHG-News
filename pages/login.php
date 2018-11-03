@@ -2,18 +2,20 @@
 if ( isset( $_REQUEST['logout'] ) ) {
 	$user = wp_get_current_user();
 
+	global $maintenance;
+	remove_action('wp_logout', array($maintenance, 'mt_user_logout'));
 	wp_logout();
 
 	if ( ! empty( $_REQUEST['redirect_to'] ) ) {
 		$redirect_to = $requested_redirect_to = $_REQUEST['redirect_to'];
 	} else {
 		$redirect_to           = get_home_url();
-		$requested_redirect_to = '';
+	  $requested_redirect_to = '';
 	}
 
-	if ( $switched_locale ) {
-		restore_previous_locale();
-	}
+//	if ( $switched_locale ) {
+//		restore_previous_locale();
+//	}
 
 	$redirect_to = apply_filters( 'logout_redirect', $redirect_to, $requested_redirect_to, $user );
 	wp_safe_redirect( $redirect_to );

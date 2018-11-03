@@ -1,11 +1,22 @@
 body.page content .wrapper .main .page .page__content { width: 100%; margin: 16px 0 0 0; }
 body.page content .wrapper .main .page .page__content .description { font-size: 16px; line-height: 24px; margin: 0 0 32px 0; }
 body.page content .wrapper .main .page .page__content form { margin: 0 0 32px 0; }
+body.page content .wrapper .main .page .page__content form .success { display: block; width: 350px; max-width: 100%; margin: 64px auto; text-align: center; }
+body.page content .wrapper .main .page .page__content form .success img { width: 100%; height: auto; margin: 0 0 32px 0; }
+body.page content .wrapper .main .page .page__content form .success h3 { font-size: 18px; font-weight: 500; color: rgba(0, 0, 0, 0.86); margin-bottom: 8px; }
+body.page content .wrapper .main .page .page__content form .success p { font-size: 16px; font-weight: 400; color: rgba(0, 0, 0, 0.6); margin: 0; }
+body.page content .wrapper .main .page .page__content form .error-login { display: block; width: 192px; max-width: 100%; margin: 64px auto; text-align: center; }
+body.page content .wrapper .main .page .page__content form .error-login h3 { font-weight: 500; margin-bottom: 32px; }
+body.page content .wrapper .main .page .page__content form .error-login a.button { width: calc(100% - 32px); }
+body.page content .wrapper .main .page .page__content form .error-login p { font-size: 14px; color: rgba(0, 0, 0, 0.56); margin: 8px 0; }
 body.page content .wrapper .main .page .page__content form .changeable > div { display: none; }
+body.page content .wrapper .main .page .page__content form .changeable > div .input { margin: 0 0 8px 0; }
+body.page content .wrapper .main .page .page__content form .changeable > div .input.input--textarea .error { margin-top: 0; }
+body.page content .wrapper .main .page .page__content form .changeable .submit { margin: 16px 0 0 0; }
 body.page content .wrapper .main .page .page__content form .select { position: relative; width: 100%; min-height: 75px; }
 body.page content .wrapper .main .page .page__content form .select .styledSelect { display: inline-block; position: relative; }
-body.page content .wrapper .main .page .page__content form .select .styledSelect::before { content: "arrow_drop_down"; font-family: "Material Icons", sans-serif; font-weight: normal; font-style: normal; line-height: 1; letter-spacing: normal; text-transform: none; white-space: nowrap; word-wrap: normal; direction: ltr; -webkit-font-feature-settings: "liga"; -webkit-font-smoothing: antialiased; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; display: inline-block; position: absolute; top: 6px; right: 8px; bottom: 8px; width: 24px; height: 24px; font-size: 24px; color: rgba(0, 0, 0, 0.6); }
-body.page content .wrapper .main .page .page__content form .select select { -webkit-appearance: none; -moz-appearance: none; appearance: none; box-sizing: border-box; outline: none; border: none; border-radius: 4px; background-color: rgba(0, 0, 0, 0.14); font-family: "Roboto", sans-serif; font-size: 16px; font-weight: 400; color: #000000; padding: 8px 40px 8px 8px; margin: 0; cursor: pointer; transition: background 100ms cubic-bezier(0.4, 0, 0.2, 1); }
+body.page content .wrapper .main .page .page__content form .select .styledSelect::before { content: "arrow_drop_down"; font-family: "Material Icons", sans-serif; font-weight: normal; font-style: normal; line-height: 1; letter-spacing: normal; text-transform: none; white-space: nowrap; word-wrap: normal; direction: ltr; -webkit-font-feature-settings: "liga"; -webkit-font-smoothing: antialiased; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; display: inline-block; position: absolute; top: 6px; right: 8px; bottom: 8px; width: 24px; height: 24px; font-size: 24px; color: rgba(0, 0, 0, 0.6); z-index: 0; }
+body.page content .wrapper .main .page .page__content form .select select { -webkit-appearance: none; -moz-appearance: none; appearance: none; box-sizing: border-box; position: relative; outline: none; border: none; border-radius: 4px; background-color: rgba(0, 0, 0, 0.14); font-family: "Roboto", sans-serif; font-size: 16px; font-weight: 400; color: #000000; padding: 8px 40px 8px 8px; margin: 0; cursor: pointer; transition: background 100ms cubic-bezier(0.4, 0, 0.2, 1); z-index: 1; }
 body.page content .wrapper .main .page .page__content form .select select:focus { background-color: rgba(0, 0, 0, 0.18); }
 body.page content .wrapper .main .page .page__content form .select label.error { display: block; position: relative; margin: 4px 0 0 54px; font-size: 12px; color: #F44336; -webkit-transition: all 180ms cubic-bezier(0.4, 0, 0.2, 1); -moz-transition: all 180ms cubic-bezier(0.4, 0, 0.2, 1); -ms-transition: all 180ms cubic-bezier(0.4, 0, 0.2, 1); -o-transition: all 180ms cubic-bezier(0.4, 0, 0.2, 1); transition: all 180ms cubic-bezier(0.4, 0, 0.2, 1); }
 

@@ -101,10 +101,12 @@ jQuery(document).ready(function ($) {
                 type: "POST",
                 data: $(form).serialize() + '&enter=' + $enter,
                 success: function (data) {
+                    console.log(data);
                     if (data.startsWith("E")) { // [E]RRORS
                         var $errors = JSON.parse(data.substr(1));
-                    } else if (data === "F") { // [F]AILURE
-                        showSingleLineWithActionSnackbar('Fehler aufgetreten', 'Erneut versuchen', function () {
+                    } else if (data.startsWith("F")) { // [F]AILURE
+                        errorMsg = data.substr(1);
+                        showSingleLineWithActionSnackbar('Fehler aufgetreten: ' + errorMsg, 'Erneut versuchen', function () {
                             submitEditProfile(1);
                         });
                     } else if (data === "S") { // [S]UCCESS

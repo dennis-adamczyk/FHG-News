@@ -147,7 +147,7 @@ if ( ! empty( $_POST ) ) {
 		$status[] = set_snapchat_name( get_current_user_id(), $snapchat );
 		foreach ( $status as $val ) {
 			if ( is_wp_error( $val ) ) {
-				echo "F";
+				echo "F" . $val->get_error_message();
 				die();
 			}
 		}

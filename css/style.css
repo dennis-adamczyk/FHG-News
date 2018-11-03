@@ -99,7 +99,7 @@ dialogbox.select.select--icons ul li span { position: absolute; left: 80px; top:
 @media screen and (max-width: 600px) { body.admin-bar .header.header--top { top: 46px !important; } }
 
 .header { width: 100%; height: 56px; position: fixed; top: 0; right: 0; left: 0; background-color: #FFFFFF; box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12); z-index: 4; overflow: hidden; transition: background 100ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 100ms cubic-bezier(0.4, 0, 0.2, 1), top 100ms cubic-bezier(0.4, 0, 0.2, 1); }
-.header.header--search { top: 0 !important; box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12) !important; }
+.header.header--search { top: 0 !important; background-color: #FFFFFF !important; box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12) !important; }
 .header.header--search .header__menu, .header.header--search .header__title, .header.header--search .header__add, .header.header--search .header__search, .header.header--search .header__profile { display: none; }
 .header.header--search .header--search__back { width: 24px; height: 24px; position: absolute; top: 50%; transform: translateY(-50%); left: 16px; padding: 8px; margin-left: -8px; cursor: pointer; color: rgba(0, 0, 0, 0.56); }
 @media all and (min-width: 800px) { .header.header--search .header--search__back { left: 24px; } }
@@ -261,6 +261,13 @@ content .wrapper .sidebar .sidebar__widget.widget_categories h2 ul li a:hover { 
 .input.input--textarea textarea.hasValue ~ label.label { top: 6px; font-size: 12px; }
 .input.input--textarea textarea ~ .label { position: absolute; top: 22px; left: 12px; font-size: 16px; color: rgba(0, 0, 0, 0.6); cursor: pointer; -webkit-transition: all 180ms cubic-bezier(0.4, 0, 0.2, 1); -moz-transition: all 180ms cubic-bezier(0.4, 0, 0.2, 1); -ms-transition: all 180ms cubic-bezier(0.4, 0, 0.2, 1); -o-transition: all 180ms cubic-bezier(0.4, 0, 0.2, 1); transition: all 180ms cubic-bezier(0.4, 0, 0.2, 1); }
 .input.input--textarea textarea:required ~ .label::after { margin-left: 1px; content: "*"; }
+.input.input--textarea.isInvalid textarea { border-bottom: 1px solid #F44336; }
+.input.input--textarea.isInvalid textarea:focus { border-bottom: 2px solid #F44336; }
+.input.input--textarea.isInvalid textarea:focus ~ .label { color: #F44336; }
+.input.input--textarea.isInvalid textarea ~ .label { animation: shake 650ms linear; color: #F44336; }
+.input.input--textarea.isInvalid .material-icons:not(.leadingIcon) { display: inline-block; color: transparent; }
+.input.input--textarea.isInvalid .material-icons:not(.leadingIcon)::after { display: inline-block; position: absolute; top: 0; left: 0; color: #F44336; content: "error"; }
+.input.input--textarea.isInvalid label.error { color: #F44336; }
 .input.input--line.input--textarea { position: relative; min-height: auto; }
 .input.input--line.input--textarea:hover textarea { border-bottom: 1px solid rgba(0, 0, 0, 0.6); }
 .input.input--line.input--textarea textarea { width: 100%; min-width: 100%; max-width: 100%; resize: none; height: 35px; margin: 0; padding: 0; border: none; border-bottom: 1px solid rgba(0, 0, 0, 0.24); outline: none; font-size: 16px; color: rgba(0, 0, 0, 0.86); font-family: "Roboto", sans-serif; line-height: 35px; background: transparent; z-index: 1; caret-color: #2196F3; cursor: pointer; transition: border 150ms cubic-bezier(0.4, 0, 0.2, 1); }
@@ -272,12 +279,13 @@ content .wrapper .sidebar .sidebar__widget.widget_categories h2 ul li a:hover { 
 .input.input--line.input--textarea.input--placeholderDisappear textarea:focus + label.input__label, .input.input--line.input--textarea.input--placeholderDisappear textarea.hasValue + label.input__label { display: none; }
 .input.input--line.input--textarea label.input__label { position: absolute; top: 10px; left: 3px; font-size: 16px; color: rgba(0, 0, 0, 0.6); transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1); -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; cursor: pointer; }
 
-div.button { min-height: 36px; min-width: 64px; display: inline-block; padding: 0 16px; border-radius: 4px; overflow: hidden; box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12); background-color: #2196F3; }
-div.button span { display: block; text-align: center; line-height: 36px; font-size: 14px; font-weight: 400; color: #ffffff; text-transform: uppercase; }
-div.button.button--flat { box-shadow: none; background-color: transparent; padding: 0 8px; }
-div.button.button--flat span { font-weight: 500; color: #2196F3; }
-div.button.button--light { background-color: #ffffff; }
-div.button.button--light span { font-weight: 500; color: #2196F3; }
+div.button, a.button { min-height: 36px; min-width: 64px; display: inline-block; padding: 0 16px; border-radius: 4px; overflow: hidden; box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12); background-color: #2196F3; cursor: pointer; }
+div.button:hover, a.button:hover { text-decoration: none; }
+div.button span, a.button span { display: block; text-align: center; line-height: 36px; font-size: 14px; font-weight: 400; color: #ffffff; text-transform: uppercase; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
+div.button.button--flat, a.button.button--flat { box-shadow: none; background-color: transparent; padding: 0 8px; }
+div.button.button--flat span, a.button.button--flat span { font-weight: 500; color: #2196F3; }
+div.button.button--light, a.button.button--light { background-color: #ffffff; }
+div.button.button--light span, a.button.button--light span { font-weight: 500; color: #2196F3; }
 
 input.submit { height: 36px; min-width: 64px; display: inline-block; padding: 0 16px; border: none; border-radius: 4px; overflow: hidden; box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12); background-color: #2196F3; text-align: center; line-height: 36px; font-size: 14px; font-weight: 400; color: #ffffff; text-transform: uppercase; outline: none; cursor: pointer; transition: box-shadow 150ms cubic-bezier(0.4, 0, 0.2, 1), background 150ms cubic-bezier(0.4, 0, 0.2, 1); }
 input.submit:active { background-color: #51adf6; box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12); }

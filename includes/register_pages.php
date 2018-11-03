@@ -94,7 +94,7 @@ add_filter( 'template_include', 'fhgnewsonline_include_template', 1000, 1 );
 
 /* LOGIN PAGE */
 
-add_filter( 'login_url', 'login_page_url', 10, 3 );
+add_filter( 'login_url', 'login_page_url', 999, 3 );
 
 function login_page_url( $login_url, $redirect, $force_reauth ) {
 	$login_page = home_url( '/login/' );
@@ -103,7 +103,7 @@ function login_page_url( $login_url, $redirect, $force_reauth ) {
 	return $login_url;
 }
 
-add_filter( 'logout_url', 'logout_page_url', 10, 2 );
+add_filter( 'logout_url', 'logout_page_url', 999, 2 );
 
 function logout_page_url( $logout_url, $redirect ) {
 	$logout_page = home_url( '/login/?logout' );
@@ -112,10 +112,20 @@ function logout_page_url( $logout_url, $redirect ) {
 	return $logout_url;
 }
 
-add_filter( 'register_url', 'register_page_url', 10, 1 );
+add_filter( 'register_url', 'register_page_url', 999, 1 );
 
 function register_page_url( $register_url ) {
 	return home_url( '/login/register/' );
+}
+
+/* RESET PASSWORD PAGE */
+
+add_filter( 'lostpassword_url', 'reset_password_page', 999, 2 );
+function reset_password_page( $lostpassword_url, $redirect ) {
+	$lostpassword_page = home_url( '/login/reset-password/' );
+	$lostpassword_url  = ! empty( $redirect ) ? add_query_arg( 'redirect_to', $redirect, $lostpassword_page ) : $lostpassword_page;
+
+	return $lostpassword_url;
 }
 
 /* EDIT PROFILE PAGE */
@@ -140,14 +150,4 @@ function admin_menu_edit_profile_page_link() {
 			'dashicons-admin-users'
 		);
 	}
-}
-
-/* RESET PASSWORD PAGE */
-
-add_filter( 'lostpassword_url', 'reset_password_page', 10, 2 );
-function reset_password_page( $lostpassword_url, $redirect ) {
-	$lostpassword_page = home_url( '/login/reset-password/' );
-	$lostpassword_url  = ! empty( $redirect ) ? add_query_arg( 'redirect_to', $redirect, $lostpassword_page ) : $lostpassword_page;
-
-	return $lostpassword_url;
 }

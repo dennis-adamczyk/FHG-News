@@ -43,7 +43,7 @@ if ( ! empty( $_POST ) ) {
 			}
 		} else if ( is_numeric( $user_registration ) ) {
 			addNextSingleLineSnackbar( 'Registrierung abgeschlossen. Bitte schau in dein E-Mail-Postfach.' );
-			header( "Location: " . wp_login_url() );
+			header( "Location: " . wp_login_url( $_REQUEST['redirect_to'] ) );
 			die();
 		} else {
 			$script = "showSingleLineWithActionSnackbar('Fehler aufgetreten', 'Erneut versuchen', function() { jQuery('form').submit(); });";

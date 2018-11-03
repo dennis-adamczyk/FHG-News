@@ -1,5 +1,11 @@
 jQuery(document).ready(function ($) {
 
+    $('.styledSelect').stop().on('mousedown touchstart', function(e) {
+        e.stopPropagation();
+        console.log($(this).find('select'));
+        $(this).find('select').toggleClass('open');
+    });
+
     let $type = $('#type');
 
     function changeType() {

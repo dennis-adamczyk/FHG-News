@@ -4,6 +4,7 @@
  * -- Theme Support
  */
 
+const ADMIN_EMAIL_ADDRESS = "ich@dennis-adamczyk.de";
 
 /**
  * Embeds styles and scripts
