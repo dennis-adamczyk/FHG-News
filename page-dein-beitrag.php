@@ -209,10 +209,10 @@ if ( ! empty( $_POST ) ) {
                   E-Mail: " . wp_get_current_user()->user_email . "<br>
                   Weitere Benutzerdaten (für Experten): <br><code>" . var_export( wp_get_current_user()->data, true ) . "</code><br><br>
                   {$email_msg}", array( 'Content-Type: text/html; charset=UTF-8' ) ) ) {
-				$script = "showSingleLineSnackBar('Fehler aufgetreten. Versuchen Sie es erneut');";
+				$script = "showSingleLineSnackBar('Fehler aufgetreten. Versuch es später erneut');";
 			} else {
 				$_POST = array();
-				wp_redirect( '?success' );
+		    wp_redirect( add_query_arg('success', '', $_SERVER['REQUEST_URI']) );
 			}
 		}
 

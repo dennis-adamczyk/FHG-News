@@ -52,6 +52,9 @@ function fhgnewsonline_enqueue() {
 			wp_enqueue_style( 'page-dein-beitrag', get_theme_file_uri( '/css/page-dein-beitrag.css' ) );
 			wp_enqueue_script( 'page-dein-beitrag', get_theme_file_uri( '/js/page-dein-beitrag.js' ) );
 		}
+		if ( is_page( 'kontakt' ) ) {
+			wp_enqueue_style( 'page-kontakt', get_theme_file_uri( '/css/page-kontakt.css' ) );
+		}
 	}
 	if ( is_search() ) {
 		wp_enqueue_style( 'search', get_template_directory_uri() . '/css/search.css' );
@@ -142,7 +145,7 @@ function fhgnewsonline_theme_setup() {
 
 	create_page_if_not_exists( 'ueber-uns', 'Über Uns' );
 	create_page_if_not_exists( 'dein-beitrag', 'Dein Beitrag' );
-	create_page_if_not_exists( 'kantakt', 'Kontakt' );
+	create_page_if_not_exists( 'kontakt', 'Kontakt' );
 	create_page_if_not_exists( 'impressum', 'Impressum' );
 	create_page_if_not_exists( 'datenschutz', 'Datenschutz' );
 
