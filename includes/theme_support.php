@@ -775,6 +775,30 @@ if ( ! is_plugin_active( 'wp-mail-smtp/wp_mail_smtp.php' ) ) {
 
 	add_action( 'admin_notices', 'install_wp_mail_smtp_notice' );
 }
+if ( ! is_plugin_active( 'onesignal-free-web-push-notifications/onesignal.php' ) ) {
+	function install_onesignal_notice() {
+		?>
+      <div class="notice notice-warning">
+        <p>[FHG News] <a href="<?php the_plugin_url( 'onesignal-free-web-push-notifications' ); ?>">OneSignal</a> installieren und aktivieren!
+        </p>
+      </div>
+		<?php
+	}
+
+	add_action( 'admin_notices', 'install_onesignal_notice' );
+}
+if ( ! is_plugin_active( 'super-progressive-web-apps/superpwa.php' ) ) {
+	function install_superpwa_notice() {
+		?>
+      <div class="notice notice-warning">
+        <p>[FHG News] <a href="<?php the_plugin_url( 'super-progressive-web-apps' ); ?>">SuperPWA</a> installieren und aktivieren!
+        </p>
+      </div>
+		<?php
+	}
+
+	add_action( 'admin_notices', 'install_superpwa_notice' );
+}
 
 
 /**
