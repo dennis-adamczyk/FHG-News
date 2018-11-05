@@ -27,6 +27,13 @@ switch ( get_query_var( 'fhgnewsonline_page_id' ) ) {
 
   <title><?php bloginfo( 'name' ); ?></title>
 	<?php wp_head(); ?>
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-4721276546552689",
+          enable_page_level_ads: true
+      });
+  </script>
 </head>
 <body <?php body_class( $body_class ); ?>>
 <overlay></overlay>

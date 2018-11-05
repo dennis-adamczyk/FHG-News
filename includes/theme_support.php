@@ -55,6 +55,9 @@ function fhgnewsonline_enqueue() {
 		if ( is_page( 'kontakt' ) ) {
 			wp_enqueue_style( 'page-kontakt', get_theme_file_uri( '/css/page-kontakt.css' ) );
 		}
+		if ( is_page( 'offline' ) ) {
+			wp_enqueue_style( 'page-offline', get_theme_file_uri( '/css/page-offline.css' ) );
+		}
 	}
 	if ( is_search() ) {
 		wp_enqueue_style( 'search', get_template_directory_uri() . '/css/search.css' );
@@ -148,6 +151,7 @@ function fhgnewsonline_theme_setup() {
 	create_page_if_not_exists( 'kontakt', 'Kontakt' );
 	create_page_if_not_exists( 'impressum', 'Impressum' );
 	create_page_if_not_exists( 'datenschutz', 'Datenschutz' );
+	create_page_if_not_exists( 'offline', 'Offline' );
 
 	include get_template_directory() . "/includes/appbar.php";
 	include get_template_directory() . "/includes/likeSystem.php";
@@ -779,7 +783,8 @@ if ( ! is_plugin_active( 'onesignal-free-web-push-notifications/onesignal.php' )
 	function install_onesignal_notice() {
 		?>
       <div class="notice notice-warning">
-        <p>[FHG News] <a href="<?php the_plugin_url( 'onesignal-free-web-push-notifications' ); ?>">OneSignal</a> installieren und aktivieren!
+        <p>[FHG News] <a href="<?php the_plugin_url( 'onesignal-free-web-push-notifications' ); ?>">OneSignal</a>
+          installieren und aktivieren!
         </p>
       </div>
 		<?php
@@ -787,17 +792,18 @@ if ( ! is_plugin_active( 'onesignal-free-web-push-notifications/onesignal.php' )
 
 	add_action( 'admin_notices', 'install_onesignal_notice' );
 }
-if ( ! is_plugin_active( 'super-progressive-web-apps/superpwa.php' ) ) {
-	function install_superpwa_notice() {
+if ( ! is_plugin_active( 'progressive-wp/progressive-wordpress.php' ) ) {
+	function install_progressive_wp_notice() {
 		?>
       <div class="notice notice-warning">
-        <p>[FHG News] <a href="<?php the_plugin_url( 'super-progressive-web-apps' ); ?>">SuperPWA</a> installieren und aktivieren!
+        <p>[FHG News] <a href="<?php the_plugin_url( 'progressive-wp' ); ?>">Progressive WP</a> installieren und
+          aktivieren!
         </p>
       </div>
 		<?php
 	}
 
-	add_action( 'admin_notices', 'install_superpwa_notice' );
+	add_action( 'admin_notices', 'install_progressive_wp_notice' );
 }
 
 
