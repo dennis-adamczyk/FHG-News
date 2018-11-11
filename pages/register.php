@@ -42,8 +42,7 @@ if ( ! empty( $_POST ) ) {
 				}
 			}
 		} else if ( is_numeric( $user_registration ) ) {
-			addNextSingleLineSnackbar( 'Registrierung abgeschlossen. Bitte schau in dein E-Mail-Postfach.' );
-			header( "Location: " . wp_login_url( $_REQUEST['redirect_to'] ) );
+			wp_redirect( '?success' );
 			die();
 		} else {
 			$script = "showSingleLineWithActionSnackbar('Fehler aufgetreten', 'Erneut versuchen', function() { jQuery('form').submit(); });";
@@ -58,32 +57,50 @@ if ( ! empty( $_POST ) ) {
 if ( ! empty ( $script ) ) {
 	echo "<script>" . $script . "</script>";
 } ?>
-<div class="wrapper">
-  <img class="logo" src="<?php echo get_template_directory_uri() . "/img/fhgnews.svg"; ?>" alt="FHG News">
+<?php if ( isset( $_REQUEST['success'] ) ): ?>
+  <div class="success">
+    <img src="<?php echo get_theme_file_uri( '/img/undraw/add_user.svg' ) ?>" alt="Account registriert">
+    <h3>Dein Account wurde erstellt</h3>
+    <p>Wir haben dir eine E-Mail zugeschickt. Bestätige mithilfe dieser deinen Account und entscheide dich für ein
+      Passwort.</p>
+    <a href="<?php echo wp_login_url(); ?>" class="button button--flat">
+      <span>Jetzt anmelden</span>
+    </a>
+  </div>
+<?php else: ?>
+  <div class="wrapper">
+    <img class="logo" src="<?php echo get_template_directory_uri() . "/img/fhgnews.svg"; ?>" alt="FHG News">
 
-  <form id="register" action="<?php self_link(); ?>" method="post" novalidate>
-	  <?php wp_nonce_field( 'register' ); ?>
-    <div class="username input <?php echo( isset( $errors["username"] ) ? 'isInvalid' : '' ); ?>">
-      <input type="text" name="username" id="username" placeholder="Max Mustermann"
-             value="<?php echo $_POST["username"]; ?>" required>
-      <i class="material-icons">cancel</i>
-      <label for="username" class="label">Benutzername</label>
-      <label for="username"
-             class="error"><?php echo( isset( $errors["username"] ) ? $errors["username"] : '' ); ?></label>
-    </div>
-    <div class="email input <?php echo( isset( $errors["email"] ) ? 'isInvalid' : '' ); ?>">
-      <input type="email" name="email" id="email" placeholder="max.muster@franz-haniel-gymnasium.de"
-             value="<?php echo $_POST["email"]; ?>" required>
-      <i class="material-icons">cancel</i>
-      <label for="email" class="label">E-Mail</label>
-      <label for="email" class="error"><?php echo( isset( $errors["email"] ) ? $errors["email"] : '' ); ?></label>
-    </div>
-    <p class="info">Du erhältst eine Bestätigung der Registrierung per E-Mail.</p>
-    <div class="submit button">
-      <span>Registrieren</span>
-    </div>
-    <div class="register button button--light" onclick="window.location = '<?php echo wp_login_url(); ?>'">
-      <span>Bereits einen Account? Anmelden</span>
-    </div>
-  </form>
-</div>
+    <form id="register" action="<?php self_link(); ?>" method="post" novalidate>
+		<?php wp_nonce_field( 'register' ); ?>
+      <div class="username input <?php echo( isset( $errors["username"] ) ? 'isInvalid' : '' ); ?>">
+        <input type="text" name="username" id="username" placeholder="Max Mustermann"
+               value="<?php echo $_POST["username"]; ?>" required>
+        <i class="material-icons">cancel</i>
+        <label for="username" class="label">Benutzername</label>
+        <label for="username"
+               class="error"><?php echo( isset( $errors["username"] ) ? $errors["username"] : '' ); ?></label>
+      </div>
+      <div class="email input <?php echo( isset( $errors["email"] ) ? 'isInvalid' : '' ); ?>">
+        <input type="email" name="email" id="email" placeholder="max.muster@franz-haniel-gymnasium.de"
+               value="<?php echo $_POST["email"]; ?>" required>
+        <i class="material-icons">cancel</i>
+        <label for="email" class="label">E-Mail</label>
+        <label for="email" class="error"><?php echo( isset( $errors["email"] ) ? $errors["email"] : '' ); ?></label>
+      </div>
+      <p class="info">Du erhältst eine Bestätigung der Registrierung per E-Mail.</p>
+      <div class="submit button">
+        <span>Registrieren</span>
+        <div class="material-loader">
+          <svg class="material-loader__circular" viewBox="25 25 50 50">
+            <circle class="material-loader__circular__path" cx="50" cy="50" r="20" fill="none" stroke-width="2"
+                    stroke-miterlimit="10"></circle>
+          </svg>
+        </div>
+      </div>
+      <div class="login button button--light" onclick="window.location = '<?php echo wp_login_url(); ?>'">
+        <span>Bereits einen Account? Anmelden</span>
+      </div>
+    </form>
+  </div>
+<?php endif; ?>

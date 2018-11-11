@@ -55,9 +55,6 @@ function fhgnewsonline_enqueue() {
 		if ( is_page( 'kontakt' ) ) {
 			wp_enqueue_style( 'page-kontakt', get_theme_file_uri( '/css/page-kontakt.css' ) );
 		}
-		if ( is_page( 'offline' ) ) {
-			wp_enqueue_style( 'page-offline', get_theme_file_uri( '/css/page-offline.css' ) );
-		}
 	}
 	if ( is_search() ) {
 		wp_enqueue_style( 'search', get_template_directory_uri() . '/css/search.css' );
@@ -117,6 +114,13 @@ function fhgnewsonline_enqueue() {
 		wp_enqueue_style( 'settings', get_template_directory_uri() . '/css/settings.css' );
 		wp_enqueue_script( 'settings', get_template_directory_uri() . '/js/settings.js' );
 	}
+
+	show_admin_bar( false );
+	add_filter( 'show_admin_bar', '__return_false' );
+
+//	add_action('pwp_serviceworker', function() {
+//	  echo "workbox.routing.registerRoute(/login(.*)|user(.*)/, workbox.strategies.networkOnly());";
+//  });
 }
 
 add_action( 'wp_enqueue_scripts', 'fhgnewsonline_enqueue' );
@@ -129,6 +133,10 @@ function fhgnewsonline_theme_setup() {
 	add_theme_support( 'post-formats', array( 'gallery', 'image', 'quote', 'status', 'video', 'audio' ) );
 	add_theme_support( 'post-thumbnails' );
 	add_theme_support( 'html5', array( 'comment-list', 'comment-form', 'search-form', 'gallery', 'caption' ) );
+
+	// MAILS
+
+	update_option( 'haet_mail_theme_options', array_merge( get_option( 'haet_mail_theme_options' ), FHGNEWSONLINE_MAIL_STYLES ) );
 
 	// GUTENBERG
 	add_theme_support( 'editor-color-palette', MATERIAL_DESIGN_COLORS );
@@ -161,6 +169,7 @@ function fhgnewsonline_theme_setup() {
 	include get_template_directory() . "/includes/post_views.php";
 	include get_template_directory() . "/includes/user_settings.php";
 	include get_template_directory() . "/includes/poll_system.php";
+	include get_template_directory() . "/includes/mail_filter.php";
 
 	flush_rewrite_rules( true );
 	profile_picture_init();
@@ -194,11 +203,6 @@ function fhgnewsonline_add_gutenberg_assets() {
 
 add_action( 'enqueue_block_editor_assets', 'fhgnewsonline_add_gutenberg_assets' );
 
-function fhgnewsonline_registration_save( $user_id ) {
-	update_user_meta( $user_id, 'show_admin_bar_front', false );
-}
-
-add_action( 'user_register', 'fhgnewsonline_registration_save', 10, 1 );
 
 /**
  * Get title of current page
@@ -563,14 +567,13 @@ function fhgnewsonline_retrieve_password( $user_login ) {
 
 	$site_name = wp_specialchars_decode( get_option( 'blogname' ), ENT_QUOTES );
 
-	$message = __( 'Someone has requested a password reset for the following account:' ) . "\r\n\r\n";
-	$message .= sprintf( __( 'Site Name: %s' ), $site_name ) . "\r\n\r\n";
-	$message .= sprintf( __( 'Username: %s' ), $user_login ) . "\r\n\r\n";
-	$message .= __( 'If this was a mistake, just ignore this email and nothing will happen.' ) . "\r\n\r\n";
-	$message .= __( 'To reset your password, visit the following address:' ) . "\r\n\r\n";
-	$message .= '<' . network_site_url( "/login/reset-password/?change&key=$key&login=" . rawurlencode( $user_login ), 'login' ) . ">\r\n";
+	$message = '<h1>Passwort zurücksetzen</h1>';
+	$message .= '<p>Du hast das Zurücksetzen deines Passworts beantragt. Klicke auf den untern stehenden Link um dein Passwort für dein Konto auf <a href="' . get_home_url() . '">FHG News</a> zu ändern. Zukünftig wirst du dich mit deinem Benutzernamen <b>' . $user_login . '</b> und deinem neuen Passwort anmelden können.</p>';
+	$message .= '<p>Solltest du das Zurücksetzen deines Passworts nicht beantragt haben oder du hast dich verklickt, kannst du diese E-Mail einfach ignorieren und dich weiterhin mit deinem alten Passwort anmelden.</p>';
+	$message .= '<p>Klicke auf diesen Link um dein Passwort zu ändern:</p>';
+	$message .= '<a class="button" href="' . network_site_url( "/login/reset-password/?change&key=$key&login=" . rawurlencode( $user_login ), 'login' ) . '"><span>Passwort ändern</span></a>';
 
-	$title = sprintf( __( '[%s] Password Reset' ), $site_name );
+	$title = 'Password zurücksetzen';
 
 	$title = apply_filters( 'retrieve_password_title', $title, $user_login, $user_data );
 
@@ -725,6 +728,50 @@ define( 'MATERIAL_DESIGN_COLORS', array(
 	),
 ) );
 
+define( 'FHGNEWSONLINE_MAIL_STYLES', array(
+	'background'          => '#fafafa',
+	'contentbackground'   => '#FFFFFF',
+	'headertext'          => 'FHG News',
+	'headerfont'          => 'Helvetica, Arial, sans-serif',
+	'headeralign'         => 'left',
+	'headerfontsize'      => '40',
+	'headerbold'          => '0',
+	'headeritalic'        => '0',
+	'headerbackground'    => '#1976d2',
+	'headercolor'         => '#ffffff',
+	'headerpaddingtop'    => '50',
+	'headerpaddingright'  => '24',
+	'headerpaddingbottom' => '12',
+	'headerpaddingleft'   => '24',
+	'headerimg'           => get_theme_file_uri( '/img/mails/fhgnews_white.png' ),
+	'headerimg_width'     => '187',
+	'headerimg_height'    => '30',
+	'headlinefont'        => 'Helvetica, Arial, sans-serif',
+	'headlinealign'       => 'left',
+	'headlinefontsize'    => '24',
+	'headlinebold'        => '0',
+	'headlineitalic'      => '0',
+	'headlinecolor'       => '#000000',
+	'subheadlinefont'     => 'Helvetica, Arial, sans-serif',
+	'subheadlinealign'    => 'left',
+	'subheadlinefontsize' => '20',
+	'subheadlinebold'     => '0',
+	'subheadlineitalic'   => '0',
+	'subheadlinecolor'    => '#242424',
+	'textfont'            => 'Helvetica, Arial, sans-serif',
+	'textalign'           => 'left',
+	'textfontsize'        => '14',
+	'textbold'            => '0',
+	'textitalic'          => '0',
+	'textcolor'           => '#242424',
+	'linkcolor'           => '#2196f3',
+	'linkbold'            => '0',
+	'linkitalic'          => '0',
+	'linkunderline'       => 1,
+	'footerlink'          => '0',
+	'footerbackground'    => '#1976d2',
+) );
+
 /*
  * ===============================
  *      INSTALL PLUGINS NOTICE
@@ -804,6 +851,19 @@ if ( ! is_plugin_active( 'progressive-wp/progressive-wordpress.php' ) ) {
 	}
 
 	add_action( 'admin_notices', 'install_progressive_wp_notice' );
+}
+if ( ! is_plugin_active( 'wp-html-mail/wp-html-mail.php' ) ) {
+	function install_wp_html_mail_notice() {
+		?>
+      <div class="notice notice-warning">
+        <p>[FHG News] <a href="<?php the_plugin_url( 'wp-html-mail' ); ?>">WP HTML Mail</a> installieren und
+          aktivieren!
+        </p>
+      </div>
+		<?php
+	}
+
+	add_action( 'admin_notices', 'install_wp_html_mail_notice' );
 }
 
 

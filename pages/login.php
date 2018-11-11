@@ -71,7 +71,7 @@ if ( ! empty( $_POST ) ) {
 		$info['user_password'] = trim( $_POST['password'] );
 		$info['remember']      = true;
 
-		$user_signon = wp_signon( $info, false );
+		$user_signon = wp_signon( $info, true );
 		if ( is_wp_error( $user_signon ) ) {
 			$errors = array();
 			foreach ( $user_signon->errors as $error => $msg ) {
