@@ -283,4 +283,51 @@ jQuery(document).ready(function ($) {
         }
     });
 
+    /*
+    ======================================
+        Install Web App
+    ======================================
+     */
+
+    if (!window.matchMedia('(display-mode: standalone)').matches && !window.navigator.standalone === true) {
+        $('#settings').append(`
+        <section class="install section">
+            <h2 class="section__title">WebApp</h2>
+            <ul class="section__list">
+              <li class="installWebApp section__list__item item--link">
+                <span>WebApp installieren</span>
+              </li>
+            </ul>
+        </section>
+        `);
+
+        let deferredPrompt;
+        let $install = $('#settings').find('.install');
+        let $addBtn = $install.find('.installWebApp');
+        $install.css('display', 'none');
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            // Prevent Chrome 67 and earlier from automatically showing the prompt
+            e.preventDefault();
+            // Stash the event so it can be triggered later.
+            deferredPrompt = e;
+            // Update UI to notify the user they can add to home screen
+            $install.css('display', 'block');
+
+            $addBtn.get(0).addEventListener('click', (e) => {
+                // Show the prompt
+                deferredPrompt.prompt();
+                // Wait for the user to respond to the prompt
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('User accepted the A2HS prompt');
+                    } else {
+                        console.log('User dismissed the A2HS prompt');
+                    }
+                    deferredPrompt = null;
+                });
+            });
+        });
+    }
+
 });
