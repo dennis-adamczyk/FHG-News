@@ -59,9 +59,9 @@ if ( ! empty ( $script ) ) {
 } ?>
 <?php if ( isset( $_REQUEST['success'] ) ): ?>
   <div class="success">
-    <img src="<?php echo get_theme_file_uri( '/img/undraw/add_user.svg' ) ?>" alt="Account registriert">
-    <h3>Dein Account wurde erstellt</h3>
-    <p>Wir haben dir eine E-Mail zugeschickt. Bestätige mithilfe dieser deinen Account und entscheide dich für ein
+    <img src="<?php echo get_theme_file_uri( '/img/undraw/add_user.svg' ) ?>" alt="Konto registriert">
+    <h3>Dein Konto wurde erstellt</h3>
+    <p>Wir haben dir eine E-Mail zugeschickt. Bestätige mithilfe dieser dein Konto und entscheide dich für ein
       Passwort.</p>
     <a href="<?php echo wp_login_url(); ?>" class="button button--flat">
       <span>Jetzt anmelden</span>
@@ -99,7 +99,7 @@ if ( ! empty ( $script ) ) {
         </div>
       </div>
       <div class="login button button--light" onclick="window.location = '<?php echo wp_login_url(); ?>'">
-        <span>Bereits einen Account? Anmelden</span>
+        <span>Bereits ein Konto? Anmelden</span>
       </div>
     </form>
   </div>

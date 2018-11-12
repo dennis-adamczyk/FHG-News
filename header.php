@@ -26,7 +26,8 @@ switch ( get_query_var( 'fhgnewsonline_page_id' ) ) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
   <title><?php bloginfo( 'name' ); ?></title>
-	<?php wp_head(); ?>
+
+  <!-- Google AdSense Tag -->
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <script>
       (adsbygoogle = window.adsbygoogle || []).push({
@@ -34,6 +35,22 @@ switch ( get_query_var( 'fhgnewsonline_page_id' ) ) {
           enable_page_level_ads: true
       });
   </script>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-129127595-1"></script>
+  <script>
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag() {
+          dataLayer.push(arguments);
+      }
+
+      gtag('js', new Date());
+
+      gtag('config', 'UA-129127595-1');
+  </script>
+
+	<?php wp_head(); ?>
 </head>
 <body <?php body_class( $body_class ); ?>>
 <overlay></overlay>

@@ -1,6 +1,13 @@
 body.settings .nav div ul li.current-menu-item { background-color: initial; }
 body.settings .nav div ul li.current-menu-item a { color: rgba(0, 0, 0, 0.86); }
 body.settings .nav div ul li.current-menu-item::before { color: rgba(0, 0, 0, 0.56); }
+body.settings content .emailNewsletterLogout { display: none; }
+body.settings content .emailNewsletterAlert { min-width: 280px; max-width: 432px; display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 24; box-shadow: 0 11px 15px -7px rgba(0, 0, 0, 0.2), 0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12); background-color: #FFFFFF; border-radius: 4px; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
+body.settings content .emailNewsletterAlert[open] { display: block; }
+body.settings content .emailNewsletterAlert .htmlContent { display: block; font-size: 16px; font-weight: 400; color: rgba(0, 0, 0, 0.6); line-height: 18px; padding: 0; margin: 20px 28px 28px 24px; }
+body.settings content .emailNewsletterAlert .buttons { display: flex; justify-content: flex-end; padding: 8px 8px 8px 24px; }
+body.settings content .emailNewsletterAlert .buttons .button { margin: 0 0 0 8px; }
+body.settings content .emailNewsletterAlert .buttons .button.abort span { color: rgba(0, 0, 0, 0.56); }
 body.settings content .wrapper #settings { display: block; margin: 0; padding: 0; }
 body.settings content .wrapper #settings .section { margin: 0; padding: 0; }
 body.settings content .wrapper #settings .section .section__title { display: block; margin: 16px 16px 8px 16px; font-size: 14px; font-weight: 500; color: #2196F3; }

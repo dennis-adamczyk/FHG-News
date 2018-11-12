@@ -9,11 +9,14 @@ html, body { margin: 0; padding: 0; font-size: 16px; font-family: "Roboto", sans
 overlay { display: none; position: fixed; left: 0; right: 0; top: 0; bottom: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 10; }
 overlay.active { display: block; }
 
-dialogbox { min-width: 280px; max-width: 432px; display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 24; box-shadow: 0 11px 15px -7px rgba(0, 0, 0, 0.2), 0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12); background-color: #FFFFFF; border-radius: 4px; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
-dialogbox[open] { display: block; }
+dialogbox { min-width: 280px; max-width: 432px; opacity: 0; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 24; box-shadow: 0 11px 15px -7px rgba(0, 0, 0, 0.2), 0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12); background-color: #FFFFFF; border-radius: 4px; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
+dialogbox[open] { top: 50%; opacity: 1; }
 dialogbox.alert .label { display: block; font-size: 16px; font-weight: 400; color: rgba(0, 0, 0, 0.6); line-height: 18px; padding: 0; margin: 20px 28px 28px 24px; }
 dialogbox.alert .buttons { display: flex; justify-content: flex-end; padding: 8px 8px 8px 24px; }
 dialogbox.alert .buttons .button { margin: 0 0 0 8px; }
+dialogbox.html .htmlContent { display: block; font-size: 16px; font-weight: 400; color: rgba(0, 0, 0, 0.6); line-height: 18px; padding: 0; margin: 20px 28px 28px 24px; }
+dialogbox.html .buttons { display: flex; justify-content: flex-end; padding: 8px 8px 8px 24px; }
+dialogbox.html .buttons .button { margin: 0 0 0 8px; }
 dialogbox.share .close { position: absolute; top: 24px; right: 24px; cursor: pointer; height: 24px; width: 24px; padding: 8px; transform: translate(8px, -8px); -webkit-border-radius: 50%; -moz-border-radius: 50%; border-radius: 50%; overlay: hidden; }
 dialogbox.share .close i { color: rgba(0, 0, 0, 0.54); }
 dialogbox.share .label { display: block; font-size: 20px; font-weight: 500; color: #000000; padding: 0; margin: 21px 0 16px 24px; }

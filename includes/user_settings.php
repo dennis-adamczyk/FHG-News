@@ -59,7 +59,7 @@ function set_setting( $settingsname, $value, $user_id = null ) {
 function fhgnewsonline_set_default_settings( $user_id ) {
 	set_setting( REMEMBER_ME_SETTINGS_KEY, true, $user_id );
 	set_setting( PUSH_NOTIFICATIONS_SETTINGS_KEY, false, $user_id );
-	set_setting( EMAIL_NEWSLETTER_SETTINGS_KEY, 'none', $user_id );
+	set_setting( EMAIL_NEWSLETTER_SETTINGS_KEY, false, $user_id );
 }
 
 add_action( 'user_register', 'fhgnewsonline_set_default_settings', 10, 1 );

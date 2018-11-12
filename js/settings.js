@@ -223,12 +223,47 @@ jQuery(document).ready(function ($) {
                     OneSignal.setSubscription(false);
                 }
                 break;
+
+            case 'settings-email_newsletter':
+                if (value) {
+                    let $newsletterAlert = $('.emailNewsletterAlert');
+                    overlayFadeIn('newsletterAlert');
+                    $newsletterAlert.attr('open', true);
+
+                    $newsletterAlert.find('.button.abort').click(function () {
+                        $('#emailNewsletter')
+                            .attr('checked', false)
+                            .change();
+                        $newsletterAlert.removeAttr('open');
+                        overlayFadeOut('newsletterAlert');
+                    });
+
+                    $newsletterAlert.find('.button.done').click(function () {
+                        $('#cr_login').submit();
+                        $('.emailNewsletterAlert').removeAttr('open');
+                        overlayFadeOut('newsletterAlert');
+                    });
+
+                    let $htmlContent = $newsletterAlert.find('.htmlContent');
+                    console.log($htmlContent.find('#text4347480'));
+                    $htmlContent.find('#text4347480').val(php_info.user_email);
+                    $htmlContent.find('#text4347524').val(php_info.display_name);
+                } else {
+                    $('#text4347481').val(php_info.user_email);
+                    $('#cr_logout').submit();
+                }
         }
     }
 
+    /*
+    ======================================
+        OneSignal
+    ======================================
+     */
+
     window.addEventListener('load', function () {
         if ('OneSignal' in window) {
-            OneSignal.on('subscriptionChange', function(status) {
+            OneSignal.on('subscriptionChange', function (status) {
                 console.log(status);
                 $('#pushNotifications')
                     .attr('checked', status);

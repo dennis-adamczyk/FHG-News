@@ -1,10 +1,63 @@
 <?php
+$script = "";
 if ( ! is_user_logged_in() ) {
-	addNextSingleLineSnackbar('Melde dich an um diese Seite aufzurufen');
+	addNextSingleLineSnackbar( 'Melde dich an um diese Seite aufzurufen' );
 	wp_redirect( wp_login_url( $_SERVER['REQUEST_URI'] ) );
 }
 
+if ( isset( $_REQUEST['newsletter_email_sent'] ) ) {
+	$script .= "showSingleLineSnackBar('Wir haben dir eine Bestätigungsmail an deine E-Mail-Adresse gesendet.');";
+	$script .= "window.history.replaceState({}, null, '.');";
+}
+if ( isset( $_REQUEST['newsletter_logged_in'] ) ) {
+	$script .= "showSingleLineSnackBar('Deine E-Mail-Adresse wurde bestätigt.');";
+	$script .= "window.history.replaceState({}, null, '.');";
+}
+if ( isset( $_REQUEST['newsletter_logout_email_sent'] ) ) {
+	$script .= "showSingleLineSnackBar('Wir haben dir eine Abmeldungsmail an deine E-Mail-Adresse gesendet.');";
+	$script .= "window.history.replaceState({}, null, '.');";
+}
+if ( isset( $_REQUEST['newsletter_logged_out'] ) ) {
+	$script .= "showSingleLineSnackBar('Deine E-Mail-Adresse wurde aus dem Newsletter entfernt.');";
+	$script .= "window.history.replaceState({}, null, '.');";
+}
+
 get_header(); ?>
+  <script><?php echo $script; ?></script>
+  <div class="emailNewsletterLogout">
+    <form id="cr_logout" class="layout_form cr_form cr_font" action="https://eu2.cleverreach.com/f/205597-203680/wcu/"
+          method="post">
+      <input id="text4347481" name="email" value="" type="hidden"/>
+    </form>
+  </div>
+  <div class="emailNewsletterAlert">
+    <div class="htmlContent">
+      <p>Bestätige, dass du kein Roboter bist</p>
+      <form id="cr_login" class="layout_form cr_form cr_font" action="https://eu2.cleverreach.com/f/205597-203680/wcs/"
+            method="post">
+
+        <div class="editable_content">
+          <input id="text4347480" name="email" value="" type="hidden"/>
+          <input id="text4347524" name="1031379" type="hidden" value=""/>
+        </div>
+
+        <div id="4347484" rel="recaptcha" class="cr_ipe_item ui-sortable musthave">
+          <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+          <div id="recaptcha_v2_widget" class="g-recaptcha" data-callback="callitback" data-theme="light"
+               data-size="normal" data-sitekey="6Lfhcd0SAAAAAOBEHmAVEHJeRnrH8T7wPvvNzEPD"
+               data-callback="imNotARobot"></div>
+        </div>
+      </form>
+    </div>
+    <div class="buttons">
+      <div class="abort button button--flat">
+        <span>Abbrechen</span>
+      </div>
+      <div class="done button button--flat">
+        <span>Fertig</span>
+      </div>
+    </div>
+  </div>
   <div class="wrapper">
 
     <form id="settings" action="<?php self_link(); ?>" method="post" novalidate>
@@ -33,24 +86,11 @@ get_header(); ?>
             <input type="checkbox" class="toggle" name="pushNotifications"
                    id="pushNotifications" <?php echo( get_setting( PUSH_NOTIFICATIONS_SETTINGS_KEY, 'bool' ) ? "checked" : "" ); ?>>
           </li>
-			<?php
-			$email_newsletter_translate = array(
-				'weekly'  => 'Wöchentlich',
-				'monthly' => 'Monatlich',
-				'none'    => 'Deaktiviert'
-			);
-			?>
-          <li class="emailNewsletter section__list__item item--select"
+          <li class="emailNewsletter section__list__item item--toggle"
               data-settingsname="<?php echo EMAIL_NEWSLETTER_SETTINGS_KEY; ?>">
             <span>E-Mail-Newsletter</span>
-            <span class="selected">
-                <?php echo $email_newsletter_translate[ get_setting( EMAIL_NEWSLETTER_SETTINGS_KEY ) ]; ?>
-            </span>
-            <ul class="select">
-              <li data-value="weekly">Wöchentlich</li>
-              <li data-value="monthly">Monatlich</li>
-              <li data-value="none">Deaktiviert</li>
-            </ul>
+            <input type="checkbox" class="toggle" name="emailNewsletter"
+                   id="emailNewsletter" <?php echo( get_setting( EMAIL_NEWSLETTER_SETTINGS_KEY, 'bool' ) ? "checked" : "" ); ?>>
           </li>
         </ul>
       </section>

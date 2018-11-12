@@ -53,7 +53,7 @@ overlay
 dialogbox
   min-width: 280px
   max-width: 432px
-  display: none
+  opacity: 0
   position: fixed
   top: 50%
   left: 50%
@@ -68,10 +68,29 @@ dialogbox
   user-select: none
 
   &[open]
-    display: block
+    top: -100%
+    opacity: 1
 
   &.alert
     .label
+      display: block
+      font-size: 16px
+      font-weight: 400
+      color: rgba(#000000, .6)
+      line-height: 18px
+      padding: 0
+      margin: 20px 28px 28px 24px
+
+    .buttons
+      display: flex
+      justify-content: flex-end
+      padding: 8px 8px 8px 24px
+
+      .button
+        margin: 0 0 0 8px
+
+  &.html
+    .htmlContent
       display: block
       font-size: 16px
       font-weight: 400

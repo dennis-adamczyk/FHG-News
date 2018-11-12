@@ -201,7 +201,7 @@ if ( ! empty( $_POST ) ) {
 		}
 
 		if ( count( $errors ) === 0 ) {
-			if ( ! wp_mail( ADMIN_EMAIL_ADDRESS, "Anfrage zur Account-Freischaltung",
+			if ( ! wp_mail( ADMIN_EMAIL_ADDRESS, "Anfrage zur Konto-Freischaltung",
 				"Benutzerdaten:<br><br>
                   ID: " . get_current_user_id() . "<br>
                   Angezeigter Name: " . wp_get_current_user()->display_name . "<br>

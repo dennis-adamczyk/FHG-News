@@ -932,6 +932,49 @@ function showAlertDialog(question, buttons = ['Abbrechen', 'OK']) {
 }
 
 /**
+ * Shows an HTML Dialog
+ * @param question Label
+ * @param buttons Labels of Bottons
+ */
+
+function showHTMLDialog(html, buttons = ['Abbrechen', 'OK']) {
+    return new Promise((resolve) => {
+        const $ = jQuery;
+        if ($('dialogbox').attr('open'))
+            return;
+        $('dialogbox').addClass('html');
+        let $dialog = $('dialogbox.html');
+
+        var $buttonsHTML = '';
+        $(buttons).each(function (index, elem) {
+            $buttonsHTML += '<div class="button button--flat"><span>' + elem + '</span></div>';
+        });
+
+        $dialog.html(`
+            <div class="htmlContent">` + html + `</div>
+            <div class="buttons">
+              ` + $buttonsHTML + `
+            </div>
+        `);
+
+        $dialog.fadeIn(200, function () {
+            $dialog.attr('open', '');
+            Waves.attach('dialogbox .buttons .button');
+            Waves.init();
+            $($dialog.find('.button')).on('click', function () {
+                resolve($(this).find('span').text());
+                $dialog.fadeOut(180, function () {
+                    $dialog.html('');
+                    $dialog.removeClass('html');
+                    $dialog.removeAttr('open');
+                });
+            });
+        });
+
+    });
+}
+
+/**
  * Shows the Share Dialog
  * @param url Link of Article
  * @param title Title of Article

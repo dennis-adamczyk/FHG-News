@@ -153,7 +153,7 @@ if ( $interim ) {
       <span>Login</span>
     </div>
     <div class="register button button--light" onclick="window.location = '<?php echo wp_registration_url(); ?>'">
-      <span>Kein Account? Jetzt registrieren</span>
+      <span>Kein Konto? Jetzt registrieren</span>
     </div>
   </form>
 </div>
