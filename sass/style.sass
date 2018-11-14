@@ -68,7 +68,6 @@ dialogbox
   user-select: none
 
   &[open]
-    top: -100%
     opacity: 1
 
   &.alert
@@ -1330,6 +1329,14 @@ content .wrapper .sidebar
             margin: 0
             padding: 0
             display: inline-block
+
+            &.cat-item-none
+              font-size: 14px
+              font-weight: 400
+              color: rgba(#000000, .6)
+              display: block
+              margin: 8px auto
+              text-align: center
 
             ul
               display: none

@@ -77,6 +77,7 @@ registerBlockType('fhgnewsonline/poll', {
                 onChange: function (tokens) {
                     props.setAttributes({answers: tokens});
                 },
+                label: 'Antworten:',
                 placeholder: 'Antworten eingeben',
                 className: 'fhgnewsonline-poll-answer'
             }),

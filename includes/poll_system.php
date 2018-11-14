@@ -275,7 +275,7 @@ function fhgnewsonline_ajax_reset_poll() {
 	$post_id = (int) $_POST["post_id"];
 	$poll_id = (int) $_POST["poll_id"];
 
-	echo (intval(reset_poll($post_id, $poll_id)) === 1 ? 'S' : 'F');
+	echo( intval( reset_poll( $post_id, $poll_id ) ) === 1 ? 'S' : 'F' );
 	die();
 }
 
@@ -316,10 +316,11 @@ add_shortcode( 'umfrage', 'fhgnewsonline_poll_shortcode' );
 
 function fhgnewsonline_poll_question_shortcode( $atts, $content, $tag ) {
 	global $post;
-	$atts  = shortcode_atts( array(
+	$atts    = shortcode_atts( array(
 		'poll_id' => 0
 	), $atts );
-	$votes = number_format( empty( get_poll( $post->ID, (int) $atts['poll_id'] )['voted'] ) ? 0 : count( get_poll( $post->ID, (int) $atts['poll_id'] )['voted'] ), 0, ',', '.' );
+	$votes   = number_format( empty( get_poll( $post->ID, (int) $atts['poll_id'] )['voted'] ) ? 0 : count( get_poll( $post->ID, (int) $atts['poll_id'] )['voted'] ), 0, ',', '.' );
+	$content = str_replace( "<?", "", str_replace( "<?php", "", str_replace( "?>", "", $content ) ) );
 
 	return '<p class="poll_question">' . $content . '</p><p class="poll_votes">' . ( $votes === '1' ? ( $votes . ' Stimme' ) : ( $votes . ' Stimmen' ) ) . '</p>';
 }
@@ -333,6 +334,7 @@ function fhgnewsonline_poll_answer_shortcode( $atts, $content, $tag ) {
 		'group' => uniqid()
 	), $atts );
 	$nice_content = preg_replace( "/[^A-Za-z-]/", '', str_replace( ' ', '-', strtolower( $content ) ) ) . '-' . uniqid();
+	$content      = str_replace( "<?", "", str_replace( "<?php", "", str_replace( "?>", "", $content ) ) );
 
 	return '<p class="poll_answer">' . ( $atts['multi'] ? '<input type="checkbox" name="poll-' . $atts['group'] . '" id="' . $nice_content . '">' : '<input type="radio" name="poll-' . $atts['group'] . '" id="' . $nice_content . '">' ) . '<label for="' . $nice_content . '"><span>' . str_replace( '<br>', '', $content ) . '</span></label></p>';
 }
@@ -352,8 +354,10 @@ add_shortcode( 'antwort', 'fhgnewsonline_poll_answer_shortcode' );
 
 function fhgnewsonline_get_poll_shortcode( $attributes ) {
 	$shortcode = "[umfrage id=\"{$attributes["id"]}\" " . ( $attributes["multi"] ? 'multi' : '' ) . "][frage]{$attributes["question"]}[/frage]";
-	foreach ( $attributes["answers"] as $answer ) {
-		$shortcode .= "[antwort]{$answer}[/antwort]";
+	if ( count( $attributes["answers"] ) > 0 ) {
+		foreach ( $attributes["answers"] as $answer ) {
+			$shortcode .= "[antwort]{$answer}[/antwort]";
+		}
 	}
 	$shortcode .= "[/umfrage]";
 

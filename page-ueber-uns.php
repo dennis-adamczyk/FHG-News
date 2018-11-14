@@ -48,8 +48,9 @@
 						'Malina Straßburger' => 'Redakteurin',
 						'Ebrar Özedemir'     => 'Redakteurin',
 						'Irem Karatas'       => 'Redakteurin',
-						'Jan Detka'          => 'Redakteur',
-						'Niko Vossmeyer'     => 'Redakteur'
+						'Niko Vossmeyer'     => 'Redakteur',
+						'Lucy Pischke'       => 'Redakteurin',
+						'Carl Dressler'      => 'Redakteur'
 					];
 
 					foreach ( $redakteure as $name => $role ) {

@@ -60,12 +60,14 @@ if ( ! empty( $_POST ) ) {
 					$errors['student-message'] = "Mindestens 20 Zeichen eingeben";
 				}
 
-				$email_msg = "<b>Der Schüler {$name} hat folgende Anfrage eingereicht:</b><br><br>
-                      Name: {$name}<br>
-                      iServ-E-Mail: {$email}<br>
-                      Klasse/Stufe: {$class}<br>
-                      Alter: {$age} Jahre<br><br>
-                      Nachricht:<br>" . nl2br( $msg );
+				$email_msg = "<h2>Der Schüler {$name} hat folgende Anfrage eingereicht:</h2>
+                      <p>
+                        <b>Name:</b> {$name}<br>
+                        <b>iServ-E-Mail:</b> {$email}<br>
+                        <b>Klasse/Stufe:</b> {$class}<br>
+                        <b>Alter:</b> {$age} Jahre
+                      </p>
+                      <p><b>Nachricht:</b><br>" . nl2br( $msg ) . "</p>";
 				break;
 
 			case "teacher":
@@ -102,11 +104,13 @@ if ( ! empty( $_POST ) ) {
 					$errors['teacher-message'] = "Mindestens 20 Zeichen eingeben";
 				}
 
-				$email_msg = "<b>Die Lehrerin/der Lehrer {$name} hat folgende Anfrage eingereicht:</b><br><br>
-                      Name: {$name}<br>
-                      iServ-E-Mail: {$email}<br>
-                      Fächer: {$subjects}<br><br>
-                      Nachricht:<br>" . nl2br( $msg );
+				$email_msg = "<h2>Die Lehrerin/der Lehrer {$name} hat folgende Anfrage eingereicht:</h2>
+                      <p>
+                        <b>Name:</b> {$name}<br>
+                        <b>iServ-E-Mail:</b> {$email}<br>
+                        <b>Fächer:</b> {$subjects}
+		                  </p>
+                      <p><b>Nachricht:</b><br>" . nl2br( $msg ) . "</p>";
 				break;
 
 			case "parent":
@@ -150,12 +154,14 @@ if ( ! empty( $_POST ) ) {
 					$errors['parent-message'] = "Mindestens 20 Zeichen eingeben";
 				}
 
-				$email_msg = "<b>Das Elternteil {$name} hat folgende Anfrage eingereicht:</b><br><br>
-                      Name: {$name}<br>
-                      Name des Kindes: {$name_child}<br>
-                      iServ-E-Mail des Kindes: {$email}<br>
-                      Klasse/Stufe des Kindes: {$class}<br><br>
-                      Nachricht:<br>" . nl2br( $msg );
+				$email_msg = "<h2>Das Elternteil {$name} hat folgende Anfrage eingereicht:</h2>
+                      <p>
+                        <b>Name:</b> {$name}<br>
+                        <b>Name des Kindes:</b> {$name_child}<br>
+                        <b>iServ-E-Mail des Kindes:</b> {$email}<br>
+                        <b>Klasse/Stufe des Kindes:</b> {$class}
+                      </p>
+                      <p><b>Nachricht:</b><br>" . nl2br( $msg ) . "</p>";
 				break;
 
 			case "principal":
@@ -192,22 +198,26 @@ if ( ! empty( $_POST ) ) {
 					$errors['principal-message'] = "Mindestens 20 Zeichen eingeben";
 				}
 
-				$email_msg = "<b>{$name} hat als Teil der Schulleitung folgende Anfrage eingereicht:</b><br><br>
-                      Name: {$name}<br>
-                      iServ-E-Mail: {$email}<br>
-                      Bereich: {$role}<br><br>
-                      Nachricht:<br>" . nl2br( $msg );
+				$email_msg = "<h2>{$name} hat als Teil der Schulleitung folgende Anfrage eingereicht:</h2>
+                      <p><b>Name:</b> {$name}<br>
+                      <b>iServ-E-Mail:</b> {$email}<br>
+                      <b>Bereich:</b> {$role}</p>
+                      <p><b>Nachricht:</b><br>" . nl2br( $msg ) . "</p>";
 				break;
 		}
 
 		if ( count( $errors ) === 0 ) {
 			if ( ! wp_mail( ADMIN_EMAIL_ADDRESS, "Anfrage zur Konto-Freischaltung",
-				"Benutzerdaten:<br><br>
-                  ID: " . get_current_user_id() . "<br>
-                  Angezeigter Name: " . wp_get_current_user()->display_name . "<br>
-                  Login Name: " . wp_get_current_user()->user_login . "<br>
-                  E-Mail: " . wp_get_current_user()->user_email . "<br>
-                  Weitere Benutzerdaten (für Experten): <br><code>" . var_export( wp_get_current_user()->data, true ) . "</code><br><br>
+				"<h1>Neue Anfrage zur Freischaltung des Kontos</h1>
+                  <h2>Benutzerdaten:</h2>
+                  <p>
+                    <b>ID:</b> " . get_current_user_id() . "<br>
+                    <b>Angezeigter Name:</b> " . wp_get_current_user()->display_name . "<br>
+                    <b>Login Name:</b> " . wp_get_current_user()->user_login . "<br>
+                    <b>E-Mail:</b> " . wp_get_current_user()->user_email . "<br>
+                    <b>Weitere Benutzerdaten (für Experten):</b> <br>
+                    <code>" . var_export( wp_get_current_user()->data, true ) . "</code>
+                  </p>
                   {$email_msg}", array( 'Content-Type: text/html; charset=UTF-8' ) ) ) {
 				$script = "showSingleLineSnackBar('Fehler aufgetreten. Versuch es später erneut');";
 			} else {
