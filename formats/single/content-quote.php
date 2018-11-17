@@ -48,11 +48,7 @@ $category_color = function_exists( 'rl_color' ) ? rl_color( $category->cat_ID ) 
 		<?php the_content(); ?>
 	</div>
 	<div class="post__foot">
-		<div class="post__foot__like<?php if ( is_user_logged_in() ) {
-			if ( has_liked( get_the_ID(), get_current_user_id() ) ) {
-				echo " active";
-			}
-		} ?>">
+		<div class="post__foot__like<?php echo( has_liked( get_the_ID(), get_current_user_id() ) ? " active" : "" ); ?>">
 			<i class="material-icons">favorite</i>
 			<p class="post__foot__like__count"><?php echo get_like_amount( get_the_ID() ); ?></p>
 		</div>

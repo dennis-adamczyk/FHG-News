@@ -67,7 +67,11 @@ function remove_like_user( $post_id, $user_id ) {
  * @return bool True for User liked Post, False for don't liked
  */
 function has_liked( $post_id, $user_id ) {
-	return array_search($user_id, get_post_meta( $post_id, LIKE_DB_KEY, false )) !== false;
+	if ( $user_id == 0 ) {
+		$user_id = implode( ':', str_split( md5( $_SERVER['HTTP_ACCEPT_LANGUAGE'] . $_SERVER['HTTP_USER_AGENT'] . $_SERVER['REMOTE_ADDR'] ), 4 ) );
+	}
+
+	return array_search( ( $user_id ), get_post_meta( $post_id, LIKE_DB_KEY, false ) ) !== false;
 }
 
 
@@ -134,5 +138,9 @@ function remove_comment_like_user( $comment_id, $user_id ) {
  * @return bool True for User liked Comment, False for don't liked
  */
 function has_liked_comment( $comment_id, $user_id ) {
-	return array_search($user_id, get_comment_meta( $comment_id, COMMENT_LIKE_DB_KEY, false )) !== false;
+	if ( $user_id == 0 ) {
+		$user_id = implode( ':', str_split( md5( $_SERVER['HTTP_ACCEPT_LANGUAGE'] . $_SERVER['HTTP_USER_AGENT'] . $_SERVER['REMOTE_ADDR'] ), 4 ) );
+	}
+
+	return array_search( $user_id, get_comment_meta( $comment_id, COMMENT_LIKE_DB_KEY, false ) ) !== false;
 }

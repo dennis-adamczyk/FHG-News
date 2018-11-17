@@ -400,18 +400,18 @@ $(document).ready(function () {
         let $parent = $(this);
         let $count = $parent.find('.post__foot__like__count');
 
-        if (!is_logged_in()) {
-            overlayFadeIn('dialog-like-not_logged_in');
-            showAlertDialog('Zum Liken anmelden oder einfach ein kostenloses Konto erstellen', ['Abbrechen', 'Registrieren', 'Anmelden']).then((res) => {
-                if (res === 'Registrieren') {
-                    window.location = php_vars.registration_url;
-                } else if (res === 'Anmelden') {
-                    window.location = php_vars.login_url;
-                }
-                overlayFadeOut('dialog-like-not_logged_in');
-            });
-            return;
-        }
+        // if (!is_logged_in()) {
+        //     overlayFadeIn('dialog-like-not_logged_in');
+        //     showAlertDialog('Zum Liken anmelden oder einfach ein kostenloses Konto erstellen', ['Abbrechen', 'Registrieren', 'Anmelden']).then((res) => {
+        //         if (res === 'Registrieren') {
+        //             window.location = php_vars.registration_url;
+        //         } else if (res === 'Anmelden') {
+        //             window.location = php_vars.login_url;
+        //         }
+        //         overlayFadeOut('dialog-like-not_logged_in');
+        //     });
+        //     return;
+        // }
 
         if ($parent.hasClass('active')) {
             current_user_unlike_post(php_vars.post_id).done(function (success) {
@@ -435,18 +435,18 @@ $(document).ready(function () {
         let $comment_id = $parent.parents('.comments__list__comment').data('comment-id');
         let $count = $parent.find('.comments__list__comment__box__foot__like__count');
 
-        if (!is_logged_in()) {
-            overlayFadeIn('dialog-like-not_logged_in');
-            showAlertDialog('Zum Liken anmelden oder einfach ein kostenloses Konto erstellen', ['Abbrechen', 'Registrieren', 'Anmelden']).then((res) => {
-                if (res === 'Registrieren') {
-                    window.location = php_vars.registration_url;
-                } else if (res === 'Anmelden') {
-                    window.location = php_vars.login_url;
-                }
-                overlayFadeOut('dialog-like-not_logged_in');
-            });
-            return;
-        }
+        // if (!is_logged_in()) {
+        //     overlayFadeIn('dialog-like-not_logged_in');
+        //     showAlertDialog('Zum Liken anmelden oder einfach ein kostenloses Konto erstellen', ['Abbrechen', 'Registrieren', 'Anmelden']).then((res) => {
+        //         if (res === 'Registrieren') {
+        //             window.location = php_vars.registration_url;
+        //         } else if (res === 'Anmelden') {
+        //             window.location = php_vars.login_url;
+        //         }
+        //         overlayFadeOut('dialog-like-not_logged_in');
+        //     });
+        //     return;
+        // }
 
         if ($parent.hasClass('active')) {
             current_user_unlike_comment($comment_id).done(function (success) {
