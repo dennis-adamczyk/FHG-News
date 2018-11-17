@@ -261,24 +261,30 @@ jQuery(document).ready(function ($) {
     ======================================
      */
 
-    window.addEventListener('load', function () {
-        if ('OneSignal' in window) {
-            OneSignal.on('subscriptionChange', function (status) {
-                console.log(status);
-                $('#pushNotifications')
-                    .attr('checked', status);
-                $.ajax({
-                    type: 'POST',
-                    url: php_info.ajax_url,
-                    data: {
-                        action: 'set_setting',
-                        settingsname: 'settings-push_notifications',
-                        value: status
-                    },
-                    success: function (data) {
-                        console.log(data);
-                    }
-                });
+    OneSignal.push(function () {
+        OneSignal.on('subscriptionChange', function (status) {
+            console.log(status);
+            $('#pushNotifications')
+                .attr('checked', status);
+            $.ajax({
+                type: 'POST',
+                url: php_info.ajax_url,
+                data: {
+                    action: 'set_setting',
+                    settingsname: 'settings-push_notifications',
+                    value: status
+                },
+                success: function (data) {
+                    console.log(data);
+                }
+            });
+        });
+        if ($('#pushNotifications').attr('checked')) {
+            OneSignal.isPushNotificationsEnabled().then(function (subscribed) {
+                if (!subscribed) {
+                    OneSignal.push(["showHttpPermissionRequest", {force: true}]);
+                    OneSignal.registerForPushNotifications();
+                }
             });
         }
     });
