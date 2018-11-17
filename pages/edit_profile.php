@@ -230,7 +230,7 @@ if ( ! empty( $_POST ) ) {
           <i class="material-icons leadingIcon"><img
                 src="<?php echo get_template_directory_uri() . '/img/icons/facebook.svg' ?>"></i>
           <input type="text" name="facebook" id="facebook" placeholder="Benutzername"
-                 value="<?php echo get_facebook_name(); ?>">
+                 value="<?php echo get_facebook_name( get_current_user_id() ); ?>">
           <i class="material-icons">cancel</i>
           <label for="facebook" class="label">Facebook</label>
           <label for="facebook" class="error"></label>
@@ -239,7 +239,7 @@ if ( ! empty( $_POST ) ) {
           <i class="material-icons leadingIcon"><img
                 src="<?php echo get_template_directory_uri() . '/img/icons/twitter.svg' ?>"></i>
           <input type="text" name="twitter" id="twitter" placeholder="Benutzername"
-                 value="<?php echo get_twitter_name(); ?>">
+                 value="<?php echo get_twitter_name( get_current_user_id() ); ?>">
           <i class="material-icons">cancel</i>
           <label for="twitter" class="label">Twitter</label>
           <label for="twitter" class="error"></label>
@@ -248,7 +248,7 @@ if ( ! empty( $_POST ) ) {
           <i class="material-icons leadingIcon"><img
                 src="<?php echo get_template_directory_uri() . '/img/icons/instagram.svg' ?>"></i>
           <input type="text" name="instagram" id="instagram" placeholder="Benutzername"
-                 value="<?php echo get_instagram_name(); ?>">
+                 value="<?php echo get_instagram_name( get_current_user_id() ); ?>">
           <i class="material-icons">cancel</i>
           <label for="instagram" class="label">Instagram</label>
           <label for="instagram" class="error"></label>
@@ -257,7 +257,7 @@ if ( ! empty( $_POST ) ) {
           <i class="material-icons leadingIcon"><img
                 src="<?php echo get_template_directory_uri() . '/img/icons/snapchat.svg' ?>"></i>
           <input type="text" name="snapchat" id="snapchat" placeholder="Benutzername"
-                 value="<?php echo get_snapchat_name(); ?>">
+                 value="<?php echo get_snapchat_name( get_current_user_id() ); ?>">
           <i class="material-icons">cancel</i>
           <label for="snapchat" class="label">Snapchat</label>
           <label for="snapchat" class="error"></label>

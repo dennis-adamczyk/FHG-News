@@ -80,7 +80,7 @@ dialogbox.select.select--icons ul li span { position: absolute; left: 80px; top:
 .userOptions .userOptions__current { position: relative; margin: 0; padding: 0; width: 100%; height: 80px; overflow: hidden; border-bottom: 1px solid rgba(0, 0, 0, 0.16); }
 .userOptions .userOptions__current .avatar { margin: 0; padding: 0; border-radius: 50%; overflow: hidden; position: absolute; top: 50%; left: 16px; transform: translateY(-50%); -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; -webkit-user-drag: none; user-drag: none; -webkit-touch-callout: none; }
 .userOptions .userOptions__current .userOptions__current__name { display: inline-block; margin: 0; padding: 0; position: relative; left: 72px; top: 22px; font-size: 16px; font-weight: 500; color: rgba(0, 0, 0, 0.86); }
-.userOptions .userOptions__current .userOptions__current__mail { display: inline-block; margin: 0; padding: 0; position: absolute; left: 72px; bottom: 22px; font-size: 14px; font-weight: 400; color: rgba(0, 0, 0, 0.56); }
+.userOptions .userOptions__current .userOptions__current__mail { display: inline-block; margin: 0; padding: 0; position: absolute; left: 72px; bottom: 22px; right: 16px; font-size: 14px; font-weight: 400; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; color: rgba(0, 0, 0, 0.56); }
 .userOptions .userOptions__actions { width: 100%; height: auto; margin: 0; padding: 0; }
 .userOptions .userOptions__actions .userOptions__actions__action { display: block; position: relative; width: 100%; height: 56px; }
 .userOptions .userOptions__actions .userOptions__actions__action .material-icons { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: rgba(0, 0, 0, 0.56); }

@@ -41,7 +41,7 @@ if ( ! empty( $_POST ) ) {
 		}
 
 		if ( count( $errors ) === 0 ) {
-			if ( ! wp_mail( ADMIN_EMAIL_ADDRESS, "[Kontaktformular] {$subject}",
+			if ( ! wp_mail( get_option('admin_email'), "[Kontaktformular] {$subject}",
 				"<b><a href='" . get_author_posts_url( get_current_user_id() ) . "'>{$name}</a> hat folgende Kontaktanfrage übermittelt:</b><br><br>
                   Name: {$name}<br>
                   E-Mail: {$email}<br>

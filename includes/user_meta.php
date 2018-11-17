@@ -171,11 +171,7 @@ function get_snapchat_url( $user_id ) {
  *
  * @return string Value of meta_key field
  */
-function get_facebook_name( $user_id = null ) {
-	if ( $user_id === null ) {
-		$user_id = get_current_user_id();
-	}
-
+function get_facebook_name( $user_id ) {
 	return substr( get_facebook_url( $user_id ), strlen( FACEBOOK_PRE_URL ) );
 }
 
@@ -186,11 +182,7 @@ function get_facebook_name( $user_id = null ) {
  *
  * @return string Value of meta_key field
  */
-function get_twitter_name( $user_id = null ) {
-	if ( $user_id === null ) {
-		$user_id = get_current_user_id();
-	}
-
+function get_twitter_name( $user_id ) {
 	return substr( get_twitter_url( $user_id ), strlen( TWITTER_PRE_URL ) );
 }
 
@@ -201,11 +193,7 @@ function get_twitter_name( $user_id = null ) {
  *
  * @return string Value of meta_key field
  */
-function get_instagram_name( $user_id = null ) {
-	if ( $user_id === null ) {
-		$user_id = get_current_user_id();
-	}
-
+function get_instagram_name( $user_id ) {
 	return substr( get_instagram_url( $user_id ), strlen( INSTAGRAM_PRE_URL ) );
 }
 
@@ -216,11 +204,7 @@ function get_instagram_name( $user_id = null ) {
  *
  * @return string Value of meta_key field
  */
-function get_snapchat_name( $user_id = null ) {
-	if ( $user_id === null ) {
-		$user_id = get_current_user_id();
-	}
-
+function get_snapchat_name( $user_id ) {
 	return substr( get_snapchat_url( $user_id ), strlen( SNAPCHAT_PRE_URL ) );
 }
 

@@ -55,6 +55,7 @@ body.edit_profile content .wrapper #edit_profile .submit { display: none; }
   body.edit_profile content .wrapper #edit_profile .submit.loading .material-loader { opacity: 1; }
   body.edit_profile content .wrapper #edit_profile .submit.loading .material-loader .material-loader__circular__path { stroke: #ffffff; } }
 
+dialogbox.cropProfilePic { opacity: 1; }
 dialogbox.cropProfilePic .cropContainer { position: relative; width: 100%; height: auto; }
 dialogbox.cropProfilePic .cropContainer .close { position: absolute; top: 0; left: 16px; cursor: pointer; height: 24px; width: 24px; padding: 8px; transform: translate(-8px, -8px); -webkit-border-radius: 50%; -moz-border-radius: 50%; border-radius: 50%; overflow: hidden; }
 dialogbox.cropProfilePic .cropContainer .close i { color: rgba(0, 0, 0, 0.54); }

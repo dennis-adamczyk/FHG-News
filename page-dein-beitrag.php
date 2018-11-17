@@ -207,7 +207,7 @@ if ( ! empty( $_POST ) ) {
 		}
 
 		if ( count( $errors ) === 0 ) {
-			if ( ! wp_mail( ADMIN_EMAIL_ADDRESS, "Anfrage zur Konto-Freischaltung",
+			if ( ! wp_mail( get_option('admin_email'), "Anfrage zur Konto-Freischaltung",
 				"<h1>Neue Anfrage zur Freischaltung des Kontos</h1>
                   <h2>Benutzerdaten:</h2>
                   <p>

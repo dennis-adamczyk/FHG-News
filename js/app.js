@@ -159,6 +159,32 @@ jQuery(document).ready(function ($) {
         $input.attr('placeholder', '');
     }
 
+    var supportPseudo = function () {
+        var ss = document.styleSheets[0];
+        if (!ss) {
+            var el = document.createElement('style');
+            document.head.appendChild(el);
+            ss = document.styleSheets[0];
+            document.head.removeChild(el);
+        }
+        return function (pseudoClass) {
+            try {
+                if (!(/^:/).test(pseudoClass)) {
+                    pseudoClass = ':' + pseudoClass;
+                }
+                ss.insertRule('html' + pseudoClass + '{}', 0);
+                ss.deleteRule(0);
+                return true;
+            } catch (e) {
+                return false;
+            }
+        };
+    }();
+
+    if (!supportPseudo('::placeholder') && !supportPseudo('::-webkit-placeholder')) {
+        $input.attr('placeholder', '');
+    }
+
     /*
     ======================================
         Snackbar

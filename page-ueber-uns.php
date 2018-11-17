@@ -45,8 +45,8 @@
 						'Vanessa Adamczyk'   => 'Mitgründerin',
 						'Paul Paschmann'     => 'Mitgründer',
 						'Josef Ali'          => 'Senior-Redakteur',
-						'Malina Straßburger' => 'Redakteurin',
-						'Ebrar Özedemir'     => 'Redakteurin',
+						'Malina Strassburger' => 'Redakteurin',
+						'Ebrar Oezdemir'     => 'Redakteurin',
 						'Irem Karatas'       => 'Redakteurin',
 						'Niko Vossmeyer'     => 'Redakteur',
 						'Lucy Pischke'       => 'Redakteurin',
@@ -60,7 +60,7 @@
 						  <div class="team__wrapper__member__picture">
 						    ' . get_avatar( $user ) . '
               </div>
-              <p class="team__wrapper__member__name">' . $name . '</p>
+              <p class="team__wrapper__member__name">' . $user->display_name . '</p>
               <p class="team__wrapper__member__role">' . $role . '</p>
 						</div>
 						';

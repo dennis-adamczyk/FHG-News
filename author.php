@@ -31,35 +31,35 @@
 				echo $url['host'] . rtrim( $url['path'], '/' ); ?></a>
           </p>
 		<?php endif; ?>
-		<?php if ( ! ( empty( get_facebook_name() ) && empty( get_twitter_name() ) && empty( get_instagram_name() ) && empty( get_snapchat_name() ) ) ): ?>
+		<?php if ( ! ( empty( get_facebook_name( $curauth->ID ) ) && empty( get_twitter_name( $curauth->ID ) ) && empty( get_instagram_name( $curauth->ID ) ) && empty( get_snapchat_name( $curauth->ID ) ) ) ): ?>
           <hr class="divider">
 		<?php endif; ?>
-		<?php if ( ! empty( get_facebook_name() ) ): ?>
+		<?php if ( ! empty( get_facebook_name( $curauth->ID ) ) ): ?>
           <p class="facebook">
             <img src="<?php echo get_template_directory_uri() . '/img/icons/facebook.svg' ?>" alt="Facebook">
             <a target="_blank"
-               href="<?php echo get_facebook_url( get_current_user_id() ); ?>">@<?php echo get_facebook_name(); ?></a>
+               href="<?php echo get_facebook_url( $curauth->ID ); ?>">@<?php echo get_facebook_name( $curauth->ID ); ?></a>
           </p>
 		<?php endif; ?>
-		<?php if ( ! empty( get_twitter_name() ) ): ?>
+		<?php if ( ! empty( get_twitter_name( $curauth->ID ) ) ): ?>
           <p class="twitter">
             <img src="<?php echo get_template_directory_uri() . '/img/icons/twitter.svg' ?>" alt="Twitter">
             <a target="_blank"
-               href="<?php echo get_twitter_url( get_current_user_id() ); ?>">@<?php echo get_twitter_name(); ?></a>
+               href="<?php echo get_twitter_url( $curauth->ID ); ?>">@<?php echo get_twitter_name( $curauth->ID ); ?></a>
           </p>
 		<?php endif; ?>
-		<?php if ( ! empty( get_instagram_name() ) ): ?>
+		<?php if ( ! empty( get_instagram_name( $curauth->ID ) ) ): ?>
           <p class="instagram">
             <img src="<?php echo get_template_directory_uri() . '/img/icons/instagram.svg' ?>" alt="Instagram">
             <a target="_blank"
-               href="<?php echo get_instagram_url( get_current_user_id() ); ?>">@<?php echo get_instagram_name(); ?></a>
+               href="<?php echo get_instagram_url( $curauth->ID ); ?>">@<?php echo get_instagram_name( $curauth->ID ); ?></a>
           </p>
 		<?php endif; ?>
-		<?php if ( ! empty( get_snapchat_name() ) ): ?>
+		<?php if ( ! empty( get_snapchat_name( $curauth->ID ) ) ): ?>
           <p class="snapchat">
             <img src="<?php echo get_template_directory_uri() . '/img/icons/snapchat.svg' ?>" alt="Snapchat">
             <a target="_blank"
-               href="<?php echo get_snapchat_url( get_current_user_id() ); ?>">@<?php echo get_snapchat_name(); ?></a>
+               href="<?php echo get_snapchat_url( $curauth->ID ); ?>">@<?php echo get_snapchat_name( $curauth->ID ); ?></a>
           </p>
 		<?php endif; ?>
       <hr class="divider">
