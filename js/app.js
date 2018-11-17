@@ -1348,8 +1348,9 @@ function addNextSingleLineWithActionSnackbar($message, $action, $actionHandler) 
 function current_user_like_post($post_id) {
     return jQuery.ajax({
         type: 'POST',
-        url: php_info.template_directory_uri + '/includes/likeRequest.php',
+        url: php_info.ajax_url,
         data: {
+            action: 'like_request',
             method: 'add_like_current_user',
             post_id: $post_id
         }
@@ -1374,8 +1375,9 @@ function openURL(url, e) {
 function current_user_unlike_post($post_id) {
     return jQuery.ajax({
         type: 'POST',
-        url: php_info.template_directory_uri + '/includes/likeRequest.php',
+        url: php_info.ajax_url,
         data: {
+            action: 'like_request',
             method: 'remove_like_current_user',
             post_id: $post_id
         }
@@ -1385,8 +1387,9 @@ function current_user_unlike_post($post_id) {
 function current_user_like_comment($comment_id) {
     return jQuery.ajax({
         type: 'POST',
-        url: php_info.template_directory_uri + '/includes/likeRequest.php',
+        url: php_info.ajax_url,
         data: {
+            action: 'like_request',
             method: 'add_comment_like_current_user',
             comment_id: $comment_id
         }
@@ -1396,8 +1399,9 @@ function current_user_like_comment($comment_id) {
 function current_user_unlike_comment($comment_id) {
     return jQuery.ajax({
         type: 'POST',
-        url: php_info.template_directory_uri + '/includes/likeRequest.php',
+        url: php_info.ajax_url,
         data: {
+            action: 'like_request',
             method: 'remove_comment_like_current_user',
             comment_id: $comment_id
         }

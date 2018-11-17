@@ -304,12 +304,12 @@ $(document).ready(function () {
 
                     $poll.find('.poll_votes').text($votesText);
                     if ($results) {
-                        for(var index in $results) {
+                        for (var index in $results) {
                             val = $results[index];
                             $percentage = 100 * val / $votesCount;
-                            $poll.find('.poll_answer:eq(' + index + ') label').append('<div class="result" style="width: ' + $percentage +  '%"><span>' + $percentage + '%</span></div>');
+                            $poll.find('.poll_answer:eq(' + index + ') label').append('<div class="result" style="width: ' + $percentage + '%"><span>' + $percentage + '%</span></div>');
                             $poll.find('.poll_answer:eq(' + index + ') label .result span').css('margin-left', $poll.find('.poll_answer:eq(' + index + ') label > span').outerWidth(true) + 8 + 'px');
-                            $poll.find('.poll_answer:eq(' + index + ')').append('<div class="result"><span style="width: ' + $percentage +  '%"></span></div>');
+                            $poll.find('.poll_answer:eq(' + index + ')').append('<div class="result"><span style="width: ' + $percentage + '%"></span></div>');
                         }
                         $poll.find('.poll_answer label .result').hide().fadeIn(150);
                     }
@@ -324,7 +324,7 @@ $(document).ready(function () {
 
     function load_results_if_voted() {
         $polls = $('.post__content poll');
-        $polls.each(function() {
+        $polls.each(function () {
             const $poll = $(this);
             const $poll_id = $(this).data('id');
             $.ajax({
@@ -343,21 +343,21 @@ $(document).ready(function () {
                         $results = $info[1] ? JSON.parse($info[1]) : false;
                         $votesCount = $info[2];
 
-                        if($.isNumeric($voted)) {
+                        if ($.isNumeric($voted)) {
                             $poll.find('.poll_answer:eq(' + $voted + ') input').attr('checked', true);
                         } else {
                             $voted = JSON.parse($voted);
-                            for(var voteI in $voted) {
+                            for (var voteI in $voted) {
                                 $poll.find('.poll_answer:eq(' + $voted[voteI] + ') input').attr('checked', true);
                             }
                         }
                         if ($results) {
-                            for(var index in $results) {
+                            for (var index in $results) {
                                 val = $results[index];
                                 $percentage = 100 * val / $votesCount;
-                                $poll.find('.poll_answer:eq(' + index + ') label').append('<div class="result" style="width: ' + $percentage +  '%"><span>' + $percentage + '%</span></div>');
+                                $poll.find('.poll_answer:eq(' + index + ') label').append('<div class="result" style="width: ' + $percentage + '%"><span>' + $percentage + '%</span></div>');
                                 $poll.find('.poll_answer:eq(' + index + ') label .result span').css('margin-left', $poll.find('.poll_answer:eq(' + index + ') label > span').outerWidth(true) + 8 + 'px');
-                                $poll.find('.poll_answer:eq(' + index + ')').append('<div class="result"><span style="width: ' + $percentage +  '%"></span></div>');
+                                $poll.find('.poll_answer:eq(' + index + ')').append('<div class="result"><span style="width: ' + $percentage + '%"></span></div>');
                             }
                             $poll.find('.poll_answer label .result').hide().fadeIn(150);
                         }

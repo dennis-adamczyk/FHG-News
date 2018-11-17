@@ -168,6 +168,7 @@ function fhgnewsonline_theme_setup() {
 
 	include get_template_directory() . "/includes/appbar.php";
 	include get_template_directory() . "/includes/likeSystem.php";
+	include get_template_directory() . "/includes/likeRequest.php";
 	include get_template_directory() . "/includes/comment_format.php";
 	include get_template_directory() . "/includes/user_meta.php";
 	include get_template_directory() . "/includes/profile_picture_system.php";
