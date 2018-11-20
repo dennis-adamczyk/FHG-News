@@ -430,6 +430,27 @@ $(document).ready(function () {
         }
     });
 
+    OneSignal.push(function () {
+        OneSignal.isPushNotificationsEnabled().then(function (subscribed) {
+            if (!subscribed) {
+                $('.post__foot__subscribe').css('display', 'inline-block');
+            }
+        });
+    });
+
+
+    $('.post__foot__subscribe').one().click(function () {
+        let $that = $(this);
+        OneSignal.push(['registerForPushNotifications']);
+        OneSignal.push(function () {
+            OneSignal.on('subscriptionChange', function (isSubscribed) {
+                if (isSubscribed)
+                    $that.removeAttr('style');
+            });
+        });
+
+    });
+
     $('.comments__list__comment__box__foot__like').one().click(function () {
         let $parent = $(this);
         let $comment_id = $parent.parents('.comments__list__comment').data('comment-id');

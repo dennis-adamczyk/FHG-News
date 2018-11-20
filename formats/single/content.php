@@ -75,6 +75,11 @@ if ( has_post_thumbnail() ) {
           <i class="material-icons">edit</i>
         </div>
 	  <?php endif; ?>
+	  <?php if ( ! get_setting( PUSH_NOTIFICATIONS_SETTINGS_KEY, 'bool' ) && ! get_setting( EMAIL_NEWSLETTER_SETTINGS_KEY, 'bool' ) ): ?>
+      <div class="post__foot__subscribe">
+        <i class="material-icons">notifications</i>
+      </div>
+	  <?php endif; ?>
   </div>
 </div>
 <?php if ( comments_open() || get_comments_number() ) {

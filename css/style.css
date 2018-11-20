@@ -33,7 +33,7 @@ dialogbox.share ul li p { position: absolute; left: 80px; top: 50%; display: inl
   dialogbox.share ul li p { left: 72px; } }
 dialogbox.select .close { position: absolute; top: 24px; right: 24px; cursor: pointer; height: 24px; width: 24px; padding: 8px; transform: translate(8px, -8px); -webkit-border-radius: 50%; -moz-border-radius: 50%; border-radius: 50%; overlay: hidden; }
 dialogbox.select .close i { color: rgba(0, 0, 0, 0.54); }
-dialogbox.select .label { display: block; font-size: 20px; font-weight: 500; color: #000000; padding: 0; margin: 21px 0 16px 24px; }
+dialogbox.select .label { display: block; font-size: 20px; font-weight: 500; color: #000000; padding: 0; margin: 21px 72px 16px 24px; }
 dialogbox.select ul { width: 100%; height: auto; list-style: none; padding: 0; margin: 0 0 8px 0; }
 dialogbox.select ul li { position: relative; display: block; height: 56px; width: 100%; overflow: hidden; cursor: pointer; transition: background 150ms cubic-bezier(0.4, 0, 0.2, 1); }
 dialogbox.select ul li:hover { background-color: rgba(0, 0, 0, 0.08); }
@@ -164,7 +164,7 @@ dialogbox.select.select--icons ul li span { position: absolute; left: 80px; top:
 content { display: block; width: 100%; height: auto; padding: 56px 0 0 0; margin: 0; /* SEARCH SUGGESTIONS */ }
 @media all and (min-width: 800px) { content { padding: 64px 0 0 0; } }
 @media all and (min-width: 1480px) { content { padding: 64px 0 0 256px; width: calc(100% - 256px); } }
-content a { color: #2196F3; text-decoration: none; }
+content a { color: #2196F3; word-break: break-word; text-decoration: none; }
 content a:hover { text-decoration: underline; }
 content .searchSuggestions { position: fixed; top: 0; right: 0; left: 0; bottom: 0; background-color: #FAFAFA; z-index: 3; overflow: auto; }
 content .searchSuggestions ul { list-style: none; padding: 10px 0 0 0; margin: 56px 0 0 0; }

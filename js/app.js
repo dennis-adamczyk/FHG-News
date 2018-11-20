@@ -807,21 +807,25 @@ jQuery(document).ready(function ($) {
 
     /* ===== PUSH NOTIFICATION CHANGE ===== */
 
-    var OneSignal = OneSignal || [];
     OneSignal.push(function () {
         if ($('body').hasClass('settings')) return;
-        OneSignal.on('subscriptionChange', function (status) {
-            console.log(status);
+        OneSignal.on('subscriptionChange', function (isSubscribed) {
+            console.log(isSubscribed);
             $.ajax({
                 type: 'POST',
                 url: php_info.ajax_url,
                 data: {
                     action: 'set_setting',
                     settingsname: 'settings-push_notifications',
-                    value: status
+                    value: isSubscribed
                 },
                 success: function (data) {
                     console.log(data);
+                    if (isSubscribed) {
+                        showSingleLineSnackBar('Danke! Wir halten dich auf dem Laufenden')
+                    } else {
+                        showSingleLineSnackBar('Du erhältst keine Benachrichtigungen mehr');
+                    }
                 }
             });
         });

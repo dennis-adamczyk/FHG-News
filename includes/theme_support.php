@@ -89,6 +89,9 @@ function fhgnewsonline_enqueue() {
 			'author' => get_query_var( 'author' ),
 		) );
 	}
+	if ( is_page( "impressum" ) || is_page( "datenschutz" ) ) {
+		wp_enqueue_style( 'gutenberg-frontend', get_template_directory_uri() . '/css/gutenberg-frontend.css' );
+	}
 	if ( get_query_var( 'fhgnewsonline_page_id' ) == 1 ) {
 		wp_enqueue_style( 'edit_profiles', get_template_directory_uri() . '/css/edit_profile.css' );
 		wp_enqueue_script( 'edit_profiles', get_template_directory_uri() . '/js/edit_profile.js' );
