@@ -51,6 +51,7 @@ overlay
     display: block
 
 dialogbox
+  display: none
   min-width: 280px
   max-width: 432px
   opacity: 0
@@ -69,6 +70,7 @@ dialogbox
 
   &[open]
     opacity: 1
+    display: block
 
   &.alert
     .label
@@ -489,6 +491,7 @@ dialogbox
       padding: 16px 16px 8px 16px
       font-size: 14px
       font-weight: 400
+      text-align: center
       color: rgba(#ffffff, .6)
 
   @media #{$not-mobile}

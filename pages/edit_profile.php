@@ -62,11 +62,11 @@ if ( ! empty( $_POST ) ) {
 		$errors["email"] = "Ungültige E-Mail";
 	}
 
-	if ( strlen( $firstname ) !== 0 && ! preg_match( "/^([a-zA-ZäöüÄÖÜß' ]+)$/", $firstname ) ) {
+	if ( strlen( $firstname ) !== 0 && ! preg_match( "/^([a-zA-ZäöüÄÖÜß'\- ]+)$/", $firstname ) ) {
 		$errors["firstname"] = "Ungültiger Vorname";
 	}
 
-	if ( strlen( $lastname ) !== 0 && ! preg_match( "/^([a-zA-ZäöüÄÖÜß' ]+)$/", $lastname ) ) {
+	if ( strlen( $lastname ) !== 0 && ! preg_match( "/^([a-zA-ZäöüÄÖÜß'\- ]+)$/", $lastname ) ) {
 		$errors["lastname"] = "Ungültiger Nachname";
 	}
 

@@ -43,7 +43,7 @@ function get_like_amount( $post_id ) {
  * @return int|false Meta ID on success, false on failure
  */
 function add_like_user( $post_id, $user_id ) {
-	return add_post_meta( $post_id, LIKE_DB_KEY, $user_id, false );
+	return ! has_liked( $post_id, $user_id ) ? add_post_meta( $post_id, LIKE_DB_KEY, $user_id, false ) : false;
 }
 
 /**
@@ -114,7 +114,7 @@ function get_comment_like_amount( $comment_id ) {
  * @return int|false Meta ID on success, false on failure
  */
 function add_comment_like_user( $comment_id, $user_id ) {
-	return add_comment_meta( $comment_id, COMMENT_LIKE_DB_KEY, $user_id, false );
+	return ! has_liked_comment( $comment_id, $user_id ) ? add_comment_meta( $comment_id, COMMENT_LIKE_DB_KEY, $user_id, false ) : false;
 }
 
 /**

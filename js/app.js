@@ -290,7 +290,8 @@ jQuery(document).ready(function ($) {
         var yDiff = yDown - yUp;
 
         if (Math.abs(xDiff) > Math.abs(yDiff)) {
-            if (xDiff < 0 && $('dialogbox').css('display') === 'none' && $('overlay').css('display') === 'none' && $('.lightBox').css('display') === 'none') {
+            console.log('SLIDE');
+            if (xDiff < 0 && $('dialogbox').css('display') !== 'block' && $('overlay').css('display') !== 'block' && $('.lightBox').css('display') !== 'block') {
                 $nav.addClass('active');
                 overlayFadeIn('nav');
             }

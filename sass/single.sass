@@ -242,10 +242,11 @@ body.single
 
 
                 label
+                  position: relative
                   margin-left: 16px
                   line-height: 20px
                   width: calc(100% - 36px)
-                  height: 20px
+                  min-height: 20px
                   cursor: pointer
                   -webkit-user-select: none
                   -moz-user-select: none
@@ -253,8 +254,13 @@ body.single
                   user-select: none
                   clear: both
 
+                  & > span
+                    margin-right: 48px
+
                   .result
-                    float: right
+                    position: absolute
+                    right: 0
+                    top: 0
                     min-width: 48px
                     max-width: 48px
                     display: block
@@ -977,6 +983,7 @@ body.single
                       position: relative
                       margin-left: 16px
                       z-index: 1
+                      margin-right: 0
 
                     .result
                       display: block

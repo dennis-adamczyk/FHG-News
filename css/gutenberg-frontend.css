@@ -17,6 +17,10 @@
 .post__content .wp-block-image figcaption, .page__content .wp-block-image figcaption { font-size: 14px; font-weight: 400; line-height: 16px; color: rgba(0, 0, 0, 0.6); margin-top: 0; }
 @media all and (max-width: 799px) { .post__content .wp-block-image.alignright, .post__content .wp-block-image.alignleft, .page__content .wp-block-image.alignright, .page__content .wp-block-image.alignleft { float: none; margin-left: auto; margin-right: auto; } }
 .post__content .wp-block-image img, .page__content .wp-block-image img { border-radius: 4px; overflow: hidden; height: auto; cursor: pointer; }
+.post__content .wp-block-video, .page__content .wp-block-video { cursor: pointer; }
+.post__content .wp-block-video video, .page__content .wp-block-video video { border-radius: 4px; }
+@media all and (max-width: 799px) { .post__content .wp-block-video video, .page__content .wp-block-video video { width: 100%; } }
+.post__content .wp-block-video figcaption, .page__content .wp-block-video figcaption { line-height: normal; }
 .post__content .wp-block-separator, .page__content .wp-block-separator { margin-top: 32px; margin-bottom: 32px; width: 100px; border: 1px solid rgba(0, 0, 0, 0.48); }
 .post__content .wp-block-separator.is-style-wide, .page__content .wp-block-separator.is-style-wide { width: 100%; border: 0.5px solid rgba(0, 0, 0, 0.24); }
 .post__content .wp-block-separator.is-style-dots, .page__content .wp-block-separator.is-style-dots { width: 100%; border: none; }

@@ -306,7 +306,7 @@ $(document).ready(function () {
                     if ($results) {
                         for (var index in $results) {
                             val = $results[index];
-                            $percentage = 100 * val / $votesCount;
+                            $percentage = Math.round(100 * val / $votesCount);
                             $poll.find('.poll_answer:eq(' + index + ') label').append('<div class="result" style="width: ' + $percentage + '%"><span>' + $percentage + '%</span></div>');
                             $poll.find('.poll_answer:eq(' + index + ') label .result span').css('margin-left', $poll.find('.poll_answer:eq(' + index + ') label > span').outerWidth(true) + 8 + 'px');
                             $poll.find('.poll_answer:eq(' + index + ')').append('<div class="result"><span style="width: ' + $percentage + '%"></span></div>');
@@ -354,7 +354,7 @@ $(document).ready(function () {
                         if ($results) {
                             for (var index in $results) {
                                 val = $results[index];
-                                $percentage = 100 * val / $votesCount;
+                                $percentage = Math.round(100 * val / $votesCount);
                                 $poll.find('.poll_answer:eq(' + index + ') label').append('<div class="result" style="width: ' + $percentage + '%"><span>' + $percentage + '%</span></div>');
                                 $poll.find('.poll_answer:eq(' + index + ') label .result span').css('margin-left', $poll.find('.poll_answer:eq(' + index + ') label > span').outerWidth(true) + 8 + 'px');
                                 $poll.find('.poll_answer:eq(' + index + ')').append('<div class="result"><span style="width: ' + $percentage + '%"></span></div>');
@@ -440,6 +440,7 @@ $(document).ready(function () {
 
 
     $('.post__foot__subscribe').one().click(function () {
+        console.log('SUBSCRIBE');
         let $that = $(this);
         OneSignal.push(['registerForPushNotifications']);
         OneSignal.push(function () {

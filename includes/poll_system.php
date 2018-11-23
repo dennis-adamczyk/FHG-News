@@ -115,7 +115,7 @@ function reset_poll( $post_id, $poll_id ) {
  *
  * @return null|string null on failure, IP address on success
  */
-function get_user_ip() {
+function get_user_encrypted_ip() {
 	$ipaddress = null;
 	if ( isset( $_SERVER['HTTP_CLIENT_IP'] ) ) {
 		$ipaddress = $_SERVER['HTTP_CLIENT_IP'];
@@ -133,7 +133,7 @@ function get_user_ip() {
 		$ipaddress = $_SERVER['REMOTE_ADDR'];
 	}
 
-	return $ipaddress;
+	return implode( ':', str_split( md5( $_SERVER['HTTP_ACCEPT_LANGUAGE'] . $_SERVER['HTTP_USER_AGENT'] . $ipaddress ), 4 ) );
 }
 
 /*
@@ -146,7 +146,7 @@ function fhgnewsonline_ajax_update_poll_vote() {
 	$post_id = (int) $_POST["post_id"];
 	$poll_id = (int) $_POST["poll_id"];
 	$answer  = $_POST["answer"];
-	$ip      = get_user_ip();
+	$ip      = get_user_encrypted_ip();
 	$poll    = get_poll( $post_id, $poll_id );
 	$voted   = $poll['voted'];
 	$results = $poll['results'];
@@ -249,7 +249,7 @@ add_action( 'wp_ajax_update_poll_vote', 'fhgnewsonline_ajax_update_poll_vote' );
 function fhgnewsonline_ajax_get_poll_results() {
 	$post_id = (int) $_POST["post_id"];
 	$poll_id = (int) $_POST["poll_id"];
-	$ip      = get_user_ip();
+	$ip      = get_user_encrypted_ip();
 	$poll    = get_poll( $post_id, $poll_id );
 	$voted   = $poll['voted'];
 	$results = $poll['results'];

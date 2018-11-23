@@ -220,7 +220,7 @@ add_action( 'enqueue_block_editor_assets', 'fhgnewsonline_add_gutenberg_assets' 
  * @return string page_title
  */
 function fhgnewsonline_get_page_title() {
-	return ( explode( ' &#8211;', get_wp_title_rss() )[0] == get_bloginfo_rss( 'name' ) || is_single() || is_category() ? 'News' : ( is_404() ? 'Fehler 404' : ( is_author() ? 'Profil' : ( explode( '&#8211;', get_wp_title_rss() )[0] ) ) ) );
+	return ( explode( ' &#8211;', get_wp_title_rss() )[0] == get_bloginfo_rss( 'name' ) || is_single() || is_category() ? 'FHG News' : ( is_404() ? 'Fehler 404' : ( is_author() ? 'Profil' : ( explode( '&#8211;', get_wp_title_rss() )[0] ) ) ) );
 }
 
 /**

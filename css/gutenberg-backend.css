@@ -21,6 +21,10 @@
 .edit-post-visual-editor .wp-block-image figcaption { font-size: 14px; font-weight: 400; line-height: 16px; color: rgba(0, 0, 0, 0.6); margin-top: 0; }
 @media all and (max-width: 799px) { .edit-post-visual-editor .wp-block-image.alignright, .edit-post-visual-editor .wp-block-image.alignleft { float: none; margin-left: auto; margin-right: auto; } }
 .edit-post-visual-editor .wp-block-image img { border-radius: 4px; overflow: hidden; height: auto; cursor: pointer; }
+.edit-post-visual-editor .wp-block-video { cursor: pointer; }
+.edit-post-visual-editor .wp-block-video video { border-radius: 4px; }
+@media all and (max-width: 799px) { .edit-post-visual-editor .wp-block-video video { width: 100%; } }
+.edit-post-visual-editor .wp-block-video figcaption { line-height: normal; }
 .edit-post-visual-editor .wp-block-separator { margin-top: 32px; margin-bottom: 32px; width: 100px; border: 1px solid rgba(0, 0, 0, 0.48); }
 .edit-post-visual-editor .wp-block-separator.is-style-wide { width: 100%; border: 0.5px solid rgba(0, 0, 0, 0.24); }
 .edit-post-visual-editor .wp-block-separator.is-style-dots { width: 100%; border: none; }

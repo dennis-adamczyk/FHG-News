@@ -61,6 +61,9 @@ $category_color = function_exists( 'rl_color' ) ? rl_color( $category->cat_ID ) 
           <i class="material-icons">edit</i>
         </div>
 	  <?php endif; ?>
+    <div class="post__foot__subscribe">
+      <i class="material-icons">notifications</i>
+    </div>
   </div>
 </div>
 <?php if ( comments_open() || get_comments_number() ) {
