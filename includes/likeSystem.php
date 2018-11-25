@@ -43,6 +43,10 @@ function get_like_amount( $post_id ) {
  * @return int|false Meta ID on success, false on failure
  */
 function add_like_user( $post_id, $user_id ) {
+	if ( $user_id == 0 ) {
+		$user_id = implode( ':', str_split( md5( $_SERVER['HTTP_ACCEPT_LANGUAGE'] . $_SERVER['HTTP_USER_AGENT'] . $_SERVER['REMOTE_ADDR'] ), 4 ) );
+	}
+
 	return ! has_liked( $post_id, $user_id ) ? add_post_meta( $post_id, LIKE_DB_KEY, $user_id, false ) : false;
 }
 
@@ -55,6 +59,10 @@ function add_like_user( $post_id, $user_id ) {
  * @return bool False for failure, true for success
  */
 function remove_like_user( $post_id, $user_id ) {
+	if ( $user_id == 0 ) {
+		$user_id = implode( ':', str_split( md5( $_SERVER['HTTP_ACCEPT_LANGUAGE'] . $_SERVER['HTTP_USER_AGENT'] . $_SERVER['REMOTE_ADDR'] ), 4 ) );
+	}
+
 	return delete_post_meta( $post_id, LIKE_DB_KEY, $user_id );
 }
 
@@ -114,6 +122,10 @@ function get_comment_like_amount( $comment_id ) {
  * @return int|false Meta ID on success, false on failure
  */
 function add_comment_like_user( $comment_id, $user_id ) {
+	if ( $user_id == 0 ) {
+		$user_id = implode( ':', str_split( md5( $_SERVER['HTTP_ACCEPT_LANGUAGE'] . $_SERVER['HTTP_USER_AGENT'] . $_SERVER['REMOTE_ADDR'] ), 4 ) );
+	}
+
 	return ! has_liked_comment( $comment_id, $user_id ) ? add_comment_meta( $comment_id, COMMENT_LIKE_DB_KEY, $user_id, false ) : false;
 }
 
@@ -126,6 +138,10 @@ function add_comment_like_user( $comment_id, $user_id ) {
  * @return bool False for failure, true for success
  */
 function remove_comment_like_user( $comment_id, $user_id ) {
+	if ( $user_id == 0 ) {
+		$user_id = implode( ':', str_split( md5( $_SERVER['HTTP_ACCEPT_LANGUAGE'] . $_SERVER['HTTP_USER_AGENT'] . $_SERVER['REMOTE_ADDR'] ), 4 ) );
+	}
+
 	return delete_comment_meta( $comment_id, COMMENT_LIKE_DB_KEY, $user_id );
 }
 

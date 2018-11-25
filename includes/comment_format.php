@@ -31,13 +31,16 @@ function fhgnewsonline_comment_form( $class = null ) {
       </div>
       <div class="input input--textarea input--line input--placeholderDisappear comments__respond__commentInput">
         <textarea id="comment<?php echo( $class ? '-' . $class : '' ); ?>" name="comment" rows="1" required></textarea>
-        <label for="comment<?php echo( $class ? '-' . $class : '' ); ?>" class="input__label">Öffentlich kommentieren...</label>
+        <label for="comment<?php echo( $class ? '-' . $class : '' ); ?>" class="input__label">Öffentlich
+          kommentieren...</label>
       </div>
       <div class="comments__respond__submit">
         <div class="button button--flat comments__respond__submit__cancel">
           <span>Abbrechen</span>
         </div>
-        <input name="submit" class="btn btn-success <?php echo( $class ? 'material-icons' : '' ); ?>" type="submit" id="submit<?php echo( $class ? '-' . $class : '' ); ?>" value="<?php echo( $class ? 'send' : 'Kommentieren' ); ?>"/>
+        <input name="submit" class="btn btn-success <?php echo( $class ? 'material-icons' : '' ); ?>" type="submit"
+               id="submit<?php echo( $class ? '-' . $class : '' ); ?>"
+               value="<?php echo( $class ? 'send' : 'Kommentieren' ); ?>"/>
 		  <?php comment_id_fields( $post_id ); ?>
       </div>
     </form>
@@ -56,7 +59,8 @@ function fhgnewsonline_comment_callback() {
 		?>
       <div class="comments__list__commentParent">
 	<?php endif; ?>
-  <li <?php comment_class( 'comments__list__comment' ); ?> id="comment-<?php comment_ID(); ?>" data-comment-id="<?php echo get_comment_ID(); ?>"
+  <li <?php comment_class( 'comments__list__comment' ); ?> id="comment-<?php comment_ID(); ?>"
+                                                           data-comment-id="<?php echo get_comment_ID(); ?>"
                                                            data-parent-id="<?php echo get_comment()->comment_parent; ?>"
                                                            data-author="<?php echo get_comment_author(); ?>">
     <div class="comments__list__comment__avatar">
@@ -68,11 +72,11 @@ function fhgnewsonline_comment_callback() {
         <span>&bull;</span> vor <?php echo human_time_diff( get_comment_time( 'U' ), current_time( 'timestamp' ) ); ?>
       </p>
       <p class="comments__list__comment__box__content">
-		  <?php echo strip_tags( apply_filters('comment_text', get_comment_text(), get_comment()), '<a><img><span><pre><code><strong>'); ?>
+		  <?php echo strip_tags( apply_filters( 'comment_text', get_comment_text(), get_comment() ), '<a><img><span><pre><code><strong>' ); ?>
       </p>
       <div class="comments__list__comment__box__foot">
         <div
-            class="comments__list__comment__box__foot__like<?php if ( is_user_logged_in() ) if ( has_liked_comment( get_comment_ID(), get_current_user_id() ) ) echo " active"; ?>">
+            class="comments__list__comment__box__foot__like<?php echo( has_liked_comment( get_comment_ID(), get_current_user_id() ) ? " active" : "" ); ?>">
           <i class="material-icons">favorite</i>
           <p class="comments__list__comment__box__foot__like__count"><?php echo get_comment_like_amount( get_comment_ID() ); ?></p>
         </div>
