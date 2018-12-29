@@ -30,7 +30,7 @@ if ( ! empty( $_POST ) ) {
 
 		if ( ! isset( $subject ) || strlen( $subject ) == 0 ) {
 			$errors['subject'] = "Dies ist ein Pflichtfeld";
-		} else if ( strlen( $msg ) < 6 ) {
+		} else if ( strlen( $subject ) < 6 ) {
 			$errors['subject'] = "Mindestens 6 Zeichen eingeben";
 		}
 

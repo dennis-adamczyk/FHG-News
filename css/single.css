@@ -15,6 +15,13 @@ body.single content .wrapper .main .post .post__title { font-size: 24px; font-we
 body.single content .wrapper .main .post .post__subtitle { font-size: 14px; font-weight: 400; color: rgba(0, 0, 0, 0.6); margin: 0; padding: 0; }
 body.single content .wrapper .main .post .post__subtitle i.material-icons { font-size: 16px; height: 16px; width: 16px; color: rgba(0, 0, 0, 0.6); vertical-align: sub; }
 body.single content .wrapper .main .post .post__content { width: 100%; margin: 16px 0 0 0; font-size: 16px; line-height: 32px; }
+body.single content .wrapper .main .post .post__content .ar_antwort { display: block; margin: 32px 0; padding: 32px 16px; background-color: #ffffff; border-radius: 4px; box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12); overflow: hidden; }
+body.single content .wrapper .main .post .post__content .ar_antwort .input { margin: 0 0 16px 0; }
+body.single content .wrapper .main .post .post__content .ar_antwort .input--textarea .error { margin-top: -6px; }
+body.single content .wrapper .main .post .post__content .ar_antwort .success { display: block; width: 350px; max-width: 100%; margin: 16px auto; text-align: center; }
+body.single content .wrapper .main .post .post__content .ar_antwort .success img { width: 100%; height: auto; margin: 0 0 32px 0; }
+body.single content .wrapper .main .post .post__content .ar_antwort .success h3 { font-size: 18px; font-weight: 500; line-height: normal; color: rgba(0, 0, 0, 0.86); margin-bottom: 8px; }
+body.single content .wrapper .main .post .post__content .ar_antwort .success p { font-size: 16px; font-weight: 400; line-height: normal; color: rgba(0, 0, 0, 0.6); margin: 0; }
 body.single content .wrapper .main .post .post__content poll { display: block; margin: 24px 0; padding: 16px; background-color: #ffffff; border-radius: 4px; box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12); overflow: hidden; }
 body.single content .wrapper .main .post .post__content poll .poll_question { font-size: 16px; font-weight: 500; line-height: initial; color: rgba(0, 0, 0, 0.86); margin: 0 0 2px 0; padding: 0; }
 body.single content .wrapper .main .post .post__content poll .poll_votes { font-size: 14px; font-weight: 400; line-height: initial; color: rgba(0, 0, 0, 0.56); margin: 0 0 16px 0; padding: 0; }

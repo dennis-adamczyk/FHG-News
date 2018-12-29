@@ -49,6 +49,8 @@ body.blog content .wrapper .main .posts .post.format-status .post__author .post_
 body.blog content .wrapper .main .posts .post.format-status .post__author .post__author__info .post__author__info__name { font-size: 14px; font-weight: 500; display: block; margin: 0; padding: 0; vertical-align: top; }
 body.blog content .wrapper .main .posts .post.format-status .post__author .post__author__info .post__author__info__subtitle { font-size: 14px; font-weight: 400; display: block; color: rgba(0, 0, 0, 0.6); margin: 0; padding: 0; }
 body.blog content .wrapper .main .posts .post.format-status .post__author .post__author__info .post__author__info__subtitle i.material-icons { font-size: 16px; height: 16px; width: 16px; color: rgba(0, 0, 0, 0.6); vertical-align: sub; }
+body.blog content .wrapper .main .posts .post.format-status .post__preview { display: block; font-size: 16px; font-weight: 400; color: rgba(0, 0, 0, 0.86); margin: 16px 0; padding: 0; }
+body.blog content .wrapper .main .posts .post.format-status .post__preview .post__preview__more { display: block; font-size: 14px; font-weight: 500; color: rgba(0, 0, 0, 0.56); }
 body.blog content .wrapper .main .posts .post.format-quote .post__author { display: flex; width: 100%; height: 32px; margin: 24px 0 16px 0; padding: 0; cursor: pointer; }
 body.blog content .wrapper .main .posts .post.format-quote .post__author .post__author__profilePicture { display: inline-block; height: 32px; width: 32px; margin: 0; padding: 0; border-radius: 50%; background-color: rgba(0, 0, 0, 0.24); overflow: hidden; }
 body.blog content .wrapper .main .posts .post.format-quote .post__author .post__author__info { margin: 0 0 0 8px; }
