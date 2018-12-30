@@ -85,8 +85,8 @@ switch ( get_query_var( 'fhgnewsonline_page_id' ) ) {
 <?php get_appbar( fhgnewsonline_get_page_title(), ( is_single() || is_category() ? 'arrow_back' : 'menu' ), ( is_single() ? false : true ) ); ?>
 
 <nav class="nav">
-  <img src="<?php echo get_template_directory_uri() . '/img/fhgnews.svg'; ?>" class="nav__logo"
-       onclick="window.location = '<?php echo get_home_url(); ?>'">
+  <img src="<?php echo get_template_directory_uri() . '/img/fhgnews_xmas.svg'; ?>" class="nav__logo nav__logo--xmas"
+       onclick="window.location = '<?php echo get_home_url(); ?>'" title="Fröhliche Weihnachten!" alt="FHG News">
 	<?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
 </nav>
 

@@ -178,6 +178,7 @@ function fhgnewsonline_theme_setup() {
 	include get_template_directory() . "/includes/post_views.php";
 	include get_template_directory() . "/includes/user_settings.php";
 	include get_template_directory() . "/includes/poll_system.php";
+	include get_template_directory() . "/includes/shortcodes.php";
 	include get_template_directory() . "/includes/mail_filter.php";
 	include get_template_directory() . "/includes/admin_menu.php";
 
@@ -251,6 +252,7 @@ function get_user_role_color( $user ) {
 		'author'        => '#009688',
 		'contributor'   => '#00BCD4',
 		'subscriber'    => '#2196F3',
+		'student'       => '#4CAF50',
 	];
 	foreach ( $colors as $role => $color ) {
 		if ( $role === $user_role ) {
@@ -619,7 +621,7 @@ function get_reset_password_url( $user_id_or_login = null ) {
  * @return null|string|string[]
  */
 function trim_words( $string, $limit, $more, $line_limit = null ) {
-	$new_string = preg_replace( '/((\w+\W*){0,' . ( $limit - 1 ) . '}(\w*))(.*)/', '${1}', $string );
+	$new_string = preg_replace( '/((\w+\W*){0,' . ( $limit - 1 ) . '}(\w*))(.*)/', '${1}', preg_replace( "/\r|\n/", "", $string ) );
 	if ( $line_limit !== null ) {
 		$new_string = implode( '<br>', array_slice( explode( '<br>', $new_string ), 0, $line_limit ) );
 	}
@@ -801,7 +803,7 @@ if ( ! is_plugin_active( 'category-color/rl_category_color.php' ) ) {
 
 	add_action( 'admin_notices', 'install_category_color_notice' );
 }
-if ( ! is_plugin_active( 'gutenberg/gutenberg.php' ) ) {
+if ( ! is_plugin_active( 'gutenberg/gutenberg.php' ) && get_bloginfo('version') < 5.0 ) {
 	function install_gutenberg_notice() {
 		?>
       <div class="notice notice-warning">

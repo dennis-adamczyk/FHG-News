@@ -83,6 +83,8 @@ function fhgnewsonline_infinite_scroll_content() {
 					'private'
 				) : 'publish' ),
 				'paged'       => $paged,
+				'orderby'     => 'date',
+				'order'       => 'DESC',
 			);
 			break;
 	}

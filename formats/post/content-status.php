@@ -46,11 +46,7 @@ $category_color = function_exists( 'rl_color' ) ? rl_color( $category->cat_ID ) 
 	  <?php echo trim_words( strip_tags( get_the_content(), '<br><a><strong><em><i><b><u><span>' ), 30, '... <span class="post__preview__more">Mehr anzeigen</span>', 4); ?>
   </p>
   <div class="post__foot">
-    <div class="post__foot__like<?php if ( is_user_logged_in() ) {
-		if ( has_liked( get_the_ID(), get_current_user_id() ) ) {
-			echo " active";
-		}
-	} ?>">
+    <div class="post__foot__like<?php echo( has_liked( get_the_ID(), get_current_user_id() ) ? " active" : "" ); ?>">
       <i class="material-icons">favorite</i>
       <p class="post__foot__like__count"><?php echo get_like_amount( get_the_ID() ); ?></p>
     </div>

@@ -5,9 +5,13 @@
  */
 
 function fhgnewsonline_add_admin_page() {
-	add_menu_page( 'FHG News OrgaPlan', 'FHG News', 'edit_posts', 'fhgnewsonline_orgaplan', 'fhgnewsonline_orgaplan_page', get_theme_file_uri( '/img/icons/fhgnews_white_icon.svg' ), 110 );
-	add_submenu_page( 'fhgnewsonline_orgaplan', 'OrgaPlan', 'OrgaPlan', 'edit_posts', 'fhgnewsonline_orgaplan', 'fhgnewsonline_orgaplan_page' );
-	add_submenu_page( 'fhgnewsonline_orgaplan', 'Handbuch', 'Handbuch', 'edit_posts', 'fhgnewsonline_handbook', 'fhgnewsonline_handbook_page' );
+  if (current_user_can('edit_others_posts')) {
+	  add_menu_page( 'FHG News OrgaPlan', 'FHG News', 'edit_posts', 'fhgnewsonline_orgaplan', 'fhgnewsonline_orgaplan_page', get_theme_file_uri( '/img/icons/fhgnews_white_icon.svg' ), 110 );
+	  add_submenu_page( 'fhgnewsonline_orgaplan', 'OrgaPlan', 'OrgaPlan', 'edit_others_posts', 'fhgnewsonline_orgaplan', 'fhgnewsonline_orgaplan_page' );
+	  add_submenu_page( 'fhgnewsonline_orgaplan', 'Handbuch', 'Handbuch', 'edit_posts', 'fhgnewsonline_handbook', 'fhgnewsonline_handbook_page' );
+  } else {
+	  add_menu_page( 'FHG News Handbuch', 'FHG News', 'edit_posts', 'fhgnewsonline_handbook', 'fhgnewsonline_handbook_page', get_theme_file_uri( '/img/icons/fhgnews_white_icon.svg' ), 110 );
+  }
 }
 
 add_action( 'admin_menu', 'fhgnewsonline_add_admin_page' );

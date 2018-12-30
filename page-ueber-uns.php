@@ -40,17 +40,18 @@
                 <div class="team__wrapper">
 					<?php
 					$redakteure = [
-						'Fritz Junkers'      => 'Betreuender Lehrer',
-						'Dennis Adamczyk'    => 'Chefredakteur',
-						'Vanessa Adamczyk'   => 'Mitgründerin',
-						'Paul Paschmann'     => 'Mitgründer',
-						'Josef Ali'          => 'Senior-Redakteur',
+						'Fritz Junkers'       => 'Betreuender Lehrer',
+						'Dennis Adamczyk'     => 'Chefredakteur',
+						'Vanessa Adamczyk'    => 'Mitgründerin',
+						'Paul Paschmann'      => 'Mitgründer',
+						'Josef Ali'           => 'Senior-Redakteur',
 						'Malina Strassburger' => 'Redakteurin',
-						'Ebrar Oezdemir'     => 'Redakteurin',
-						'Irem Karatas'       => 'Redakteurin',
-						'Niko Vossmeyer'     => 'Redakteur',
-						'Lucy Pischke'       => 'Redakteurin',
-						'Carl Dressler'      => 'Redakteur'
+//						'Ebrar Oezdemir'     => 'Redakteurin',
+						'Irem Karatas'        => 'Redakteurin',
+						'Niko Vossmeyer'      => 'Redakteur',
+						'Lucy Pischke'        => 'Redakteurin',
+						'Carl Dressler'       => 'Redakteur',
+						'Maximilian'          => 'Redakteur'
 					];
 
 					foreach ( $redakteure as $name => $role ) {

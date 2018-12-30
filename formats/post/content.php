@@ -51,11 +51,7 @@ if ( has_post_thumbnail() ) {
   </p>
   <p class="post__preview"><?php echo wp_trim_words( get_the_excerpt(), 30, '...' ); ?></p>
   <div class="post__foot">
-    <div class="post__foot__like<?php if ( is_user_logged_in() ) {
-		if ( has_liked( get_the_ID(), get_current_user_id() ) ) {
-			echo " active";
-		}
-	} ?>">
+    <div class="post__foot__like<?php echo( has_liked( get_the_ID(), get_current_user_id() ) ? " active" : "" ); ?>">
       <i class="material-icons">favorite</i>
       <p class="post__foot__like__count"><?php echo get_like_amount( get_the_ID() ); ?></p>
     </div>
