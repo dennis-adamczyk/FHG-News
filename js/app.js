@@ -326,17 +326,21 @@ jQuery(document).ready(function ($) {
     });
 
     let $appbar = $('.header');
+    let $widget_sponsor = $('.widget_sponsor');
 
     function handleHeaderOnScroll(currentScroll) {
         if (currentScroll <= 0) {
             $appbar.addClass('header--top');
+            $widget_sponsor.removeClass('widget_sponsor--collapsed');
         } else {
             $appbar.removeClass('header--top');
 
             if (scrollDown >= 50) {
                 $appbar.addClass('header--collapsed');
+                $widget_sponsor.addClass('widget_sponsor--collapsed');
             } else if (scrollUp >= 50) {
                 $appbar.removeClass('header--collapsed');
+                $widget_sponsor.removeClass('widget_sponsor--collapsed');
             }
         }
     }
@@ -788,6 +792,16 @@ jQuery(document).ready(function ($) {
         Waves.init();
     }
 
+    /*
+    ======================================
+        Widgets
+    ======================================
+     */
+
+    $('.widget_sponsor .hint_icon').click(function () {
+        showInfoDialog($(this).parent().find('.sidebar__widget__title').text(), $(this).data('hint'));
+    });
+
     /* ==============================
     *   Category Widget
     *   ============================= */
@@ -956,6 +970,49 @@ function showAlertDialog(question, buttons = ['Abbrechen', 'OK']) {
                     $dialog.removeAttr('open');
                 });
             });
+        });
+
+    });
+}
+
+/**
+ * Shows an Information Dialog
+ * @param title Title
+ * @param text Text
+ */
+
+function showInfoDialog(title, text) {
+    return new Promise((resolve) => {
+        const $ = jQuery;
+        if ($('dialogbox').attr('open'))
+            return;
+        $('dialogbox').addClass('info');
+        let $dialog = $('dialogbox.info');
+        overlayFadeIn('infoDialog');
+
+        $dialog.html(`
+            <div class="close"><i class="material-icons">close</i></div>
+            <p class="title">` + title + `</p>
+            <p class="text">` + text + `</p>
+        `);
+
+        $dialog.fadeIn(200, function () {
+            $dialog.attr('open', '');
+            Waves.attach('dialogbox .close');
+            Waves.init();
+
+            var closeInfoDialog = function () {
+                resolve();
+                overlayFadeOut('infoDialog');
+                $dialog.fadeOut(180, function () {
+                    $dialog.html('');
+                    $dialog.removeClass('info');
+                    $dialog.removeAttr('open');
+                });
+            };
+
+            $dialog.find('.close').on('click', closeInfoDialog);
+            $('overlay').on('click', closeInfoDialog);
         });
 
     });

@@ -55,6 +55,35 @@ body.author content .wrapper .postContainer .post .post__foot .post__foot__share
 body.author content .wrapper .postContainer .post .post__foot .post__foot__comments { position: absolute; right: 0; margin: 0; padding: 0; display: inline-flex; height: 24px; align-items: center; }
 body.author content .wrapper .postContainer .post .post__foot .post__foot__comments i { font-size: 24px; color: rgba(0, 0, 0, 0.56); margin: 0 4px 0 0; padding: 0; cursor: pointer; display: inline-block; }
 body.author content .wrapper .postContainer .post .post__foot .post__foot__comments .post__foot__comments__count { font-size: 14px; font-weight: 400; line-height: 14px; color: rgba(0, 0, 0, 0.56); margin: 0; padding: 0; display: inline-block; height: 14px; }
+body.author content .wrapper .postContainer .post.format-image .post__author { display: flex; width: 100%; height: 32px; margin: 16px; padding: 0; cursor: pointer; }
+body.author content .wrapper .postContainer .post.format-image .post__author .post__author__profilePicture { display: inline-block; height: 32px; width: 32px; margin: 0; padding: 0; border-radius: 50%; background-color: rgba(0, 0, 0, 0.24); overflow: hidden; }
+body.author content .wrapper .postContainer .post.format-image .post__author .post__author__info { margin: 0 0 0 10px; }
+body.author content .wrapper .postContainer .post.format-image .post__author .post__author__info .post__author__info__name { font-size: 14px; font-weight: 500; display: block; margin: 0; padding: 0; vertical-align: top; }
+body.author content .wrapper .postContainer .post.format-image .post__author .post__author__info .post__author__info__subtitle { font-size: 14px; font-weight: 400; display: block; color: rgba(0, 0, 0, 0.6); margin: 0; padding: 0; }
+body.author content .wrapper .postContainer .post.format-image .post__author .post__author__info .post__author__info__subtitle i.material-icons { font-size: 16px; height: 16px; width: 16px; color: rgba(0, 0, 0, 0.6); vertical-align: sub; }
+body.author content .wrapper .postContainer .post.format-image .post__preview { display: block; font-size: 16px; font-weight: 400; color: rgba(0, 0, 0, 0.86); margin: 16px; padding: 0; }
+body.author content .wrapper .postContainer .post.format-image .post__preview .post__preview__more { display: inline; font-size: 14px; font-weight: 500; color: rgba(0, 0, 0, 0.56); }
+body.author content .wrapper .postContainer .post.format-image .post__image { display: inline-block; position: relative; top: 0; right: 0; width: auto; max-width: calc(100% - 32px); height: auto; background-image: none !important; border-radius: 4px; margin: 0 16px; }
+body.author content .wrapper .postContainer .post.format-image .post__image .post__image__img { display: block; position: initial; left: auto; top: auto; transform: none; width: auto; max-width: 100%; height: auto; max-height: 384px; pointer-events: none; }
+body.author content .wrapper .postContainer .post.format-image .post__image .post__image__hint { position: absolute; right: 8px; bottom: 8px; height: 24px; width: 24px; padding: 2px; border-radius: 4px; background-color: rgba(0, 0, 0, 0.86); }
+body.author content .wrapper .postContainer .post.format-image .post__image .post__image__hint i.material-icons { color: #ffffff; }
+body.author content .wrapper .postContainer .post.format-gallery .post__image { grid-template: 1fr 1fr/calc(50% - 2px) calc(50% - 2px); grid-gap: 4px; }
+body.author content .wrapper .postContainer .post.format-video .post__image .post__image__hint { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 32px; color: rgba(128, 128, 128, 0.6); }
+body.author content .wrapper .postContainer .post.format-audio .post__image .post__image__hint { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 32px; color: rgba(128, 128, 128, 0.6); }
+body.author content .wrapper .postContainer .post.format-status .post__author { display: flex; width: 100%; height: 32px; margin: 16px; padding: 0; cursor: pointer; }
+body.author content .wrapper .postContainer .post.format-status .post__author .post__author__profilePicture { display: inline-block; height: 32px; width: 32px; margin: 0; padding: 0; border-radius: 50%; background-color: rgba(0, 0, 0, 0.24); overflow: hidden; }
+body.author content .wrapper .postContainer .post.format-status .post__author .post__author__info { margin: 0 0 0 10px; }
+body.author content .wrapper .postContainer .post.format-status .post__author .post__author__info .post__author__info__name { font-size: 14px; font-weight: 500; display: block; margin: 0; padding: 0; vertical-align: top; }
+body.author content .wrapper .postContainer .post.format-status .post__author .post__author__info .post__author__info__subtitle { font-size: 14px; font-weight: 400; display: block; color: rgba(0, 0, 0, 0.6); margin: 0; padding: 0; }
+body.author content .wrapper .postContainer .post.format-status .post__author .post__author__info .post__author__info__subtitle i.material-icons { font-size: 16px; height: 16px; width: 16px; color: rgba(0, 0, 0, 0.6); vertical-align: sub; }
+body.author content .wrapper .postContainer .post.format-status .post__preview { display: block; font-size: 16px; font-weight: 400; color: rgba(0, 0, 0, 0.86); margin: 16px; padding: 0; }
+body.author content .wrapper .postContainer .post.format-status .post__preview .post__preview__more { display: inline; font-size: 14px; font-weight: 500; color: rgba(0, 0, 0, 0.56); }
+body.author content .wrapper .postContainer .post.format-quote .post__author { display: flex; width: 100%; height: 32px; margin: 16px; padding: 0; cursor: pointer; }
+body.author content .wrapper .postContainer .post.format-quote .post__author .post__author__profilePicture { display: inline-block; height: 32px; width: 32px; margin: 0; padding: 0; border-radius: 50%; background-color: rgba(0, 0, 0, 0.24); overflow: hidden; }
+body.author content .wrapper .postContainer .post.format-quote .post__author .post__author__info { margin: 0 0 0 10px; }
+body.author content .wrapper .postContainer .post.format-quote .post__author .post__author__info .post__author__info__name { font-size: 14px; font-weight: 500; display: block; margin: 0; padding: 0; vertical-align: top; }
+body.author content .wrapper .postContainer .post.format-quote .post__author .post__author__info .post__author__info__subtitle { font-size: 14px; font-weight: 400; display: block; color: rgba(0, 0, 0, 0.6); margin: 0; padding: 0; }
+body.author content .wrapper .postContainer .post.format-quote .post__author .post__author__info .post__author__info__subtitle i.material-icons { font-size: 16px; height: 16px; width: 16px; color: rgba(0, 0, 0, 0.6); vertical-align: sub; }
 @media all and (min-width: 800px) { body.author content .wrapper .postContainer { width: 72.5%; margin: 24px 0 0 0; }
   body.author content .wrapper .postContainer .error { display: block; width: 100%; margin: 30vh 0 0 0; }
   body.author content .wrapper .postContainer .error p { margin: 0; padding: 0; font-size: 16px; font-weight: 400; color: rgba(0, 0, 0, 0.6); text-align: center; }

@@ -11,6 +11,6 @@ body.page content .wrapper .main .page .page__content figure.wp-caption figcapti
 @media all and (min-width: 800px) { body.page content .wrapper .main .page { width: 100%; display: block; margin: 0; padding: 0; } }
 body.page content .wrapper aside.sidebar { margin: 16px 0 0 0; display: none; }
 @media all and (min-width: 800px) { body.page content .wrapper aside.sidebar { display: block; width: 22.5%; } }
-body.page content .wrapper aside.sidebar div:not(.widget_social_media) { display: none; }
+body.page content .wrapper aside.sidebar div:not(.widget_social_media):not(.widget_sponsor) { display: none; }
 
 /*# sourceMappingURL=page.css.map */

@@ -111,7 +111,7 @@ body.blog content .wrapper .main .posts .post.format-quote .post__preview cite {
   body.blog content .wrapper .main .posts .post.format-quote .post__preview { display: block; font-size: 16px; font-weight: 400; color: rgba(0, 0, 0, 0.86); margin: 16px; padding: 0 0 0 16px; border-left: 3px solid #2196F3; }
   body.blog content .wrapper .main .posts .post.format-quote .post__preview .post__preview__more { display: inline; font-size: 14px; font-weight: 500; color: rgba(0, 0, 0, 0.56); }
   body.blog content .wrapper .main .posts .post.format-quote .post__preview cite { display: block; margin-top: 8px; font-style: normal; font-size: 14px; color: rgba(0, 0, 0, 0.6); } }
-body.blog content .wrapper .sidebar { display: none; }
+@media all and (max-width: 799px) { body.blog content .wrapper .sidebar > *:not(.widget_sponsor) { display: none; } }
 @media all and (min-width: 800px) { body.blog content .wrapper .sidebar { display: block; width: 22.5%; } }
 
 /*# sourceMappingURL=blog.css.map */

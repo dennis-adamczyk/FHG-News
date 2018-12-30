@@ -108,6 +108,52 @@ dialogbox
       .button
         margin: 0 0 0 8px
 
+  &.info
+    max-width: 364px
+
+    .close
+      position: absolute
+      top: 24px
+      right: 24px
+      cursor: pointer
+      height: 24px
+      width: 24px
+      padding: 8px
+      transform: translate(8px, -8px)
+      -webkit-border-radius: 50%
+      -moz-border-radius: 50%
+      border-radius: 50%
+      overlay: hidden
+
+      i
+        color: rgba(#000000, .54)
+
+    .title
+      display: block
+      font-size: 20px
+      font-weight: 500
+      color: #000000
+      padding: 0
+      margin: 21px 0 16px 24px
+
+    .text
+      display: block
+      font-size: 16px
+      font-weight: 400
+      color: rgba(#000000, .86)
+      line-height: 18px
+      padding: 0
+      margin: 20px 28px 28px 24px
+
+      a
+        color: $secondary
+        word-break: break-word
+        text-decoration: none
+
+        &:hover
+          text-decoration: underline
+
+
   &.share
     .close
       position: absolute
@@ -1264,6 +1310,121 @@ content .wrapper .sidebar
 
                 &:hover
                   opacity: .86
+
+    &.widget_sponsor
+      position: relative
+      padding: 16px
+      -webkit-border-radius: 8px
+      -moz-border-radius: 8px
+      border-radius: 8px
+
+      .sidebar__widget__title
+        margin: 0
+        padding: 0
+        font-size: 16px
+        font-weight: 500
+        color: rgba(#000000, .56)
+
+        &::after
+          content: ''
+          display: block
+          margin: 16px 0 0 0
+          width: 100%
+          height: 1px
+          background-color: rgba(#000000, .24)
+
+      h2
+        margin: 16px 0 8px 0
+        padding: 0
+
+        .sponsor_logo_img
+          display: block
+          margin: 0 auto
+          padding: 0
+          width: 75%
+          height: auto
+
+          img
+            width: 100%
+            height: 100%
+
+        &.hint_icon
+          display: inline-block
+          position: absolute
+          top: 0
+          right: 0
+          padding: 8px
+          margin: 8px 8px 0 0
+          width: 24px
+          height: 24px
+          -webkit-border-radius: 100%
+          -moz-border-radius: 100%
+          border-radius: 100%
+          cursor: pointer
+
+          i
+            color: rgba(#000000, .56)
+
+      @media #{$mobile}
+        position: fixed
+        bottom: 0
+        right: 0
+        left: 0
+        background-color: #fafafa
+        height: 56px
+        padding: 0 16px
+        margin: 0
+        border-radius: 0
+        box-shadow: $elevation--z4--negative
+        overflow: hidden
+        transition: box-shadow 100ms $easing, bottom 100ms $easing
+
+        display: flex
+        flex-wrap: nowrap
+        justify-content: space-between
+        align-items: center
+        align-content: center
+
+        &.widget_sponsor--collapsed
+          bottom: -56px
+          box-shadow: none
+
+        .sidebar__widget__title
+          font-weight: 400
+          color: rgba(#000000, .86)
+
+          &::after
+            display: none
+
+        h2
+          margin: 0
+          max-height: 56px
+
+          .sponsor_logo_img
+            display: block
+            margin: 8px 0
+            padding: 0
+            width: auto
+            height: 40px
+
+            img
+              width: auto
+              height: 100%
+
+          &.hint_icon
+            display: inline-block
+            position: relative
+            padding: 8px
+            margin: 0 -8px 0 0
+            width: 24px
+            height: 24px
+            -webkit-border-radius: 100%
+            -moz-border-radius: 100%
+            border-radius: 100%
+            cursor: pointer
+
+            i
+              color: rgba(#000000, .56)
 
     &.widget_archive
       padding: 16px

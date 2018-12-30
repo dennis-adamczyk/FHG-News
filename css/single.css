@@ -222,7 +222,7 @@ body.single content .wrapper .main .recommended .recommended__posts .recommended
   body.single content .wrapper .main .recommended .recommended__posts .recommended__post .post__foot .post__foot__comments { position: relative; right: auto; margin: 0 24px 0 0; padding: 0; display: inline-flex; height: 24px; align-items: center; }
   body.single content .wrapper .main .recommended .recommended__posts .recommended__post .post__foot .post__foot__comments i { font-size: 24px; color: rgba(0, 0, 0, 0.56); margin: 0 4px 0 0; padding: 0; cursor: pointer; display: inline-block; }
   body.single content .wrapper .main .recommended .recommended__posts .recommended__post .post__foot .post__foot__comments .post__foot__comments__count { font-size: 14px; font-weight: 400; line-height: 14px; color: rgba(0, 0, 0, 0.56); margin: 0; padding: 0; display: inline-block; height: 14px; } }
-body.single content .sidebar { display: none; }
+@media all and (max-width: 799px) { body.single content .sidebar > *:not(.widget_sponsor) { display: none; } }
 @media all and (min-width: 800px) { body.single content .sidebar { display: block; width: 22.5%; } }
 
 @keyframes bounce { from { transform: scale(0); }

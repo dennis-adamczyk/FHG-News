@@ -839,7 +839,9 @@ body.blog
 
 
       .sidebar
-        display: none
+        @media #{$mobile}
+          & > *:not(.widget_sponsor)
+            display: none
 
         @media #{$not-mobile}
           display: block
