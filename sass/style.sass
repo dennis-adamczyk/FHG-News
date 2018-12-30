@@ -1,0 +1,1870 @@
+@import "vars"
+
+// ========================================
+// ===== GENERAL ==========================
+// ========================================
+
+html, body
+  margin: 0
+  padding: 0
+  font-size: 16px
+  font-family: 'Roboto', sans-serif
+  background-color: #FAFAFA
+  width: 100%
+  max-width: 100vw
+  -webkit-tap-highlight-color: rgba(#000000, 0)
+
+.material-icons
+  -webkit-user-select: none
+  -moz-user-select: none
+  -ms-user-select: none
+  user-select: none
+
+.ripple--icon
+  border-radius: 50%
+  overflow: hidden
+
+// ========================================
+// ===== OFFLINE INDICATOR ================
+// ========================================
+
+.offline-indicator
+  padding: .9rem 0
+
+// ========================================
+// ===== HEADER ELEMENTS ==================
+// ========================================
+
+overlay
+  display: none
+  position: fixed
+  left: 0
+  right: 0
+  top: 0
+  bottom: 0
+  width: 100%
+  height: 100%
+  background-color: rgba(#000000, .5)
+  z-index: 10
+
+  &.active
+    display: block
+
+dialogbox
+  display: none
+  min-width: 280px
+  max-width: 432px
+  opacity: 0
+  position: fixed
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+  z-index: 24
+  box-shadow: $elevation--z24
+  background-color: #FFFFFF
+  border-radius: 4px
+  -webkit-user-select: none
+  -moz-user-select: none
+  -ms-user-select: none
+  user-select: none
+
+  &[open]
+    opacity: 1
+    display: block
+
+  &.alert
+    .label
+      display: block
+      font-size: 16px
+      font-weight: 400
+      color: rgba(#000000, .6)
+      line-height: 18px
+      padding: 0
+      margin: 20px 28px 28px 24px
+
+    .buttons
+      display: flex
+      justify-content: flex-end
+      padding: 8px 8px 8px 24px
+
+      .button
+        margin: 0 0 0 8px
+
+  &.html
+    .htmlContent
+      display: block
+      font-size: 16px
+      font-weight: 400
+      color: rgba(#000000, .6)
+      line-height: 18px
+      padding: 0
+      margin: 20px 28px 28px 24px
+
+    .buttons
+      display: flex
+      justify-content: flex-end
+      padding: 8px 8px 8px 24px
+
+      .button
+        margin: 0 0 0 8px
+
+  &.share
+    .close
+      position: absolute
+      top: 24px
+      right: 24px
+      cursor: pointer
+      height: 24px
+      width: 24px
+      padding: 8px
+      transform: translate(8px, -8px)
+      -webkit-border-radius: 50%
+      -moz-border-radius: 50%
+      border-radius: 50%
+      overlay: hidden
+
+      i
+        color: rgba(#000000, .54)
+
+    .label
+      display: block
+      font-size: 20px
+      font-weight: 500
+      color: #000000
+      padding: 0
+      margin: 21px 0 16px 24px
+
+    ul
+      width: 100%
+      height: auto
+      list-style: none
+      padding: 0
+      margin: 0 0 8px 0
+
+      li
+        position: relative
+        display: block
+        height: 56px
+        width: 100%
+        overflow: hidden
+        cursor: pointer
+        transition: background 150ms $easing
+
+        &:hover
+          background-color: rgba(#000000, .08)
+
+        i
+          display: block
+          position: relative
+          left: 24px
+          top: 50%
+          width: 24px
+          height: 24px
+          overflow: hidden
+          transform: translateY(-50%)
+          color: rgba(#000000, .56)
+
+          img
+            width: 100%
+            height: 100%
+            opacity: .56
+
+        p
+          position: absolute
+          left: 80px
+          top: 50%
+          display: inline-block
+          margin: 0
+          padding: 0
+          font-size: 16px
+          font-weight: 400
+          color: rgba(#000000, .86)
+          transform: translateY(-50%)
+
+    @media #{$mobile}
+      width: 100%
+      top: auto
+      left: 0
+      right: 0
+      bottom: 0
+      transform: none
+      border-radius: 16px 16px 0 0
+
+      .close
+        display: none
+
+      .label
+        font-size: 16px
+        font-weight: 400
+        color: rgba(#000000, .54)
+        margin: 21px 0 16px 16px
+
+      ul
+        li
+          i
+            left: 16px
+
+          p
+            left: 72px
+
+  &.select
+    .close
+      position: absolute
+      top: 24px
+      right: 24px
+      cursor: pointer
+      height: 24px
+      width: 24px
+      padding: 8px
+      transform: translate(8px, -8px)
+      -webkit-border-radius: 50%
+      -moz-border-radius: 50%
+      border-radius: 50%
+      overlay: hidden
+
+      i
+        color: rgba(#000000, .54)
+
+    .label
+      display: block
+      font-size: 20px
+      font-weight: 500
+      color: #000000
+      padding: 0
+      margin: 21px 72px 16px 24px
+
+    ul
+      width: 100%
+      height: auto
+      list-style: none
+      padding: 0
+      margin: 0 0 8px 0
+
+      li
+        position: relative
+        display: block
+        height: 56px
+        width: 100%
+        overflow: hidden
+        cursor: pointer
+        transition: background 150ms $easing
+
+        &:hover
+          background-color: rgba(#000000, .08)
+
+        span
+          position: absolute
+          left: 24px
+          top: 50%
+          display: inline-block
+          margin: 0
+          padding: 0
+          font-size: 16px
+          font-weight: 400
+          color: rgba(#000000, .86)
+          transform: translateY(-50%)
+
+    @media #{$mobile}
+      width: 100%
+      top: auto
+      left: 0
+      right: 0
+      bottom: 0
+      transform: none
+      border-radius: 16px 16px 0 0
+
+      .close
+        display: none
+
+      .label
+        font-size: 16px
+        font-weight: 400
+        color: rgba(#000000, .54)
+        margin: 21px 0 16px 16px
+
+      ul
+        li
+          span
+            left: 16px
+
+    &.select--icons
+      ul
+        li
+          i
+            display: block
+            position: relative
+            left: 24px
+            top: 50%
+            width: 24px
+            height: 24px
+            overflow: hidden
+            transform: translateY(-50%)
+            color: rgba(#000000, .56)
+
+            img
+              width: 100%
+              height: 100%
+              opacity: .56
+
+          span
+            position: absolute
+            left: 80px
+            top: 50%
+            display: inline-block
+            margin: 0
+            padding: 0
+            font-size: 16px
+            font-weight: 400
+            color: rgba(#000000, .86)
+            transform: translateY(-50%)
+
+      @media #{$mobile}
+        ul
+          li
+            i
+              left: 16px
+
+            span
+              left: 72px
+
+.snackBox
+  position: fixed
+  display: none
+  left: 8px
+  bottom: 8px
+  right: 8px
+  margin: 0
+  padding: 0
+  z-index: 6
+  overflow: hidden
+  -webkit-user-select: none
+  -moz-user-select: none
+  -ms-user-select: none
+  user-select: none
+
+  @media #{$not-mobile}
+    left: 24px
+    bottom: 24px
+    right: auto
+    min-width: 344px
+
+    @media #{$desktop}
+      left: calc(256px + 24px)
+
+  .snackBar
+    display: none
+    min-height: 48px
+    margin: 8px 0 0 0
+    padding: 0 16px
+    background-color: #323232
+    -webkit-border-radius: 4px
+    -moz-border-radius: 4px
+    border-radius: 4px
+    box-shadow: $elevation--z6
+    overflow: hidden
+
+    p
+      margin: 15px 0
+      padding: 0
+      font-size: 14px
+      font-weight: 400
+      color: rgba(#ffffff, .86)
+      height: 100%
+
+    &.snackBar--action
+      padding: 0 8px 0 16px
+
+      p
+        display: inline-block
+
+      .button
+        display: inline-block
+        float: right
+        margin: 6px 0 6px 16px
+        height: 36px
+        cursor: pointer
+
+        span
+          line-height: 36px
+
+.lightBox
+  position: fixed
+  display: none
+  top: 0
+  right: 0
+  bottom: 0
+  left: 0
+  background-color: #212121
+  z-index: 24
+
+  .lightBox__header
+    position: relative
+    width: 100%
+    height: 56px
+    top: 0
+    left: 0
+    right: 0
+    background-color: rgba(#212121, .64)
+    z-index: 25
+    overflow: hidden
+
+    .lightBox__header__page
+      position: relative
+      left: 16px
+      top: 50%
+      transform: translateY(-50%)
+      margin: 0
+      padding: 0
+      font-size: 20px
+      font-weight: 400
+      color: rgba(#ffffff, .86)
+      -webkit-user-select: none
+      -moz-user-select: none
+      -ms-user-select: none
+      user-select: none
+
+    .lightBox__header__close
+      width: 24px
+      height: 24px
+      position: absolute
+      top: 50%
+      transform: translateY(-50%)
+      right: 16px
+      padding: 8px
+      margin-right: -8px
+      cursor: pointer
+      color: #ffffff
+
+  .lightBox__image
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    -webkit-user-select: none
+    -moz-user-select: none
+    -ms-user-select: none
+    user-select: none
+    -webkit-user-drag: none
+    user-drag: none
+    -webkit-touch-callout: none
+    max-width: 100%
+    max-height: 100%
+
+  .lightBox__left
+    width: 24px
+    height: 24px
+    position: absolute
+    top: 50%
+    transform: translateY(-50%)
+    left: 16px
+    padding: 8px
+    margin-left: -8px
+    cursor: pointer
+    color: #ffffff
+    z-index: 25
+
+  .lightBox__right
+    width: 24px
+    height: 24px
+    position: absolute
+    top: 50%
+    transform: translateY(-50%)
+    right: 16px
+    padding: 8px
+    margin-right: -8px
+    cursor: pointer
+    color: #ffffff
+    z-index: 25
+
+  .lightBox__captionBox
+    position: absolute
+    height: auto
+    bottom: 0
+    left: 0
+    right: 0
+    background-color: rgba(#212121, .64)
+    z-index: 25
+    overflow: hidden
+
+    .lightBox__captionBox__caption
+      margin: 0
+      padding: 16px 16px 8px 16px
+      font-size: 14px
+      font-weight: 400
+      text-align: center
+      color: rgba(#ffffff, .6)
+
+  @media #{$not-mobile}
+
+    .lightBox__header
+      background-color: rgba(#000000, .64)
+      height: 64px
+
+      .lightBox__header__page
+        left: 24px
+
+      .lightBox__header__close
+        right: 24px
+
+    .lightBox__left
+      left: 24px
+
+    .lightBox__right
+      right: 24px
+
+    .lightBox__captionBox
+      background-color: rgba(#000000, .64)
+
+      .lightBox__captionBox__caption
+        text-align: center
+        max-width: 930px
+        margin: 0 auto
+        padding: 24px 0
+        color: #ffffff
+
+.userOptions
+  display: none
+  position: fixed
+  left: 0
+  right: 0
+  bottom: 0
+  background-color: #ffffff
+  -webkit-border-radius: 16px 16px 0 0
+  -moz-border-radius: 16px 16px 0 0
+  border-radius: 16px 16px 0 0
+  overflow: hidden
+  box-shadow: $elevation--z24--negative
+  z-index: 24
+
+  .userOptions__current
+    position: relative
+    margin: 0
+    padding: 0
+    width: 100%
+    height: 80px
+    overflow: hidden
+    border-bottom: 1px solid rgba(#000000, .16)
+
+    .avatar
+      margin: 0
+      padding: 0
+      border-radius: 50%
+      overflow: hidden
+      position: absolute
+      top: 50%
+      left: 16px
+      transform: translateY(-50%)
+      -webkit-user-select: none
+      -moz-user-select: none
+      -ms-user-select: none
+      user-select: none
+      -webkit-user-drag: none
+      user-drag: none
+      -webkit-touch-callout: none
+
+    .userOptions__current__name
+      display: inline-block
+      margin: 0
+      padding: 0
+      position: relative
+      left: 72px
+      top: 22px
+      font-size: 16px
+      font-weight: 500
+      color: rgba(#000000, .86)
+
+    .userOptions__current__mail
+      display: inline-block
+      margin: 0
+      padding: 0
+      position: absolute
+      left: 72px
+      bottom: 22px
+      right: 16px
+      font-size: 14px
+      font-weight: 400
+      text-overflow: ellipsis
+      white-space: nowrap
+      overflow: hidden
+      color: rgba(#000000, .56)
+
+  .userOptions__actions
+    width: 100%
+    height: auto
+    margin: 0
+    padding: 0
+
+    .userOptions__actions__action
+      display: block
+      position: relative
+      width: 100%
+      height: 56px
+
+      .material-icons
+        position: absolute
+        left: 16px
+        top: 50%
+        transform: translateY(-50%)
+        color: rgba(#000000, .56)
+
+      .userOptions__actions__action__name
+        display: inline-block
+        position: relative
+        left: 72px
+        margin: 0
+        padding: 0
+        font-size: 16px
+        font-weight: 400
+        color: rgba(#000000, .86)
+        line-height: 56px
+
+@media #{$not-mobile}
+  body.admin-bar .userOptions
+    top: 32px + 12px !important
+
+  .userOptions
+    right: 20px
+    top: 12px
+    left: auto
+    bottom: auto
+    min-width: 320px
+    background-color: #ffffff
+    -webkit-border-radius: 4px
+    -moz-border-radius: 4px
+    border-radius: 4px
+    overflow: hidden
+    box-shadow: $elevation--z24
+
+    .userOptions__current
+      height: 64px
+      border-bottom: 1px solid rgba(#000000, .24)
+
+      .avatar
+        left: 24px
+
+      .userOptions__current__name
+        left: 80px
+        top: 14px
+
+      .userOptions__current__mail
+        left: 80px
+        bottom: 14px
+
+    .userOptions__actions
+      margin: 8px 0
+
+      .userOptions__actions__action
+        height: 48px
+
+        .material-icons
+          left: 24px
+
+        .userOptions__actions__action__name
+          left: 80px
+          line-height: 48px
+
+// ========================================
+// ===== HEADER ===========================
+// ========================================
+
+@media #{$not-mobile}
+  body.search .header.header--search
+    .header__profile
+      display: block
+
+    .header--search__voice
+      right: 72px
+
+    .header--search__delete
+      right: 72px
+
+body.admin-bar .header
+  @media screen and (min-width: 782px)
+    margin-top: 32px !important
+
+  @media screen and (min-width: 600px) and (max-width: 782px)
+    margin-top: 46px !important
+
+  @media screen and (max-width: 600px)
+    &.header--top
+      top: 46px !important
+
+.header
+  width: 100%
+  height: 56px
+  position: fixed
+  top: 0
+  right: 0
+  left: 0
+  background-color: #FFFFFF
+  box-shadow: $elevation--z4
+  z-index: 4
+  overflow: hidden
+  transition: background 100ms $easing, box-shadow 100ms $easing, top 100ms $easing
+
+  &.header--search
+    top: 0 !important
+    background-color: #FFFFFF !important
+    box-shadow: $elevation--z4 !important
+
+    .header__menu,
+    .header__title,
+    .header__add,
+    .header__search,
+    .header__profile
+      display: none
+
+    .header--search__back
+      width: 24px
+      height: 24px
+      position: absolute
+      top: 50%
+      transform: translateY(-50%)
+      left: 16px
+      padding: 8px
+      margin-left: -8px
+      cursor: pointer
+      color: rgba(#000000, .56)
+
+      @media #{$not-mobile}
+        left: 24px
+
+    .header--search__input
+      display: inline-block
+      font-size: 20px
+      font-weight: 400
+      color: rgba(#000000, .86)
+      position: relative
+      left: 72px
+      top: 50%
+      transform: translateY(-50%)
+      margin: 0
+      padding: 0
+      background-color: transparent
+      border: none
+      height: 48px
+      width: calc(100% - 72px - 64px)
+      outline: none
+
+      &::placeholder,
+      &:-ms-input-placeholder,
+      &::-ms-input-placeholder
+        color: rgba(#000000, .32)
+
+      &:-webkit-autofill
+        background-color: transparent !important
+        color: rgba(#000000, .86) !important
+
+      @media #{$not-mobile}
+        left: 80px
+        width: calc(100% - 80px - 56px)
+
+    .header--search__voice
+      width: 24px
+      height: 24px
+      position: absolute
+      top: 50%
+      transform: translateY(-50%)
+      right: 16px
+      padding: 8px
+      margin-right: -8px
+      cursor: pointer
+      color: rgba(#000000, .56)
+
+      @media #{$not-mobile}
+        right: 24px
+
+    .header--search__delete
+      display: none
+      width: 24px
+      height: 24px
+      position: absolute
+      top: 50%
+      transform: translateY(-50%)
+      right: 16px
+      padding: 8px
+      margin-right: -8px
+      cursor: pointer
+      color: rgba(#000000, .56)
+
+      @media #{$not-mobile}
+        right: 24px
+
+  &.header--top
+    background-color: #FAFAFA
+    box-shadow: none
+    top: 0 !important
+
+  &.header--collapsed
+    top: -56px
+
+    @media #{$not-mobile}
+      top: -64px
+
+  @media #{$not-mobile}
+    height: 64px
+
+  @media #{$desktop}
+    left: auto
+    width: calc(100% - 256px)
+
+  .header__menu
+    width: 24px
+    height: 24px
+    position: absolute
+    top: 50%
+    transform: translateY(-50%)
+    left: 16px
+    padding: 8px
+    margin-left: -8px
+    cursor: pointer
+    color: rgba(#000000, .56)
+
+    @media #{$not-mobile}
+      left: 24px
+
+    @media #{$desktop}
+      &.header__menu--menu
+        display: none
+
+  .header__title
+    display: inline-block
+    font-size: 20px
+    font-weight: 400
+    color: rgba(#000000, 1)
+    position: relative
+    left: 72px
+    top: 50%
+    transform: translateY(-50%)
+    margin: 0
+    padding: 0
+
+    @media #{$not-mobile}
+      left: 80px
+
+  .header__add
+    width: 24px
+    height: 24px
+    position: absolute
+    top: 50%
+    transform: translateY(-50%)
+    right: 128px
+    padding: 8px
+    margin-right: -8px
+    cursor: pointer
+    color: rgba(#000000, .56)
+
+    @media #{$not-mobile}
+      right: 120px
+
+  .header__search
+    width: 24px
+    height: 24px
+    position: absolute
+    top: 50%
+    transform: translateY(-50%)
+    right: 72px
+    padding: 8px
+    margin-right: -8px
+    cursor: pointer
+    color: rgba(#000000, .56)
+
+    @media #{$not-mobile}
+      right: 72px
+
+  .header__profile
+    width: 32px
+    height: 32px
+    background-color: rgba(#000000, .24)
+    position: absolute
+    top: 50%
+    transform: translateY(-50%)
+    right: 16px
+    cursor: pointer
+    -webkit-border-radius: 100%
+    -moz-border-radius: 100%
+    border-radius: 100%
+
+    img
+      -webkit-user-select: none
+      -moz-user-select: none
+      -ms-user-select: none
+      user-select: none
+      -webkit-user-drag: none
+      user-drag: none
+      -webkit-touch-callout: none
+
+    @media #{$not-mobile}
+      right: 24px
+
+// ========================================
+// ===== NAVIGATION =======================
+// ========================================
+
+body.admin-bar .nav
+  @media screen and (min-width: 782px)
+    top: 32px !important
+
+  @media screen and (min-width: 600px) and (max-width: 782px)
+    top: 46px !important
+
+  @media screen and (max-width: 600px)
+    z-index: 100000
+
+.nav
+  width: calc(100vw - 64px)
+  max-width: 280px
+  z-index: 16
+  box-shadow: $elevation--z16
+  background-color: #FFFFFF
+  position: fixed
+  top: 0
+  left: -100%
+  bottom: 0
+  overflow: hidden
+  overflow-y: auto
+  transition: left 200ms $easing--accelerate
+
+  @media #{$not-mobile}
+    width: 256px
+
+  @media #{$desktop}
+    left: 0
+    z-index: 4
+    box-shadow: none
+    border-right: solid 1px rgba(#000000, .24)
+    transition: none
+
+  &.active
+    left: 0
+    transition: left 250ms $easing--decelerate
+
+  .nav__logo
+    height: 20px
+    width: auto
+    display: block
+    margin: 0 auto
+    position: relative
+    top: calc((56px - 20px) / 2)
+    cursor: pointer
+
+    @media #{$not-mobile}
+      top: calc((64px - 20px) / 2)
+
+  div
+    position: absolute
+    top: 78px
+    width: 100%
+    height: auto
+    margin: 0
+    padding: 0
+
+    ul
+      width: 100%
+      height: auto
+      padding: 0
+      margin: 0
+      list-style: none
+
+      li
+        position: relative
+        width: calc(100% - 8px)
+        height: 40px
+        display: block
+        margin: 0 auto 8px 0
+        border-radius: 0 20px 20px 0
+        cursor: pointer
+        transition: background-color 150ms $easing
+
+        &::before
+          content: 'label_important'
+          font-family: 'Material Icons', sans-serif
+          font-weight: normal
+          font-style: normal
+          line-height: 1
+          letter-spacing: normal
+          text-transform: none
+          white-space: nowrap
+          word-wrap: normal
+          direction: ltr
+          -webkit-font-feature-settings: 'liga'
+          -webkit-font-smoothing: antialiased
+          -webkit-user-select: none
+          -moz-user-select: none
+          -ms-user-select: none
+          user-select: none
+          display: inline-block
+          position: absolute
+          top: 8px
+          left: 16px
+          width: 24px
+          height: 24px
+          font-size: 24px
+          color: rgba(#000000, .56)
+
+        &.news::before
+          content: 'update'
+
+        &.ueber-uns::before
+          content: 'supervisor_account'
+
+        &.dein-beitrag::before
+          content: 'edit'
+
+        &.kontakt::before
+          content: 'message'
+
+        &.impressum::before
+          content: 'info'
+
+        &.datenschutz::before
+          content: 'reorder'
+
+        &:hover
+          background-color: rgba(#000000, .08)
+
+        &.current-menu-item
+          background-color: rgba(#000000, .16)
+
+          &::before
+            color: rgba(#000000, 1)
+
+          a
+            color: rgba(#000000, 1)
+
+      a
+        font-size: 16px
+        font-weight: 400
+        text-decoration: none
+        color: rgba(#000000, .86)
+        position: relative
+        display: block
+        width: 100%
+        height: 100%
+        line-height: 40px
+
+        &::before
+          content: ''
+          display: inline-block
+          width: 64px
+
+// ========================================
+// ===== CONTENT ==========================
+// ========================================
+
+content
+  display: block
+  width: 100%
+  height: auto
+  padding: 56px 0 0 0
+  margin: 0
+
+  @media #{$not-mobile}
+    padding: 64px 0 0 0
+
+  @media #{$desktop}
+    padding: 64px 0 0 256px
+    width: calc(100% - 256px)
+
+  a
+    color: $secondary
+    word-break: break-word
+    text-decoration: none
+
+    &:hover
+      text-decoration: underline
+
+  /* SEARCH SUGGESTIONS */
+
+  .searchSuggestions
+    position: fixed
+    top: 0
+    right: 0
+    left: 0
+    bottom: 0
+    background-color: #FAFAFA
+    z-index: 3
+    overflow: auto
+
+    ul
+      list-style: none
+      padding: 10px 0 0 0
+      margin: 56px 0 0 0
+
+      li
+        position: relative
+        display: block
+        height: 40px
+        width: 100%
+        overflow: hidden
+        cursor: pointer
+
+        .searchSuggestions__icon
+          width: 24px
+          height: 24px
+          position: absolute
+          top: 50%
+          transform: translateY(-50%)
+          left: 16px
+          padding: 8px
+          margin-left: -8px
+          color: rgba(#000000, .56)
+
+        p
+          position: relative
+          left: 72px
+          margin: 0
+          padding: 0
+          display: inline-block
+          -webkit-user-select: none
+          -moz-user-select: none
+          -ms-user-select: none
+          user-select: none
+          height: 40px
+          line-height: 40px
+          font-size: 14px
+          font-weight: 400
+          color: #000000
+
+        .searchSuggestions__insert
+          width: 24px
+          height: 24px
+          position: absolute
+          top: 50%
+          transform: translateY(-50%)
+          right: 16px
+          padding: 8px
+          margin-right: -8px
+          border-radius: 50%
+          overflow: hidden
+
+          img
+            opacity: .56
+            height: 24px
+            width: 24px
+
+    @media #{$not-mobile}
+      position: fixed
+      width: calc(100% - 80px - 56px)
+      top: 64px
+      right: auto
+      left: calc(80px - 8px)
+      bottom: auto
+      background-color: #FAFAFA
+      z-index: 3
+      border-radius: 0 0 4px 4px
+      overflow: hidden
+      box-shadow: $elevation--z3
+
+      @media #{$desktop}
+        left: calc(256px + 80px - 8px)
+        width: calc(100% - 256px - 80px - 56px)
+
+      ul
+        padding: 0
+        margin: 8px 0 0 0
+
+        li
+          transition: background 150ms $easing
+
+          &:hover,
+          &.selectedSug
+            background-color: rgba(#000000, .08)
+
+            .searchSuggestions__delete
+              display: inline-block
+
+          p
+            left: 8px
+            font-size: 16px
+            color: rgba(#000000, .86)
+
+          .searchSuggestions__delete
+            display: none
+            width: 24px
+            height: 24px
+            position: absolute
+            top: 50%
+            transform: translateY(-50%)
+            right: 16px
+            padding: 8px
+            margin-right: -8px
+            border-radius: 50%
+            overflow: hidden
+            color: rgba(#000000, .56)
+
+// ========================================
+// ===== SIDEBAR ==========================
+// ========================================
+
+content .wrapper .sidebar
+  margin: 72px 0 0 0
+
+  .sidebar__widget
+    margin: 0 0 24px 0
+
+    &:nth-child(odd)
+      background-color: rgba(#000000, .08)
+
+    &:nth-child(even)
+      border: 1px solid rgba(#000000, .24)
+
+    &.widget_social_media
+      padding: 16px
+      -webkit-border-radius: 8px
+      -moz-border-radius: 8px
+      border-radius: 8px
+
+      .sidebar__widget__title
+        margin: 0
+        padding: 0
+        font-size: 16px
+        font-weight: 500
+        color: rgba(#000000, .56)
+
+        &::after
+          content: ''
+          display: block
+          margin: 16px 0 0 0
+          width: 100%
+          height: 1px
+          background-color: rgba(#000000, .24)
+
+      h2
+        margin: 16px 0 8px 0
+        padding: 0
+
+        ul
+          list-style: none
+          margin: 0
+          padding: 0
+
+          li
+            margin: 0
+            padding: 0
+            display: inline-block
+
+            a
+              margin: 0 16px 0 0
+              height: 32px
+              width: 32px
+              text-decoration: none
+              display: block
+
+              img
+                width: 100%
+                height: 100%
+                opacity: .56
+                transition: opacity 150ms $easing
+
+                &:hover
+                  opacity: .86
+
+    &.widget_archive
+      padding: 16px
+      -webkit-border-radius: 8px
+      -moz-border-radius: 8px
+      border-radius: 8px
+
+      .sidebar__widget__title
+        margin: 0
+        padding: 0
+        font-size: 16px
+        font-weight: 500
+        color: rgba(#000000, .56)
+
+        &::after
+          content: ''
+          display: block
+          margin: 16px 0 0 0
+          width: 100%
+          height: 1px
+          background-color: rgba(#000000, .24)
+
+      h2
+        margin: 16px 0 8px 0
+        padding: 0
+
+        ul
+          list-style: none
+          margin: 0
+          padding: 0
+
+          li
+            margin: 8px 0 0 0
+            padding: 0
+
+            a
+              font-size: 16px
+              font-weight: 500
+              color: rgba(#000000, .86)
+              text-decoration: none
+
+              &:hover
+                text-decoration: underline
+
+    &.widget_categories
+      padding: 16px
+      -webkit-border-radius: 8px
+      -moz-border-radius: 8px
+      border-radius: 8px
+
+      .sidebar__widget__title
+        margin: 0
+        padding: 0
+        font-size: 16px
+        font-weight: 500
+        color: rgba(#000000, .56)
+
+        &::after
+          content: ''
+          display: block
+          margin: 16px 0 0 0
+          width: 100%
+          height: 1px
+          background-color: rgba(#000000, .24)
+
+      h2
+        margin: 0 0 8px 0
+        padding: 0
+
+        ul
+          list-style: none
+          margin: 0
+          padding: 0
+
+          li
+            margin: 0
+            padding: 0
+            display: inline-block
+
+            &.cat-item-none
+              font-size: 14px
+              font-weight: 400
+              color: rgba(#000000, .6)
+              display: block
+              margin: 8px auto
+              text-align: center
+
+            ul
+              display: none
+
+            a
+              margin: 8px 8px 0 0
+              padding: 6px 12px
+              height: 18px
+              width: auto
+              background-color: rgba(#FFFFFF, .86)
+              border-radius: 8px
+              border: 1px solid rgba(#000000, .24)
+              font-size: 14px
+              font-weight: 500
+              color: rgba(#000000, .86)
+              text-decoration: none
+              display: block
+
+              transition: color 180ms $easing--decelerate, background-color 180ms $easing--decelerate, border 150ms $easing
+
+              &:hover
+                border: 1px solid rgba(#000000, .48)
+
+// ========================================
+// ===== MATERIAL UTILITIES ===============
+// ========================================
+
+.material-loader
+  position: relative
+  margin: 0
+  width: 48px
+
+  &::before
+    content: ''
+    display: block
+    padding-top: 100%
+
+  .material-loader__circular
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    margin: auto
+    width: 100%
+    height: 100%
+    transform-origin: center center
+    animation: rotate 2000ms linear infinite
+
+    .material-loader__circular__path
+      stroke: $secondary
+      stroke-dasharray: 1, 200
+      stroke-dashoffset: 0
+      stroke-linecap: square
+      animation: dash 1500ms ease-in-out infinite
+
+  &.material-loader--small
+    width: 28px
+
+    .material-loader__circular .material-loader__circular__path
+      stroke-width: 5
+
+@keyframes rotate
+  100%
+    transform: rotate(360deg)
+
+@keyframes dash
+  0%
+    stroke-dasharray: 1, 200
+    stroke-dashoffset: 0
+  50%
+    stroke-dasharray: 89, 200
+    stroke-dashoffset: -35px
+  100%
+    stroke-dasharray: 89, 200
+    stroke-dashoffset: -124px
+
+// ========================================
+// ===== INPUTS ===========================
+// ========================================
+
+.input
+  position: relative
+  width: 100%
+  min-height: 75px
+
+  input
+    min-width: 280px - 56px
+    width: calc(100% - 56px)
+    padding: 8px 44px 0 12px
+    position: relative
+    z-index: 1
+    height: 48px
+    font-size: 16px
+    font-weight: 400
+    color: rgba(#000000, .86)
+    border: none
+    border-bottom: 1px solid rgba(#000000, .6)
+    border-top-left-radius: 4px
+    border-top-right-radius: 4px
+    background-color: rgba(#000000, .04)
+    caret-color: $secondary
+    overflow: hidden
+    outline: none
+    cursor: pointer
+    -webkit-transition: border 180ms $easing, background 180ms $easing, height 180ms $easing
+    -moz-transition: border 180ms $easing, background 180ms $easing, height 180ms $easing
+    -ms-transition: border 180ms $easing, background 180ms $easing, height 180ms $easing
+    -o-transition: border 180ms $easing, background 180ms $easing, height 180ms $easing
+    transition: border 180ms $easing, background 180ms $easing, height 180ms $easing
+
+    &:not(:focus)::placeholder
+      color: transparent
+
+    &::placeholder
+      color: rgba(#000000, .6)
+      -webkit-transition: color 180ms $easing
+      -moz-transition: color 180ms $easing
+      -ms-transition: color 180ms $easing
+      -o-transition: color 180ms $easing
+      transition: color 180ms $easing
+
+    &:active
+      background-color: rgba(#000000, .06)
+
+    &:focus
+      height: 47px
+      border-bottom: 2px solid $secondary
+      cursor: text
+
+      & ~ .material-icons
+        display: inline-block
+
+      & ~ .label
+        top: 6px
+        font-size: 12px
+        color: $secondary
+        cursor: text
+
+      &:required ~ .label::after
+        color: $red
+
+    &.hasValue
+      & ~ label.label
+        top: 6px
+        font-size: 12px
+
+      & ~ .material-icons
+        display: inline-block
+
+    &:-webkit-autofill
+      -webkit-box-shadow: 0 0 0 30px #F5F5F5 inset !important
+
+      & ~ .label
+        z-index: 1
+
+    & ~ .label
+      position: absolute
+      top: 22px
+      left: 12px
+      font-size: 16px
+      color: rgba(#000000, .6)
+      cursor: pointer
+      -webkit-transition: all 180ms $easing
+      -moz-transition: all 180ms $easing
+      -ms-transition: all 180ms $easing
+      -o-transition: all 180ms $easing
+      transition: all 180ms $easing
+
+    &:required ~ .label::after
+      margin-left: 1px
+      content: '*'
+
+  .material-icons
+    display: none
+    position: absolute
+    top: 16px
+    right: 12px
+    color: rgba(#000000, .56)
+    cursor: pointer
+    z-index: 1
+
+  label.error
+    display: block
+    position: relative
+    margin: 4px 0 0 12px
+    font-size: 12px
+    color: rgba(#000000, .6)
+    -webkit-transition: all 180ms $easing
+    -moz-transition: all 180ms $easing
+    -ms-transition: all 180ms $easing
+    -o-transition: all 180ms $easing
+    transition: all 180ms $easing
+
+  &.input--password.input--strength
+    input
+      position: relative
+      border-bottom-color: rgba(0, 0, 0, 0.6)
+
+      &:focus ~ .strength
+        opacity: 1
+
+    .strength
+      display: block
+      content: ''
+      position: absolute
+      top: 55px
+      height: 2px
+      min-width: 1%
+      background-color: $red
+      opacity: 0
+      z-index: 2
+      transition: opacity 150ms $easing, width 150ms $easing, background 150ms $easing
+
+  &.isInvalid
+    input
+      border-bottom: 1px solid $red
+
+      &:focus
+        border-bottom: 2px solid $red
+
+        & ~ .label
+          color: $red
+
+      & ~ .label
+        animation: shake 650ms linear
+        color: $red
+
+    .material-icons:not(.leadingIcon)
+      display: inline-block
+      color: transparent
+
+      &::after
+        display: inline-block
+        position: absolute
+        top: 0
+        left: 0
+        color: $red
+        content: "error"
+
+    label.error
+      color: $red
+
+  &.input--leadingIcon
+    input
+      min-width: 280px - 92px
+      width: calc(100% - 92px)
+      padding: 8px 44px 0 48px
+
+      & ~ .label
+        left: 48px
+
+    .leadingIcon
+      display: inline-block
+      position: absolute
+      top: 16px
+      left: 12px
+      width: 24px
+      height: 24px
+      color: #000000
+      opacity: .56
+      cursor: pointer
+      z-index: auto
+
+      img
+        width: 24px
+        height: 24px
+
+  &.input--textarea
+    position: relative
+    width: 100%
+    min-height: 75px
+
+    textarea
+      min-width: 280px - 2 * 12px
+      width: calc(100% - 2 * 12px)
+      padding: 24px 12px 0 12px
+      position: relative
+      z-index: 1
+      height: 32px
+      font-family: 'Roboto', sans-serif
+      font-size: 16px
+      font-weight: 400
+      color: rgba(#000000, .86)
+      border: none
+      border-bottom: 1px solid rgba(#000000, .6)
+      border-top-left-radius: 4px
+      border-top-right-radius: 4px
+      background-color: rgba(#000000, .04)
+      caret-color: $secondary
+      overflow: hidden
+      outline: none
+      resize: none
+      cursor: pointer
+      -webkit-transition: border 180ms $easing, background 180ms $easing
+      -moz-transition: border 180ms $easing, background 180ms $easing
+      -ms-transition: border 180ms $easing, background 180ms $easing
+      -o-transition: border 180ms $easing, background 180ms $easing
+      transition: border 180ms $easing, background 180ms $easing
+
+      &:not(:focus)::placeholder
+        color: transparent
+
+      &::placeholder
+        color: rgba(#000000, .6)
+        -webkit-transition: color 180ms $easing
+        -moz-transition: color 180ms $easing
+        -ms-transition: color 180ms $easing
+        -o-transition: color 180ms $easing
+        transition: color 180ms $easing
+
+
+      &:active
+        background-color: rgba(#000000, .06)
+
+      &:focus
+        border-bottom: 2px solid $secondary
+        cursor: text
+
+        & ~ .label
+          top: 6px
+          font-size: 12px
+          color: $secondary
+          cursor: text
+
+        &:required ~ .label::after
+          color: $red
+
+      &.hasValue
+        & ~ label.label
+          top: 6px
+          font-size: 12px
+
+      & ~ .label
+        position: absolute
+        top: 22px
+        left: 12px
+        font-size: 16px
+        color: rgba(#000000, .6)
+        cursor: pointer
+        -webkit-transition: all 180ms $easing
+        -moz-transition: all 180ms $easing
+        -ms-transition: all 180ms $easing
+        -o-transition: all 180ms $easing
+        transition: all 180ms $easing
+
+      &:required ~ .label::after
+        margin-left: 1px
+        content: '*'
+
+    &.isInvalid
+      textarea
+        border-bottom: 1px solid $red
+
+        &:focus
+          border-bottom: 2px solid $red
+
+          & ~ .label
+            color: $red
+
+        & ~ .label
+          animation: shake 650ms linear
+          color: $red
+
+      .material-icons:not(.leadingIcon)
+        display: inline-block
+        color: transparent
+
+        &::after
+          display: inline-block
+          position: absolute
+          top: 0
+          left: 0
+          color: $red
+          content: "error"
+
+      label.error
+        color: $red
+
+  &.input--line
+    &.input--textarea
+      position: relative
+      min-height: auto
+
+      &:hover textarea
+        border-bottom: 1px solid rgba(#000000, .6)
+
+      textarea
+        width: 100%
+        min-width: 100%
+        max-width: 100%
+        resize: none
+        height: 35px
+        margin: 0
+        padding: 0
+        border: none
+        border-bottom: 1px solid rgba(#000000, .24)
+        outline: none
+        font-size: 16px
+        color: rgba(#000000, .86)
+        font-family: 'Roboto', sans-serif
+        line-height: 35px
+        background: transparent
+        z-index: 1
+        caret-color: $secondary
+        cursor: pointer
+        transition: border 150ms $easing
+
+        &:-moz-ui-invalid:not(output)
+          box-shadow: none !important
+
+        &:hover
+          border-bottom: 1px solid rgba(#000000, .6)
+
+        &:focus
+          cursor: text
+          outline: none
+          border-color: $secondary
+
+        &:focus + label.input__label,
+        &.hasValue + label.input__label
+          top: -15px
+          color: $secondary
+          font-size: 12px
+
+        &.hasValue:not(:focus) + label.input__label
+          color: rgba(#000000, .6)
+
+      &.input--placeholderDisappear textarea:focus + label.input__label,
+      &.input--placeholderDisappear textarea.hasValue + label.input__label
+        display: none
+
+      label.input__label
+        position: absolute
+        top: 10px
+        left: 3px
+        font-size: 16px
+        color: rgba(#000000, .6)
+        transition: all 150ms $easing
+        -webkit-user-select: none
+        -moz-user-select: none
+        -ms-user-select: none
+        user-select: none
+        cursor: pointer
+
+div.button,
+a.button
+  min-height: 36px
+  min-width: 64px
+  display: inline-block
+  padding: 0 16px
+  border-radius: 4px
+  overflow: hidden
+  box-shadow: $elevation--z2
+  background-color: $secondary
+  cursor: pointer
+
+  &:hover
+    text-decoration: none
+
+  span
+    display: block
+    text-align: center
+    line-height: 36px
+    font-size: 14px
+    font-weight: 400
+    color: #ffffff
+    text-transform: uppercase
+    -webkit-user-select: none
+    -moz-user-select: none
+    -ms-user-select: none
+    user-select: none
+
+  &.button--flat
+    box-shadow: none
+    background-color: transparent
+    padding: 0 8px
+
+    span
+      font-weight: 500
+      color: $secondary
+
+  &.button--light
+    background-color: #ffffff
+
+    span
+      font-weight: 500
+      color: $secondary
+
+input.submit
+  height: 36px
+  min-width: 64px
+  display: inline-block
+  padding: 0 16px
+  border: none
+  border-radius: 4px
+  overflow: hidden
+  box-shadow: $elevation--z2
+  background-color: $secondary
+  text-align: center
+  line-height: 36px
+  font-size: 14px
+  font-weight: 400
+  color: #ffffff
+  text-transform: uppercase
+  outline: none
+  cursor: pointer
+  transition: box-shadow 150ms $easing, background 150ms $easing
+
+  &:active
+    background-color: lighten($secondary, 10)
+    box-shadow: $elevation--z8
+
+@keyframes shake
+  100%,
+  0%
+    transform: translate3d(0, 0, 0)
+
+  15%, 45%, 75%
+    transform: translate3d(5px, 0, 0)
+
+  30%, 60%, 90%
+    transform: translate3d(-5px, 0, 0)

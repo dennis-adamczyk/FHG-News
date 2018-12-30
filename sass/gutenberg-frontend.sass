@@ -1,0 +1,274 @@
+@import "vars"
+
+.post__content,
+.page__content
+
+  // ################################
+  //    PARAGRAPHS
+  // ################################
+
+  p
+    &.has-small-font-size
+      font-size: 13px
+
+    &.has-medium-font-size
+      font-size: 18px
+
+    &.has-large-font-size
+      font-size: 24px
+
+    &.has-huge-font-size
+      font-size: 32px
+      line-height: 48px
+
+    strong,
+    b
+      font-weight: 500
+
+  // ################################
+  //    COVER IMAGE
+  // ################################
+
+  .wp-block-cover
+    border-radius: 4px
+    overflow: hidden
+
+    .wp-block-cover-text
+      font-weight: 300
+      font-size: 24px
+
+      @media #{$not-mobile}
+        font-size: 32px
+
+  // ################################
+  //    HEADINGS
+  // ################################
+
+  h1
+    font-size: 24px
+    font-weight: 500
+    padding: 0
+    margin: 32px 0 16px 0
+    color: #000000
+
+    @media #{$not-mobile}
+      font-size: 32px
+
+  h2
+    font-size: 24px
+    font-weight: 500
+    padding: 0
+    margin: 24px 0 16px
+    color: rgba(#000000, .86)
+
+  h3
+    font-size: 24px
+    font-weight: 300
+    padding: 0
+    margin: 20px 0 16px
+    color: #000000
+
+  h4
+    font-size: 20px
+    font-weight: 500
+    padding: 0
+    margin: 20px 0 16px
+    color: #000000
+
+  h5
+    font-size: 18px
+    font-weight: 500
+    padding: 0
+    margin: 18px 0 16px
+    color: #000000
+
+  h6
+    font-size: 16px
+    font-weight: 500
+    padding: 0
+    margin: 16px 0 16px
+    color: #000000
+
+  // ################################
+  //    IMAGE WITH CAPTION
+  // ################################
+
+  .wp-block-image
+    cursor: pointer
+
+    figcaption
+      font-size: 14px
+      font-weight: 400
+      line-height: 16px
+      color: rgba(#000000, .6)
+      margin-top: 0
+
+    @media #{$mobile}
+      &.alignright,
+      &.alignleft
+        float: none
+        margin-left: auto
+        margin-right: auto
+
+    img
+      border-radius: 4px
+      overflow: hidden
+      height: auto
+      cursor: pointer
+
+  // ################################
+  //    VIDEO
+  // ################################
+
+  .wp-block-video
+    cursor: pointer
+
+    video
+      border-radius: 4px
+
+      @media #{$mobile}
+        width: 100%
+
+    figcaption
+      line-height: normal
+
+  // ################################
+  //    SEPARATOR
+  // ################################
+
+  .wp-block-separator
+    margin-top: 32px
+    margin-bottom: 32px
+    width: 100px
+    border: 1px solid rgba(#000000, .48)
+
+    &.is-style-wide
+      width: 100%
+      border: 0.5px solid rgba(#000000, .24)
+
+    &.is-style-dots
+      width: 100%
+      border: none
+
+  // ################################
+  //    QUOTE
+  // ################################
+
+  .wp-block-quote
+    margin-left: 0
+    margin-right: 0
+    padding-left: 16px
+    border-left: 3px solid $secondary
+
+    cite
+      font-style: normal
+      font-size: 14px
+      color: rgba(#000000, .6)
+
+    &.is-style-large
+      padding-left: 32px
+      padding-right: 32px
+      border-left: none
+
+      p
+        text-align: left
+        font-size: 24px
+        font-weight: 300
+        font-style: normal
+        line-height: 32px
+        margin-bottom: 16px
+
+  // ################################
+  //    PULLQUOTE
+  // ################################
+
+  .wp-block-pullquote
+    border-top: 3px solid rgba(#000000, .48)
+    border-bottom: 3px solid rgba(#000000, .48)
+    padding: 32px 0
+
+    blockquote
+      margin: 0 64px
+
+      @media #{$mobile}
+        margin: 0 48px
+
+      p
+        font-size: 24px
+        line-height: 32px
+        margin: 0 0 16px 0
+
+      cite
+        font-size: 14px
+        font-style: normal
+        text-transform: uppercase
+
+  // ################################
+  //    GALLERY
+  // ################################
+
+  .wp-block-gallery
+    .blocks-gallery-item
+      figure
+        border-radius: 4px
+        overflow: hidden
+        cursor: pointer
+
+        img
+          border-radius: 4px
+          overflow: hidden
+
+        figcaption
+          font-size: 14px
+          font-weight: 400
+          line-height: 16px
+          color: #ffffff
+          padding: 32px 8px 4px 8px
+          width: calc(100% - 16px)
+          border-bottom-left-radius: 4px
+          border-bottom-right-radius: 4px
+          overflow: hidden
+
+  // ################################
+  //    EMBEDED
+  // ################################
+
+  .wp-block-embed
+    margin-left: auto
+    margin-right: auto
+    width: 100%
+
+    .wp-block-embed__wrapper
+      position: relative
+      height: auto
+      width: 100%
+
+      iframe
+        width: 100%
+        min-height: 100%
+
+    &.wp-embed-aspect-16-9
+      .wp-block-embed__wrapper
+        position: relative
+        padding-bottom: 56.25%
+        padding-top: 0
+        height: 0
+
+        iframe
+          position: absolute
+          top: 0
+          left: 0
+          width: 100%
+          height: 100%
+
+  // ################################
+  //    MEDIA TEXT
+  // ################################
+
+  .wp-block-media-text
+    .wp-block-media-text__media
+      cursor: pointer
+
+      img
+        border-radius: 4px
+        overflow: hidden

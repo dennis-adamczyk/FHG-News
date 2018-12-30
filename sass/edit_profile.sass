@@ -1,0 +1,400 @@
+@import "vars"
+
+body.edit_profile
+
+  .nav div ul li.current-menu-item
+    background-color: initial
+
+    a
+      color: rgba(0, 0, 0, 0.86)
+
+    &::before
+      color: rgba(0, 0, 0, 0.56)
+
+  .header__done
+    width: 24px
+    height: 24px
+    position: absolute
+    top: 50%
+    transform: translateY(-50%)
+    right: 16px
+    padding: 8px
+    margin-right: -8px
+    cursor: pointer
+    color: $secondary
+    transition: all 150ms $easing
+
+    @media #{$not-mobile}
+      right: 24px
+
+    .material-loader
+      opacity: 0
+      position: absolute
+      width: 24px
+      top: 8px
+      left: 8px
+      right: 8px
+      bottom: 8px
+      transition: opacity 150ms $easing
+
+      .material-loader__circular__path
+        stroke-width: 4
+
+    .material-icons
+      transition: opacity 150ms $easing
+
+    &.loading
+      cursor: default
+
+      .material-icons
+        opacity: 0
+
+      .material-loader
+        opacity: 1
+
+  content
+
+    .wrapper
+      @media #{$not-mobile}
+        margin: 0 80px
+
+      #edit_profile
+        width: 100%
+        margin: 24px 0
+
+        .section
+          margin: 0 0 24px 0
+          padding: 0 16px
+          border-bottom: 1px solid rgba(#000000, .16)
+
+          &:last-of-type
+            border-bottom: none
+
+          &:first-of-type .section__title
+            display: none
+
+          .section__title
+            margin: -8px 0 24px 0
+            font-size: 14px
+            font-weight: 500
+            color: rgba(#000000, .6)
+            -webkit-user-select: none
+            -moz-user-select: none
+            -ms-user-select: none
+            user-select: none
+
+          &.general
+
+            .general__profilePicture
+              width: 100%
+              margin: 0 0 24px 0
+              padding: 0
+
+              .general__profilePicture__current
+                display: block
+                margin: 0 auto 8px auto
+                padding: 0
+                width: 96px
+                height: 96px
+                border-radius: 24px
+                overflow: hidden
+
+                img
+                  width: 100%
+                  height: 100%
+                  -webkit-user-select: none
+                  -moz-user-select: none
+                  -ms-user-select: none
+                  user-select: none
+                  -webkit-user-drag: none
+                  user-drag: none
+                  -webkit-touch-callout: none
+
+              .general__profilePicture__change
+                position: relative
+                left: 50%
+                transform: translateX(-50%)
+
+              input
+                display: none
+
+            .general__resetPassword
+              margin: 0 auto 24px auto
+
+          .input
+            margin: 0 0 5px 0
+
+        .info
+          margin: 8px 16px 16px 16px
+          font-size: 14px
+          font-weight: 400
+          color: rgba(#000000, .6)
+
+        .submit
+          display: none
+
+        @media all and (min-width: 1150px)
+          display: flex
+          flex-wrap: wrap
+          justify-content: space-between
+          margin: 32px 0 24px 0
+
+          .section
+            display: grid
+            grid-template: auto / auto
+            grid-gap: 0px 24px
+            align-items: center
+            margin: 0
+            padding: 0
+            border-bottom: none
+
+            &:first-of-type .section__title
+              display: block
+
+            .section__title
+              display: block
+              grid-area: title
+              margin: 0 0 16px 0
+              font-size: 16px
+              color: rgba(#000000, .56)
+
+            &.general
+              grid-template: auto / 144px auto auto auto auto auto auto
+              grid-template-areas: "title title title title title title title" "picture displayname displayname displayname email email email" "picture firstname firstname lastname lastname resetpassword resetpassword"
+              width: 100%
+              margin: 0 0 32px 0
+
+              .general__profilePicture
+                display: inline-block
+                grid-area: picture
+                width: auto
+                margin: 0
+
+                .general__profilePicture__current
+                  width: 128px
+                  height: 128px
+
+              .general__displayname
+                grid-area: displayname
+
+              .general__email
+                grid-area: email
+
+              .general__firstname
+                grid-area: firstname
+
+              .general__lastname
+                grid-area: lastname
+
+              .general__resetPassword
+                grid-area: resetpassword
+                justify-self: start
+                margin: 0
+
+            &.personal
+              grid-template-areas: "title" "website" "biography"
+              width: calc(42% - 12px)
+
+              .personal__website
+                grid-area: website
+
+              .personal__biography
+                grid-area: biography
+
+            &.socialMedia
+              grid-template: auto / auto
+              grid-template-areas: "title title" "facebook twitter" "instagram snapchat"
+              width: calc(58% - 12px)
+              height: fit-content
+
+              .socialMedia__facebook
+                grid-area: facebook
+
+              .socialMedia__twitter
+                grid-area: twitter
+
+              .socialMedia__instagram
+                grid-area: instagram
+
+              .socialMedia__snapchat
+                grid-area: snapchat
+
+            .input
+              display: inline-block
+              width: auto
+
+          .info
+            width: 100%
+            margin: 0 0 16px 0
+
+          .submit
+            display: inline-block
+            transition: all 150ms $easing
+
+            span
+              transition: all 150ms $easing
+
+            .material-loader
+              opacity: 0
+              position: absolute
+              width: 32px
+              top: 0
+              bottom: 0
+              left: 50%
+              transform: translateX(-50%)
+              transition: opacity 150ms $easing
+
+              .material-loader__circular__path
+                stroke-width: 3
+
+            &.loading
+              cursor: default
+
+              span
+                opacity: 0
+
+              .material-loader
+                opacity: 1
+
+                .material-loader__circular__path
+                  stroke: #ffffff
+
+dialogbox.cropProfilePic
+  opacity: 1
+
+  .cropContainer
+    position: relative
+    width: 100%
+    height: auto
+
+    .close
+      position: absolute
+      top: 0
+      left: 16px
+      cursor: pointer
+      height: 24px
+      width: 24px
+      padding: 8px
+      transform: translate(-8px, -8px)
+      -webkit-border-radius: 50%
+      -moz-border-radius: 50%
+      border-radius: 50%
+      overflow: hidden
+
+      i
+        color: rgba(#000000, .54)
+
+    .done
+      position: absolute
+      top: 0
+      right: 16px
+      cursor: pointer
+      height: 24px
+      width: 24px
+      padding: 8px
+      transform: translate(8px, -8px)
+      -webkit-border-radius: 50%
+      -moz-border-radius: 50%
+      border-radius: 50%
+      overflow: hidden
+
+      i
+        color: $secondary
+
+    .label
+      display: block
+      font-size: 20px
+      font-weight: 500
+      color: #000000
+      padding: 0
+      margin: 21px 0 16px 0
+      text-align: center
+
+    .uploadImage
+      display: none
+      position: absolute
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
+
+    #croppie
+      position: relative
+      width: 100%
+      height: auto
+      padding: 0
+      margin: 0 0 8px 0
+
+      .cr-boundary
+        width: 400px
+        height: 400px
+
+      .options
+        position: absolute
+        right: 8px
+        top: 8px
+        background-color: #ffffff
+        border-radius: 4px
+        overflow: hidden
+        box-shadow: $elevation--z8
+        margin: 0
+        padding: 8px 4px
+        z-index: 2
+
+        div
+          display: block
+          cursor: pointer
+          height: 24px
+          width: 24px
+          padding: 8px
+          -webkit-border-radius: 50%
+          -moz-border-radius: 50%
+          border-radius: 50%
+          overflow: hidden
+          transition: background 200ms $easing
+
+          &:hover
+            background-color: rgba(#000000, .08)
+
+          &:active,
+          &:focus
+            background-color: rgba(#000000, .24)
+
+
+          i
+            color: rgba(#000000, .56)
+
+      .cr-boundary
+        .cr-viewport
+          border: 1px solid rgba(#ffffff, .56)
+          border-radius: 24px
+          box-shadow: 0 0 2000px 2000px rgba(#000000, 0.56)
+
+  @media #{$mobile}
+    width: 100%
+    max-width: none
+    height: 100%
+    max-height: none
+    border-radius: 0
+
+    .cropContainer
+      .uploadImage
+        position: fixed
+
+      #croppie
+        width: 100vw
+        height: 100vw
+        position: fixed
+        top: 50%
+        transform: translateY(-50%)
+
+        .cr-boundary
+          min-width: 100%
+          min-height: 100%
+
+        .options div
+          &:hover
+            background-color: transparent
+
+          &:active,
+          &:focus
+            background-color: rgba(#000000, .32)

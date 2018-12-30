@@ -1,0 +1,53 @@
+@media all and (min-width: 800px) { body.archive content .wrapper { display: flex; margin: 0 24px; flex-wrap: nowrap; justify-content: space-around; } }
+@media all and (min-width: 1480px) { body.archive content .wrapper { margin: 0 80px; } }
+body.archive content .wrapper .main { width: 100%; }
+@media all and (min-width: 800px) { body.archive content .wrapper .main { width: 72.5%; } }
+body.archive content .wrapper .main .main__title { font-size: 18px; font-weight: 500; color: rgba(0, 0, 0, 0.86); margin: 24px 0 24px 16px; }
+@media all and (min-width: 800px) { body.archive content .wrapper .main .main__title { margin: 24px 0; } }
+body.archive content .wrapper .main .material-loader { margin: 16px auto 24px auto; }
+body.archive content .wrapper .main .material-loader .material-loader__circular__path { stroke: rgba(0, 0, 0, 0.56); }
+body.archive content .wrapper .main .posts { width: 100%; }
+body.archive content .wrapper .main .posts .post { width: calc(100% - 2 * 16px); display: block; margin: 0 auto 24px auto; padding: 0; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; cursor: pointer; }
+body.archive content .wrapper .main .posts .post .post__image { display: block; width: 100%; padding-top: 56.25%; background-color: rgba(0, 0, 0, 0.24); border-radius: 4px; position: relative; overflow: hidden; background-position: center; background-repeat: no-repeat; background-size: cover; }
+body.archive content .wrapper .main .posts .post .post__image img { pointer-events: none; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 100%; height: auto; }
+body.archive content .wrapper .main .posts .post .post__image .post__image__error { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+body.archive content .wrapper .main .posts .post .post__image .post__image__error i { font-size: 48px; color: #F44336; text-align: center; display: block; }
+body.archive content .wrapper .main .posts .post .post__image .post__image__error p { font-size: 16px; font-weight: 500; color: rgba(0, 0, 0, 0.86); text-align: center; margin: 16px 0 0 0; }
+body.archive content .wrapper .main .posts .post .post__title { font-size: 20px; font-weight: 500; padding: 0; margin: 12px 0 6px 0; color: #000000; }
+body.archive content .wrapper .main .posts .post .post__subtitle { font-size: 14px; font-weight: 400; color: rgba(0, 0, 0, 0.6); margin: 0; padding: 0; }
+body.archive content .wrapper .main .posts .post .post__subtitle i.material-icons { font-size: 16px; height: 16px; width: 16px; color: rgba(0, 0, 0, 0.6); vertical-align: sub; }
+body.archive content .wrapper .main .posts .post .post__preview { display: none; }
+body.archive content .wrapper .main .posts .post .post__foot { width: 100%; margin: 20px 0 0 0; padding: 0; position: relative; }
+body.archive content .wrapper .main .posts .post .post__foot .post__foot__like { position: relative; margin: 0 24px 0 0; padding: 0; display: inline-flex; height: 24px; align-items: center; }
+body.archive content .wrapper .main .posts .post .post__foot .post__foot__like.active i { color: #F44336; }
+body.archive content .wrapper .main .posts .post .post__foot .post__foot__like i { font-size: 24px; color: rgba(0, 0, 0, 0.56); margin: 0 4px 0 0; padding: 0; cursor: pointer; display: inline-block; }
+body.archive content .wrapper .main .posts .post .post__foot .post__foot__like .post__foot__like__count { font-size: 14px; font-weight: 400; line-height: 14px; color: rgba(0, 0, 0, 0.56); margin: 0; padding: 0; display: inline-block; height: 14px; }
+body.archive content .wrapper .main .posts .post .post__foot .post__foot__share { position: relative; margin: 0; padding: 0; display: inline-block; width: 24px; height: 24px; cursor: pointer; }
+body.archive content .wrapper .main .posts .post .post__foot .post__foot__share i { color: rgba(0, 0, 0, 0.56); margin: 0; padding: 0; }
+body.archive content .wrapper .main .posts .post .post__foot .post__foot__comments { position: absolute; right: 0; margin: 0; padding: 0; display: inline-flex; height: 24px; align-items: center; }
+body.archive content .wrapper .main .posts .post .post__foot .post__foot__comments i { font-size: 24px; color: rgba(0, 0, 0, 0.56); margin: 0 4px 0 0; padding: 0; cursor: pointer; display: inline-block; }
+body.archive content .wrapper .main .posts .post .post__foot .post__foot__comments .post__foot__comments__count { font-size: 14px; font-weight: 400; line-height: 14px; color: rgba(0, 0, 0, 0.56); margin: 0; padding: 0; display: inline-block; height: 14px; }
+@media all and (min-width: 800px) { body.archive content .wrapper .main .posts .post { position: relative; width: 100%; display: block; margin: 0 0 24px 0; padding: 0; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; cursor: pointer; border-radius: 8px; border: solid 1px rgba(0, 0, 0, 0.16); transition: border 150ms cubic-bezier(0.4, 0, 0.2, 1); }
+  body.archive content .wrapper .main .posts .post:hover { border: solid 1px rgba(0, 0, 0, 0.24); }
+  body.archive content .wrapper .main .posts .post .post__image { display: inline-block; width: 96px; height: 96px; background-color: rgba(0, 0, 0, 0.24); border-radius: 8px; position: absolute; right: 16px; top: 16px; margin: 0; padding: 0; overflow: hidden; background-position: center; background-repeat: no-repeat; background-size: cover; }
+  body.archive content .wrapper .main .posts .post .post__image img { pointer-events: none; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: auto; height: 100%; }
+  body.archive content .wrapper .main .posts .post .post__image .post__image__error { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+  body.archive content .wrapper .main .posts .post .post__image .post__image__error i { font-size: 48px; color: #F44336; text-align: center; display: block; }
+  body.archive content .wrapper .main .posts .post .post__image .post__image__error p { display: none; }
+  body.archive content .wrapper .main .posts .post .post__title { font-size: 20px; font-weight: 500; padding: 0; margin: 24px 128px 8px 16px; color: #000000; }
+  body.archive content .wrapper .main .posts .post .post__subtitle { font-size: 14px; font-weight: 400; color: rgba(0, 0, 0, 0.6); margin: 0 0 0 16px; padding: 0; }
+  body.archive content .wrapper .main .posts .post .post__preview { display: block; font-size: 16px; font-weight: 400; color: rgba(0, 0, 0, 0.56); margin: 16px 128px 0 16px; padding: 0; }
+  body.archive content .wrapper .main .posts .post .post__foot { width: calc(100% - 32px); margin: 16px auto; padding: 0; position: relative; }
+  body.archive content .wrapper .main .posts .post .post__foot .post__foot__like { position: relative; margin: 0 24px 0 0; padding: 0; display: inline-flex; height: 24px; align-items: center; }
+  body.archive content .wrapper .main .posts .post .post__foot .post__foot__like i { font-size: 24px; color: rgba(0, 0, 0, 0.56); margin: 0 4px 0 0; padding: 0; cursor: pointer; display: inline-block; }
+  body.archive content .wrapper .main .posts .post .post__foot .post__foot__like .post__foot__like__count { font-size: 14px; font-weight: 400; line-height: 14px; color: rgba(0, 0, 0, 0.56); margin: 0; padding: 0; display: inline-block; height: 14px; }
+  body.archive content .wrapper .main .posts .post .post__foot .post__foot__share { position: relative; margin: 0 24px 0 0; padding: 0; display: inline-block; width: 24px; height: 24px; cursor: pointer; }
+  body.archive content .wrapper .main .posts .post .post__foot .post__foot__share i { color: rgba(0, 0, 0, 0.56); margin: 0; padding: 0; }
+  body.archive content .wrapper .main .posts .post .post__foot .post__foot__comments { position: relative; right: auto; margin: 0 24px 0 0; padding: 0; display: inline-flex; height: 24px; align-items: center; }
+  body.archive content .wrapper .main .posts .post .post__foot .post__foot__comments i { font-size: 24px; color: rgba(0, 0, 0, 0.56); margin: 0 4px 0 0; padding: 0; cursor: pointer; display: inline-block; }
+  body.archive content .wrapper .main .posts .post .post__foot .post__foot__comments .post__foot__comments__count { font-size: 14px; font-weight: 400; line-height: 14px; color: rgba(0, 0, 0, 0.56); margin: 0; padding: 0; display: inline-block; height: 14px; } }
+body.archive content .wrapper .sidebar { display: none; }
+body.archive content .wrapper .sidebar .widget_categories h2 ul li.current-cat a { border: 1px solid transparent; color: #ffffff; background-color: rgba(0, 0, 0, 0.48); }
+@media all and (min-width: 800px) { body.archive content .wrapper .sidebar { display: block; width: 22.5%; } }
+
+/*# sourceMappingURL=archive.css.map */

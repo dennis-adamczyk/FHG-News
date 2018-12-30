@@ -1,0 +1,16 @@
+body.page content .wrapper .main .page .page__content .team .team__wrapper { display: flex; flex-wrap: wrap; justify-content: space-around; width: 100%; }
+body.page content .wrapper .main .page .page__content .team .team__wrapper .team__wrapper__member { width: 144px; height: auto; margin: 16px 0; cursor: pointer; }
+body.page content .wrapper .main .page .page__content .team .team__wrapper .team__wrapper__member .team__wrapper__member__picture { display: block; margin: 0 auto; width: 96px; height: 96px; border-radius: 50%; overflow: hidden; }
+body.page content .wrapper .main .page .page__content .team .team__wrapper .team__wrapper__member .team__wrapper__member__name { font-size: 16px; font-weight: 500; text-align: center; margin: 8px 0 0 0; }
+body.page content .wrapper .main .page .page__content .team .team__wrapper .team__wrapper__member .team__wrapper__member__role { font-size: 16px; font-weight: 300; text-align: center; margin: 0; }
+@media all and (min-width: 800px) { body.page content .wrapper .main .page .page__content { display: flex; justify-content: space-between; }
+  body.page content .wrapper .main .page .page__content div.story { width: calc(50% - 0.5 * 24px); }
+  body.page content .wrapper .main .page .page__content div.story h2 { text-align: center; font-size: 20px; font-weight: 500; margin: 16px 0; }
+  body.page content .wrapper .main .page .page__content div.story p { column-count: 2; column-gap: 24px; font-size: 16px; font-weight: 400; margin: 16px 0; }
+  body.page content .wrapper .main .page .page__content div.team { width: calc(50% - 0.5 * 24px); }
+  body.page content .wrapper .main .page .page__content div.team h2 { text-align: center; font-size: 20px; font-weight: 500; margin: 16px 0; } }
+body.page content .wrapper .sidebar { display: block !important; }
+@media all and (max-width: 799px) { body.page content .wrapper .sidebar { margin: 32px auto !important; width: calc(100% - 2 * 16px); } }
+@media all and (min-width: 800px) { body.page content .wrapper .sidebar { display: block; width: 22.5%; } }
+
+/*# sourceMappingURL=page-ueber-uns.css.map */

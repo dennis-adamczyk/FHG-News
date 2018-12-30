@@ -1,0 +1,362 @@
+@import "vars"
+
+.edit-post-visual-editor
+  font-size: 16px
+  font-family: 'Roboto', sans-serif
+  background-color: #FAFAFA
+  -webkit-tap-highlight-color: rgba(#000000, 0)
+
+  // ################################
+  //    PARAGRAPHS
+  // ################################
+
+  .editor-block-list__block
+    font-family: 'Roboto', sans-serif
+
+    .editor-block-list__block-edit
+      text-align: left
+      font-size: 16px
+      line-height: 32px
+
+  // ################################
+  //    TITLE
+  // ################################
+
+  .editor-post-title__input
+    font-family: 'Roboto', sans-serif
+    font-size: 32px
+    font-weight: 500
+    color: #000000
+
+    @media #{$mobile}
+      font-size: 24px
+
+  // ################################
+  //    LINK
+  // ################################
+
+  .editor-rich-text__tinymce
+    a
+      color: $secondary
+      text-decoration: none
+
+      &:hover
+        text-decoration: underline
+
+  a
+    color: $secondary
+    text-decoration: none
+
+    &:hover
+      text-decoration: underline
+
+  // ################################
+  //    COVER IMAGE
+  // ################################
+
+  .wp-block-cover
+    border-radius: 4px
+    overflow: hidden
+
+    .wp-block-cover-text
+      font-weight: 300
+      font-size: 24px
+
+      @media #{$not-mobile}
+        font-size: 32px
+
+  // ################################
+  //    HEADINGS
+  // ################################
+
+  .wp-block-heading
+    h1
+      font-size: 24px
+      font-weight: 500
+      padding: 0
+      margin: 32px 0 16px 0
+      color: #000000
+
+      @media #{$not-mobile}
+        font-size: 32px
+
+    h2
+      font-size: 24px
+      font-weight: 500
+      padding: 0
+      margin: 24px 0 16px
+      color: rgba(#000000, .86)
+
+    h3
+      font-size: 24px
+      font-weight: 300
+      padding: 0
+      margin: 20px 0 16px
+      color: #000000
+
+    h4
+      font-size: 20px
+      font-weight: 500
+      padding: 0
+      margin: 20px 0 16px
+      color: #000000
+
+    h5
+      font-size: 18px
+      font-weight: 500
+      padding: 0
+      margin: 18px 0 16px
+      color: #000000
+
+    h6
+      font-size: 16px
+      font-weight: 500
+      padding: 0
+      margin: 16px 0 16px
+      color: #000000
+
+  // ################################
+  //    IMAGE WITH CAPTION
+  // ################################
+
+  .wp-block-image
+    cursor: pointer
+
+    figcaption
+      font-size: 14px
+      font-weight: 400
+      line-height: 16px
+      color: rgba(#000000, .6)
+      margin-top: 0
+
+    @media #{$mobile}
+      &.alignright,
+      &.alignleft
+        float: none
+        margin-left: auto
+        margin-right: auto
+
+    img
+      border-radius: 4px
+      overflow: hidden
+      height: auto
+      cursor: pointer
+
+  // ################################
+  //    VIDEO
+  // ################################
+
+  .wp-block-video
+    cursor: pointer
+
+    video
+      border-radius: 4px
+
+      @media #{$mobile}
+        width: 100%
+
+    figcaption
+      line-height: normal
+
+  // ################################
+  //    SEPARATOR
+  // ################################
+
+  .wp-block-separator
+    margin-top: 32px
+    margin-bottom: 32px
+    width: 100px
+    border: 1px solid rgba(#000000, .48)
+
+    &.is-style-wide
+      width: 100%
+      border: 0.5px solid rgba(#000000, .24)
+
+    &.is-style-dots
+      width: 100%
+      border: none
+
+  // ################################
+  //    QUOTE
+  // ################################
+
+  .wp-block-quote:not(.is-large):not(.is-style-large)
+    margin-left: 0
+    margin-right: 0
+    padding-left: 16px
+    border-left: 3px solid $secondary
+
+    cite
+      font-style: normal
+      font-size: 14px
+      color: rgba(#000000, .6)
+
+  .wp-block-quote.is-style-large
+    padding-left: 32px
+    padding-right: 32px
+    border-left: none
+
+    p
+      text-align: left
+      font-size: 24px
+      font-weight: 300
+      font-style: normal
+      line-height: 32px
+      margin-bottom: 16px
+
+    cite
+      font-style: normal
+      font-size: 14px
+      color: rgba(#000000, .6)
+
+  // ################################
+  //    PULLQUOTE
+  // ################################
+
+  .wp-block-pullquote
+    border-top: 3px solid rgba(#000000, .48)
+    border-bottom: 3px solid rgba(#000000, .48)
+    padding: 32px 0
+
+    blockquote
+      margin: 0 64px
+
+      @media #{$mobile}
+        margin: 0 48px
+
+      p
+        font-size: 24px
+        line-height: 32px
+        margin: 0 0 16px 0
+
+      cite
+        font-size: 14px
+        font-style: normal
+        text-transform: uppercase
+
+  // ################################
+  //    GALLERY
+  // ################################
+
+  .wp-block-gallery
+    .blocks-gallery-item
+      figure
+        border-radius: 4px
+        overflow: hidden
+        cursor: pointer
+
+        img
+          border-radius: 4px
+          overflow: hidden
+
+        figcaption
+          font-size: 14px
+          font-weight: 400
+          line-height: 16px
+          color: #ffffff
+          padding: 32px 8px 4px 8px
+          margin: 0
+          width: 100%
+          border-bottom-left-radius: 4px
+          border-bottom-right-radius: 4px
+          overflow: hidden
+
+  // ################################
+  //    BUTTONS
+  // ################################
+
+  .editor-block-list__block[data-type="core/button"][data-align=center]
+    .editor-block-list__block-edit
+      text-align: center
+
+  // ################################
+  //    SHORTCODE
+  // ################################
+
+  .wp-block-shortcode .editor-plain-text
+    line-height: initial
+    font-family: monospace
+
+  // ################################
+  //    MEDIA TEXT
+  // ################################
+
+  .wp-block-media-text
+    cursor: pointer
+
+    .wp-block-media-text__media
+      img
+        border-radius: 4px
+        overflow: hidden
+
+  // ################################
+  //    POLLS
+  // ################################
+
+  .wp-block-fhgnewsonline-poll
+    font-family: 'Roboto', sans-serif
+
+    h4
+      font-size: 18px
+      font-weight: 500
+      margin: 0 0 16px 0
+      padding: 0
+
+    .components-base-control
+      .components-base-control__field
+        display: flex
+
+        .components-base-control__label
+          font-family: 'Roboto', sans-serif
+          font-size: 16px
+          font-weight: 400
+          color: rgba(#000000, .86)
+          margin: 0 16px 0 0
+          padding: 0
+
+        .components-text-control__input
+          font-family: 'Roboto', sans-serif
+          font-size: 16px
+          font-weight: 400
+          color: #000000
+
+        .components-form-toggle
+          height: 18px
+          margin-top: 6px
+
+      .components-base-control__help
+        font-family: 'Roboto', sans-serif
+        font-size: 12px
+        font-style: normal
+        font-weight: 400
+        color: rgba(#000000, .56)
+        margin: -16px 0 8px 0
+
+    .components-toggle-control
+      border-bottom: 1px solid rgba(#000000, .16)
+      margin-bottom: 18px
+      padding-bottom: 8px
+
+    .components-button.is-link
+      color: $red
+      margin: 24px 0 8px 0
+      position: relative
+      left: calc(100% - 8px)
+      transform: translateX(-100%)
+
+    .components-form-token-field
+      .components-form-token-field__input-container
+        font-family: 'Roboto', sans-serif
+
+        .components-form-token-field__input
+          font-family: 'Roboto', sans-serif
+          font-size: 16px
+
+    .fhgnewsonline-poll-id
+      .components-base-control__help
+        font-family: 'Roboto', sans-serif
+        font-size: 12px
+        font-style: normal
+        font-weight: 400
+        color: rgba(#000000, .56)
+        margin: -9px 0 16px 0

@@ -1,0 +1,70 @@
+@import "vars"
+
+body.page
+
+  content
+
+    .wrapper
+
+      .main
+
+        .page
+
+          .page__content
+            width: 100%
+            margin: 16px 0 0 0
+
+            .description
+              font-size: 16px
+              line-height: 24px
+              margin: 0 0 32px 0
+
+            form
+              width: 100%
+              margin: 0 0 32px 0
+
+              .success
+                display: block
+                width: 350px
+                max-width: 100%
+                margin: 64px auto
+                text-align: center
+
+                img
+                  width: 100%
+                  height: auto
+                  margin: 0 0 32px 0
+
+                h3
+                  font-size: 18px
+                  font-weight: 500
+                  color: rgba(#000000, .86)
+                  margin-bottom: 8px
+
+                p
+                  font-size: 16px
+                  font-weight: 400
+                  color: rgba(#000000, .6)
+                  margin: 0
+
+              .input
+                margin: 0 0 8px 0
+
+                &.input--textarea
+                  .error
+                    margin-top: 0
+
+              .submit
+                margin: 16px 0 0 0
+
+        @media #{$not-mobile}
+          .page
+            .page__content
+              form
+                display: flex
+                flex-wrap: wrap
+                justify-content: space-between
+
+                .full_name,
+                .email
+                  width: 49%

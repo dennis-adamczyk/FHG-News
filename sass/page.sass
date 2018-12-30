@@ -1,406 +1,70 @@
-@import "_vars.sass"
+@import "vars"
 
-.content
+body.page
 
-  #go_content
-    position: absolute
-    width: 100%
-    height: 1px
-    z-index: -1
+  content
 
-  section.sec1
-    position: relative
-    top: 0
-    left: 0
-    right: 0
-    width: 100%
-    background-color: #EEEEEE
+    .wrapper
+      @media #{$not-mobile}
+        display: flex
+        margin: 0 24px
+        flex-wrap: nowrap
+        justify-content: space-around
 
-    img
-      height: 85%
-      width: auto
-      margin: 0 auto
-      padding: 0 0 0 0
-      display: block
-      box-shadow: 0 5px 35px rgba(0, 0, 0, .46)
-      transform: scale(0.95)
+      @media #{$desktop}
+        margin: 0 80px
 
-      @media screen and ($information-phone)
-        height: 75%
-        padding: 0 0 0 0
-
-    p
-      font-weight: 600
-      font-size: 28px
-      color: rgb(130, 130, 134)
-      margin: 1% 0 0 0
-      text-align: center
-
-      @media screen and ($information-phone)
-        margin: 5% 0 0 0
-
-    div.scroll-down
-      position: absolute
-      left: 50%
-      bottom: 0
-      transform: translateX(-50%)
-      width: 24px
-      cursor: pointer
-
-      i.first
-        animation: scroll-down 1s ease-in-out infinite
-        color: #616161
-
-      i.second
-        animation: scroll-down 1s ease-in-out infinite 0.1s
-        position: relative
-        top: -10px
-        color: #616161
-
-  .scroll
-    transition: opacity 500ms ease-out, transform 500ms ease-out
-
-    &.fadeup
-      transform: translateY(20px)
-      opacity: 0
-
-  section.sec2
-    position: relative
-    top: 0
-    left: 0
-    right: 0
-    width: 100%
-    background-color: #FFFFFF
-
-    div.presents
-      padding-top: 50px
-      text-align: center
-
-      img
-        height: 32px
-        width: auto
-        display: inline-block
-
-      p
-        position: relative
-        top: -4px
-        display: inline-block
-        font-size: 12px
-        margin: 0 0 0 -8px
-
-        span
-          font-size: 17px
-
-    div.fhg_news
-      padding-bottom: 50px
-
-      img
-        height: 125px
-        width: auto
-        margin: 25px auto 0 auto
-        display: block
-
-      p
-        text-align: center
-        font-size: 24px
-        margin: 0
-        letter-spacing: 5px
-        color: #424242
-
-        &.ausgabe
-          margin-top: 20px
-
-        &.date
-          color: #616161
-
-        span
-          font-weight: bolder
-
-  section.sec3
-    position: relative
-    top: 0
-    left: 0
-    right: 0
-    width: 100%
-    background-color: #EEEEEE
-    padding: 20px 0 0 0
-
-    p
-      font-weight: 600
-      font-size: 24px
-      color: rgb(130, 130, 134)
-      margin: 0
-      text-align: center
-
-    div
-      position: relative
-      left: 0
-      right: 0
-      top: 0
-      height: 400px
-      width: 100%
-      overflow: hidden
-
-      img
-        position: absolute
-        left: 60%
-        top: -100px
-        width: 1300px
-        transform: translateX(-50%)
-
-        @media screen and ($information-phone)
-          left: -50%
-          top: -90px
-          width: 300%
-          transform: none
-
-  section.sec4
-    position: relative
-    top: 0
-    left: 0
-    right: 0
-    width: 100%
-    background-color: #FFFFFF
-    padding: 20px 0 0 0
-
-    p
-      font-weight: 600
-      font-size: 24px
-      color: rgb(130, 130, 134)
-      margin: 0
-      text-align: center
-
-    div
-      position: relative
-      left: 0
-      right: 0
-      top: 0
-      height: 400px
-      width: 100%
-      overflow: hidden
-
-      img
-        position: absolute
-        left: 60%
-        top: -100px
-        width: 1300px
-        transform: translateX(-50%)
-
-        @media screen and ($information-phone)
-          left: -50%
-          top: -90px
-          width: 300%
-          transform: none
-
-  section.sec5
-    position: relative
-    top: 0
-    left: 0
-    right: 0
-    width: 100%
-    background-color: #EEEEEE
-    padding: 30px 0
-
-    p
-      font-weight: 600
-      font-size: 24px
-      color: rgb(130, 130, 134)
-      margin: 0
-      text-align: center
-
-      &.description
-        font-weight: normal
-        font-size: 20px
-        color: rgb(130, 130, 134)
-        margin: 0 auto
-        text-align: center
-        hyphens: auto
-
-        a
-          text-decoration: none
-          color: #2196F3
-
-          &:visited
-            text-decoration: none
-            color: #2196F3
-
-          &:hover
-            text-decoration: underline
-
-    img
-      position: relative
-      width: 95%
-      max-width: 800px
-      left: 50%
-      right: 0
-      top: 0
-      transform: translateX(-50%)
-      padding: 10px 0
-
-  section.sec6
-    position: relative
-    top: 0
-    left: 0
-    right: 0
-    width: 100%
-    background-color: #FFFFFF
-    padding: 20px 0 20px 0
-
-    div.sec-content
-      width: 95%
-      max-width: 800px
-      display: block
-      margin: 0 auto
-
-      div.logo
-        position: relative
-        left: 0
-        top: 0
-        width: auto
-
-        img
-          position: relative
-          left: 0
-          top: 0
-          height: 50px
-          width: auto
-          display: inline-block
-
-        p
-          display: inline-block
-          position: relative
-          left: 5px
-          font-size: 40px
-          font-weight: 800
-          color: #828286
-          margin: 0
-          line-height: 30px
-          top: -10px
-
-      div.slider
+      .main
         width: 100%
-        overflow: hidden
-        margin: 20px 0
 
-        div.images
-          width: 500%
-          height: 300px
-          position: relative
-          overflow: hidden
-          transition: left 300ms ease-in-out
+        @media #{$not-mobile}
+          width: 72.5%
 
-          div.image
-            height: 300px
-            display: inline-block
-            position: relative
-            margin: 0
-            padding: 0
-            line-height: 300px
-            top: 0
+        .page
+          width: calc(100% - 2 * 16px)
+          display: block
+          margin: 0 auto
+          padding: 0
 
-            img
-              max-width: 100%
-              max-height: 300px
-              position: relative
-              top: 50%
-              left: 50%
-              transform: translate(-50%, -50%)
-
-        div.navigation
-          position: relative
-          top: 5px
-          left: 50%
-          right: 0
-          width: 60px
-          height: 20px
-          transform: translateX(-50%)
-          cursor: default
-
-          div.dot
-            position: relative
-            width: 8px
-            height: 8px
-            display: inline-block
-            border-radius: 50%
-            background-color: #BDBDBD
-            margin: 0 0 0 5px
-            padding: 0
-            cursor: pointer
-            transition: background-color 200ms ease-in-out
-
-            &:nth-child(1)
-              margin: 0
-
-            &.active
-              background-color: #2196F3
-
-      div.buy-information
-        position: relative
-        left: 0
-        top: 0
-        right: 0
-        margin-top: 20px
-
-        div.writing
-          position: relative
-          top: 0
-          width: 265px
-          margin: 20px auto
-
-          p
-            font-weight: 600
-            font-size: 24px
-            color: #616161
-            margin: 0
-            text-align: left
-            letter-spacing: 3px
-
-            span
-              font-weight: 400
-              font-size: 16px
-              line-height: 13px
-              letter-spacing: 0
-
-        div.buy
-          position: relative
-          top: 0
-          width: 265px
-          margin: 20px auto
-
-          div.button
-            width: 100%
-            height: 56px
-            //border: 2px solid #9E9E9E
-            border-radius: 2px
+          .page__content
+            h2
+              font-size: 24px
+              font-weight: 500
+              margin: 24px 0 16px 0
 
             p
+              font-size: 16px
               font-weight: 400
-              font-size: 24px
-              color: #9E9E9E
+              margin: 16px 0
+
+            figure.wp-caption
               margin: 0
-              text-align: center
-              line-height: 56px
+              width: 100% !important
 
-              i
-                color: #9E9E9E
-                font-size: 24px
-                position: relative
-                top: 3px
+              img
+                width: 100%
+                height: 100%
 
+              figcaption
+                font-size: 16px
+                font-weight: 400
+                margin: 0
+                color: rgba(#000000, .6)
 
-footer
-  margin: 0 !important
+        @media #{$not-mobile}
+          .page
+            width: 100%
+            display: block
+            margin: 0
+            padding: 0
 
+      aside.sidebar
+        margin: 16px 0 0 0
+        display: none
 
-@keyframes scroll-down
-  0%
-    opacity: 0.2
-    transform: translateY(0)
+        @media #{$not-mobile}
+          display: block
+          width: 22.5%
 
-  50%
-    opacity: 1
-    transform: translateY(10px)
-
-  100%
-    opacity: 0.2
-    transform: translateY(0)
+        div:not(.widget_social_media)
+          display: none
